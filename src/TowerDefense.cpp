@@ -3,13 +3,13 @@
 // Author      : 
 // Version     :
 // Copyright   : 
-// Description : Hello World in C++, Ansi-style
+// Description : Main file of the game
 //============================================================================
 
 #include <iostream>
 using namespace std;
 
 int main() {
-	cout << "" << endl; // prints 
+	cout << " Tower Defense" << endl; // prints
 	return 0;
 }
