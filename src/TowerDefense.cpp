@@ -12,7 +12,7 @@ using namespace std;
 // Test
 #include <string>
 
-#ifdef WINDOWS
+#ifdef _WIN32
     #include <direct.h>
     #define GetCurrentDir _getcwd
 #else
