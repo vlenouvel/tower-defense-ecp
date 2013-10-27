@@ -45,5 +45,6 @@ int main() {
     cout << "Top Lenouvel" << endl;
 	cout << "Top Delevacque" << endl;
 	cout << "Vincent Carrier a une petite quequette ( je retest) ! Envoie 1 au 3615 COnnard pour confirmer"<< endl;
+	cout << "tout a fait d'accord"<< endl;
 	return 0;
 }
