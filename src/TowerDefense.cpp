@@ -43,7 +43,7 @@ int main() {
 	cout << getDir();
 	cout << " Tower Defense" << endl << "top Carrier" << endl; // prints
     cout << "Top Lenouvel" << endl;
-	cout << "Top Delevacque" << endl;
+	cout << "Top Delevacque 2" << endl;
 	cout << "Vincent Carrier a une petite quequette ( je retest) ! Envoie 1 au 3615 COnnard pour confirmer"<< endl;
 	cout << "tout a fait d'accord"<< endl;
 	return 0;
