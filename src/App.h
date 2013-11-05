@@ -11,6 +11,7 @@
 class App {
 public:
 	App();
+	void init();
 	virtual ~App();
 };
 

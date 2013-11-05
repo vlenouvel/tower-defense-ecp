@@ -14,6 +14,7 @@ class GenerateurVague: public ElementJeu {
 public:
 	GenerateurVague();
 	virtual ~GenerateurVague();
+	void genererVague();
 };
 
 #endif /* GENERATEURVAGUE_H_ */
