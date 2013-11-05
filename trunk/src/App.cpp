@@ -12,6 +12,11 @@ App::App() {
 
 }
 
+void App::init()
+{
+
+}
+
 App::~App() {
 	// TODO Auto-generated destructor stub
 }

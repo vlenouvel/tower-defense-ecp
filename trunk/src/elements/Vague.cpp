@@ -12,6 +12,21 @@ Vague::Vague() {
 
 }
 
+void Vague::genererPersonnage()
+{
+
+}
+
+void Vague::agir()
+{
+	sf::Time timeElapsed = horlogePop.getElapsedTime();
+	if (timeElapsed > tempsEntrePop)
+	{
+		horlogePop.restart();
+		genererPersonnage();
+	}
+}
+
 Vague::~Vague() {
 	// TODO Auto-generated destructor stub
 }

@@ -9,6 +9,10 @@
 
 ElementJeu::ElementJeu() {
 	// TODO Auto-generated constructor stub
+}
+
+void ElementJeu::agir()
+{
 
 }
 

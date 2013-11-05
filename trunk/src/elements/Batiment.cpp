@@ -7,7 +7,7 @@
 
 #include "Batiment.h"
 
-Batiment::Batiment() {
+Batiment::Batiment() : prix(0) {
 	// TODO Auto-generated constructor stub
 
 }

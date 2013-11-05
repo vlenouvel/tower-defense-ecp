@@ -12,6 +12,11 @@ GenerateurVague::GenerateurVague() {
 
 }
 
+void GenerateurVague::genererVague()
+{
+
+}
+
 GenerateurVague::~GenerateurVague() {
 	// TODO Auto-generated destructor stub
 }
