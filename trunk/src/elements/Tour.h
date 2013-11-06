@@ -12,12 +12,11 @@
 
 class Tour: public Batiment {
 public:
+	Tour(int tPrix, Coordonnees tCoord, int tNiveau);
 	void monterNiveau();
 	virtual ~Tour();
 
 protected:
-	// Constructeur protected => pas d'instance possible ;)
-	Tour(int tPrix, Coordonnees tCoord, int tNiveau);
 	int niveau;
 };
 

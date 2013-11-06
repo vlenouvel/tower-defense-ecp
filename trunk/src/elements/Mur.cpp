@@ -7,7 +7,7 @@
 
 #include "Mur.h"
 
-Mur::Mur() {
+Mur::Mur(int tPrix, Coordonnees tCoord) : Batiment(tPrix, tCoord) {
 	// TODO Auto-generated constructor stub
 
 }

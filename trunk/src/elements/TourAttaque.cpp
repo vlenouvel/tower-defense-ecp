@@ -7,7 +7,7 @@
 
 #include "TourAttaque.h"
 
-TourAttaque::TourAttaque() {
+TourAttaque::TourAttaque(int tPrix, Coordonnees tCoord, int tNiveau) : Tour(tPrix, tCoord, tNiveau) {
 	// TODO Auto-generated constructor stub
 
 }
@@ -19,8 +19,13 @@ void TourAttaque::agir()
 	if(timeSinceLastAttack > timeBetweenAttacks)
 	{
 		clockFromLastAttack.restart();
-		this->attaque();
+	//	this->attaque(pCibler);
 	}
+}
+
+void TourAttaque::changerComportementCiblage(void (*fonctionCiblage)())
+{
+	pCibler = fonctionCiblage;
 }
 
 

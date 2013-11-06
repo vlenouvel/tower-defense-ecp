@@ -7,7 +7,7 @@
 
 #include "TourSupport.h"
 
-TourSupport::TourSupport() {
+TourSupport::TourSupport(int tPrix, Coordonnees tCoord, int tNiveau) : Tour(tPrix, tCoord, tNiveau) {
 	// TODO Auto-generated constructor stub
 
 }

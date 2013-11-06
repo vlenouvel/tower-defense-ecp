@@ -17,7 +17,7 @@
 class TourAttaque: public Tour {
 public:
 	TourAttaque(int tPrix, Coordonnees tCoord, int tNiveau);
-	void virtual changerComportementCiblage(void (*fonctionCiblage));
+	void virtual changerComportementCiblage(void (*fonctionCiblage)());
 	void agir();
 	virtual ~TourAttaque();
 
@@ -26,7 +26,7 @@ protected:
 	// On peut ainsi changer à la voler le ciblage de la tour
 	// en changeant la fonction sur laquelle est le pointeur.
 	void virtual attaque(void (*fonctionCiblage)()) = 0;
-	void (*cibler)();
+	void (*pCibler)();
 	int attackDamage;
 	int attackRange;
 	sf::Time timeBetweenAttacks;

@@ -11,9 +11,11 @@
 #include "ElementGraphique.h"
 #include "ElementJeu.h"
 
+#include "Coordonnees.h"
+
 class Projectile: public ElementGraphique, public ElementJeu {
 public:
-	Projectile();
+	Projectile(Coordonnees tCoord);
 	virtual ~Projectile();
 
 private:

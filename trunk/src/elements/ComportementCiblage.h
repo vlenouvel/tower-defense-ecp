@@ -17,7 +17,6 @@ class ComportementCiblage {
 public:
 	ComportementCiblage();
 	virtual ~ComportementCiblage();
-	static virtual Personnage* cibler(std::vector<Personnage>* ciblesPossibles) = 0;
 };
 
 #endif /* COMPORTEMENTCIBLAGE_H_ */

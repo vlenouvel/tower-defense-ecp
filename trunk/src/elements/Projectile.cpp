@@ -7,7 +7,7 @@
 
 #include "Projectile.h"
 
-Projectile::Projectile() {
+Projectile::Projectile(Coordonnees tCoord) : coordonnees(tCoord) {
 	// TODO Auto-generated constructor stub
 
 }
