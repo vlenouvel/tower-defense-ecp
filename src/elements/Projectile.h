@@ -15,6 +15,9 @@ class Projectile: public ElementGraphique, public ElementJeu {
 public:
 	Projectile();
 	virtual ~Projectile();
+
+private:
+	Coordonnees coordonnees;
 };
 
 #endif /* PROJECTILE_H_ */

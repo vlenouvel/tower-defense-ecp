@@ -12,18 +12,18 @@ TourAttaque::TourAttaque() {
 
 }
 
+// Fonction générique qui évite de la réécrire dans les tours filles.
 void TourAttaque::agir()
 {
-	//TODO : si temps avant attaque suivante atteint, attaque, sinon rien
-	this->attaque();
+	sf::Time timeSinceLastAttack = clockFromLastAttack.getElapsedTime();
+	if(timeSinceLastAttack > timeBetweenAttacks)
+	{
+		clockFromLastAttack.restart();
+		this->attaque();
+	}
 }
 
-void TourAttaque::attaque()
-{
-	// Calcul cibles possibles
-	//std::vector<Personnage*>* pCiblesPossibles;
-	//Personnage* pCible = compCibl.cibler(pCiblesPossibles);
-}
+
 TourAttaque::~TourAttaque() {
 	// TODO Auto-generated destructor stub
 }

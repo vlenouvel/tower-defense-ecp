@@ -14,6 +14,7 @@ class CompCiblPlusProche: public ComportementCiblage {
 public:
 	CompCiblPlusProche();
 	virtual ~CompCiblPlusProche();
+	static Personnage* cibler(std::vector<Personnage>* ciblesPossibles);
 };
 
 #endif /* COMPCIBLPLUSPROCHE_H_ */

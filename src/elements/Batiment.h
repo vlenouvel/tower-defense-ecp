@@ -8,16 +8,19 @@
 #ifndef BATIMENT_H_
 #define BATIMENT_H_
 
+#include "Coordonnees.h"
+
 #include "ElementGraphique.h"
 #include "ElementJeu.h"
 
 class Batiment: public ElementGraphique, public ElementJeu {
 public:
-	Batiment();
+	Batiment(int tPrix, Coordonnees tCoord);
 	virtual ~Batiment();
 
 protected:
 	int prix;
+	Coordonnees coordonnees;
 };
 
 #endif /* BATIMENT_H_ */
