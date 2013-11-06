@@ -7,12 +7,14 @@
 
 #include "Tour.h"
 
-Tour::Tour() : niveau(0) {
-	// TODO Auto-generated constructor stub
+Tour::Tour(int tPrix, Coordonnees tCoord, int tNiveau) : Batiment(tPrix, tCoord) , niveau(tNiveau) {
+}
 
+void Tour::monterNiveau()
+{
+	niveau++;
 }
 
 Tour::~Tour() {
-	// TODO Auto-generated destructor stub
 }
 

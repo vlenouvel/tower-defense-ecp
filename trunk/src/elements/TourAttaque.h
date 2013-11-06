@@ -8,18 +8,29 @@
 #ifndef TOURATTAQUE_H_
 #define TOURATTAQUE_H_
 
-#include "Tour.h"
+#include <SFML/System/Clock.hpp>
+#include <SFML/System/Time.hpp>
+
 #include "ComportementCiblage.h"
+#include "Tour.h"
 
 class TourAttaque: public Tour {
 public:
-	TourAttaque();
-	void attaque();
+	TourAttaque(int tPrix, Coordonnees tCoord, int tNiveau);
+	void virtual changerComportementCiblage(void (*fonctionCiblage));
 	void agir();
 	virtual ~TourAttaque();
 
 protected:
-	ComportementCiblage compCibl;
+	// On utilise un pointeur vers une fonction statique pour le ciblage
+	// On peut ainsi changer à la voler le ciblage de la tour
+	// en changeant la fonction sur laquelle est le pointeur.
+	void virtual attaque(void (*fonctionCiblage)()) = 0;
+	void (*cibler)();
+	int attackDamage;
+	int attackRange;
+	sf::Time timeBetweenAttacks;
+	sf::Clock clockFromLastAttack;
 };
 
 #endif /* TOURATTAQUE_H_ */

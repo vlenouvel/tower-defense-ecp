@@ -14,6 +14,7 @@ class CompCiblZone: public ComportementCiblage {
 public:
 	CompCiblZone();
 	virtual ~CompCiblZone();
+	static Personnage* cibler(std::vector<Personnage>* ciblesPossibles);
 };
 
 #endif /* COMPCIBLZONE_H_ */

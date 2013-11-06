@@ -11,11 +11,13 @@
 #include "Personnage.h"
 #include <vector>
 
+// Classe qui sert juste d'interface pour forcer l'implementation
+// de la methode cibler dans les differents comportements de ciblage
 class ComportementCiblage {
 public:
 	ComportementCiblage();
 	virtual ~ComportementCiblage();
-	Personnage* cibler(std::vector<Personnage>* ciblesPossibles);
+	static virtual Personnage* cibler(std::vector<Personnage>* ciblesPossibles) = 0;
 };
 
 #endif /* COMPORTEMENTCIBLAGE_H_ */

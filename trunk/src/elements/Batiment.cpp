@@ -7,12 +7,11 @@
 
 #include "Batiment.h"
 
-Batiment::Batiment() : prix(0) {
-	// TODO Auto-generated constructor stub
+Batiment::Batiment(int tPrix, Coordonnees tCoord) : prix(tPrix), coordonnees(tCoord) {
 
 }
 
 Batiment::~Batiment() {
-	// TODO Auto-generated destructor stub
+
 }
 

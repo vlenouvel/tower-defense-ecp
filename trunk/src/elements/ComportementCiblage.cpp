@@ -8,11 +8,9 @@
 #include "ComportementCiblage.h"
 
 ComportementCiblage::ComportementCiblage() {
-	// TODO Auto-generated constructor stub
 
 }
 
 ComportementCiblage::~ComportementCiblage() {
-	// TODO Auto-generated destructor stub
 }
 
