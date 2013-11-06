@@ -12,7 +12,7 @@
 
 class Mur: public Batiment {
 public:
-	Mur();
+	Mur(int tPrix, Coordonnees tCoord);
 	virtual ~Mur();
 };
 

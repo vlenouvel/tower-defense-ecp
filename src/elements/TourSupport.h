@@ -12,7 +12,7 @@
 
 class TourSupport : public Tour {
 public:
-	TourSupport();
+	TourSupport(int tPrix, Coordonnees tCoord, int tNiveau);
 	virtual ~TourSupport();
 };
 
