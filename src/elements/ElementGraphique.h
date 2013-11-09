@@ -9,6 +9,7 @@
 #define ELEMENTGRAPHIQUE_H_
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class ElementGraphique {
 public:
