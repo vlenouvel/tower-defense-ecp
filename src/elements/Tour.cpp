@@ -18,3 +18,6 @@ void Tour::monterNiveau()
 Tour::~Tour() {
 }
 
+void Tour::dessiner(){
+	// TO DO
+}

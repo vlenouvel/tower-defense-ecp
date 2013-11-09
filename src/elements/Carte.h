@@ -14,6 +14,7 @@ class Carte: public ElementGraphique {
 public:
 	Carte();
 	virtual ~Carte();
+	void dessiner();
 };
 
 #endif /* CARTE_H_ */

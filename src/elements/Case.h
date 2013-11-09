@@ -15,7 +15,7 @@ class Case: public ElementGraphique, public ElementJeu {
 public:
 	Case();
 	virtual ~Case();
-
+	void dessiner();
 };
 
 #endif /* CASE_H_ */

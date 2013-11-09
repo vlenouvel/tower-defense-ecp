@@ -44,3 +44,6 @@ Personnage::~Personnage() {
 	// TODO Auto-generated destructor stub
 }
 
+void Personnage::dessiner(){
+	// TO DO
+}

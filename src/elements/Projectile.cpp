@@ -16,3 +16,6 @@ Projectile::~Projectile() {
 	// TODO Auto-generated destructor stub
 }
 
+void Projectile::dessiner(){
+	// TO DO
+}

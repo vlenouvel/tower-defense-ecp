@@ -16,3 +16,6 @@ Carte::~Carte() {
 	// TODO Auto-generated destructor stub
 }
 
+void Carte::dessiner(){
+	// TO DO
+}

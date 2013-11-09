@@ -16,3 +16,6 @@ TourSupport::~TourSupport() {
 	// TODO Auto-generated destructor stub
 }
 
+void TourSupport::dessiner(){
+	// TO DO
+}

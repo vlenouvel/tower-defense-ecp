@@ -1,9 +1,10 @@
 #include <iostream>
+#include "App.h"
 using namespace std;
 
 int main() {
 
-	return 0;
-	App app = new App();
+	// on n'aura qu'une application => creation statique et non dynamique
+	App app;
 	app.init();
 }

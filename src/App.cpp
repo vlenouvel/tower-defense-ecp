@@ -14,7 +14,8 @@ App::App() {
 
 void App::init()
 {
-
+	Menu menu;
+	menu.dessiner();
 }
 
 App::~App() {

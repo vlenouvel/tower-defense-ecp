@@ -7,6 +7,7 @@
 
 #ifndef APP_H_
 #define APP_H_
+#include "elements/Menu.h"
 
 class App {
 public:
