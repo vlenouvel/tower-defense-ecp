@@ -17,6 +17,7 @@ class Projectile: public ElementGraphique, public ElementJeu {
 public:
 	Projectile(Coordonnees tCoord);
 	virtual ~Projectile();
+	void dessiner();
 
 private:
 	Coordonnees coordonnees;

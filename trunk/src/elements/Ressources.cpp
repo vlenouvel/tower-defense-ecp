@@ -16,3 +16,7 @@ Ressources::~Ressources() {
 	// TODO Auto-generated destructor stub
 }
 
+void Ressources::dessiner(){
+	// TO DO
+}
+

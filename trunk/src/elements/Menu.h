@@ -14,6 +14,7 @@ class Menu: public ElementGraphique {
 public:
 	Menu();
 	virtual ~Menu();
+	void dessiner();
 };
 
 #endif /* MENU_H_ */

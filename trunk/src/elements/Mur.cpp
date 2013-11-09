@@ -16,3 +16,6 @@ Mur::~Mur() {
 	// TODO Auto-generated destructor stub
 }
 
+void Mur::dessiner(){
+	// TO DO
+}

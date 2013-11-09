@@ -20,6 +20,7 @@ public:
 	void avancer();
 	void mourir();
 	void perdrePV(int degat);
+	void dessiner();
 
 protected:
 	int vie;

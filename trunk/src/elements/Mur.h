@@ -14,6 +14,7 @@ class Mur: public Batiment {
 public:
 	Mur(int tPrix, Coordonnees tCoord);
 	virtual ~Mur();
+	void dessiner();
 };
 
 #endif /* MUR_H_ */

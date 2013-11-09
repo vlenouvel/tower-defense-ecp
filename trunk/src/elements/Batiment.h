@@ -17,6 +17,7 @@ class Batiment: public ElementGraphique, public ElementJeu {
 public:
 	Batiment(int tPrix, Coordonnees tCoord);
 	virtual ~Batiment();
+	void dessiner();
 
 protected:
 	int prix;

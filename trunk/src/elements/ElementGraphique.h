@@ -8,10 +8,12 @@
 #ifndef ELEMENTGRAPHIQUE_H_
 #define ELEMENTGRAPHIQUE_H_
 
+#include <SFML/Graphics.hpp>
+
 class ElementGraphique {
 public:
 	ElementGraphique();
-	void virtual dessiner() = 0;
+	void virtual dessiner()=0;
 	virtual ~ElementGraphique();
 };
 

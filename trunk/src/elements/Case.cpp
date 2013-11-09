@@ -16,3 +16,6 @@ Case::~Case() {
 	// TODO Auto-generated destructor stub
 }
 
+void Case::dessiner(){
+	// TO DO
+}

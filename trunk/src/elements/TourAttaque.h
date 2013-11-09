@@ -20,6 +20,7 @@ public:
 	void virtual changerComportementCiblage(void (*fonctionCiblage)());
 	void agir();
 	virtual ~TourAttaque();
+	void dessiner();
 
 protected:
 	// On utilise un pointeur vers une fonction statique pour le ciblage

@@ -15,3 +15,6 @@ Batiment::~Batiment() {
 
 }
 
+void Batiment::dessiner(){
+	// TO DO
+}

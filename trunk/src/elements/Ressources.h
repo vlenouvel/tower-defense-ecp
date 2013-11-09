@@ -14,6 +14,7 @@ class Ressources: public ElementGraphique {
 public:
 	Ressources();
 	virtual ~Ressources();
+	void dessiner();
 };
 
 #endif /* RESSOURCES_H_ */
