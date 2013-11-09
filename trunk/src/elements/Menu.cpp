@@ -20,6 +20,11 @@ void Menu::dessiner(){
 	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
+	sf::Music music;
+	if (!music.openFromFile("tower-defense-ecp/src/elements/musiquesEtBruits/musicTest.ogg")){
+		// error
+	}
+	music.play();
 
     while (window.isOpen())
     {
