@@ -16,7 +16,9 @@ Menu::~Menu() {
 	// TODO Auto-generated destructor stub
 }
 
-void Menu::dessiner(){
+void Menu::dessiner(){};
+
+bool Menu::afficher(){
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Tower Defense");
 
 	sf::Music music;
@@ -56,6 +58,14 @@ void Menu::dessiner(){
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+			if (event.type == sf::Event::MouseButtonPressed){
+				if (event.mouseButton.button == sf::Mouse::Left){
+					if ((event.mouseButton.x > 150)&&(event.mouseButton.x < 650)&&(event.mouseButton.y > 100)&&(event.mouseButton.y < 150)){
+						window.close();
+						return true;
+					}
+				}
+			}
         }
 
         window.clear();

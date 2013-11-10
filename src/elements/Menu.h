@@ -14,6 +14,7 @@ class Menu: public ElementGraphique {
 public:
 	Menu();
 	virtual ~Menu();
+	bool afficher();
 	void dessiner();
 };
 
