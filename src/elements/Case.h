@@ -15,7 +15,7 @@ class Case: public ElementGraphique, public ElementJeu {
 public:
 	Case();
 	virtual ~Case();
-	void dessiner();
+	void dessiner(sf::RenderWindow &pWindow);
 };
 
 #endif /* CASE_H_ */

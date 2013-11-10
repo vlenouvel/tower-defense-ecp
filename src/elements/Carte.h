@@ -15,8 +15,7 @@ class Carte: public ElementGraphique {
 public:
 	Carte();
 	virtual ~Carte();
-	void desiner(sf::RenderWindow &pWindow);
-	void dessiner();
+	void dessiner(sf::RenderWindow &pWindow);
 	int imageCarte [40][30];
 };
 

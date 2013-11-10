@@ -14,8 +14,7 @@ class Menu: public ElementGraphique {
 public:
 	Menu();
 	virtual ~Menu();
-	bool afficher();
-	void dessiner();
+	void dessiner(sf::RenderWindow &pWindow);
 };
 
 #endif /* MENU_H_ */

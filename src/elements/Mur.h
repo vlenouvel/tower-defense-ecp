@@ -14,7 +14,7 @@ class Mur: public Batiment {
 public:
 	Mur(int tPrix, Coordonnees tCoord);
 	virtual ~Mur();
-	void dessiner();
+	void dessiner(sf::RenderWindow &pWindow);
 };
 
 #endif /* MUR_H_ */

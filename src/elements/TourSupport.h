@@ -14,7 +14,7 @@ class TourSupport : public Tour {
 public:
 	TourSupport(int tPrix, Coordonnees tCoord, int tNiveau);
 	virtual ~TourSupport();
-	void dessiner();
+	void dessiner(sf::RenderWindow &pWindow);
 };
 
 #endif /* TOURSUPPORT_H_ */

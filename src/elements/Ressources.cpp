@@ -16,7 +16,7 @@ Ressources::~Ressources() {
 	// TODO Auto-generated destructor stub
 }
 
-void Ressources::dessiner(){
+void Ressources::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }
 

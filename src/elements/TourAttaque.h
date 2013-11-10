@@ -20,7 +20,7 @@ public:
 	void virtual changerComportementCiblage(void (*fonctionCiblage)());
 	void agir();
 	virtual ~TourAttaque();
-	void dessiner();
+	void dessiner(sf::RenderWindow &pWindow);
 
 protected:
 	// On utilise un pointeur vers une fonction statique pour le ciblage

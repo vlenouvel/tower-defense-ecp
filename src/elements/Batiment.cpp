@@ -15,6 +15,6 @@ Batiment::~Batiment() {
 
 }
 
-void Batiment::dessiner(){
+void Batiment::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }

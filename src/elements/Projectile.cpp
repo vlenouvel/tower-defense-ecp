@@ -16,6 +16,6 @@ Projectile::~Projectile() {
 	// TODO Auto-generated destructor stub
 }
 
-void Projectile::dessiner(){
+void Projectile::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }
