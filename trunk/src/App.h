@@ -9,9 +9,12 @@
 #define APP_H_
 #include "elements/Menu.h"
 #include "elements/Carte.h"
-
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Window.hpp>
 class App {
 public:
+	int etat;
 	App();
 	void init();
 	virtual ~App();

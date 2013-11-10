@@ -18,6 +18,6 @@ void Tour::monterNiveau()
 Tour::~Tour() {
 }
 
-void Tour::dessiner(){
+void Tour::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }

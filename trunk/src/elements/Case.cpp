@@ -16,6 +16,6 @@ Case::~Case() {
 	// TODO Auto-generated destructor stub
 }
 
-void Case::dessiner(){
+void Case::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }

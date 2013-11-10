@@ -20,7 +20,8 @@ Carte::~Carte() {
 	// TODO Auto-generated destructor stub
 }
 
-void Carte::desiner(sf::RenderWindow &pWindow){
+void Carte::dessiner(sf::RenderWindow &pWindow){
+
 	for (int i=0;i<40;i++){
 		for(int j=0;j<30;j++){
 			sf::RectangleShape rectangle(sf::Vector2f(18, 18));
@@ -32,8 +33,4 @@ void Carte::desiner(sf::RenderWindow &pWindow){
 			pWindow.draw(rectangle);
 		}
 	}
-}
-
-void Carte::dessiner(){
-	// TO DO
 }

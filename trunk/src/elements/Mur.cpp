@@ -16,6 +16,6 @@ Mur::~Mur() {
 	// TODO Auto-generated destructor stub
 }
 
-void Mur::dessiner(){
+void Mur::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }

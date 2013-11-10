@@ -15,7 +15,7 @@
 class ElementGraphique {
 public:
 	ElementGraphique();
-	void virtual dessiner()=0;
+	void virtual dessiner(sf::RenderWindow &pWindow)=0;
 	virtual ~ElementGraphique();
 };
 

@@ -20,7 +20,7 @@ public:
 	void avancer();
 	void mourir();
 	void perdrePV(int degat);
-	void dessiner();
+	void dessiner(sf::RenderWindow &pWindow);
 
 protected:
 	int vie;

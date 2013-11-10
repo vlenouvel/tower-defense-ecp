@@ -16,6 +16,6 @@ TourSupport::~TourSupport() {
 	// TODO Auto-generated destructor stub
 }
 
-void TourSupport::dessiner(){
+void TourSupport::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }

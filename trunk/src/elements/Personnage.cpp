@@ -44,6 +44,6 @@ Personnage::~Personnage() {
 	// TODO Auto-generated destructor stub
 }
 
-void Personnage::dessiner(){
+void Personnage::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }

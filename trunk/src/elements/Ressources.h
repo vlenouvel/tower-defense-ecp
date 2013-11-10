@@ -14,7 +14,7 @@ class Ressources: public ElementGraphique {
 public:
 	Ressources();
 	virtual ~Ressources();
-	void dessiner();
+	void dessiner(sf::RenderWindow &pWindow);
 };
 
 #endif /* RESSOURCES_H_ */

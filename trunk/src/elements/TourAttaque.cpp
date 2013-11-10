@@ -33,7 +33,7 @@ TourAttaque::~TourAttaque() {
 	// TODO Auto-generated destructor stub
 }
 
-void TourAttaque::dessiner(){
+void TourAttaque::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }
 

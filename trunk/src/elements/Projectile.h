@@ -17,7 +17,7 @@ class Projectile: public ElementGraphique, public ElementJeu {
 public:
 	Projectile(Coordonnees tCoord);
 	virtual ~Projectile();
-	void dessiner();
+	void dessiner(sf::RenderWindow &pWindow);
 
 private:
 	Coordonnees coordonnees;

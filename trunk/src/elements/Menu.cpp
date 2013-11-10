@@ -16,17 +16,7 @@ Menu::~Menu() {
 	// TODO Auto-generated destructor stub
 }
 
-void Menu::dessiner(){};
-
-bool Menu::afficher(){
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Tower Defense");
-
-	sf::Music music;
-	if (!music.openFromFile("tower-defense-ecp/src/elements/musiquesEtBruits/musicTest.ogg")){
-		// error
-	}
-	music.play();
-
+void Menu::dessiner(sf::RenderWindow &pWindow){
 	sf::Font font;
 	font.loadFromFile("tower-defense-ecp/src/elements/polices/Capture it.ttf");
 	sf::Text text1;
@@ -50,29 +40,10 @@ bool Menu::afficher(){
 	text3.setColor(sf::Color::White);
 	text3.setStyle(sf::Text::Bold);
 	text3.setPosition(350,400);
+	pWindow.clear();
+	pWindow.draw(text1);
+	pWindow.draw(text2);
+	pWindow.draw(text3);
+};
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-			if (event.type == sf::Event::MouseButtonPressed){
-				if (event.mouseButton.button == sf::Mouse::Left){
-					if ((event.mouseButton.x > 150)&&(event.mouseButton.x < 650)&&(event.mouseButton.y > 100)&&(event.mouseButton.y < 150)){
-						window.close();
-						return true;
-					}
-				}
-			}
-        }
-
-        window.clear();
-		window.draw(text1);
-		window.draw(text2);
-		window.draw(text3);
-        window.display();
-    }
-}
 

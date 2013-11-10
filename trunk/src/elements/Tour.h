@@ -15,7 +15,7 @@ public:
 	Tour(int tPrix, Coordonnees tCoord, int tNiveau);
 	void monterNiveau();
 	virtual ~Tour();
-	void dessiner();
+	void dessiner(sf::RenderWindow &pWindow);
 
 protected:
 	int niveau;
