@@ -12,7 +12,9 @@ int main() {
 	try {
 
 		app.init();
-
+		while (app.isRunning()) {
+	   		app.boucle();
+	    }
 	} catch (const exception &e) {
 		std::cerr << "Il y a eu une erreur: " << endl << e.what();
 	}

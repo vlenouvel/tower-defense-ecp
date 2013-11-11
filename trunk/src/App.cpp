@@ -22,11 +22,6 @@ void App::init() {
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Tower Defense");
 
-
-    while (isRunning()) {
-   		boucle();
-    }
-
 }
 
 bool App::isRunning() {
