@@ -18,7 +18,6 @@ public:
 	int etat;
 	bool running;
 	App();
-	void init();
 	bool isRunning();
 	void boucle();
 	void render();
@@ -28,6 +27,8 @@ public:
 
 private:
 	sf::RenderWindow window;
+
+
 	//sf::RenderWindow &pWindow;
 };
 

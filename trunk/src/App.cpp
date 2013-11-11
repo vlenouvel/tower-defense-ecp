@@ -13,16 +13,10 @@ using namespace std;
 App::App() {
 	etat = 0;
 	running = true;
+	window.create(sf::VideoMode(800, 600), "Tower Defense");
+	
 }
 
-void App::init() {
-	sf::Music music;
-	music.openFromFile("resources/sons/musicTest.ogg");
-	music.play();
-
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Tower Defense");
-
-}
 
 bool App::isRunning() {
 	if (window.isOpen() == true)
@@ -35,7 +29,6 @@ void App::boucle() {
 	App::gererEvents();
 	App::update();
 	App::render();
-
 }
 
 void App::gererEvents() {
@@ -61,8 +54,7 @@ void App::update() {
 }
 
 void App::render() {
-
-   sf::RenderWindow &pWindow = window;
+	sf::RenderWindow &pWindow = window;
 
 	Carte carte;
 	Menu menu;
