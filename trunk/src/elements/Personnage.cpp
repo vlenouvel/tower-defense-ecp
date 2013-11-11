@@ -47,3 +47,8 @@ Personnage::~Personnage() {
 void Personnage::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }
+
+int Personnage::getVie()
+{
+	return this->vie;
+}
