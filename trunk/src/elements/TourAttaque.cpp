@@ -37,3 +37,7 @@ void TourAttaque::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }
 
+void TourAttaque::trouverCibles()
+{
+	// TO DO, besoin de la liste des ennemis
+}
