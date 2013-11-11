@@ -5,6 +5,8 @@
  *      Author: Vincent Lenouvel
  */
 
+//Ce comportement doit permettre de cibler la cible qui est la plus proche de l'objectif.
+
 #ifndef COMPCIBLPLUSPROCHE_H_
 #define COMPCIBLPLUSPROCHE_H_
 

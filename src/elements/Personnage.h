@@ -21,6 +21,7 @@ public:
 	void mourir();
 	void perdrePV(int degat);
 	void dessiner(sf::RenderWindow &pWindow);
+	int getVie();
 
 protected:
 	int vie;

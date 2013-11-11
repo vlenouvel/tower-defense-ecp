@@ -14,7 +14,7 @@ class CompCiblVieFaible: public ComportementCiblage {
 public:
 	CompCiblVieFaible();
 	virtual ~CompCiblVieFaible();
-	static Personnage* cibler(std::vector<Personnage>* ciblesPossibles);
+	static Personnage* cibler(std::vector<Personnage*> ciblesPossibles);
 };
 
 #endif /* COMPCIBLVIEFAIBLE_H_ */
