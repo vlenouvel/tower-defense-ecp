@@ -12,12 +12,23 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
+
 class App {
 public:
 	int etat;
+	bool running;
 	App();
 	void init();
+	bool isRunning();
+	void boucle();
+	void render();
+	void update();
+	void gererEvents();
 	virtual ~App();
+
+private:
+	sf::RenderWindow window;
+	//sf::RenderWindow &pWindow;
 };
 
 #endif /* APP_H_ */
