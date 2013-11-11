@@ -18,10 +18,10 @@ Menu::~Menu() {
 
 void Menu::dessiner(sf::RenderWindow &pWindow){
 	sf::Font font;
-	font.loadFromFile("tower-defense-ecp/src/elements/polices/Capture it.ttf");
+	font.loadFromFile("resources/polices/Capture it.ttf");
 	sf::Text text1;
 	text1.setFont(font);
-	text1.setString("Entrez dans l'arène");
+	text1.setString("Entrez dans l'arene");
 	text1.setCharacterSize(48);
 	text1.setColor(sf::Color::White);
 	text1.setStyle(sf::Text::Bold);
