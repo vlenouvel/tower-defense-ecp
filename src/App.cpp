@@ -15,7 +15,7 @@ App::App() {
 void App::init()
 {
 	sf::Music music;
-	music.openFromFile("tower-defense-ecp/src/elements/musiquesEtBruits/musicTest.ogg");
+	music.openFromFile("resources/sons/musicTest.ogg");
 	music.play();
 
 	Menu menu;
