@@ -1,7 +1,7 @@
 #include <iostream>
 #include <exception>
 #include "App.h"
-
+#include <SFML/Audio.hpp>
 using namespace std;
 
 int main() {
@@ -10,8 +10,9 @@ int main() {
 	App app;
 
 	try {
-
-		app.init();
+		sf::Music music;
+		music.openFromFile("resources/sons/musicTest.ogg");
+		music.play();
 		while (app.isRunning()) {
 	   		app.boucle();
 	    }
@@ -21,6 +22,5 @@ int main() {
 
 	//delete app;
 	//app = NULL;
-
 	return 0;
 }
