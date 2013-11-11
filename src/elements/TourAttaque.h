@@ -21,6 +21,7 @@ public:
 	void agir();
 	virtual ~TourAttaque();
 	void dessiner(sf::RenderWindow &pWindow);
+	void trouverCibles();
 
 protected:
 	// On utilise un pointeur vers une fonction statique pour le ciblage
@@ -30,6 +31,7 @@ protected:
 	void (*pCibler)();
 	int attackDamage;
 	int attackRange;
+	std::vector<Personnage*> ciblesPossibles;
 	sf::Time timeBetweenAttacks;
 	sf::Clock clockFromLastAttack;
 };
