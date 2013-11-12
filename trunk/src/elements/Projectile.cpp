@@ -24,3 +24,8 @@ void Projectile::agir()
 {
 	this->avancer();
 }
+
+void Projectile::avancer()
+{
+
+}
