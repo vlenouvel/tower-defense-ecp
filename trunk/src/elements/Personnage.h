@@ -22,6 +22,7 @@ public:
 	void perdrePV(int degat);
 	void dessiner(sf::RenderWindow &pWindow);
 	int getVie();
+	Coordonnees getCoordonnees();
 
 protected:
 	int vie;
