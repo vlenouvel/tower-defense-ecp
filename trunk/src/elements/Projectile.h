@@ -20,7 +20,7 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	virtual void agir();
 	void avancer();
-	virtual void toucherEnnemi();
+	virtual void toucherEnnemi() = 0;
 
 private:
 	int dommages;
