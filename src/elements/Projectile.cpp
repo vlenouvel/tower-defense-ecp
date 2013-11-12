@@ -7,7 +7,7 @@
 
 #include "Projectile.h"
 
-Projectile::Projectile(Coordonnees tCoord) : coordonnees(tCoord) {
+Projectile::Projectile(Coordonnees tCoord, Personnage* tCible, int tDamage) : coordonnees(tCoord), cible(tCible), dommages(tDamage) {
 	// TODO Auto-generated constructor stub
 
 }
@@ -18,4 +18,9 @@ Projectile::~Projectile() {
 
 void Projectile::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
+}
+
+void Projectile::agir()
+{
+	this->avancer();
 }

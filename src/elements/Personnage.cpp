@@ -52,3 +52,8 @@ int Personnage::getVie()
 {
 	return this->vie;
 }
+
+Coordonnees Personnage::getCoordonnees()
+{
+	return this->coordonnees;
+}
