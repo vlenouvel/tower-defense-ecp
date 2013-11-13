@@ -12,10 +12,12 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Window.hpp>
+#include "etats/Etat.h"
+#include "etats/EtatJeu.h"
+#include "etats/EtatMenu.h"
 
 class App {
 public:
-	int etat;
 	bool running;
 	App();
 	bool isRunning();
@@ -24,12 +26,11 @@ public:
 	void update();
 	void gererEvents();
 	virtual ~App();
+	void changerEtat(Etat *pNouvelEtat);
 
 private:
 	sf::RenderWindow window;
-
-
-	//sf::RenderWindow &pWindow;
+	Etat *pEtatActuel;
 };
 
 #endif /* APP_H_ */

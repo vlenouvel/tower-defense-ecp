@@ -11,10 +11,9 @@
 using namespace std;
 
 App::App() {
-	etat = 0;
+	pEtatActuel = new(EtatMenu)(this);
 	running = true;
 	window.create(sf::VideoMode(800, 600), "Tower Defense");
-	
 }
 
 
@@ -36,14 +35,9 @@ void App::gererEvents() {
 	while (window.pollEvent(event)) {
 		if (event.type == sf::Event::Closed)
 			window.close();
-		if ((event.type == sf::Event::MouseButtonPressed) && (etat == 0)) {
-			if (event.mouseButton.button == sf::Mouse::Left) {
-				if ((event.mouseButton.x > 150) && (event.mouseButton.x < 650)
-						&& (event.mouseButton.y > 100)
-						&& (event.mouseButton.y < 150)) {
-					etat = 1;
-				}
-			}
+		else
+		{
+			pEtatActuel->handleEvent(event);
 		}
 
 	}
@@ -56,17 +50,17 @@ void App::update() {
 void App::render() {
 	sf::RenderWindow &pWindow = window;
 
-	Carte carte;
-	Menu menu;
+	window.clear();
 
-    window.clear();
-
-    if (etat == 0)
-		menu.dessiner(pWindow);
-	if (etat == 1)
-		carte.dessiner(pWindow);
+	pEtatActuel->dessiner(pWindow);
 
 	window.display();
+}
+
+void App::changerEtat(Etat *pNouvelEtat)
+{
+	delete pEtatActuel;
+	pEtatActuel = pNouvelEtat;
 }
 
 App::~App() {

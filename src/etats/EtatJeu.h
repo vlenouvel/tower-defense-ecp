@@ -9,11 +9,16 @@
 #define ETATJEU_H_
 
 #include "Etat.h"
+#include "SFML/Window/Event.hpp"
+#include "../elements/Carte.h"
+#include "../App.h"
 
 class EtatJeu: public Etat {
 public:
-	EtatJeu();
+	EtatJeu(App* tApp);
 	virtual ~EtatJeu();
+	void handleEvent(sf::Event event);
+	void dessiner(sf::RenderWindow &pWindow);
 };
 
 #endif /* ETATJEU_H_ */
