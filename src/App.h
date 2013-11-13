@@ -19,7 +19,8 @@
 class App {
 public:
 	bool running;
-	long double test;
+	int test;
+	float test2;
 	App();
 	void jouer();
 	void boucle();
@@ -32,6 +33,7 @@ public:
 private:
 	sf::RenderWindow window;
 	Etat *pEtatActuel;
+	sf::Clock horloge2;
 };
 
 #endif /* APP_H_ */

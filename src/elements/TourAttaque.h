@@ -21,13 +21,13 @@ public:
 	void agir();
 	virtual ~TourAttaque();
 	void dessiner(sf::RenderWindow &pWindow);
-	void trouverCibles();
 
 protected:
 	// On utilise un pointeur vers une fonction statique pour le ciblage
 	// On peut ainsi changer à la voler le ciblage de la tour
 	// en changeant la fonction sur laquelle est le pointeur.
 	void virtual attaque(void (*fonctionCiblage)()) = 0;
+	void trouverCibles();
 	void (*pCibler)();
 	int attackDamage;
 	int attackRange;

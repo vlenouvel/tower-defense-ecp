@@ -8,6 +8,7 @@
 #include "App.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -15,6 +16,7 @@ App::App() {
 	pEtatActuel = new(EtatMenu)(this);
 	running = true;
 	test = 0;
+	test2 = 0;
 	window.create(sf::VideoMode(800, 600), "Tower Defense");
 }
 
@@ -27,7 +29,7 @@ void App::jouer() {
 	sf::Time tempsLegal;
 	sf::Time hibernation;
 	const int imagesParSeconde = 1;
-	sf::Int32 tempsSecret = 500;
+	sf::Int32 tempsSecret = 10;
 	tempsLegal = sf::milliseconds(tempsSecret);
 	// 1.f/(float)imagesParSeconde
 	sf::Music music;
@@ -52,9 +54,9 @@ void App::jouer() {
 			hibernation = tempsLegal - difference;
 			sf::sleep(hibernation);
 		}
-		else
-			test = test+1000;
-	
+		sf::Int32 i = horloge2.restart().asMilliseconds();
+		test2 = test*1000 / i;
+		test = 0;
 	}
 }
 
@@ -91,7 +93,10 @@ void App::render() {
 	font.loadFromFile("resources/polices/Capture it.ttf");
 	sf::Text text5;
 	text5.setFont(font);
-	text5.setString(to_string(test));
+	ostringstream ss;
+	ss << test2;
+	cout << test2 << endl;
+	text5.setString(ss.str());
 	test++;
 	text5.setCharacterSize(48);
 	text5.setColor(sf::Color::White);
