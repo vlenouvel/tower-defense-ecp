@@ -15,14 +15,14 @@
 
 class Projectile: public ElementGraphique, public ElementJeu {
 public:
-	Projectile(Coordonnees tCoord, Personnage* tCible, int dommages);
+	Projectile(Coordonnees tCoord, Personnage* tCible, int tDommages);
 	virtual ~Projectile();
 	void dessiner(sf::RenderWindow &pWindow);
 	virtual void agir();
 	void avancer();
 	virtual void toucherEnnemi() = 0;
 
-private:
+protected:
 	int dommages;
 	int vitesse;
 	Coordonnees coordonnees;

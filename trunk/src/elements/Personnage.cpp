@@ -37,7 +37,7 @@ void Personnage::perdrePV(int degat)
 
 void Personnage::mourir()
 {
-
+	delete this;
 }
 
 Personnage::~Personnage() {
@@ -45,7 +45,7 @@ Personnage::~Personnage() {
 }
 
 void Personnage::dessiner(sf::RenderWindow &pWindow){
-	// TO DO
+	// TODO
 }
 
 int Personnage::getVie()

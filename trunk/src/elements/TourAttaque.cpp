@@ -7,19 +7,21 @@
 
 #include "TourAttaque.h"
 
-TourAttaque::TourAttaque(int tPrix, Coordonnees tCoord, int tNiveau) : Tour(tPrix, tCoord, tNiveau) {
-	// TODO Auto-generated constructor stub
-
+TourAttaque::TourAttaque(int tPrix, Coordonnees tCoord, int tNiveau) : Tour(tPrix, tCoord, tNiveau), pCibler(0), attackDamage(0), attackRange(0) {
 }
 
-// Fonction générique qui évite de la réécrire dans les tours filles.
 void TourAttaque::agir()
 {
 	sf::Time timeSinceLastAttack = clockFromLastAttack.getElapsedTime();
 	if(timeSinceLastAttack > timeBetweenAttacks)
 	{
-		clockFromLastAttack.restart();
-	//	this->attaque(pCibler);
+
+		this->trouverCibles();
+		if(!this->ciblesPossibles.empty())
+		{
+			clockFromLastAttack.restart();
+			this->attaque(pCibler);
+		}
 	}
 }
 
@@ -34,10 +36,25 @@ TourAttaque::~TourAttaque() {
 }
 
 void TourAttaque::dessiner(sf::RenderWindow &pWindow){
-	// TO DO
+	// TODO
 }
 
 void TourAttaque::trouverCibles()
 {
-	// TO DO, besoin de la liste des ennemis
+	// TODO: Chercher cette liste dans le ressource manager
+	std::vector<Personnage*> listesDeTousLesPersonnages;
+	this->ciblesPossibles.clear();
+	int posXTour = this->coordonnees.getPosX();
+	int posYTour = this->coordonnees.getPosY();
+	for(unsigned int i(0); i<listesDeTousLesPersonnages.size(); i++)
+	{
+		Personnage *perso = listesDeTousLesPersonnages[i];
+		int posXPerso = perso->getCoordonnees().getPosX();
+		int posYPerso = perso->getCoordonnees().getPosY();
+
+		if((((posXPerso - posXTour)^(2))+((posYPerso - posYTour)^(2))) <= (this->attackRange))
+		{
+			this->ciblesPossibles.push_back(perso);
+		}
+	}
 }
