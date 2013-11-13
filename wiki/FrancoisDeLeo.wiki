@@ -1,0 +1,1 @@
+Brillant développeur strasbourgeois d'origine italienne, il rejoint l'équipe fin octobre 2013. Son sourire, son charisme et son leadership sont grandement appréciés par ses pairs qui voient en lui un véritable guide spirituel.
