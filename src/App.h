@@ -19,8 +19,9 @@
 class App {
 public:
 	bool running;
+	long double test;
 	App();
-	bool isRunning();
+	void jouer();
 	void boucle();
 	void render();
 	void update();

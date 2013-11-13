@@ -7,21 +7,55 @@
 
 #include "App.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 App::App() {
 	pEtatActuel = new(EtatMenu)(this);
 	running = true;
+	test = 0;
 	window.create(sf::VideoMode(800, 600), "Tower Defense");
 }
 
 
-bool App::isRunning() {
-	if (window.isOpen() == true)
-		return true;
-	else
-		return false;
+void App::jouer() {
+	bool AppEnCours;
+	sf::Clock horloge;
+	sf::Time framestartTime;
+	sf::Time difference;
+	sf::Time tempsLegal;
+	sf::Time hibernation;
+	const int imagesParSeconde = 1;
+	sf::Int32 tempsSecret = 500;
+	tempsLegal = sf::milliseconds(tempsSecret);
+	// 1.f/(float)imagesParSeconde
+	sf::Music music;
+	music.openFromFile("resources/sons/musicTest.ogg");
+	music.play();
+
+	AppEnCours = true;
+	
+	// lance l'horloge
+	horloge.restart();
+
+	
+	// boucle de jeu
+	while (AppEnCours) {
+		framestartTime = horloge.getElapsedTime();
+		// la boucle en soi
+		boucle();
+		//fin de la boucle de jeu
+		difference = horloge.getElapsedTime() - framestartTime;
+
+		if (difference < tempsLegal){
+			hibernation = tempsLegal - difference;
+			sf::sleep(hibernation);
+		}
+		else
+			test = test+1000;
+	
+	}
 }
 
 void App::boucle() {
@@ -53,7 +87,17 @@ void App::render() {
 	window.clear();
 
 	pEtatActuel->dessiner(pWindow);
-
+	sf::Font font;
+	font.loadFromFile("resources/polices/Capture it.ttf");
+	sf::Text text5;
+	text5.setFont(font);
+	text5.setString(to_string(test));
+	test++;
+	text5.setCharacterSize(48);
+	text5.setColor(sf::Color::White);
+	text5.setStyle(sf::Text::Bold);
+	text5.setPosition(20,20);
+	window.draw(text5);
 	window.display();
 }
 
