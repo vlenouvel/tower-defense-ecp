@@ -6,9 +6,38 @@
  */
 
 #include "Etat.h"
+#include "../App.h"
 
-Etat::Etat() {
+Etat::Etat(App *tApp) : pApp(tApp) {
 	// TODO Auto-generated constructor stub
+
+}
+
+void Etat::init()
+{
+
+}
+
+void Etat::pause()
+{
+
+}
+
+void Etat::resume()
+{
+
+}
+
+void Etat::handleEvent(sf::Event event)
+{
+
+}
+void Etat::agir(void)
+{
+
+}
+void Etat::dessiner(sf::RenderWindow &pWindow)
+{
 
 }
 
