@@ -1,12 +1,16 @@
 Pour l'utiliser dans une classe, on met en tête du fichier :
 
 #include "ResourceManager.h"
+
 ResourceManager* manager = ResourceManager::getInstance();
+
 
 Pour ajouter un objet (ici une tour), on ajoute son pointeur:
 
 Tour *pTour = new Tour();
+
 manager->add(pTour);
+
 
 Pour récuperer le vecteur de pointeur (ici des tours):
 
