@@ -17,6 +17,9 @@ public:
 	virtual ~Carte();
 	void dessiner(sf::RenderWindow &pWindow);
 	int imageCarte [40][30];
+private:
+	sf::Texture textureCarte;
+	sf::Sprite spriteCarte;
 };
 
 #endif /* CARTE_H_ */
