@@ -8,6 +8,7 @@
 #include "TourAttaque.h"
 
 TourAttaque::TourAttaque(int tPrix, Coordonnees tCoord, int tNiveau) : Tour(tPrix, tCoord, tNiveau), pCibler(0), attackDamage(0), attackRange(0) {
+	// TODO
 }
 
 void TourAttaque::agir()

@@ -14,9 +14,12 @@ class TourAttaqueBasique: public TourAttaque {
 public:
 	TourAttaqueBasique(int tPrix, Coordonnees tCoord, int tNiveau);
 	virtual ~TourAttaqueBasique();
+	void dessiner(sf::RenderWindow & rWindow);
 
 private:
 	void attaque(void (*fonctionCiblage)());
+	sf::Texture textureTourAttaqueBasique;
+	sf::Sprite spriteTourAttaqueBasique;
 };
 
 #endif /* TOURATTAQUEBASIQUE_H_ */
