@@ -39,8 +39,8 @@ void Projectile::avancer()
 	{
 		alpha = 1; // Si alpha > 1, cela veut dire que le projectile s'apprete a parcourir une distance plus grande que celle qui le separe de la cible
 	}
-	//xproj += round (alpha*(xperso-xproj));
-	//yproj += round (alpha*(yperso-yproj));
+	xproj += round (alpha*(xperso-xproj));
+	yproj += round (alpha*(yperso-yproj));
 	this->coordonnees.setPosX(xproj);
 	this->coordonnees.setPosY(yproj);
 
