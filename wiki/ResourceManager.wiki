@@ -15,3 +15,7 @@ manager->add(pTour);
 Pour récuperer le vecteur de pointeur (ici des tours):
 
 vector<Tour*> tourConteneur = manager->getTour();
+
+
+
+En revanche, pour Menu et Carte, getMenu() et getCarte() ne retourne que le pointeur du Menu et de la Carte (vu qu'il y en a qu'un seul).
