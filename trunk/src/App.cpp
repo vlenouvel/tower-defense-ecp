@@ -38,9 +38,9 @@ void App::jouer() {
 	long double imagesParSeconde = 20;
 	float tempsUneImage = 1.f/imagesParSeconde;
 	tempsLegal = sf::seconds(tempsUneImage);
-	/*sf::Music music;
-	music.openFromFile("resources/sons/musicTest.ogg");
-	music.play();*/
+	sf::Music music;
+	music.openFromFile("resources/sons/musicTest2.ogg");
+	music.play();
 
 	
 	// lance l'horloge
@@ -91,9 +91,10 @@ void App::update() {
 void App::render() {
 	sf::RenderWindow &rWindow = window;
 	window.clear();
-
+	Coordonnees coordonneesTest(10,10);
+	TourAttaqueBasique tourTest(100,coordonneesTest,1);
 	pEtatActuel->dessiner(rWindow);
-
+	tourTest.dessiner(rWindow);
 	text5.setString(to_string(test));
 
 	window.draw(text5);
