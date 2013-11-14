@@ -6,7 +6,7 @@
  */
 
 #include "CompCiblZone.h"
-
+#include "math.h"
 CompCiblZone::CompCiblZone() {
 	// TODO Auto-generated constructor stub
 
@@ -27,11 +27,11 @@ Personnage* CompCiblZone::cibler(std::vector<Personnage*>* ciblesPossibles, std:
 	{
 		for (int i(0); i< touslespersonnages->size(); i++)
 		{
-			int xcible= (*ciblesPossibles)[compteur]-> getCoordonnees().getPosX();
-			int ycible= (*ciblesPossibles)[compteur]-> getCoordonnees().getPosY();
-			int xvoisin= (*touslespersonnages)[i]-> getCoordonnees().getPosX();
-			int yvoisin= (*touslespersonnages)[i]-> getCoordonnees().getPosY();
-			if (sqrt((xcible-xvoisin)^(2)+(ycible-yvoisin)^(2))<range)
+			double xcible= (*ciblesPossibles)[compteur]-> getCoordonnees().getPosX();
+			double ycible= (*ciblesPossibles)[compteur]-> getCoordonnees().getPosY();
+			double xvoisin= (*touslespersonnages)[i]-> getCoordonnees().getPosX();
+			double yvoisin= (*touslespersonnages)[i]-> getCoordonnees().getPosY();
+			if (sqrt(pow((xcible-xvoisin),2)+pow((ycible-yvoisin),2))<range)
 			{
 					nombredevoisins[compteur]++;
 			}

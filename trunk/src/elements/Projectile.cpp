@@ -6,7 +6,7 @@
  */
 
 #include "Projectile.h"
-#include "math.h"
+
 
 Projectile::Projectile(Coordonnees tCoord, Personnage* tCible, int tDommages) : dommages(tDommages), vitesse(0), coordonnees(tCoord), cible(tCible){
 
@@ -27,23 +27,23 @@ void Projectile::agir()
 
 void Projectile::avancer()
 {
-	int xproj = this->coordonnees.getPosX();
-	int yproj = this->coordonnees.getPosY();
-	int xperso = this->cible->getCoordonnees().getPosX();
-	int yperso = this->cible->getCoordonnees().getPosY();
+	double xproj = this->coordonnees.getPosX();
+	double yproj = this->coordonnees.getPosY();
+	double xperso = this->cible->getCoordonnees().getPosX();
+	double yperso = this->cible->getCoordonnees().getPosY();
 
-	/*float alpha = this->vitesse/sqrt(((xperso-xproj)^(2))+((yperso-yproj)^(2)));
+	double alpha = this->vitesse/sqrt(pow((xperso-xproj),2)+pow((yperso-yproj),2));
 
 	if (alpha > 1)
 	{
 		alpha = 1; // Si alpha > 1, cela veut dire que le projectile s'apprete à parcourir une distance plus grande que celle qui le sépare de la cible
 	}
-	xproj += (int)round(alpha*(xperso-xproj));
-	yproj += (int)round(alpha*(yperso-yproj));
+	//xproj += round (alpha*(xperso-xproj));
+	//yproj += round (alpha*(yperso-yproj));
 	this->coordonnees.setPosX(xproj);
 	this->coordonnees.setPosY(yproj);
 
 	if(((xperso-xproj)+(yperso-yproj)) == 0){
 		this->toucherEnnemi();
-	}*/
+	}
 }
