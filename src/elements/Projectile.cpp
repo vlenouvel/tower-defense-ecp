@@ -5,6 +5,7 @@
  *      Author: Vincent Lenouvel
  */
 
+#include <cmath>
 #include "Projectile.h"
 
 
@@ -36,7 +37,7 @@ void Projectile::avancer()
 
 	if (alpha > 1)
 	{
-		alpha = 1; // Si alpha > 1, cela veut dire que le projectile s'apprete à parcourir une distance plus grande que celle qui le sépare de la cible
+		alpha = 1; // Si alpha > 1, cela veut dire que le projectile s'apprete a parcourir une distance plus grande que celle qui le separe de la cible
 	}
 	//xproj += round (alpha*(xperso-xproj));
 	//yproj += round (alpha*(yperso-yproj));
