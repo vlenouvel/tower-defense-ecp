@@ -15,6 +15,11 @@ public:
 	Menu();
 	virtual ~Menu();
 	void dessiner(sf::RenderWindow &pWindow);
+private:
+	sf::Font font;
+	sf::Text text1;
+	sf::Text text2;
+	sf::Text text3;
 };
 
 #endif /* MENU_H_ */

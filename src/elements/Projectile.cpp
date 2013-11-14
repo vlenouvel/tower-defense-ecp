@@ -32,7 +32,7 @@ void Projectile::avancer()
 	int xperso = this->cible->getCoordonnees().getPosX();
 	int yperso = this->cible->getCoordonnees().getPosY();
 
-	float alpha = this->vitesse/sqrt(((xperso-xproj)^(2))+((yperso-yproj)^(2)));
+	/*float alpha = this->vitesse/sqrt(((xperso-xproj)^(2))+((yperso-yproj)^(2)));
 
 	if (alpha > 1)
 	{
@@ -45,5 +45,5 @@ void Projectile::avancer()
 
 	if(((xperso-xproj)+(yperso-yproj)) == 0){
 		this->toucherEnnemi();
-	}
+	}*/
 }
