@@ -19,8 +19,9 @@
 class App {
 public:
 	bool running;
-	int test;
-	float test2;
+	long double test;
+	sf::Font font;
+	sf::Text text5;
 	App();
 	void jouer();
 	void boucle();
@@ -29,6 +30,7 @@ public:
 	void gererEvents();
 	virtual ~App();
 	void changerEtat(Etat *pNouvelEtat);
+
 
 private:
 	sf::RenderWindow window;

@@ -20,6 +20,7 @@ public:
 	void handleEvent(sf::Event event);
 	void dessiner(sf::RenderWindow &pWindow);
 	virtual ~EtatMenu();
+	Menu menu;
 };
 
 #endif /* ETATMENU_H_ */

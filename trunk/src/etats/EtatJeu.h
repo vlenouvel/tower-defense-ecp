@@ -19,6 +19,7 @@ public:
 	virtual ~EtatJeu();
 	void handleEvent(sf::Event event);
 	void dessiner(sf::RenderWindow &pWindow);
+	Carte carte;
 };
 
 #endif /* ETATJEU_H_ */

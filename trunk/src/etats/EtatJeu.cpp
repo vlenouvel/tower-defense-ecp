@@ -13,7 +13,6 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp) {
 }
 
 void EtatJeu::dessiner(sf::RenderWindow &pWindow){
-	Carte carte;
 	carte.dessiner(pWindow);
 }
 
