@@ -101,7 +101,7 @@ void App::render() {
 
 	pEtatActuel->dessiner(rWindow);
 
-	texteFPS.setString(to_string(static_cast<int>(test)));
+	texteFPS.setString(to_string((int)(test)));
 
 	window.draw(texteFPS);
 	window.display();
