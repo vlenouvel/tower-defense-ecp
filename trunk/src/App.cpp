@@ -102,7 +102,7 @@ void App::render() {
 	window.clear();
 
 	pEtatActuel->dessiner(rWindow);
-	texteFPS.setString(to_string(test));	ostringstream ss;
+	ostringstream ss;
 	ss << test;
 	texteFPS.setString(ss.str());
 	//texteFPS.setString(to_string(test));

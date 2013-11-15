@@ -10,15 +10,19 @@
 
 #include "Projectile.h"
 #include "../ResourceManager.h"
+#include "math.h"
 
 class ProjectileExplosif: public Projectile {
 public:
 	ProjectileExplosif(Coordonnees tCoord, Personnage* tCible, int tDommages, int tRayonExplosion);
 	void toucherEnnemi();
 	virtual ~ProjectileExplosif();
+	void dessiner(sf::RenderWindow & rWindow);
 
 private:
 	int rayonExplosion;
+	sf::Texture textureProjectileExplosif;
+	sf::Sprite spriteProjectileExplosif;
 };
 
 #endif /* PROJECTILEEXPLOSIF_H_ */
