@@ -6,7 +6,7 @@
  */
 
 #include "EtatJeu.h"
-
+#include <iostream>
 using namespace std;
 
 EtatJeu::EtatJeu(App *tApp) : Etat(tApp) {
@@ -39,14 +39,15 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 	pTableauDeBord->dessiner(pWindow);
 
 	vector<Tour*> tourConteneur = manager->getTour();
+
 	if (!tourConteneur.empty()){
-		for(unsigned int i=0;i<tourConteneur.size();i++){
+		for(int i=0;i<tourConteneur.size();i++){
 			tourConteneur[i]->dessiner(pWindow);
 		}
 	}
 	vector<Personnage*> personnageConteneur = manager->getPersonnage();
 	if (!personnageConteneur.empty()){
-		for(unsigned int i=0;i<personnageConteneur.size();i++){
+		for(int i=0;i<personnageConteneur.size();++i){
 			personnageConteneur[i]->dessiner(pWindow);
 		}
 	}
