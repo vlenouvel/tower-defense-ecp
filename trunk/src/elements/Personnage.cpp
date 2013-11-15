@@ -6,7 +6,7 @@
  */
 
 #include "Personnage.h"
-
+#include <iostream>
 
 Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) :
 		vie(tVie), vitesse(tVitesse), armure(tArmure), coordonnees(tCoord)
@@ -24,8 +24,8 @@ void Personnage::agir()
 
 void Personnage::avancer()
 {
-	int actuelleOrdonnee = coordonnees.getPosY();
-	coordonnees.setPosY(actuelleOrdonnee + vitesse);
+	int actuelleAbscisse = coordonnees.getPosX();
+	coordonnees.setPosX(actuelleAbscisse + vitesse);
 	spritePersonnage.setPosition(coordonnees.posX,coordonnees.posY);
 }
 
