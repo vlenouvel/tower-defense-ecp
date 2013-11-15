@@ -7,14 +7,20 @@
 
 #include "GenerateurVague.h"
 
-GenerateurVague::GenerateurVague() {
-	// TODO Auto-generated constructor stub
-
+GenerateurVague::GenerateurVague(sf::Time timeElapsed) {
+	niveau = 1;
+	tempsEntreVague = 60;
+	tempsDerniereVague = timeElapsed - tempsEntreVague;
 }
 
-void GenerateurVague::genererVague()
+void GenerateurVague::genererVague(sf::Time timeElapsed)
 {
-
+	if(timeElapsed - tempsDerniereVague >= tempsEntreVague) {
+		Vague vague(niveau);
+		tempsDerniereVague = timeElapsed;
+		vague.agir();
+		niveau++;
+	}
 }
 
 GenerateurVague::~GenerateurVague() {

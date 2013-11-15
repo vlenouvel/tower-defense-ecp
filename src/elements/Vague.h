@@ -13,18 +13,22 @@
 
 #include "GenerateurVague.h"
 #include "ElementJeu.h"
+#include "Personnage.h"
+#include "Coordonnees.h"
 
 class Vague: public ElementJeu {
 public:
-	Vague();
+	Vague(int niveau);
 	void agir();
-	void genererPersonnage();
+	void genererPersonnage(int nbPersonnage);
 	virtual ~Vague();
 
 private:
+	int niveauType;
+	const int nombreType = 1;
 	sf::Clock horlogePop;
 	sf::Time tempsEntrePop;
-	GenerateurVague *pGenerateur;
+	Coordonnees coordonneesDepart;
 };
 
 #endif /* VAGUE_H_ */
