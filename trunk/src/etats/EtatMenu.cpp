@@ -9,6 +9,7 @@
 
 EtatMenu::EtatMenu(App* tApp) : Etat(tApp) {
 	ResourceManager* manager = ResourceManager::getInstance();
+	// Creation du menu
 	Menu* pMenu = new Menu();
 	manager->addMenu(pMenu);
 	menu = manager->getMenu();
@@ -16,7 +17,7 @@ EtatMenu::EtatMenu(App* tApp) : Etat(tApp) {
 
 void EtatMenu::handleEvent(sf::Event event)
 {
-	if ((event.type == sf::Event::MouseButtonPressed)) {
+	if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
 			if ((event.mouseButton.x > 150) && (event.mouseButton.x < 650)
 					&& (event.mouseButton.y > 100)
