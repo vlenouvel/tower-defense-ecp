@@ -9,7 +9,7 @@
 
 GenerateurVague::GenerateurVague(sf::Time timeElapsed) {
 	niveau = 1;
-	tempsEntreVague = 60;
+	tempsEntreVague = sf::seconds((float)60);
 	tempsDerniereVague = timeElapsed - tempsEntreVague;
 }
 
