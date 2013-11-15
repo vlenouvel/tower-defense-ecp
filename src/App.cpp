@@ -8,6 +8,7 @@
 #include "App.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "ResourceManager.h"
 
 using namespace std;
@@ -100,7 +101,10 @@ void App::render() {
 	window.clear();
 
 	pEtatActuel->dessiner(rWindow);
-	texteFPS.setString(to_string(test));
+	ostringstream ss;
+	ss << test;
+	texteFPS.setString(ss.str());
+	//texteFPS.setString(to_string(test));
 
 	window.draw(texteFPS);
 	window.display();

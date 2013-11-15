@@ -12,7 +12,7 @@
 
 class Tour: public Batiment {
 public:
-	Tour(int tPrix, Coordonnees tCoord, int tNiveau);
+	Tour(int tPrix, Coordonnees tCoord);
 	void monterNiveau();
 	virtual ~Tour();
 	void dessiner(sf::RenderWindow &pWindow);

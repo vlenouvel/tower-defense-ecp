@@ -7,7 +7,7 @@
 
 #include "TourAttaque.h"
 
-TourAttaque::TourAttaque(int tPrix, Coordonnees tCoord, int tNiveau) : Tour(tPrix, tCoord, tNiveau), pCibler(0), attackDamage(0), attackRange(0) {
+TourAttaque::TourAttaque(int tPrix, Coordonnees tCoord) : Tour(tPrix, tCoord), pCibler(0), attackDamage(), attackRange(0) {
 	// TODO
 }
 
@@ -26,7 +26,7 @@ void TourAttaque::agir()
 	}
 }
 
-void TourAttaque::changerComportementCiblage(void (*fonctionCiblage)())
+void TourAttaque::changerComportementCiblage(Personnage* (*fonctionCiblage)(std::vector<Personnage*>* ciblesPossibles))
 {
 	pCibler = fonctionCiblage;
 }
@@ -42,8 +42,8 @@ void TourAttaque::dessiner(sf::RenderWindow &pWindow){
 
 void TourAttaque::trouverCibles()
 {
-	// TODO: Chercher cette liste dans le ressource manager
-	std::vector<Personnage*> listesDeTousLesPersonnages;
+	ResourceManager *manager = ResourceManager::getInstance();
+	std::vector<Personnage*> listesDeTousLesPersonnages = manager->getPersonnage();
 	this->ciblesPossibles.clear();
 	int posXTour = this->coordonnees.getPosX();
 	int posYTour = this->coordonnees.getPosY();

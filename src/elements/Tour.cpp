@@ -7,7 +7,7 @@
 
 #include "Tour.h"
 
-Tour::Tour(int tPrix, Coordonnees tCoord, int tNiveau) : Batiment(tPrix, tCoord) , niveau(tNiveau) {
+Tour::Tour(int tPrix, Coordonnees tCoord) : Batiment(tPrix, tCoord) , niveau(1) {
 }
 
 void Tour::monterNiveau()

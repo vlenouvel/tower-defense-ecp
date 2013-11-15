@@ -68,12 +68,12 @@ void EtatJeu::handleEvent(sf::Event event)
 				switch(typeTourChoisi){
 					case 0:{
 						Coordonnees coordonneesTour((int)event.mouseButton.x,(int)event.mouseButton.y);
-						TourAttaqueBasique* ptourTest = new TourAttaqueBasique(100,coordonneesTour,1);
+						TourAttaqueBasique* ptourTest = new TourAttaqueBasique(100,coordonneesTour);
 						manager->addTour((Tour*) ptourTest);}
 						break;
 					case 1:{
 						Coordonnees coordonneesTour((int)event.mouseButton.x,(int)event.mouseButton.y);
-						CanonLourd* ptourTest = new CanonLourd(100,coordonneesTour,1);
+						CanonLourd* ptourTest = new CanonLourd(100,coordonneesTour);
 						manager->addTour((Tour*) ptourTest);}
 						break;
 				}
