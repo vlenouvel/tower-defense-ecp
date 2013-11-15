@@ -11,7 +11,10 @@
 Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) :
 		vie(tVie), vitesse(tVitesse), armure(tArmure), coordonnees(tCoord)
 {
-
+	texturePersonnage.loadFromFile("resources/textures/texturePersonnage.jpg");
+	spritePersonnage.setTexture(texturePersonnage);
+	spritePersonnage.setScale(0.5,0.5);
+	spritePersonnage.setPosition(tCoord.posX,tCoord.posY);
 }
 
 void Personnage::agir()
@@ -21,7 +24,9 @@ void Personnage::agir()
 
 void Personnage::avancer()
 {
-
+	int actuelleOrdonnee = coordonnees.getPosY();
+	coordonnees.setPosY(actuelleOrdonnee + vitesse);
+	spritePersonnage.setPosition(coordonnees.posX,coordonnees.posY);
 }
 
 void Personnage::perdrePV(int degat)
@@ -45,7 +50,7 @@ Personnage::~Personnage() {
 }
 
 void Personnage::dessiner(sf::RenderWindow &pWindow){
-	// TODO
+	pWindow.draw(spritePersonnage);
 }
 
 int Personnage::getVie()
