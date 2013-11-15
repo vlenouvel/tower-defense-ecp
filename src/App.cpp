@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include "ResourceManager.h"
+#include <cmath>
 
 using namespace std;
 
@@ -18,12 +19,13 @@ App::App() {
 	pEtatActuel = new(EtatMenu)(this);
 	running = true;
 	test = 0;
+
 	font.loadFromFile("resources/polices/Capture it.ttf");
-	text5.setFont(font);
-	text5.setCharacterSize(48);
-	text5.setColor(sf::Color::White);
-	text5.setStyle(sf::Text::Bold);
-	text5.setPosition(20,20);
+	texteFPS.setFont(font);
+	texteFPS.setCharacterSize(48);
+	texteFPS.setColor(sf::Color::White);
+	texteFPS.setStyle(sf::Text::Bold);
+	texteFPS.setPosition(20,20);
 	window.create(sf::VideoMode(800, 600), "Tower Defense");
 }
 App::~App() {
@@ -38,9 +40,12 @@ void App::jouer() {
 	sf::Time difference;
 	sf::Time tempsLegal;
 	sf::Time hibernation;
+
 	long double imagesParSeconde = 20;
 	float tempsUneImage = 1.f/imagesParSeconde;
 	tempsLegal = sf::seconds(tempsUneImage);
+
+	// Charge la musique de fond
 	sf::Music music;
 	music.openFromFile("resources/sons/musicTest2.ogg");
 	music.play();
@@ -97,9 +102,9 @@ void App::render() {
 
 	pEtatActuel->dessiner(rWindow);
 
-	text5.setString(to_string(test));
+	texteFPS.setString(to_string(static_cast<int>(test)));
 
-	window.draw(text5);
+	window.draw(texteFPS);
 	window.display();
 }
 

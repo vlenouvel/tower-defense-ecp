@@ -24,7 +24,7 @@ public:
 	bool running;
 	long double test;
 	sf::Font font;
-	sf::Text text5;
+	sf::Text texteFPS;
 	App();
 	void jouer();
 	void boucle();
