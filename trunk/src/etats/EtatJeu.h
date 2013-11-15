@@ -12,6 +12,7 @@
 #include "SFML/Window/Event.hpp"
 #include "../elements/Carte.h"
 #include "../App.h"
+#include "../ResourceManager.h"
 
 class EtatJeu: public Etat {
 public:
@@ -19,7 +20,8 @@ public:
 	virtual ~EtatJeu();
 	void handleEvent(sf::Event event);
 	void dessiner(sf::RenderWindow &pWindow);
-	Carte carte;
+	Carte* carte;
+
 };
 
 #endif /* ETATJEU_H_ */

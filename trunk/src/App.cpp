@@ -8,8 +8,11 @@
 #include "App.h"
 #include <iostream>
 #include <string>
+#include "ResourceManager.h"
 
 using namespace std;
+
+ResourceManager* manager = ResourceManager::getInstance();
 
 App::App() {
 	pEtatActuel = new(EtatMenu)(this);
@@ -91,10 +94,9 @@ void App::update() {
 void App::render() {
 	sf::RenderWindow &rWindow = window;
 	window.clear();
-	Coordonnees coordonneesTest(10,10);
-	TourAttaqueBasique tourTest(100,coordonneesTest,1);
+
 	pEtatActuel->dessiner(rWindow);
-	tourTest.dessiner(rWindow);
+
 	text5.setString(to_string(test));
 
 	window.draw(text5);

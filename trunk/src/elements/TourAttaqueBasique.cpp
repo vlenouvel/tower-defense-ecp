@@ -6,6 +6,7 @@
  */
 
 #include "TourAttaqueBasique.h"
+#include <iostream>
 
 TourAttaqueBasique::TourAttaqueBasique(int tPrix, Coordonnees tCoord, int tNiveau) : TourAttaque(tPrix, tCoord, tNiveau) {
 	textureTourAttaqueBasique.loadFromFile("resources/textures/textureTourAttaqueBasique.jpg");
