@@ -24,7 +24,7 @@ Personnage* CompCiblVieFaible::cibler(std::vector<Personnage*>* ciblesPossibles)
 	 */
 	Personnage *cible(0);
 	int vieMinimum(0);
-	for (int compteur(0); compteur< ciblesPossibles->size(); compteur++)
+	for (unsigned int compteur(0); compteur< ciblesPossibles->size(); compteur++)
 	{
 		if (vieMinimum > (*ciblesPossibles)[compteur]->getVie())
 		{

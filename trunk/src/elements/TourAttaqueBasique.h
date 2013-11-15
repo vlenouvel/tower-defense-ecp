@@ -12,12 +12,12 @@
 
 class TourAttaqueBasique: public TourAttaque {
 public:
-	TourAttaqueBasique(int tPrix, Coordonnees tCoord, int tNiveau);
+	TourAttaqueBasique(int tPrix, Coordonnees tCoord);
 	virtual ~TourAttaqueBasique();
 	void dessiner(sf::RenderWindow & rWindow);
 
 private:
-	void attaque(void (*fonctionCiblage)());
+	void attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*>* ciblesPossibles));
 	sf::Texture textureTourAttaqueBasique;
 	sf::Sprite spriteTourAttaqueBasique;
 };

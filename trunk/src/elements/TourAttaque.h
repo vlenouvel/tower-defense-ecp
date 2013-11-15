@@ -13,11 +13,12 @@
 
 #include "ComportementCiblage.h"
 #include "Tour.h"
+#include "../ResourceManager.h"
 
 class TourAttaque: public Tour {
 public:
-	TourAttaque(int tPrix, Coordonnees tCoord, int tNiveau);
-	void virtual changerComportementCiblage(void (*fonctionCiblage)());
+	TourAttaque(int tPrix, Coordonnees tCoord);
+	void virtual changerComportementCiblage(Personnage* (*fonctionCiblage)(std::vector<Personnage*>* ciblesPossibles));
 	void agir();
 	virtual ~TourAttaque();
 	void dessiner(sf::RenderWindow &pWindow);
@@ -26,9 +27,9 @@ protected:
 	// On utilise un pointeur vers une fonction statique pour le ciblage
 	// On peut ainsi changer à la voler le ciblage de la tour
 	// en changeant la fonction sur laquelle est le pointeur.
-	void virtual attaque(void (*fonctionCiblage)()) = 0;
+	void virtual attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*>* ciblesPossibles)) = 0;
 	void trouverCibles();
-	void (*pCibler)();
+	Personnage* (*pCibler)(std::vector<Personnage*>* ciblesPossibles);
 	int attackDamage;
 	int attackRange;
 	std::vector<Personnage*> ciblesPossibles;

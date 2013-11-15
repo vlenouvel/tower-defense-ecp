@@ -9,15 +9,18 @@
 #define CANONLOURD_H_
 
 #include "TourAttaque.h"
+#include "ProjectileExplosif.h"
+#include "Projectile.h"
 
 class CanonLourd: public TourAttaque {
 public:
-	CanonLourd(int tPrix, Coordonnees tCoord, int tNiveau);
+	CanonLourd(int tPrix, Coordonnees tCoord);
 	virtual ~CanonLourd();
 	void dessiner(sf::RenderWindow & rWindow);
 
 private:
-	void attaque(void (*fonctionCiblage)());
+	void attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*>* ciblesPossibles));
+	int rayonExplosion;
 	sf::Texture textureCanonLourd;
 	sf::Sprite spriteCanonLourd;
 };

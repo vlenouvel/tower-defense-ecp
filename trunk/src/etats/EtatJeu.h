@@ -19,6 +19,8 @@
 #include "../elements/TableauDeBord.h"
 #include "../elements/Personnage.h"
 #include "../elements/GenerateurVague.h"
+#include "../elements/TourAttaqueBasique.h"
+#include "../elements/CanonLourd.h"
 
 
 class EtatJeu: public Etat {
