@@ -11,6 +11,7 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/System/Time.hpp>
 
+#include "../ResourceManager.h"
 #include "GenerateurVague.h"
 #include "ElementJeu.h"
 #include "Personnage.h"
@@ -25,10 +26,9 @@ public:
 
 private:
 	int niveauType;
-	const int nombreType = 1;
+	int nombreType;
 	sf::Clock horlogePop;
 	sf::Time tempsEntrePop;
-	Coordonnees coordonneesDepart;
 };
 
 #endif /* VAGUE_H_ */
