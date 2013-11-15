@@ -9,7 +9,6 @@
 #include <iostream>
 #include <string>
 #include "ResourceManager.h"
-#include <cmath>
 
 using namespace std;
 
