@@ -93,7 +93,8 @@ void App::gererEvents() {
 }
 
 void App::update() {
-	pEtatActuel->update();
+	pEtatActuel->agir();
+
 }
 
 void App::render() {
@@ -101,7 +102,7 @@ void App::render() {
 	window.clear();
 
 	pEtatActuel->dessiner(rWindow);
-	ostringstream ss;
+	texteFPS.setString(to_string(test));	ostringstream ss;
 	ss << test;
 	texteFPS.setString(ss.str());
 	//texteFPS.setString(to_string(test));
