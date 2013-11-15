@@ -8,9 +8,10 @@
 #ifndef ELEMENTGRAPHIQUE_H_
 #define ELEMENTGRAPHIQUE_H_
 
+#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <SFML/Window.hpp>
+
 
 class ElementGraphique {
 public:

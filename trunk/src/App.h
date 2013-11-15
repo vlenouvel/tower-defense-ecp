@@ -17,6 +17,7 @@
 #include "etats/EtatMenu.h"
 #include "ResourceManager.h"
 #include "elements/TourAttaqueBasique.h"
+#include "elements/CanonLourd.h"
 #include "elements/Coordonnees.h"
 
 class App {
