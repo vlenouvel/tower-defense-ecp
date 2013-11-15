@@ -8,7 +8,11 @@
 #include "Ressources.h"
 
 Ressources::Ressources() {
-	// TODO Auto-generated constructor stub
+	textureResources.loadFromFile("resources/textures/champDeBataille.jpg");
+	spriteResources.setTexture(textureResources);
+	spriteResources.setScale(1,1);
+	spriteResources.setPosition(700,0);
+	Resources = 0;
 
 }
 

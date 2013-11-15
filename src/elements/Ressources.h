@@ -15,6 +15,10 @@ public:
 	Ressources();
 	virtual ~Ressources();
 	void dessiner(sf::RenderWindow &pWindow);
+	int Resources;
+private:
+	sf::Texture textureResources;
+	sf::Sprite spriteResources;
 };
 
 #endif /* RESSOURCES_H_ */
