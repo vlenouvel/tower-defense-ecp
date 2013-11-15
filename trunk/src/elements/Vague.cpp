@@ -36,7 +36,6 @@ void Vague::genererPersonnage(int nbPersonnage)
 {
 	ResourceManager* manager = ResourceManager::getInstance();
 
-	Coordonnees coordonneesDepart(0,10);
 
 	// TODO Parametre des unites totalement arbitraire
 	int vie;
@@ -63,6 +62,8 @@ void Vague::genererPersonnage(int nbPersonnage)
 	}
 
 	for (int i = 0; i < nbPersonnage; ++i) {
+		// TODO Changer l'aspect random du positionnement
+		Coordonnees coordonneesDepart(rand()%800,rand()%600);
 		Personnage* pPersonnage = new Personnage(vie, vitesse, armure, coordonneesDepart);
 		manager->addPersonnage(pPersonnage);
 	}
