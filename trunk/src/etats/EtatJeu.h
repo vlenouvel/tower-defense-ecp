@@ -17,6 +17,7 @@
 #include "../elements/Ressources.h"
 #include <iostream>
 #include "../elements/TableauDeBord.h"
+#include "../elements/Personnage.h"
 #include "../elements/GenerateurVague.h"
 
 
@@ -26,10 +27,13 @@ public:
 	virtual ~EtatJeu();
 	void handleEvent(sf::Event event);
 	void dessiner(sf::RenderWindow &pWindow);
+	void update();
 	Carte* carte;
 	Ressources* pRessources;
+	// cet entier nous dit quel type de tour on cree, c'est sale donc a changer
 	int typeTourChoisi;
 	TableauDeBord* pTableauDeBord;
+	Personnage * pPersonnage;
 	GenerateurVague* pGenerateur;
 private:
 	App* pApp;

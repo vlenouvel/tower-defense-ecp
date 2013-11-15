@@ -21,7 +21,9 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp) {
 
 
 	typeTourChoisi = 1;
-
+	Coordonnees coordonneesPersonnage(200,200);
+	pPersonnage = new Personnage(1,1,1,coordonneesPersonnage);
+	manager->addPersonnage(pPersonnage);
 	pApp = tApp;
 	//Creation du generateur de vague
 	pGenerateur = new GenerateurVague(tApp->horloge.getElapsedTime());
@@ -80,6 +82,10 @@ void EtatJeu::handleEvent(sf::Event event)
 			
 		}
 	}
+}
+
+void EtatJeu::update(){
+	pPersonnage->agir();
 }
 
 EtatJeu::~EtatJeu() {

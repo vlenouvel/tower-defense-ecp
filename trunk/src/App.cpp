@@ -92,7 +92,7 @@ void App::gererEvents() {
 }
 
 void App::update() {
-
+	pEtatActuel->update();
 }
 
 void App::render() {

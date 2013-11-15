@@ -23,14 +23,15 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	int getVie();
 	Coordonnees getCoordonnees();
-
 protected:
 	int vie;
 	int vitesse;
 	int armure;
 	Coordonnees coordonnees;
 	//Pathfinding
-
+private:
+	sf::Texture texturePersonnage;
+	sf::Sprite spritePersonnage;
 };
 
 #endif /* PERSONNAGE_H_ */

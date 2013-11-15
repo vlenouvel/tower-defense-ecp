@@ -20,6 +20,7 @@ public:
 	void handleEvent(sf::Event event);
 	void dessiner(sf::RenderWindow &pWindow);
 	virtual ~EtatMenu();
+	void update();
 	Menu* menu;
 };
 
