@@ -13,7 +13,7 @@
 #include "Vague.h"
 
 
-class GenerateurVague: public ElementJeu {
+class GenerateurVague {
 public:
 	GenerateurVague(sf::Time timeElapsed);
 	virtual ~GenerateurVague();

@@ -17,7 +17,14 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp) {
 	pRessources = new Ressources();
 	pTableauDeBord = new TableauDeBord();
 	manager->addCarte(carte);
+
+
+
 	typeTourChoisi = 1;
+
+	pApp = tApp;
+	//Creation du generateur de vague
+	pGenerateur = new GenerateurVague(tApp->horloge.getElapsedTime());
 
 }
 
@@ -25,6 +32,7 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 
 	ResourceManager* manager = ResourceManager::getInstance();
 
+	pGenerateur->genererVague(pApp->horloge.getElapsedTime());
 	carte->dessiner(pWindow);
 	pRessources->dessiner(pWindow);
 	pTableauDeBord->dessiner(pWindow);

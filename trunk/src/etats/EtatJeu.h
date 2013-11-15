@@ -17,6 +17,7 @@
 #include "../elements/Ressources.h"
 #include <iostream>
 #include "../elements/TableauDeBord.h"
+#include "../elements/GenerateurVague.h"
 
 
 class EtatJeu: public Etat {
@@ -29,8 +30,9 @@ public:
 	Ressources* pRessources;
 	int typeTourChoisi;
 	TableauDeBord* pTableauDeBord;
-
-
+	GenerateurVague* pGenerateur;
+private:
+	App* pApp;
 };
 
 #endif /* ETATJEU_H_ */
