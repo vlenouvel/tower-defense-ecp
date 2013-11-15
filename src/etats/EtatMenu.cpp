@@ -8,7 +8,10 @@
 #include "EtatMenu.h"
 
 EtatMenu::EtatMenu(App* tApp) : Etat(tApp) {
-
+	ResourceManager* manager = ResourceManager::getInstance();
+	Menu* pMenu = new Menu();
+	manager->addMenu(pMenu);
+	menu = manager->getMenu();
 }
 
 void EtatMenu::handleEvent(sf::Event event)
@@ -27,7 +30,8 @@ void EtatMenu::handleEvent(sf::Event event)
 
 void EtatMenu::dessiner(sf::RenderWindow &pWindow)
 {
-	menu.dessiner(pWindow);
+
+	menu->dessiner(pWindow);
 }
 EtatMenu::~EtatMenu() {
 	// TODO Auto-generated destructor stub
