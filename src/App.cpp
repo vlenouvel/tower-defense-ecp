@@ -45,9 +45,9 @@ void App::jouer() {
 	tempsLegal = sf::seconds(tempsUneImage);
 
 	// Charge la musique de fond
-	sf::Music music;
+	/*sf::Music music;
 	music.openFromFile("resources/sons/musicTest2.ogg");
-	music.play();
+	music.play();*/
 
 	
 	// lance l'horloge

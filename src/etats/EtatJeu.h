@@ -8,12 +8,16 @@
 #ifndef ETATJEU_H_
 #define ETATJEU_H_
 
+
 #include "Etat.h"
 #include "SFML/Window/Event.hpp"
 #include "../elements/Carte.h"
 #include "../App.h"
 #include "../ResourceManager.h"
 #include "../elements/Ressources.h"
+#include <iostream>
+#include "../elements/TableauDeBord.h"
+
 
 class EtatJeu: public Etat {
 public:
@@ -23,6 +27,9 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	Carte* carte;
 	Ressources* pRessources;
+	int typeTourChoisi;
+	TableauDeBord* pTableauDeBord;
+
 
 };
 
