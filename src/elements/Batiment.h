@@ -18,10 +18,11 @@ public:
 	Batiment(int tPrix, Coordonnees tCoord);
 	virtual ~Batiment();
 	void dessiner(sf::RenderWindow &pWindow);
+	Coordonnees coordonnees;
 
 protected:
 	int prix;
-	Coordonnees coordonnees;
+	
 };
 
 #endif /* BATIMENT_H_ */

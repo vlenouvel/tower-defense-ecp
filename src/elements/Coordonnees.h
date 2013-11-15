@@ -18,7 +18,7 @@ public:
 	void setPosX(int x);
 	void setPosY(int y);
 
-private:
+
 	int posX;
 	int posY;
 };
