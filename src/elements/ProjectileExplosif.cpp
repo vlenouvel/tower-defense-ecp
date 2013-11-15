@@ -9,6 +9,10 @@
 
 ProjectileExplosif::ProjectileExplosif(Coordonnees tCoord, Personnage* tCible, int tDommages, int tRayonExplosion) :
 	Projectile(tCoord, tCible, tDommages), rayonExplosion(tRayonExplosion) {
+	textureProjectileExplosif.loadFromFile("resources/textures/textureProjectileExplosif.png");
+	spriteProjectileExplosif.setTexture(textureProjectileExplosif);
+	spriteProjectileExplosif.setScale(0.5,0.5);
+	spriteProjectileExplosif.setPosition(tCoord.posX,tCoord.posY);
 }
 
 void ProjectileExplosif::toucherEnnemi()
@@ -23,11 +27,15 @@ void ProjectileExplosif::toucherEnnemi()
 		int posXPerso = perso->getCoordonnees().getPosX();
 		int posYPerso = perso->getCoordonnees().getPosY();
 
-		if((((posXPerso - posXTour)^(2))+((posYPerso - posYTour)^(2))) <= (this->rayonExplosion)^(2))
+		if((pow(posXPerso - posXTour,2)+pow(posYPerso - posYTour,2)) <= pow(this->rayonExplosion,2))
 		{
 			perso->perdrePV(this->dommages);
 		}
 	}
+}
+
+void ProjectileExplosif::dessiner(sf::RenderWindow & rWindow){
+	rWindow.draw(spriteProjectileExplosif);
 }
 
 

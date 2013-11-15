@@ -40,13 +40,13 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 
 	vector<Tour*> tourConteneur = manager->getTour();
 	if (!tourConteneur.empty()){
-		for(int i=0;i<tourConteneur.size();i++){
+		for(unsigned int i=0;i<tourConteneur.size();i++){
 			tourConteneur[i]->dessiner(pWindow);
 		}
 	}
 	vector<Personnage*> personnageConteneur = manager->getPersonnage();
 	if (!personnageConteneur.empty()){
-		for(int i=0;i<personnageConteneur.size();i++){
+		for(unsigned int i=0;i<personnageConteneur.size();i++){
 			personnageConteneur[i]->dessiner(pWindow);
 		}
 	}

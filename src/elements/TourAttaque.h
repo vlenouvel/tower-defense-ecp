@@ -14,6 +14,7 @@
 #include "ComportementCiblage.h"
 #include "Tour.h"
 #include "../ResourceManager.h"
+#include "Projectile.h"
 
 class TourAttaque: public Tour {
 public:

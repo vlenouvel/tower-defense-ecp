@@ -15,6 +15,11 @@ public:
 	ProjectileBasique(Coordonnees tCoord, Personnage* tCible, int tDommages);
 	void toucherEnnemi();
 	virtual ~ProjectileBasique();
+	void dessiner(sf::RenderWindow & rWindow);
+
+private:
+	sf::Texture textureProjectileBasique;
+	sf::Sprite spriteProjectileBasique;
 };
 
 #endif /* PROJECTILEBASIQUE_H_ */

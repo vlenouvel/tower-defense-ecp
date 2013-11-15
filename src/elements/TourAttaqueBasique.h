@@ -9,6 +9,7 @@
 #define TOURATTAQUEBASIQUE_H_
 
 #include "TourAttaque.h"
+#include "ProjectileBasique.h"
 
 class TourAttaqueBasique: public TourAttaque {
 public:

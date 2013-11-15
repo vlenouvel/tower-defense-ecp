@@ -10,7 +10,6 @@
 
 #include "TourAttaque.h"
 #include "ProjectileExplosif.h"
-#include "Projectile.h"
 
 class CanonLourd: public TourAttaque {
 public:

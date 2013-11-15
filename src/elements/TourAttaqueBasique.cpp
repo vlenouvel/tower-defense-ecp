@@ -18,7 +18,11 @@ TourAttaqueBasique::TourAttaqueBasique(int tPrix, Coordonnees tCoord) : TourAtta
 
 void TourAttaqueBasique::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*>* ciblesPossibles))
 {
-
+	ResourceManager *manager = ResourceManager::getInstance();
+	Personnage *cible = fonctionCiblage(&this->ciblesPossibles);
+	Coordonnees coord = this->coordonnees;
+	ProjectileBasique *projo = new ProjectileBasique(coord, cible, attackDamage);
+	manager->addProjectile((Projectile*)projo);
 }
 
 TourAttaqueBasique::~TourAttaqueBasique() {
