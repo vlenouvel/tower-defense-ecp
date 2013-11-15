@@ -6,10 +6,11 @@
  */
 
 #include "GenerateurVague.h"
-
 GenerateurVague::GenerateurVague(sf::Time timeElapsed) {
 	niveau = 1;
-	tempsEntreVague = sf::seconds((float)60);
+
+	// definition du temps d'attente entre deux vagues
+	tempsEntreVague = sf::seconds((float)10);
 	tempsDerniereVague = timeElapsed - tempsEntreVague;
 }
 
