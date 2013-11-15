@@ -30,8 +30,8 @@ ResourceManager::ResourceManager() {
     vector<Tour*> TourConteneur;
     vector<Personnage*> PersonnageConteneur;
     vector<Projectile*> ProjectileConteneur;
-    Menu* MenuPointeur = NULL;
-    Carte* CartePointeur = NULL;
+    MenuPointeur = NULL;
+    CartePointeur = NULL;
 }
 
 ResourceManager::~ResourceManager() {

@@ -13,15 +13,15 @@ using namespace std;
 EtatJeu::EtatJeu(App *tApp) : Etat(tApp) {
 	ResourceManager* manager = ResourceManager::getInstance();
 
-	Carte* pCarte = new Carte();
+	// Creation de la carte
+	carte = new Carte();
+	manager->addCarte(carte);
 
-	manager->addCarte(pCarte);
 }
 
 void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 	ResourceManager* manager = ResourceManager::getInstance();
 
-	carte = manager->getCarte();
 	carte->dessiner(pWindow);
 
 	Coordonnees coordonneesTest(10,10);
