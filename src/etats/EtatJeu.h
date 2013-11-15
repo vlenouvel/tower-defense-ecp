@@ -29,7 +29,7 @@ public:
 	virtual ~EtatJeu();
 	void handleEvent(sf::Event event);
 	void dessiner(sf::RenderWindow &pWindow);
-	void update();
+	void agir();
 	Carte* carte;
 	Ressources* pRessources;
 	// cet entier nous dit quel type de tour on cree, c'est sale donc a changer

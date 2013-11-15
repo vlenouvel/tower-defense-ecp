@@ -34,7 +34,6 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 
 	ResourceManager* manager = ResourceManager::getInstance();
 
-	pGenerateur->genererVague(pApp->horloge.getElapsedTime());
 	carte->dessiner(pWindow);
 	pRessources->dessiner(pWindow);
 	pTableauDeBord->dessiner(pWindow);
@@ -84,8 +83,9 @@ void EtatJeu::handleEvent(sf::Event event)
 	}
 }
 
-void EtatJeu::update(){
-	pPersonnage->agir();
+void EtatJeu::agir() {
+	pGenerateur->genererVague(pApp->horloge.getElapsedTime());
+
 }
 
 EtatJeu::~EtatJeu() {

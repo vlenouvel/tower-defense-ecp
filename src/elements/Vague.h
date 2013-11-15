@@ -27,6 +27,7 @@ public:
 private:
 	int niveauType;
 	int nombreType;
+	int type;
 	sf::Clock horlogePop;
 	sf::Time tempsEntrePop;
 };
