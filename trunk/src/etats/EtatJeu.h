@@ -13,6 +13,7 @@
 #include "../elements/Carte.h"
 #include "../App.h"
 #include "../ResourceManager.h"
+#include "../elements/Ressources.h"
 
 class EtatJeu: public Etat {
 public:
@@ -21,6 +22,7 @@ public:
 	void handleEvent(sf::Event event);
 	void dessiner(sf::RenderWindow &pWindow);
 	Carte* carte;
+	Ressources* pRessources;
 
 };
 

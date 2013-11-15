@@ -9,16 +9,19 @@
 #define RESSOURCES_H_
 
 #include "ElementGraphique.h"
+#include <cmath>
 
 class Ressources: public ElementGraphique {
 public:
 	Ressources();
 	virtual ~Ressources();
 	void dessiner(sf::RenderWindow &pWindow);
-	int Resources;
+	double ressources;
 private:
-	sf::Texture textureResources;
-	sf::Sprite spriteResources;
+	sf::Texture textureRessources;
+	sf::Sprite spriteRessources;
+	sf::Text texteRessources;
+	sf::Font font;
 };
 
 #endif /* RESSOURCES_H_ */

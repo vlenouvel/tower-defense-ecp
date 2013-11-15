@@ -12,7 +12,7 @@ TourAttaqueBasique::TourAttaqueBasique(int tPrix, Coordonnees tCoord, int tNivea
 	textureTourAttaqueBasique.loadFromFile("resources/textures/textureTourAttaqueBasique.jpg");
 	spriteTourAttaqueBasique.setTexture(textureTourAttaqueBasique);
 	spriteTourAttaqueBasique.setScale(0.5,0.5);
-	spriteTourAttaqueBasique.setPosition(320,400);
+	spriteTourAttaqueBasique.setPosition(tCoord.posX,tCoord.posY);
 }
 
 void TourAttaqueBasique::attaque(void (*fonctionCiblage)())

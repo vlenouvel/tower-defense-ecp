@@ -6,13 +6,21 @@
  */
 
 #include "Ressources.h"
+#include <string>
 
 Ressources::Ressources() {
-	textureResources.loadFromFile("resources/textures/champDeBataille.jpg");
-	spriteResources.setTexture(textureResources);
-	spriteResources.setScale(1,1);
-	spriteResources.setPosition(700,0);
-	Resources = 0;
+	textureRessources.loadFromFile("resources/textures/textureResources.jpg");
+	spriteRessources.setTexture(textureRessources);
+	spriteRessources.setScale(1,0.4);
+	spriteRessources.setPosition(700,0);
+	ressources = 0;
+	font.loadFromFile("resources/polices/Capture it.ttf");
+	texteRessources.setFont(font);
+	texteRessources.setCharacterSize(48);
+	texteRessources.setColor(sf::Color::White);
+	texteRessources.setStyle(sf::Text::Bold);
+	texteRessources.setPosition(720,0);
+	texteRessources.setFont(font);
 
 }
 
@@ -21,6 +29,8 @@ Ressources::~Ressources() {
 }
 
 void Ressources::dessiner(sf::RenderWindow &pWindow){
-	// TO DO
+	pWindow.draw(spriteRessources);
+	//texteRessources.setString(to_string(ressources));
+	pWindow.draw(texteRessources);
 }
 
