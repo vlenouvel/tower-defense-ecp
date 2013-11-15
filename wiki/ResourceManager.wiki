@@ -9,7 +9,7 @@ Pour ajouter un objet (ici une tour), on ajoute son pointeur:
 
 Tour `*`pTour = new Tour();
 
-manager->add(pTour);
+manager->add((Tour*) pTour);
 
 
 Pour récuperer le vecteur de pointeur (ici des tours):
