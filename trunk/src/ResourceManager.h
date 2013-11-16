@@ -13,6 +13,7 @@
 #include "elements/Tour.h"
 #include "elements/Carte.h"
 #include "elements/Menu.h"
+#include "elements/Ressources.h"
 
 using namespace std;
 
@@ -35,6 +36,7 @@ public:
     void addMenu(Menu* menu);
     void addCarte(Carte* carte);
     void addVague(Vague* vague);
+    void addRessources(Ressources* ressources);
     void addGenerateurVague(GenerateurVague* generateurVague);
 
     // Remove
@@ -49,6 +51,7 @@ public:
     Menu* getMenu();
     Carte* getCarte();
     Vague* getVague();
+    Ressources* getRessources();
     GenerateurVague* getGenerateurVague();
 private:
     ResourceManager();
@@ -58,6 +61,7 @@ private:
     Menu* menuPointeur;
     Carte* cartePointeur;
     Vague* vaguePointeur;
+    Ressources* ressourcesPointeur;
     GenerateurVague* vagueGenerateurPointeur;
 };
 

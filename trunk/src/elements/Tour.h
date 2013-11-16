@@ -9,6 +9,7 @@
 #define TOUR_H_
 
 #include "Batiment.h"
+#include "../ResourceManager.h"
 
 class Tour: public Batiment {
 public:
@@ -16,6 +17,7 @@ public:
 	void monterNiveau();
 	virtual ~Tour();
 	void dessiner(sf::RenderWindow &pWindow);
+	bool verifierAmelioration();
 
 protected:
 	int niveau;
