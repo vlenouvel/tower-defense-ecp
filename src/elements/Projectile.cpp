@@ -17,6 +17,11 @@ Projectile::~Projectile() {
 	// TODO Auto-generated destructor stub
 }
 
+Personnage* Projectile::getCible()
+{
+	return cible;
+}
+
 void Projectile::agir()
 {
 	this->avancer();

@@ -12,7 +12,8 @@
 CanonLourd::CanonLourd(int tPrix, Coordonnees tCoord) : TourAttaque(tPrix, tCoord), rayonExplosion(10) {
 	pCibler = ComportementCiblage::ciblerPlusFaible;
 	attackDamage = 10;
-	attackRange = 100;
+	attackRange = 1000;
+	timeBetweenAttacks = sf::seconds((float)2);
 	textureCanonLourd.loadFromFile("resources/textures/textureCanonLourd.jpg");
 	spriteCanonLourd.setTexture(textureCanonLourd);
 	spriteCanonLourd.setScale(0.5,0.5);

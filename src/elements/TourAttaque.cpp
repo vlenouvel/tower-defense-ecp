@@ -8,7 +8,6 @@
 #include "TourAttaque.h"
 
 TourAttaque::TourAttaque(int tPrix, Coordonnees tCoord) : Tour(tPrix, tCoord), pCibler(0), attackDamage(0), attackRange(0) {
-	timeBetweenAttacks = sf::milliseconds(100);
 }
 
 void TourAttaque::agir()

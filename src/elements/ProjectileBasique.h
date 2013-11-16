@@ -9,6 +9,7 @@
 #define PROJECTILEBASIQUE_H_
 
 #include "Projectile.h"
+#include "../ResourceManager.h"
 
 class ProjectileBasique: public Projectile {
 public:

@@ -10,9 +10,9 @@
 
 #include "ElementGraphique.h"
 #include "ElementJeu.h"
-#include "Personnage.h"
 #include "Coordonnees.h"
 #include <iostream>
+#include "Personnage.h"
 
 class Projectile: public ElementGraphique, public ElementJeu {
 public:
@@ -20,6 +20,7 @@ public:
 	virtual ~Projectile();
 	virtual void dessiner(sf::RenderWindow &pWindow) = 0;
 	virtual void agir();
+	Personnage* getCible();
 	void avancer();
 
 protected:
