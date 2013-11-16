@@ -83,7 +83,8 @@ Coordonnees Personnage::getCoordonnees()
 	return this->coordonnees;
 }
 
-pair <bool,vector<Case *>> Personnage::trouverChemin(Carte * pCarte){
+// Cette fonction retourne une pair
+bool Personnage::trouverChemin(Carte * pCarte){
 	//on initialise la liste qui va contenir la suite de case a analyser avec la case d'entree
 	multimap<int,Case*> listeAParcourir;
 	multimap<int,Case*>::iterator myIterator;
@@ -103,7 +104,7 @@ pair <bool,vector<Case *>> Personnage::trouverChemin(Carte * pCarte){
 		//nord
 		if (((pCarte->imageCarte[X][Y-1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y-1])->caseOccupee == 0)){
 			if (((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
-				return make_pair(true,chemin);
+				return true;
 			}
 			(pCarte->imageCarte[X][Y-1])->distanceEntree = abs((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX()- (pEntree->coordonneesCase).getPosX()) + abs((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosY()- (pEntree->coordonneesCase).getPosY());
 			(pCarte->imageCarte[X][Y-1])->caseParcourue = true;
@@ -112,7 +113,7 @@ pair <bool,vector<Case *>> Personnage::trouverChemin(Carte * pCarte){
 		//sud
 		if (((pCarte->imageCarte[X][Y+1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y+1])->caseOccupee == 0)){
 			if (((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
-				return make_pair(true,chemin);
+				return true;
 			}
 			(pCarte->imageCarte[X][Y+1])->distanceEntree = abs((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX()- (pEntree->coordonneesCase).getPosX()) + abs((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosY()- (pEntree->coordonneesCase).getPosY());
 			(pCarte->imageCarte[X][Y+1])->caseParcourue = true;
@@ -121,7 +122,7 @@ pair <bool,vector<Case *>> Personnage::trouverChemin(Carte * pCarte){
 		//ouest
 		if (((pCarte->imageCarte[X-1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X-1][Y])->caseOccupee == 0)){
 			if (((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
-				return make_pair(true,chemin);
+				return true;
 			}
 			(pCarte->imageCarte[X-1][Y])->distanceEntree = abs((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX()- (pEntree->coordonneesCase).getPosX()) + abs((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosY()- (pEntree->coordonneesCase).getPosY());
 			(pCarte->imageCarte[X-1][Y])->caseParcourue = true;
@@ -130,7 +131,7 @@ pair <bool,vector<Case *>> Personnage::trouverChemin(Carte * pCarte){
 		//est
 		if (((pCarte->imageCarte[X+1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X+1][Y])->caseOccupee == 0)){
 			if (((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
-				return make_pair(true,chemin);
+				return true;
 			}
 			(pCarte->imageCarte[X+1][Y])->distanceEntree = abs((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX()- (pEntree->coordonneesCase).getPosX()) + abs((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosY()- (pEntree->coordonneesCase).getPosY());
 			(pCarte->imageCarte[X+1][Y])->caseParcourue = true;
@@ -138,5 +139,30 @@ pair <bool,vector<Case *>> Personnage::trouverChemin(Carte * pCarte){
 		}
 		listeAParcourir.erase(myIterator);
 	}
-	return make_pair(false,NULL);
+	return false;
 }
+
+void Personnage::ecrireChemin(Carte * pCarte){
+	//maintenant que carteRecherche est remplie, on definit le chemin a prendre
+	chemin.clear();
+	Case * trace;
+	trace = pCarte->pCaseSortie;
+	int distanceEntree;
+	while ((trace->coordonneesCase.getPosX() != coordonnees.getPosX())&&(trace->coordonneesCase.getPosY() != coordonnees.getPosY())){
+		cheminIterator = chemin.begin();
+		chemin.insert(cheminIterator, trace);
+		if ((pCarte->imageCarte[trace->coordonneesCase.getPosX()][trace->coordonneesCase.getPosY() - 1]->distanceEntree == (pCarte->imageCarte[trace->coordonneesCase.getPosX()][trace->coordonneesCase.getPosY()]->distanceEntree - 1))&&(pCarte->imageCarte[trace->coordonneesCase.getPosX()][trace->coordonneesCase.getPosY() - 1]->caseParcourue == true)){
+			trace = pCarte->imageCarte[trace->coordonneesCase.getPosX()][trace->coordonneesCase.getPosY() - 1];
+		}
+		else if ((pCarte->imageCarte[trace->coordonneesCase.getPosX()][trace->coordonneesCase.getPosY() + 1]->distanceEntree == (pCarte->imageCarte[trace->coordonneesCase.getPosX()][trace->coordonneesCase.getPosY()]->distanceEntree - 1))&&(pCarte->imageCarte[trace->coordonneesCase.getPosX()][trace->coordonneesCase.getPosY() + 1]->caseParcourue == true)){
+			trace = pCarte->imageCarte[trace->coordonneesCase.getPosX()][trace->coordonneesCase.getPosY() + 1];
+		}
+		else if ((pCarte->imageCarte[trace->coordonneesCase.getPosX() - 1][trace->coordonneesCase.getPosY()]->distanceEntree == (pCarte->imageCarte[trace->coordonneesCase.getPosX()][trace->coordonneesCase.getPosY()]->distanceEntree - 1))&&(pCarte->imageCarte[trace->coordonneesCase.getPosX() - 1][trace->coordonneesCase.getPosY()]->caseParcourue == true)){
+			trace = pCarte->imageCarte[trace->coordonneesCase.getPosX() - 1][trace->coordonneesCase.getPosY()];
+		}
+		else if ((pCarte->imageCarte[trace->coordonneesCase.getPosX() + 1][trace->coordonneesCase.getPosY()]->distanceEntree == (pCarte->imageCarte[trace->coordonneesCase.getPosX()][trace->coordonneesCase.getPosY()]->distanceEntree - 1))&&(pCarte->imageCarte[trace->coordonneesCase.getPosX() + 1][trace->coordonneesCase.getPosY()]->caseParcourue == true)){
+			trace = pCarte->imageCarte[trace->coordonneesCase.getPosX() + 1][trace->coordonneesCase.getPosY()];
+		}
+	}
+}
+
