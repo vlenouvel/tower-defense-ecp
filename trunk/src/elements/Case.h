@@ -8,14 +8,18 @@
 #ifndef CASE_H_
 #define CASE_H_
 
-#include "ElementGraphique.h"
-#include "ElementJeu.h"
+#include "Coordonnees.h"
 
-class Case: public ElementGraphique, public ElementJeu {
+class Case{
 public:
-	Case();
+	Case(int abscisse, int ordonnee);
 	virtual ~Case();
-	void dessiner(sf::RenderWindow &pWindow);
+	Coordonnees coordonneesCase;
+	int distanceEntree;
+	int heuristique;
+	bool caseParcourue;
+	bool caseOccupee;
+	void setHeuristique(Coordonnees * pSortie);
 };
 
 #endif /* CASE_H_ */

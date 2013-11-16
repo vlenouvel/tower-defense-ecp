@@ -13,11 +13,20 @@
 #include "ElementJeu.h"
 #include "../ResourceManager.h"
 #include "Projectile.h"
+#include "Case.h"
+#include <iostream>
+#include <exception>
+#include <map>
+#include <vector>
+#include <cmath>
+#include <stdlib.h>
+#include <utility>
 
 class Personnage: public ElementGraphique, public ElementJeu {
 public:
 	Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord);
 	virtual ~Personnage();
+
 	void agir();
 	void avancer();
 	void mourir();
@@ -25,15 +34,22 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	int getVie();
 	Coordonnees getCoordonnees();
+	Coordonnees coordonnees;
+
+	//Pathfinding
+	pair <bool,vector<Case *>> trouverChemin(Carte * pCarte);
 protected:
 	int vie;
 	int vitesse;
 	int armure;
-	Coordonnees coordonnees;
-	//Pathfinding
 private:
 	sf::Texture texturePersonnage;
 	sf::Sprite spritePersonnage;
+
+	//Pathfinding
+	vector<Case *> chemin;
+	vector<Case *>::iterator cheminIterator;
+	
 };
 
 #endif /* PERSONNAGE_H_ */
