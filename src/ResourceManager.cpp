@@ -8,7 +8,7 @@
 #include "ResourceManager.h"
 
 // Pointeur vers l'unique instance du ResourceManager
-ResourceManager* managerPointeur = NULL;
+ResourceManager* managerPointeur = 0;
 // instance = true si une instance existe deja
 bool instance = false;
 
@@ -27,11 +27,13 @@ ResourceManager* ResourceManager::getInstance() {
 }
 
 ResourceManager::ResourceManager() {
-    vector<Tour*> TourConteneur;
-    vector<Personnage*> PersonnageConteneur;
-    vector<Projectile*> ProjectileConteneur;
-    MenuPointeur = NULL;
-    CartePointeur = NULL;
+    vector<Tour*> tourConteneur;
+    vector<Personnage*> personnageConteneur;
+    vector<Projectile*> projectileConteneur;
+    menuPointeur = 0;
+    cartePointeur = 0;
+    vaguePointeur = 0;
+    vagueGenerateurPointeur = 0;
 }
 
 ResourceManager::~ResourceManager() {
@@ -40,46 +42,72 @@ ResourceManager::~ResourceManager() {
 
 // Tour
 void ResourceManager::addTour(Tour* entite) {
-	TourConteneur.push_back(entite);
+	tourConteneur.push_back(entite);
 }
 
 vector<Tour*> ResourceManager::getTour() {
-	return TourConteneur;
+	return tourConteneur;
 }
 
 // Personnage
 void ResourceManager::addPersonnage(Personnage* entite) {
-	PersonnageConteneur.push_back(entite);
+	personnageConteneur.push_back(entite);
 }
 
 vector<Personnage*> ResourceManager::getPersonnage() {
-	return PersonnageConteneur;
+	return personnageConteneur;
 }
 
 // Projectile
 void ResourceManager::addProjectile(Projectile* entite) {
-	ProjectileConteneur.push_back(entite);
+	projectileConteneur.push_back(entite);
 }
 
 vector<Projectile*> ResourceManager::getProjectile() {
-	return ProjectileConteneur;
+	return projectileConteneur;
+}
+
+void ResourceManager::removeProjectile(Projectile *entite){
+	projectileConteneur.erase(remove(projectileConteneur.begin(), projectileConteneur.end(), 8), projectileConteneur.end());
 }
 
 // Menu
 void ResourceManager::addMenu(Menu* menu) {
-	MenuPointeur = menu;
+	menuPointeur = menu;
 }
 
 Menu* ResourceManager::getMenu() {
-	return MenuPointeur;
+	return menuPointeur;
 }
 
 // Carte
 void ResourceManager::addCarte(Carte* carte) {
-	CartePointeur = carte;
+	cartePointeur = carte;
 }
 
 Carte* ResourceManager::getCarte() {
-	return CartePointeur;
+	return cartePointeur;
 }
 
+// Vague
+void ResourceManager::addVague(Vague* vague)
+{
+	vaguePointeur = vague;
+}
+
+Vague* ResourceManager::getVague()
+{
+	return vaguePointeur;
+}
+
+// Generateur Vague
+
+void ResourceManager::addGenerateurVague(GenerateurVague* generateurVague)
+{
+	vagueGenerateurPointeur = generateurVague;
+}
+
+GenerateurVague* ResourceManager::getGenerateurVague()
+{
+	return vagueGenerateurPointeur;
+}

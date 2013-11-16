@@ -16,17 +16,19 @@
 #include "ElementJeu.h"
 #include "Personnage.h"
 #include "Coordonnees.h"
+#include <iostream>
 
 class Vague: public ElementJeu {
 public:
 	Vague(int niveau);
 	void agir();
-	void genererPersonnage(int nbPersonnage);
+	void genererPersonnage();
 	virtual ~Vague();
 
 private:
 	int niveauType;
 	int nombreType;
+	int nombrePersoRestant;
 	int type;
 	sf::Clock horlogePop;
 	sf::Time tempsEntrePop;

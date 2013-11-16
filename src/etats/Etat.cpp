@@ -9,7 +9,6 @@
 #include "../App.h"
 
 Etat::Etat(App *tApp) : pApp(tApp) {
-	// TODO Auto-generated constructor stub
 
 }
 

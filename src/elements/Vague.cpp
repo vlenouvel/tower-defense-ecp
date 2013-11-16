@@ -6,7 +6,6 @@
  */
 
 #include "Vague.h"
-#include <iostream>
 
 enum TypePerso {
 	NORMAL = 1,
@@ -18,8 +17,12 @@ Vague::Vague(int niveau) {
 	// TODO Fixer le bon nombre de type d'unites
 	nombreType = 3;
 
+	tempsEntrePop = sf::seconds((float)1);
+
 	// Le niveau du type du personnage cree
 	niveauType = (niveau / nombreType) + 1;
+
+	nombrePersoRestant = 5;
 
 	// Le type de l'unite
 	type = niveau % nombreType;
@@ -30,9 +33,10 @@ Vague::Vague(int niveau) {
 
 	// TODO A supprimer
 	std::cout << "Vague creee avec des personnages de Type : " << type << " et de niveau " << niveauType << std::endl;
+
 }
 
-void Vague::genererPersonnage(int nbPersonnage)
+void Vague::genererPersonnage()
 {
 	ResourceManager* manager = ResourceManager::getInstance();
 
@@ -61,12 +65,10 @@ void Vague::genererPersonnage(int nbPersonnage)
 			break;
 	}
 
-	for (int i = 0; i < nbPersonnage; ++i) {
-		// TODO Changer l'aspect random du positionnement
-		Coordonnees coordonneesDepart(rand()%800,rand()%600);
-		Personnage* pPersonnage = new Personnage(vie, vitesse, armure, coordonneesDepart);
-		manager->addPersonnage(pPersonnage);
-	}
+	// TODO Changer l'aspect random du positionnement
+	Coordonnees coordonneesDepart(rand()%800,rand()%600);
+	Personnage* pPersonnage = new Personnage(vie, vitesse, armure, coordonneesDepart);
+	manager->addPersonnage(pPersonnage);
 
 	// TODO A supprimer
 	vector<Personnage*> pPerso = manager->getPersonnage();
@@ -74,14 +76,23 @@ void Vague::genererPersonnage(int nbPersonnage)
 	int s = pPerso.size();
 	std::cout << "Taille du vecteur Personnage " << s << " personnages et vie du dernier perso =" << testVie <<std::endl;
 
+	nombrePersoRestant--;
+	if(nombrePersoRestant == 0)
+	{
+		manager->addVague(0);
+		delete this;
+	}
+
 }
 
 void Vague::agir()
 {
-	// TODO Changer le nombre de personnage generes chaque vague
-	int nbPersonnage = 5;
+	if(horlogePop.getElapsedTime() >= tempsEntrePop)
+	{
+		genererPersonnage();
+		horlogePop.restart();
+	}
 
-	genererPersonnage(nbPersonnage);
 }
 
 Vague::~Vague() {
