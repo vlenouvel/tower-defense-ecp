@@ -10,13 +10,15 @@
 
 
 #include "ElementGraphique.h"
+#include "Case.h"
 
 class Carte: public ElementGraphique {
 public:
 	Carte();
 	virtual ~Carte();
 	void dessiner(sf::RenderWindow &pWindow);
-	int imageCarte [40][30];
+	(Case*) imageCarte [20][15];
+	Case * pCaseSortie;
 private:
 	sf::Texture textureCarte;
 	sf::Sprite spriteCarte;

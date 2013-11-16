@@ -5,16 +5,18 @@
  *      Author: Vincent Lenouvel
  */
 
-#include "Carte.h"
 #include "../ResourcesLoader.h"
+#include "Carte.h"
 
 Carte::Carte() {
-	for (int i=0; i<40; i++){
-		for (int j=0; j<30; j++){
-			imageCarte[i][j] = 0;
+	pCaseSortie = new Case(20,1);
+	for (int i=0; i<20; i++){
+		for (int j=0; j<15; j++){
+			Case* pCaseImageCarte = new Case(i,j);
+			pCaseImageCarte->setHeuristique(&(pCaseSortie->coordonneesCase));
+			imageCarte[i][j] = pCaseImageCarte;
 		}
 	}
-	imageCarte[5][8] = 2;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureCarte = pResourcesLoader->textureCarte;
 	spriteCarte.setTexture(textureCarte);
