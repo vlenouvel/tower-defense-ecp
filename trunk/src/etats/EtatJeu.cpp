@@ -9,7 +9,7 @@
 #include <iostream>
 using namespace std;
 
-EtatJeu::EtatJeu(App *tApp) : Etat(tApp) {
+EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	ResourceManager* manager = ResourceManager::getInstance();
 
 	// Creation de la carte
@@ -20,13 +20,13 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp) {
 
 
 
-	typeTourChoisi = 1;
+	typeTourChoisi = 0;
 	Coordonnees coordonneesPersonnage(200,200);
 	pPersonnage = new Personnage(1,1,1,coordonneesPersonnage);
 	manager->addPersonnage(pPersonnage);
-	pApp = tApp;
 	//Creation du generateur de vague
-	pGenerateur = new GenerateurVague(tApp->horloge.getElapsedTime());
+	GenerateurVague* pGenerateur = new GenerateurVague();
+	manager->addGenerateurVague(pGenerateur);
 
 }
 
@@ -41,14 +41,21 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 	vector<Tour*> tourConteneur = manager->getTour();
 
 	if (!tourConteneur.empty()){
-		for(int i=0;i<tourConteneur.size();i++){
+		for(unsigned int i=0;i<tourConteneur.size();i++){
 			tourConteneur[i]->dessiner(pWindow);
 		}
 	}
 	vector<Personnage*> personnageConteneur = manager->getPersonnage();
 	if (!personnageConteneur.empty()){
-		for(int i=0;i<personnageConteneur.size();++i){
+		for(unsigned int i=0;i<personnageConteneur.size();++i){
 			personnageConteneur[i]->dessiner(pWindow);
+		}
+	}
+
+	vector<Projectile*> projectileConteneur = manager->getProjectile();
+	if (!projectileConteneur.empty()){
+		for(unsigned int i=0;i<projectileConteneur.size();++i){
+			projectileConteneur[i]->dessiner(pWindow);
 		}
 	}
 }
@@ -85,8 +92,41 @@ void EtatJeu::handleEvent(sf::Event event)
 }
 
 void EtatJeu::agir() {
-	pGenerateur->genererVague(pApp->horloge.getElapsedTime());
 
+	ResourceManager *manager = ResourceManager::getInstance();
+
+	GenerateurVague *pGenerateurVague = manager->getGenerateurVague();
+	if(pGenerateurVague != 0)
+	{
+		pGenerateurVague->agir();
+	}
+
+	Vague *pVague = manager->getVague();
+	if(pVague != 0)
+	{
+		pVague->agir();
+	}
+
+	vector<Tour*> tourConteneur = manager->getTour();
+	if (!tourConteneur.empty()){
+		for(unsigned int i=0;i<tourConteneur.size();i++){
+			tourConteneur[i]->agir();
+		}
+	}
+
+	vector<Personnage*> personnageConteneur = manager->getPersonnage();
+	if (!personnageConteneur.empty()){
+		for(unsigned int i=0;i<personnageConteneur.size();++i){
+			personnageConteneur[i]->agir();
+		}
+	}
+
+	vector<Projectile*> projectileConteneur = manager->getProjectile();
+	if (!projectileConteneur.empty()){
+		for(unsigned int i=0;i<projectileConteneur.size();++i){
+			projectileConteneur[i]->agir();
+		}
+	}
 }
 
 EtatJeu::~EtatJeu() {

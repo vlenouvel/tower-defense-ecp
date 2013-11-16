@@ -11,16 +11,18 @@
 #include "ElementJeu.h"
 #include <SFML/Window.hpp>
 #include "Vague.h"
+#include <iostream>
 
 
-class GenerateurVague {
+class GenerateurVague : public ElementJeu {
 public:
-	GenerateurVague(sf::Time timeElapsed);
+	GenerateurVague();
 	virtual ~GenerateurVague();
-	void genererVague(sf::Time timeElapsed);
+	void agir();
+	void genererVague();
 private:
-	sf::Time tempsDerniereVague;
 	sf::Time tempsEntreVague;
+	sf::Clock horlogeVague;
 	int niveau;
 };
 

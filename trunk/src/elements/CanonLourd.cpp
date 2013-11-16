@@ -10,6 +10,7 @@
 #include <cmath>
 
 CanonLourd::CanonLourd(int tPrix, Coordonnees tCoord) : TourAttaque(tPrix, tCoord), rayonExplosion(10) {
+	pCibler = ComportementCiblage::ciblerPlusFaible;
 	attackDamage = 10;
 	attackRange = 100;
 	textureCanonLourd.loadFromFile("resources/textures/textureCanonLourd.jpg");
@@ -18,10 +19,10 @@ CanonLourd::CanonLourd(int tPrix, Coordonnees tCoord) : TourAttaque(tPrix, tCoor
 	spriteCanonLourd.setPosition(floor(float(tCoord.posX/40))*40,floor(float(tCoord.posY/40))*40);
 }
 
-void CanonLourd::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*>* ciblesPossibles))
+void CanonLourd::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles))
 {
 	ResourceManager *manager = ResourceManager::getInstance();
-	Personnage *cible = fonctionCiblage(&this->ciblesPossibles);
+	Personnage *cible = fonctionCiblage(this->ciblesPossibles);
 	Coordonnees coord = this->coordonnees;
 	ProjectileExplosif *projo = new ProjectileExplosif(coord, cible, attackDamage, rayonExplosion);
 	manager->addProjectile((Projectile*)projo);

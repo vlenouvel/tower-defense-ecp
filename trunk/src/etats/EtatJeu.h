@@ -36,7 +36,6 @@ public:
 	int typeTourChoisi;
 	TableauDeBord* pTableauDeBord;
 	Personnage * pPersonnage;
-	GenerateurVague* pGenerateur;
 private:
 	App* pApp;
 };

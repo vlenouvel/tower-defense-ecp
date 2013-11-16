@@ -7,23 +7,29 @@
 
 #include "GenerateurVague.h"
 
-GenerateurVague::GenerateurVague(sf::Time timeElapsed) {
+GenerateurVague::GenerateurVague() {
 	niveau = 1;
 
 	// definition du temps d'attente entre deux vagues
 	tempsEntreVague = sf::seconds((float)10);
-	tempsDerniereVague = timeElapsed;
 
 }
 
-void GenerateurVague::genererVague(sf::Time timeElapsed)
+void GenerateurVague::agir()
 {
-	if(timeElapsed - tempsDerniereVague >= tempsEntreVague) {
-		Vague vague(niveau);
-		tempsDerniereVague = timeElapsed;
-		vague.agir();
-		niveau++;
+	if(horlogeVague.getElapsedTime() >= tempsEntreVague)
+	{
+		horlogeVague.restart();
+		this->genererVague();
 	}
+}
+
+void GenerateurVague::genererVague()
+{
+	ResourceManager *manager = ResourceManager::getInstance();
+	Vague* pVague = new Vague(niveau);
+	manager->addVague(pVague);
+	niveau++;
 }
 
 GenerateurVague::~GenerateurVague() {

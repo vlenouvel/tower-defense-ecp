@@ -21,8 +21,6 @@ public:
 
 private:
 	int rayonExplosion;
-	sf::Texture textureProjectileExplosif;
-	sf::Sprite spriteProjectileExplosif;
 };
 
 #endif /* PROJECTILEEXPLOSIF_H_ */

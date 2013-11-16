@@ -18,7 +18,7 @@ public:
 	void dessiner(sf::RenderWindow & rWindow);
 
 private:
-	void attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*>* ciblesPossibles));
+	void attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles));
 	int rayonExplosion;
 	sf::Texture textureCanonLourd;
 	sf::Sprite spriteCanonLourd;

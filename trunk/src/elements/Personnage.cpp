@@ -26,6 +26,8 @@ void Personnage::avancer()
 {
 	int actuelleAbscisse = coordonnees.getPosX();
 	coordonnees.setPosX(actuelleAbscisse + vitesse);
+	if(coordonnees.getPosX() > 800)
+		coordonnees.setPosX(0);
 	spritePersonnage.setPosition(coordonnees.posX,coordonnees.posY);
 }
 
