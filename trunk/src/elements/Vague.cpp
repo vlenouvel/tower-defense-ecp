@@ -68,7 +68,9 @@ void Vague::genererPersonnage()
 	// TODO Changer l'aspect random du positionnement
 	Coordonnees coordonneesDepart(rand()%800,rand()%600);
 	Personnage* pPersonnage = new Personnage(vie, vitesse, armure, coordonneesDepart);
+	cout << "aie?" << endl;
 	pPersonnage->ecrireChemin(manager->getCarte());
+	cout << "non" << endl;
 	manager->addPersonnage(pPersonnage);
 
 	// TODO A supprimer
