@@ -65,6 +65,19 @@ Personnage* ComportementCiblage::ciblerZone(std::vector<Personnage*> ciblesPossi
 	return cible;
 }
 
+Personnage* ComportementCiblage::ciblerPremier(std::vector<Personnage*> ciblesPossibles)
+{
+	Personnage *cible(0);
+	//on va tenter de voir si une idee simple donne le bon resultat
+
+	cible=ciblesPossibles[0];
+
+	//apres test : la tour avec ce comportement attaquera le plus ancien ennemi à portee.
+	//Dans beaucoup de cas, il s'agirat de l'ennemi le plus avance.
+	//Est-ce suffisant ?
+
+	return cible;
+}
 
 ComportementCiblage::~ComportementCiblage() {
 }

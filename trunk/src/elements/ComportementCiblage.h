@@ -14,8 +14,7 @@
 #include "math.h"
 #include <iostream>
 
-// Classe qui sert juste d'interface pour forcer l'implementation
-// de la methode cibler dans les differents comportements de ciblage
+
 class ComportementCiblage {
 public:
 	ComportementCiblage();
@@ -23,6 +22,7 @@ public:
 	static Personnage* ciblerPlusProche(std::vector<Personnage*> ciblesPossibles);
 	static Personnage* ciblerPlusFaible(std::vector<Personnage*> ciblesPossibles);
 	static Personnage* ciblerZone(std::vector<Personnage*> ciblesPossibles);
+	static Personnage* ciblerPremier(std::vector<Personnage*> ciblesPossibles);
 };
 
 #endif /* COMPORTEMENTCIBLAGE_H_ */
