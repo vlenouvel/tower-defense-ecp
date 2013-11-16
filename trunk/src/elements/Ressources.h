@@ -18,8 +18,8 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	double ressources;
 	int getArgent();
-	int perdreArgent(int montant);
-	int gagnerArgent(int montant);
+	void perdreArgent(int montant);
+	void gagnerArgent(int montant);
 private:
 	sf::Texture textureRessources;
 	sf::Sprite spriteRessources;
