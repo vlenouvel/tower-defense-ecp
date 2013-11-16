@@ -59,6 +59,7 @@ void Personnage::mourir()
 			manager->removeProjectile(pProjo);
 			// TODO : Supprimer le vrai projo de la mémoire ...
 			//delete pProjo;
+			pProjo->setCible(0);
 		}
 	}
 	delete this;

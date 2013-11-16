@@ -7,7 +7,7 @@
 
 #include "Batiment.h"
 
-Batiment::Batiment(int tPrix, Coordonnees tCoord) : prix(tPrix), coordonnees(tCoord) {
+Batiment::Batiment(int tPrix, Coordonnees tCoord) : coordonnees(tCoord), prix(tPrix) {
 
 }
 
