@@ -51,7 +51,7 @@ void App::jouer() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	sf::Music * music;
 	music = &(pResourcesLoader->musique);
-	music->play();
+	//music->play();
 
 	
 	// lance l'horloge
