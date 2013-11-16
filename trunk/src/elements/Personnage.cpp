@@ -122,8 +122,9 @@ bool Personnage::trouverChemin(Carte * pCarte){
 	int Y;
 	while (!listeAParcourir.empty()){
 
-		//for (int i=0; i <sizeof(listeAParcourir);i++){
-
+		for (int i=0; i <sizeof(listeAParcourir);i++){
+			;
+		}
 		myIterator = listeAParcourir.begin();
 		X = (int)floor((float)(myIterator->second)->coordonneesCase.getPosX()/40);
 		Y = (int)floor((float)(myIterator->second)->coordonneesCase.getPosY()/40);
