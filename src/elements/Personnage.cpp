@@ -6,7 +6,7 @@
  */
 
 #include "Personnage.h"
-
+#include <cmath>
 
 Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) :
 		vie(tVie), vitesse(tVitesse), armure(tArmure), coordonnees(tCoord)
@@ -25,11 +25,29 @@ void Personnage::agir()
 
 void Personnage::avancer()
 {
-	int actuelleAbscisse = coordonnees.getPosX();
-	coordonnees.setPosX(actuelleAbscisse + vitesse);
-	if(coordonnees.getPosX() > 800)
-		coordonnees.setPosX(0);
-	spritePersonnage.setPosition(coordonnees.posX,coordonnees.posY);
+	if(!chemin.empty()){
+		float imageVitesse = (float)vitesse;
+		while (imageVitesse > 0){
+			int abscisseCible = chemin[0]->coordonneesCase.getPosX();
+			int ordonneeCible = chemin[0]->coordonneesCase.getPosY();
+			int abscissePerso = coordonnees.getPosX();
+			int ordonneePerso = coordonnees.getPosY();
+			float distanceCiblePerso = (pow((float)abscisseCible - abscissePerso,2) + pow((float)ordonneeCible - ordonneePerso,2));
+			if (distanceCiblePerso < vitesse){
+				coordonnees.setPosX((int)floor((abscisseCible - abscissePerso)/sqrt(distanceCiblePerso)));
+				coordonnees.setPosX((int)floor((ordonneeCible - ordonneePerso)/sqrt(distanceCiblePerso)));
+				imageVitesse = 0;
+			}
+			else{
+				float distanceRestante = (float)vitesse - distanceCiblePerso;
+				chemin.erase(chemin.begin());
+				imageVitesse = imageVitesse - distanceCiblePerso;
+			}
+		}
+		spritePersonnage.setPosition(coordonnees.posX,coordonnees.posY);
+	}
+	else
+		mourir();
 }
 
 void Personnage::perdrePV(int degat)
@@ -102,7 +120,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 		Y = (myIterator->second)->coordonneesCase.getPosY();
 		//on etudie le nord, le sud, l'ouest et l'est par rapport à X,Y
 		//nord
-		if (((pCarte->imageCarte[X][Y-1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y-1])->caseOccupee == 0)){
+		if (((pCarte->imageCarte[X][Y-1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y-1])->caseOccupee == false)){
 			if (((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
 				return true;
 			}
@@ -111,7 +129,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 			listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X][Y-1])->distanceEntree + (pCarte->imageCarte[X][Y-1])->heuristique,(pCarte->imageCarte[X][Y-1])));
 		}
 		//sud
-		if (((pCarte->imageCarte[X][Y+1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y+1])->caseOccupee == 0)){
+		if (((pCarte->imageCarte[X][Y+1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y+1])->caseOccupee == false)){
 			if (((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
 				return true;
 			}
@@ -120,7 +138,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 			listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X][Y+1])->distanceEntree + (pCarte->imageCarte[X][Y+1])->heuristique,(pCarte->imageCarte[X][Y+1])));
 		}
 		//ouest
-		if (((pCarte->imageCarte[X-1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X-1][Y])->caseOccupee == 0)){
+		if (((pCarte->imageCarte[X-1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X-1][Y])->caseOccupee == false)){
 			if (((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
 				return true;
 			}
@@ -129,7 +147,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 			listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X-1][Y])->distanceEntree + (pCarte->imageCarte[X-1][Y])->heuristique,(pCarte->imageCarte[X-1][Y])));
 		}
 		//est
-		if (((pCarte->imageCarte[X+1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X+1][Y])->caseOccupee == 0)){
+		if (((pCarte->imageCarte[X+1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X+1][Y])->caseOccupee == false)){
 			if (((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
 				return true;
 			}
