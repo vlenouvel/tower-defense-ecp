@@ -121,9 +121,10 @@ bool Personnage::trouverChemin(Carte * pCarte){
 	int X;
 	int Y;
 	while (!listeAParcourir.empty()){
+		for (std::multimap<int,Case*>::iterator it=listeAParcourir.begin(); it!=listeAParcourir.end(); ++it){
+			cout << (int)floor((float)(it->second)->coordonneesCase.getPosX()/40) << "   ";
+			cout << (int)floor((float)(it->second)->coordonneesCase.getPosY()/40) << endl;
 
-		for (int i=0; i <sizeof(listeAParcourir);i++){
-			;
 		}
 		myIterator = listeAParcourir.begin();
 		X = (int)floor((float)(myIterator->second)->coordonneesCase.getPosX()/40);
