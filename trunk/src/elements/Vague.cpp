@@ -67,9 +67,11 @@ void Vague::genererPersonnage()
 
 	// TODO Changer l'aspect random du positionnement
 	Coordonnees coordonneesDepart(rand()%800,rand()%600);
+	cout << coordonneesDepart.getPosX() << endl;
 	Personnage* pPersonnage = new Personnage(vie, vitesse, armure, coordonneesDepart);
 	cout << "aie?" << endl;
 	bool solution = pPersonnage->trouverChemin(manager->getCarte());
+	cout << solution << endl;
 	cout << "hmmm" << endl;
 	pPersonnage->ecrireChemin(manager->getCarte());
 	cout << "non" << endl;
