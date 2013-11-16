@@ -1,8 +1,8 @@
 /*
  * Coordonnees.h
  *
- *  Created on: 6 nov. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #ifndef COORDONNEES_H_

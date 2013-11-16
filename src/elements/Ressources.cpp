@@ -1,8 +1,8 @@
 /*
  * Ressources.cpp
  *
- *  Created on: 29 oct. 2013
- *      Author: Vincent Lenouvel
+ *  Classe de gestion de l'argent du joueur
+ *
  */
 
 #include "Ressources.h"
@@ -30,8 +30,20 @@ Ressources::~Ressources() {
 }
 
 void Ressources::dessiner(sf::RenderWindow &pWindow){
+	texteRessources.setString("10000");
 	pWindow.draw(spriteRessources);
 	//texteRessources.setString(to_string(ressources));
 	pWindow.draw(texteRessources);
 }
 
+int Ressources::getArgent() {
+	return argent;
+}
+
+void Ressources::perdreArgent(int montantPerte) {
+	argent = argent - montantPerte;
+}
+
+void Ressources::gagnerArgent(int montantGain) {
+	argent = argent + montantGain;
+}

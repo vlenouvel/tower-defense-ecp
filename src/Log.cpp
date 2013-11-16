@@ -1,8 +1,8 @@
 /*
  * Log.cpp
  *
- *  Created on: 11 nov. 2013
- *      Author: francois
+ *  TowerDefense ECP
+ *      
  */
 
 #include "Log.h"

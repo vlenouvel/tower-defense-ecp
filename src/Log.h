@@ -1,8 +1,8 @@
 /*
  * Log.h
  *
- *  Created on: 11 nov. 2013
- *      Author: francois
+ *  TowerDefense ECP
+ *      
  */
 
 #ifndef LOG_H_

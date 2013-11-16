@@ -1,8 +1,8 @@
 /*
  * CompCiblZone.h
  *
- *  Created on: 29 oct. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #ifndef COMPCIBLZONE_H_

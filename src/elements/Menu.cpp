@@ -1,8 +1,8 @@
 /*
  * Menu.cpp
  *
- *  Created on: 29 oct. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #include "Menu.h"

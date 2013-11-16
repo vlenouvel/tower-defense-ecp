@@ -1,7 +1,7 @@
 /*
  * Ressources.h
  *
- *  Created on: 29 oct. 2013
+ *  TowerDefense ECP
  *      Author: Vincent Lenouvel
  */
 
@@ -17,11 +17,16 @@ public:
 	virtual ~Ressources();
 	void dessiner(sf::RenderWindow &pWindow);
 	double ressources;
+	int getArgent();
+	int perdreArgent(int montant);
+	int gagnerArgent(int montant);
 private:
 	sf::Texture textureRessources;
 	sf::Sprite spriteRessources;
 	sf::Text texteRessources;
 	sf::Font font;
+
+	int argent;
 };
 
 #endif /* RESSOURCES_H_ */

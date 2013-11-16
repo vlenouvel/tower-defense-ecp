@@ -1,8 +1,8 @@
 /*
  * CompCiblPlusProche.h
  *
- *  Created on: 29 oct. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 //Ce comportement doit permettre de cibler la cible qui est la plus proche de l'objectif.

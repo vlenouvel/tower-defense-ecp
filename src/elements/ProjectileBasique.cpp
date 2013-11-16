@@ -1,8 +1,8 @@
 /*
  * ProjectileBasique.cpp
  *
- *  Created on: 13 nov. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #include "ProjectileBasique.h"
