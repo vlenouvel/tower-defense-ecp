@@ -22,9 +22,21 @@ Personnage* Projectile::getCible()
 	return cible;
 }
 
+void Projectile::setCible(Personnage* nouvelleCible)
+{
+	cible = nouvelleCible;
+}
+
 void Projectile::agir()
 {
-	this->avancer();
+	if (cible!=0)
+	{
+		this->avancer();
+	}
+	else
+	{
+		delete this;
+	}
 }
 
 void Projectile::avancer()
@@ -51,3 +63,4 @@ void Projectile::avancer()
 		this->toucherEnnemi();
 	}
 }
+

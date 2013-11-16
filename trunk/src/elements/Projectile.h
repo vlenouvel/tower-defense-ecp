@@ -21,6 +21,7 @@ public:
 	virtual void dessiner(sf::RenderWindow &pWindow) = 0;
 	virtual void agir();
 	Personnage* getCible();
+	void setCible(Personnage* nouvelleCible);
 	void avancer();
 
 protected:
