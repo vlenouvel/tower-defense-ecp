@@ -7,6 +7,7 @@
 
 #include "Personnage.h"
 #include <iostream>
+#include <exception>
 
 Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) :
 		vie(tVie), vitesse(tVitesse), armure(tArmure), coordonnees(tCoord)
@@ -44,6 +45,22 @@ void Personnage::perdrePV(int degat)
 
 void Personnage::mourir()
 {
+	ResourceManager *manager = ResourceManager::getInstance();
+	manager->removePersonnage(this);
+
+	// Also remove all projectiles going for that personnage
+	std::vector<Projectile*> projectileConteneur = manager->getProjectile();
+	vector<Projectile*>::iterator projectileIterator;
+	for(projectileIterator = projectileConteneur.begin() ; projectileIterator!= projectileConteneur.end() ; projectileIterator++)
+	{
+		Projectile* pProjo = *projectileIterator;
+		if(pProjo->getCible() == this)
+		{
+			manager->removeProjectile(pProjo);
+			// TODO : Supprimer le vrai projo de la mémoire ...
+			//delete pProjo;
+		}
+	}
 	delete this;
 }
 

@@ -58,6 +58,11 @@ vector<Personnage*> ResourceManager::getPersonnage() {
 	return personnageConteneur;
 }
 
+void ResourceManager::removePersonnage(Personnage *entite){
+	// Remove the personnage
+	personnageConteneur.erase(remove(personnageConteneur.begin(), personnageConteneur.end(), entite), personnageConteneur.end());
+}
+
 // Projectile
 void ResourceManager::addProjectile(Projectile* entite) {
 	projectileConteneur.push_back(entite);
@@ -68,7 +73,7 @@ vector<Projectile*> ResourceManager::getProjectile() {
 }
 
 void ResourceManager::removeProjectile(Projectile *entite){
-	projectileConteneur.erase(remove(projectileConteneur.begin(), projectileConteneur.end(), 8), projectileConteneur.end());
+	projectileConteneur.erase(remove(projectileConteneur.begin(), projectileConteneur.end(), entite), projectileConteneur.end());
 }
 
 // Menu

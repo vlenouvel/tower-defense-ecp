@@ -9,15 +9,16 @@
 #define RESOURCEMANAGER_H_
 
 #include <vector>
-#include "elements/Personnage.h"
+#include <algorithm>
 #include "elements/Tour.h"
 #include "elements/Carte.h"
-#include "elements/Projectile.h"
 #include "elements/Menu.h"
 
 using namespace std;
 
 // Forward Declaration to avoid includes issues
+class Projectile;
+class Personnage;
 class GenerateurVague;
 class Vague;
 
@@ -39,6 +40,7 @@ public:
     // Remove
 
     void removeProjectile(Projectile* entite);
+    void removePersonnage(Personnage* entite);
 
     // Get
     vector<Tour*> getTour();

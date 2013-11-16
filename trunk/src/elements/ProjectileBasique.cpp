@@ -19,7 +19,6 @@ void ProjectileBasique::toucherEnnemi()
 	cible->perdrePV(dommages);
 	ResourceManager *manager = ResourceManager::getInstance();
 	manager->removeProjectile(this);
-	delete this;
 }
 
 void ProjectileBasique::dessiner(sf::RenderWindow & rWindow){
