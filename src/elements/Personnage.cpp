@@ -103,13 +103,17 @@ Coordonnees Personnage::getCoordonnees()
 
 // Cette fonction retourne une pair
 bool Personnage::trouverChemin(Carte * pCarte){
+	cout << "check1" << endl;
 	//on initialise la liste qui va contenir la suite de case a analyser avec la case d'entree
 	multimap<int,Case*> listeAParcourir;
 	multimap<int,Case*>::iterator myIterator;
+	cout << "check1.1" << endl;
 	Case * pEntree = pCarte->imageCarte[coordonnees.getPosX()][coordonnees.getPosY()];
 	Case * pSortie = pCarte->imageCarte[20][1];
+	cout << "check1.2" << endl;
+	cout << pEntree->heuristique << endl;
 	listeAParcourir.insert(pair<int,Case*>(pEntree->heuristique,pEntree));
-
+	cout << "check2" << endl;
 	//boucle principale de l'algo. L'algo s'arrete dans deux cas : soit on atteint la sortie, soit on ne l'atteint pas et dans ce cas,
 	//la liste a parcourir est vide
 	int X;
@@ -120,6 +124,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 		Y = (myIterator->second)->coordonneesCase.getPosY();
 		//on etudie le nord, le sud, l'ouest et l'est par rapport à X,Y
 		//nord
+		cout << "check2.2" << endl;
 		if (((pCarte->imageCarte[X][Y-1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y-1])->caseOccupee == false)){
 			if (((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
 				return true;
@@ -155,6 +160,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 			(pCarte->imageCarte[X+1][Y])->caseParcourue = true;
 			listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X+1][Y])->distanceEntree + (pCarte->imageCarte[X+1][Y])->heuristique,(pCarte->imageCarte[X+1][Y])));
 		}
+		cout << "check3" << endl;
 		listeAParcourir.erase(myIterator);
 	}
 	return false;
