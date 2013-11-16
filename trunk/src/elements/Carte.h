@@ -17,7 +17,7 @@ public:
 	Carte();
 	virtual ~Carte();
 	void dessiner(sf::RenderWindow &pWindow);
-	(Case*) imageCarte [20][15];
+	Case* imageCarte [20][15];
 	Case * pCaseSortie;
 private:
 	sf::Texture textureCarte;
