@@ -1,8 +1,8 @@
 /*
  * ResourceManager.h
  *
- *  Created on: 13 nov. 2013
- *      Author: francois
+ *  TowerDefense ECP
+ *      
  */
 
 #ifndef RESOURCEMANAGER_H_

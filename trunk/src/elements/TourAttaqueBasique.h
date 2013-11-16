@@ -1,8 +1,8 @@
 /*
  * TourAttaqueBasique.h
  *
- *  Created on: 13 nov. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #ifndef TOURATTAQUEBASIQUE_H_

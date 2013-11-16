@@ -1,8 +1,8 @@
 /*
  * TourAttaque.h
  *
- *  Created on: 29 oct. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #ifndef TOURATTAQUE_H_
@@ -27,7 +27,7 @@ public:
 
 protected:
 	// On utilise un pointeur vers une fonction statique pour le ciblage
-	// On peut ainsi changer à la voler le ciblage de la tour
+	// On peut ainsi changer ï¿½ la voler le ciblage de la tour
 	// en changeant la fonction sur laquelle est le pointeur.
 	void virtual attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles)) = 0;
 	void trouverCibles();

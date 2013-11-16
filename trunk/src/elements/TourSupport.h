@@ -1,8 +1,8 @@
 /*
  * TourSupport.h
  *
- *  Created on: 29 oct. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #ifndef TOURSUPPORT_H_

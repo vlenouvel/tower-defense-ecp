@@ -1,8 +1,8 @@
 /*
  * TableauDeBord.cpp
  *
- *  Created on: 15 nov. 2013
- *      Author: Vincent Carrier
+ *  TowerDefense ECP
+ *      
  */
 
 #include "TableauDeBord.h"

@@ -1,8 +1,8 @@
 /*
  * ProjectileExplosif.h
  *
- *  Created on: 14 nov. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #ifndef PROJECTILEEXPLOSIF_H_

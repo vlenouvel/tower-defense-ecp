@@ -1,8 +1,8 @@
 /*
  * ResourcesLoader.h
  *
- *  Created on: 15 nov. 2013
- *      Author: Vincent Carrier
+ *  TowerDefense ECP
+ *      
  */
 
 #ifndef RESOURCESLOADER_H_

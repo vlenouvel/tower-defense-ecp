@@ -1,8 +1,8 @@
 /*
  * Etat.h
  *
- *  Created on: 29 oct. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #ifndef ETAT_H_

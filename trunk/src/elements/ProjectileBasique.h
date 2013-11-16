@@ -1,8 +1,8 @@
 /*
  * ProjectileBasique.h
  *
- *  Created on: 13 nov. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #ifndef PROJECTILEBASIQUE_H_

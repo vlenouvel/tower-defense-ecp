@@ -1,8 +1,8 @@
 /*
  * Personnage.cpp
  *
- *  Created on: 29 oct. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #include "Personnage.h"
@@ -75,7 +75,7 @@ void Personnage::mourir()
 		if(pProjo->getCible() == this)
 		{
 			manager->removeProjectile(pProjo);
-			// TODO : Supprimer le vrai projo de la mémoire ...
+			// TODO : Supprimer le vrai projo de la mï¿½moire ...
 			//delete pProjo;
 			pProjo->setCible(0);
 		}
@@ -122,7 +122,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 		myIterator = listeAParcourir.begin();
 		X = (myIterator->second)->coordonneesCase.getPosX();
 		Y = (myIterator->second)->coordonneesCase.getPosY();
-		//on etudie le nord, le sud, l'ouest et l'est par rapport à X,Y
+		//on etudie le nord, le sud, l'ouest et l'est par rapport ï¿½ X,Y
 		//nord
 		cout << "check2.2" << endl;
 		if (((pCarte->imageCarte[X][Y-1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y-1])->caseOccupee == false)){

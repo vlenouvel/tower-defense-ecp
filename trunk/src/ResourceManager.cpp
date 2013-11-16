@@ -1,8 +1,8 @@
 /*
  * ResourceManager.cpp
  *
- *  Created on: 13 nov. 2013
- *      Author: francois
+ *  TowerDefense ECP
+ *      
  */
 
 #include "ResourceManager.h"

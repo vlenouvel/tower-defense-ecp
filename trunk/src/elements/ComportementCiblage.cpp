@@ -1,8 +1,8 @@
 /*
  * ComportementCiblage.cpp
  *
- *  Created on: 29 oct. 2013
- *      Author: Vincent Lenouvel
+ *  TowerDefense ECP
+ *       
  */
 
 #include "ComportementCiblage.h"
@@ -14,7 +14,7 @@ ComportementCiblage::ComportementCiblage() {
 Personnage* ComportementCiblage::ciblerPlusFaible(std::vector<Personnage*> ciblesPossibles)
 {
 	/* Ici on va rechercher le personnage avec le moins de vie parmi les cibles possibles.
-	 * Pour cela on utilisera la méthode getVie des personnages, car l'attribut vie est protégé
+	 * Pour cela on utilisera la mï¿½thode getVie des personnages, car l'attribut vie est protï¿½gï¿½
 	 * et donc innaccessible depuis les comportements.
 	 */
 	Personnage *cible(0);
@@ -35,7 +35,7 @@ Personnage* ComportementCiblage::ciblerZone(std::vector<Personnage*> ciblesPossi
 	{
 	/* Ici on va rechercher, parmi les cibles possibles, le personnage qui a le plus de personnages voisins dans un rayon de valeur"range".
 	 */
-	//TODO : On ne peut pas envoyer la range en paramètre car on ne peut pas changer le prototype de la fonction
+	//TODO : On ne peut pas envoyer la range en paramï¿½tre car on ne peut pas changer le prototype de la fonction
 	// Il faut donc trouver un moyen de l'obtenir autrement
 	int range = 10;
 	ResourceManager *manager = ResourceManager::getInstance();
@@ -72,7 +72,7 @@ Personnage* ComportementCiblage::ciblerPremier(std::vector<Personnage*> ciblesPo
 
 	cible=ciblesPossibles[0];
 
-	//apres test : la tour avec ce comportement attaquera le plus ancien ennemi à portee.
+	//apres test : la tour avec ce comportement attaquera le plus ancien ennemi ï¿½ portee.
 	//Dans beaucoup de cas, il s'agirat de l'ennemi le plus avance.
 	//Est-ce suffisant ?
 
