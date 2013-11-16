@@ -52,7 +52,7 @@ void TourAttaque::trouverCibles()
 			Personnage *perso = listesDeTousLesPersonnages[i];
 			int posXPerso = perso->getCoordonnees().getPosX();
 			int posYPerso = perso->getCoordonnees().getPosY();
-			if((pow(posXPerso - posXTour,2)+pow(posYPerso - posYTour,2)) <= pow(this->attackRange,2))
+			if((pow((float)(posXPerso - posXTour),2)+pow((float)(posYPerso - posYTour),2)) <= pow((float)(this->attackRange),2))
 			{
 				this->ciblesPossibles.push_back(perso);
 			}

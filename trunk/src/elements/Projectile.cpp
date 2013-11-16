@@ -46,15 +46,15 @@ void Projectile::avancer()
 	int xperso = this->cible->getCoordonnees().getPosX();
 	int yperso = this->cible->getCoordonnees().getPosY();
 
-	double alpha = this->vitesse/sqrt(pow((xperso-xproj),2)+pow((yperso-yproj),2));
+	double alpha = this->vitesse/sqrt(pow((float)(xperso-xproj),2)+pow((float)(yperso-yproj),2));
 	if (alpha > 1)
 	{
 		// Si alpha > 1, cela veut dire que le projectile s'apprete a parcourir une
 		// distance plus grande que celle qui le separe de la cible
 		alpha = 1;
 	}
-	xproj += (int)round(alpha*(xperso-xproj));
-	yproj += (int)round(alpha*(yperso-yproj));
+	xproj += (int)floor(alpha*(xperso-xproj));
+	yproj += (int)floor(alpha*(yperso-yproj));
 	this->coordonnees.setPosX(xproj);
 	this->coordonnees.setPosY(yproj);
 	spriteProjectile.setPosition(xproj, yproj);

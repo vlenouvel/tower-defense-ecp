@@ -8,7 +8,8 @@
 #include "Menu.h"
 
 Menu::Menu() {
-	font.loadFromFile("resources/polices/Capture it.ttf");
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	font = pResourcesLoader->police;;
 	text1.setFont(font);
 	text1.setString("Entrez dans l'arene");
 	text1.setCharacterSize(48);

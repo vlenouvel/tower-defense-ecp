@@ -9,12 +9,13 @@
 #include <string>
 
 Ressources::Ressources() {
-	textureRessources.loadFromFile("resources/textures/textureResources.jpg");
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	textureRessources = pResourcesLoader->textureRessources;
 	spriteRessources.setTexture(textureRessources);
 	spriteRessources.setScale(1,0.4);
 	spriteRessources.setPosition(700,0);
 	ressources = 0;
-	font.loadFromFile("resources/polices/Capture it.ttf");
+	font = pResourcesLoader->police;
 	texteRessources.setFont(font);
 	texteRessources.setCharacterSize(48);
 	texteRessources.setColor(sf::Color::White);

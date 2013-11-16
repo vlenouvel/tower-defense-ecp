@@ -12,7 +12,8 @@
 Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) :
 		vie(tVie), vitesse(tVitesse), armure(tArmure), coordonnees(tCoord)
 {
-	texturePersonnage.loadFromFile("resources/textures/texturePersonnage.jpg");
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	texturePersonnage = pResourcesLoader->texturePersonnage;
 	spritePersonnage.setTexture(texturePersonnage);
 	spritePersonnage.setScale(0.5,0.5);
 	spritePersonnage.setPosition(tCoord.posX,tCoord.posY);

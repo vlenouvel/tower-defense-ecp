@@ -10,10 +10,12 @@
 #include <string>
 #include <sstream>
 #include "ResourceManager.h"
+#include "ResourcesLoader.h"
 
 using namespace std;
 
 ResourceManager* manager = ResourceManager::getInstance();
+
 
 App::App() {
 	pEtatActuel = new(EtatMenu)(this);
@@ -46,9 +48,10 @@ void App::jouer() {
 	tempsLegal = sf::seconds(tempsUneImage);
 
 	// Charge la musique de fond
-	/*sf::Music music;
-	music.openFromFile("resources/sons/musicTest2.ogg");
-	music.play();*/
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	sf::Music * music;
+	music = &(pResourcesLoader->musique);
+	music->play();
 
 	
 	// lance l'horloge
