@@ -74,7 +74,6 @@ void EtatJeu::handleEvent(sf::Event event)
 				typeTourChoisi = 0;
 			}
 			else {
-				cout << "check1" << endl;
 				Coordonnees coordonneesTour((int)event.mouseButton.x,(int)event.mouseButton.y);
 				bool autorisation = true;
 				if (!manager->getPersonnage().empty()){
@@ -84,7 +83,6 @@ void EtatJeu::handleEvent(sf::Event event)
 							break;
 					}
 				}
-				cout << "check2" << endl;
 				if (autorisation == true){
 					switch(typeTourChoisi){
 						case 0:{
@@ -96,19 +94,14 @@ void EtatJeu::handleEvent(sf::Event event)
 							manager->addTour((Tour*) ptourTest);}
 							break;
 					}
-					cout << "check3" << endl;
 					int a = (int)floor((float)coordonneesTour.getPosX()/40);
-					cout << a << endl;
 					int b = (int)floor((float)coordonneesTour.getPosY()/40);
-					cout << b << endl;
 					(manager->getCarte())->imageCarte[a][b]->caseOccupee = true;
-					cout << "check4" << endl;
 					if (!(manager->getPersonnage()).empty()){
 						for (int i=0; i< (manager->getPersonnage()).size();i++){
 							(manager->getPersonnage())[i]->ecrireChemin(manager->getCarte());
 						}
 					}
-					cout << "check5" << endl;
 				}
 			}
 		}

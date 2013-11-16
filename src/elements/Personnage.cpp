@@ -182,5 +182,8 @@ void Personnage::ecrireChemin(Carte * pCarte){
 			trace = pCarte->imageCarte[trace->coordonneesCase.getPosX() + 1][trace->coordonneesCase.getPosY()];
 		}
 	}
+	for (int i = 0; i<sizeof(pCarte->imageCarte); i++)
+		for (int j = 0; j<sizeof(pCarte->imageCarte[0]); i++)
+			pCarte->imageCarte[i][j]->caseParcourue = false;
 }
 
