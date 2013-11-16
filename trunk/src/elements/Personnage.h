@@ -37,7 +37,8 @@ public:
 	Coordonnees coordonnees;
 
 	//Pathfinding
-	pair <bool,vector<Case *>> trouverChemin(Carte * pCarte);
+	bool trouverChemin(Carte * pCarte);
+	void ecrireChemin(Carte * pCarte);
 protected:
 	int vie;
 	int vitesse;
