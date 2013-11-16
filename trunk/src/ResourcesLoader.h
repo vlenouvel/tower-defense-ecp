@@ -21,9 +21,9 @@ public:
 
 	static ResourcesLoader* getInstance();
 
-	void ResourcesLoader::ChargerTextures();
-	void ResourcesLoader::ChargerSons();
-	void ResourcesLoader::ChargerPolices();
+	void ChargerTextures();
+	void ChargerSons();
+	void ChargerPolices();
 
 	sf::Texture texturePersonnage;
 	sf::Texture textureCarte;
