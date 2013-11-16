@@ -32,6 +32,7 @@ ResourceManager::ResourceManager() {
     vector<Projectile*> projectileConteneur;
     menuPointeur = 0;
     cartePointeur = 0;
+    ressourcesPointeur = 0;
     vaguePointeur = 0;
     vagueGenerateurPointeur = 0;
 }
@@ -115,4 +116,16 @@ void ResourceManager::addGenerateurVague(GenerateurVague* generateurVague)
 GenerateurVague* ResourceManager::getGenerateurVague()
 {
 	return vagueGenerateurPointeur;
+}
+
+// Ressources
+
+void ResourceManager::addRessources(Ressources* ressources)
+{
+	ressourcesPointeur = ressources;
+}
+
+Ressources* ResourceManager::getRessources()
+{
+	return ressourcesPointeur;
 }

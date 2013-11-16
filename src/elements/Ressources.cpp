@@ -23,6 +23,9 @@ Ressources::Ressources() {
 	texteRessources.setPosition(720,0);
 	texteRessources.setFont(font);
 
+	// TODO Changer vies et argent de depart
+	vie = 20;
+	argent = 100;
 }
 
 Ressources::~Ressources() {
@@ -46,4 +49,12 @@ void Ressources::perdreArgent(int montantPerte) {
 
 void Ressources::gagnerArgent(int montantGain) {
 	argent = argent + montantGain;
+}
+
+int Ressources::getVie() {
+	return vie;
+}
+
+void Ressources::perdreVie() {
+	vie = vie - 1;
 }

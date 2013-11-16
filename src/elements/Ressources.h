@@ -20,6 +20,9 @@ public:
 	int getArgent();
 	void perdreArgent(int montant);
 	void gagnerArgent(int montant);
+	int getVie();
+	void perdreVie();
+
 private:
 	sf::Texture textureRessources;
 	sf::Sprite spriteRessources;
@@ -27,6 +30,7 @@ private:
 	sf::Font font;
 
 	int argent;
+	int vie;
 };
 
 #endif /* RESSOURCES_H_ */
