@@ -10,7 +10,7 @@
 #include <cmath>
 
 CanonLourd::CanonLourd(int tPrix, Coordonnees tCoord) : TourAttaque(tPrix, tCoord), rayonExplosion(10) {
-	pCibler = ComportementCiblage::ciblerPlusFaible;
+	pCibler = ComportementCiblage::ciblerPremier;
 	attackDamage = 10;
 	attackRange = 1000;
 	timeBetweenAttacks = sf::seconds((float)2);
