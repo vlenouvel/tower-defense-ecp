@@ -9,7 +9,6 @@
 #define TOUR_H_
 
 #include "Batiment.h"
-#include "../ResourceManager.h"
 
 class Tour: public Batiment {
 public:

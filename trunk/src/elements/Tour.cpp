@@ -6,6 +6,7 @@
  */
 
 #include "Tour.h"
+#include "../ResourceManager.h"
 
 Tour::Tour(int tPrix, Coordonnees tCoord) : Batiment(tPrix, tCoord) , niveau(1) {
 }
