@@ -9,12 +9,14 @@
 #include <iostream>
 #include <cmath>
 
+
 CanonLourd::CanonLourd(int tPrix, Coordonnees tCoord) : TourAttaque(tPrix, tCoord), rayonExplosion(10) {
 	pCibler = ComportementCiblage::ciblerPremier;
 	attackDamage = 10;
 	attackRange = 1000;
 	timeBetweenAttacks = sf::seconds((float)2);
-	textureCanonLourd.loadFromFile("resources/textures/textureCanonLourd.jpg");
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	textureCanonLourd = pResourcesLoader->textureCanonLourd;
 	spriteCanonLourd.setTexture(textureCanonLourd);
 	spriteCanonLourd.setScale(0.5,0.5);
 	spriteCanonLourd.setPosition(floor(float(tCoord.posX/40))*40,floor(float(tCoord.posY/40))*40);

@@ -14,7 +14,8 @@ TourAttaqueBasique::TourAttaqueBasique(int tPrix, Coordonnees tCoord) : TourAtta
 	attackDamage = 2;
 	timeBetweenAttacks = sf::milliseconds(100);
 	pCibler = ComportementCiblage::ciblerPremier;
-	textureTourAttaqueBasique.loadFromFile("resources/textures/textureTourAttaqueBasique.jpg");
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	textureTourAttaqueBasique = pResourcesLoader->textureTourAttaqueBasique;
 	spriteTourAttaqueBasique.setTexture(textureTourAttaqueBasique);
 	spriteTourAttaqueBasique.setScale(0.5,0.5);
 	spriteTourAttaqueBasique.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);

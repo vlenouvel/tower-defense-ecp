@@ -6,6 +6,7 @@
  */
 
 #include "Carte.h"
+#include "../ResourcesLoader.h"
 
 Carte::Carte() {
 	for (int i=0; i<40; i++){
@@ -14,7 +15,8 @@ Carte::Carte() {
 		}
 	}
 	imageCarte[5][8] = 2;
-	textureCarte.loadFromFile("resources/textures/champDeBataille.jpg");
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	textureCarte = pResourcesLoader->textureCarte;
 	spriteCarte.setTexture(textureCarte);
 	spriteCarte.setScale(0.88,0.88);
 

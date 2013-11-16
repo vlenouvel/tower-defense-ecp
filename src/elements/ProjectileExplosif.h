@@ -11,6 +11,7 @@
 #include "Projectile.h"
 #include "../ResourceManager.h"
 #include "math.h"
+#include "../ResourcesLoader.h"
 
 class ProjectileExplosif: public Projectile {
 public:

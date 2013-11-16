@@ -11,7 +11,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-
+#include "../ResourcesLoader.h"
 
 class ElementGraphique {
 public:

@@ -1,0 +1,41 @@
+/*
+ * ResourcesLoader.h
+ *
+ *  Created on: 15 nov. 2013
+ *      Author: Vincent Carrier
+ */
+
+#ifndef RESOURCESLOADER_H_
+#define RESOURCESLOADER_H_
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
+
+/* Cette classe est destinee a charger tout ce qui est dans le dossier resources, c'est-a-dire la police, les sons et les textures.
+Les objets crees par la suite viennent chercher ce dont ils ont besoin dans cette fonction.*/
+
+class ResourcesLoader {
+public:
+	ResourcesLoader();
+	virtual ~ResourcesLoader();
+
+	static ResourcesLoader* getInstance();
+
+	void ResourcesLoader::ChargerTextures();
+	void ResourcesLoader::ChargerSons();
+	void ResourcesLoader::ChargerPolices();
+
+	sf::Texture texturePersonnage;
+	sf::Texture textureCarte;
+	sf::Texture textureCanonLourd;
+	sf::Texture textureTourAttaqueBasique;
+	sf::Texture textureProjectileBasique;
+	sf::Texture textureProjectileExplosif;
+	sf::Texture textureRessources;
+
+	sf::Music musique;
+
+	sf::Font police;
+};
+
+#endif /* RESOURCESLOADER_H_ */

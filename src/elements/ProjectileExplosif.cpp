@@ -7,9 +7,11 @@
 
 #include "ProjectileExplosif.h"
 
+
 ProjectileExplosif::ProjectileExplosif(Coordonnees tCoord, Personnage* tCible, int tDommages, int tRayonExplosion) :
 	Projectile(tCoord, tCible, tDommages), rayonExplosion(tRayonExplosion) {
-	textureProjectile.loadFromFile("resources/textures/textureProjectileExplosif.png");
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	textureProjectile = pResourcesLoader->textureProjectileExplosif;
 	spriteProjectile.setTexture(textureProjectile);
 	spriteProjectile.setScale(0.5,0.5);
 	spriteProjectile.setPosition(tCoord.posX,tCoord.posY);
@@ -27,7 +29,7 @@ void ProjectileExplosif::toucherEnnemi()
 		int posXPerso = perso->getCoordonnees().getPosX();
 		int posYPerso = perso->getCoordonnees().getPosY();
 
-		if((pow(posXPerso - posXTour,2)+pow(posYPerso - posYTour,2)) <= pow(this->rayonExplosion,2))
+		if((pow((float)(posXPerso - posXTour),2)+pow((float)(posYPerso - posYTour),2)) <= pow((float)(this->rayonExplosion),2))
 		{
 			perso->perdrePV(this->dommages);
 		}

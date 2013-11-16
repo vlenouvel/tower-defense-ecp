@@ -31,7 +31,7 @@ Personnage* CompCiblZone::cibler(std::vector<Personnage*>* ciblesPossibles, std:
 			double ycible= (*ciblesPossibles)[compteur]-> getCoordonnees().getPosY();
 			double xvoisin= (*touslespersonnages)[i]-> getCoordonnees().getPosX();
 			double yvoisin= (*touslespersonnages)[i]-> getCoordonnees().getPosY();
-			if ((pow((xcible-xvoisin),2)+pow((ycible-yvoisin),2))< pow(range,2))
+			if ((pow((float)(xcible-xvoisin),2)+pow((float)(ycible-yvoisin),2))< pow((float)range,2))
 			{
 					nombredevoisins[compteur]++;
 			}
