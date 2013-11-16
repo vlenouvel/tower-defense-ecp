@@ -108,61 +108,94 @@ bool Personnage::trouverChemin(Carte * pCarte){
 	multimap<int,Case*> listeAParcourir;
 	multimap<int,Case*>::iterator myIterator;
 	cout << "check1.1" << endl;
-	Case * pEntree = pCarte->imageCarte[coordonnees.getPosX()][coordonnees.getPosY()];
-	Case * pSortie = pCarte->imageCarte[20][1];
+	Case * pEntree = pCarte->imageCarte[(int)floor((float)coordonnees.getPosX()/40)][(int)floor((float)coordonnees.getPosY()/40)];
+	Case * pSortie = pCarte->pCaseSortie;
+	cout << coordonnees.getPosX() << endl;
+	cout << coordonnees.getPosY() << endl;
 	cout << "check1.2" << endl;
 	cout << pEntree->heuristique << endl;
 	listeAParcourir.insert(pair<int,Case*>(pEntree->heuristique,pEntree));
 	cout << "check2" << endl;
-	//boucle principale de l'algo. L'algo s'arrete dans deux cas : soit on atteint la sortie, soit on ne l'atteint pas et dans ce cas,
+	//boucle principale de l'algo. L'algo s'arrete dans deux cas : soit on atteint la sortie, soit on ne l'atteint pas et dans ce cas, 
 	//la liste a parcourir est vide
 	int X;
 	int Y;
 	while (!listeAParcourir.empty()){
+
+		//for (int i=0; i <sizeof(listeAParcourir);i++){
+
 		myIterator = listeAParcourir.begin();
-		X = (myIterator->second)->coordonneesCase.getPosX();
-		Y = (myIterator->second)->coordonneesCase.getPosY();
+		X = (int)floor((float)(myIterator->second)->coordonneesCase.getPosX()/40);
+		Y = (int)floor((float)(myIterator->second)->coordonneesCase.getPosY()/40);
+		pCarte->imageCarte[X][Y]->caseParcourue = true;
+		cout << X << "     " << Y << endl;
 		//on etudie le nord, le sud, l'ouest et l'est par rapport � X,Y
 		//nord
 		cout << "check2.2" << endl;
-		if (((pCarte->imageCarte[X][Y-1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y-1])->caseOccupee == false)){
-			if (((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
+		if (((pCarte->imageCarte[X][Y-1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y-1])->caseOccupee == false)&&(Y>0)){
+			cout << "check nord 1" << endl;
+			if (((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
+				cout << "pas possible" << endl;
 				return true;
 			}
-			(pCarte->imageCarte[X][Y-1])->distanceEntree = abs((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX()- (pEntree->coordonneesCase).getPosX()) + abs((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosY()- (pEntree->coordonneesCase).getPosY());
+			cout << "check nord 1.1" << endl;
+			(pCarte->imageCarte[X][Y-1])->distanceEntree = abs((int)floor((float)(pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX()/40)-(int)floor((float)(pEntree->coordonneesCase).getPosX()/40)) + abs((int)floor((float)(pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosY()/40)-(int)floor((float)(pEntree->coordonneesCase).getPosY()/40));
+			cout << (pCarte->imageCarte[X][Y-1])->distanceEntree << endl;
 			(pCarte->imageCarte[X][Y-1])->caseParcourue = true;
-			listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X][Y-1])->distanceEntree + (pCarte->imageCarte[X][Y-1])->heuristique,(pCarte->imageCarte[X][Y-1])));
+			cout << (pCarte->imageCarte[X][Y-1])->caseParcourue << endl;
+			cout << (pCarte->imageCarte[X][Y-1])->distanceEntree + (pCarte->imageCarte[X][Y-1])->heuristique << endl;
+			listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X][Y-1])->distanceEntree + (pCarte->imageCarte[X][Y-1])->heuristique,pCarte->imageCarte[X][Y-1]));
+			cout << "check nord 1.4" << endl;
 		}
 		//sud
-		if (((pCarte->imageCarte[X][Y+1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y+1])->caseOccupee == false)){
-			if (((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
+		if (((pCarte->imageCarte[X][Y+1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y+1])->caseOccupee == false)&&(Y<sizeof(pCarte->imageCarte))){
+			cout << "check sud 1" << endl;
+			if (((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
+				cout << "pas possible" << endl;
 				return true;
 			}
-			(pCarte->imageCarte[X][Y+1])->distanceEntree = abs((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX()- (pEntree->coordonneesCase).getPosX()) + abs((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosY()- (pEntree->coordonneesCase).getPosY());
+			cout << "check sud 1.1" << endl;
+			(pCarte->imageCarte[X][Y+1])->distanceEntree = abs((int)floor((float)(pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX()/40)-(int)floor((float)(pEntree->coordonneesCase).getPosX()/40)) + abs((int)floor((float)(pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosY()/40)-(int)floor((float)(pEntree->coordonneesCase).getPosY()/40));
+			cout << "check sud 1.2" << endl;
 			(pCarte->imageCarte[X][Y+1])->caseParcourue = true;
+			cout << "check sud 1.3" << endl;
 			listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X][Y+1])->distanceEntree + (pCarte->imageCarte[X][Y+1])->heuristique,(pCarte->imageCarte[X][Y+1])));
+			cout << "check sud 1.4" << endl;
 		}
 		//ouest
-		if (((pCarte->imageCarte[X-1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X-1][Y])->caseOccupee == false)){
-			if (((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
+		if (((pCarte->imageCarte[X-1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X-1][Y])->caseOccupee == false)&&(X>0)){
+			cout << "check ouest 1" << endl;
+			if (((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
+				cout << "pas possible" << endl;
 				return true;
 			}
-			(pCarte->imageCarte[X-1][Y])->distanceEntree = abs((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX()- (pEntree->coordonneesCase).getPosX()) + abs((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosY()- (pEntree->coordonneesCase).getPosY());
+			cout << "check ouest 1.1" << endl;
+			(pCarte->imageCarte[X-1][Y])->distanceEntree = abs((int)floor((float)(pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX()/40)-(int)floor((float)(pEntree->coordonneesCase).getPosX()/40)) + abs((int)floor((float)(pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosY()/40)-(int)floor((float)(pEntree->coordonneesCase).getPosY()/40));
+			cout << "check ouest 1.2" << endl;
 			(pCarte->imageCarte[X-1][Y])->caseParcourue = true;
+			cout << "check ouest 1.3" << endl;
 			listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X-1][Y])->distanceEntree + (pCarte->imageCarte[X-1][Y])->heuristique,(pCarte->imageCarte[X-1][Y])));
+			cout << "check ouest 1.4" << endl;
 		}
 		//est
-		if (((pCarte->imageCarte[X+1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X+1][Y])->caseOccupee == false)){
-			if (((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())){
+		if (((pCarte->imageCarte[X+1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X+1][Y])->caseOccupee == false)&&(X<sizeof(pCarte->imageCarte[0]))){
+			cout << "check est 1" << endl;
+			if (((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
+				cout << "pas posible" << endl;
 				return true;
 			}
-			(pCarte->imageCarte[X+1][Y])->distanceEntree = abs((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX()- (pEntree->coordonneesCase).getPosX()) + abs((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosY()- (pEntree->coordonneesCase).getPosY());
+			cout << "check est 1.1" << endl;
+			(pCarte->imageCarte[X+1][Y])->distanceEntree = abs((int)floor((float)(pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX())-(int)floor((float)(pEntree->coordonneesCase).getPosX()/40)) + abs((int)floor((float)(pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosY()/40)-(int)floor((float)(pEntree->coordonneesCase).getPosY()/40));
+			cout << "check est 1.2" << endl;
 			(pCarte->imageCarte[X+1][Y])->caseParcourue = true;
+			cout << "check est 1.3" << endl;
 			listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X+1][Y])->distanceEntree + (pCarte->imageCarte[X+1][Y])->heuristique,(pCarte->imageCarte[X+1][Y])));
+			cout << "check est 1.4" << endl;
 		}
 		cout << "check3" << endl;
 		listeAParcourir.erase(myIterator);
 	}
+	cout << "bad very bad" << endl;
 	return false;
 }
 
