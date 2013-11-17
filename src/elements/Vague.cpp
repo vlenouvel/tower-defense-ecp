@@ -32,7 +32,6 @@ Vague::Vague(int niveau) {
 	}
 
 	// TODO A supprimer
-	std::cout << "Vague creee avec des personnages de Type : " << type << " et de niveau " << niveauType << std::endl;
 
 }
 
@@ -76,7 +75,6 @@ void Vague::genererPersonnage()
 	vector<Personnage*> pPerso = manager->getPersonnage();
 	int testVie = pPerso.back()->getVie();
 	int s = pPerso.size();
-	std::cout << "Taille du vecteur Personnage " << s << " personnages et vie du dernier perso =" << testVie <<std::endl;
 
 	nombrePersoRestant--;
 	if(nombrePersoRestant == 0)
@@ -85,7 +83,6 @@ void Vague::genererPersonnage()
 		delete this;
 	}
 
-	std::cout << "Fin Generer Perso" << endl;
 
 }
 
@@ -100,7 +97,6 @@ void Vague::agir()
 }
 
 Vague::~Vague() {
-	std::cout << "vague deleted : " << this << endl;
 	// TODO Auto-generated destructor stub
 }
 

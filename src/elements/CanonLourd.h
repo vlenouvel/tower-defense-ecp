@@ -18,6 +18,7 @@ public:
 	void dessiner(sf::RenderWindow & rWindow);
 
 private:
+	sf::Sound sonTirCanonLourd;
 	void attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles));
 	int rayonExplosion;
 	sf::Texture textureCanonLourd;

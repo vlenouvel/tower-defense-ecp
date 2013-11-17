@@ -34,6 +34,9 @@ public:
 	sf::Texture textureRessources;
 
 	sf::Music musique;
+	sf::SoundBuffer bufferCreationTour;
+	sf::SoundBuffer bufferTirTourAttaqueBasique;
+	sf::SoundBuffer bufferTirCanonLourd;
 
 	sf::Font police;
 };

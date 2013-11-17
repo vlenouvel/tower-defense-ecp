@@ -20,6 +20,7 @@ public:
 
 protected:
 	int niveau;
+	sf::Sound sonCreationTour;
 };
 
 #endif /* TOUR_H_ */
