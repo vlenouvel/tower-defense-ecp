@@ -185,15 +185,11 @@ void Personnage::ecrireChemin(Carte * pCarte){
 	X = (int)floor((float)trace->coordonneesCase.getPosX()/40);
 	Y = (int)floor((float)trace->coordonneesCase.getPosY()/40);
 	bool jeton;
-	while ((X != (int)floor((float)coordonnees.getPosX()/40))&&(Y != (int)floor((float)coordonnees.getPosY()/40))){
-		cout << X << "   "  << (int)floor((float)coordonnees.getPosX()/40) << "   " << Y << "   " << (int)floor((float)coordonnees.getPosY()/40) << endl;
+	cheminIterator = chemin.begin();
+	chemin.insert(cheminIterator, trace);
+	while ((X != (int)floor((float)coordonnees.getPosX()/40))||(Y != (int)floor((float)coordonnees.getPosY()/40))){
 		cheminIterator = chemin.begin();
-		chemin.insert(cheminIterator, trace);
 		jeton = true;
-		cout << pCarte->imageCarte[X-1][Y]->caseParcourue << "nord" << pCarte->imageCarte[X-1][Y]->distanceEntree << endl;
-		cout << pCarte->imageCarte[X+1][Y]->caseParcourue << "sud" << pCarte->imageCarte[X+1][Y]->distanceEntree << endl;
-		cout << pCarte->imageCarte[X][Y+1]->caseParcourue << "ouest " << pCarte->imageCarte[X][Y-1]->distanceEntree << endl;
-		cout << pCarte->imageCarte[X][Y-1]->caseParcourue << "est" << pCarte->imageCarte[X][Y+1]->distanceEntree << endl;
 		//nord
 		if ((Y>0)&&(jeton == true)){
 			if ((pCarte->imageCarte[X][Y - 1]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X][Y - 1]->caseParcourue == true)){
@@ -212,8 +208,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		}
 		//puis ouest
 		if ((X>0)&&(jeton == true)){
-			cout << pCarte->imageCarte[X-1][Y]->distanceEntree << "   " << pCarte->imageCarte[X][Y]->distanceEntree << endl;
-			system("pause");
 			if ((pCarte->imageCarte[X - 1][Y]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X - 1][Y]->caseParcourue == true)){
 				cout << "ouest" << endl;
 				trace = pCarte->imageCarte[X - 1][Y];
@@ -228,11 +222,12 @@ void Personnage::ecrireChemin(Carte * pCarte){
 				jeton = false;
 			}
 		}
+		chemin.insert(cheminIterator, trace);
 		X = (int)floor((float)trace->coordonneesCase.getPosX()/40);
 		Y = (int)floor((float)trace->coordonneesCase.getPosY()/40);
 	}
 	cout << "cheminTrouve" << endl;
-	for (int i=1; i<sizeof(chemin);i++){
+	for (int i=1; i<sizeof(chemin)+1;i++){
 		cout << (chemin[i]->coordonneesCase).getPosX() << "  " << (chemin[i]->coordonneesCase).getPosY() << endl;
 	}
 	system("pause");
