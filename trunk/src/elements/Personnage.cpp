@@ -193,7 +193,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		//nord
 		if ((Y>0)&&(jeton == true)){
 			if ((pCarte->imageCarte[X][Y - 1]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X][Y - 1]->caseParcourue == true)){
-				cout << "nord" << endl;
 				trace = pCarte->imageCarte[X][Y - 1];
 				jeton = false;
 			}
@@ -201,7 +200,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		//puis sud
 		if((Y<sizeof(pCarte->imageCarte))&&(jeton == true)){
 			if ((pCarte->imageCarte[X][Y + 1]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X][Y + 1]->caseParcourue == true)){
-				cout << "sud" << endl;
 				trace = pCarte->imageCarte[X][Y + 1];
 				jeton = false;
 			}
@@ -209,7 +207,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		//puis ouest
 		if ((X>0)&&(jeton == true)){
 			if ((pCarte->imageCarte[X - 1][Y]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X - 1][Y]->caseParcourue == true)){
-				cout << "ouest" << endl;
 				trace = pCarte->imageCarte[X - 1][Y];
 				jeton = false;
 			}
@@ -217,7 +214,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		//et enfin est
 		if ((X<sizeof(pCarte->imageCarte[0]))&&(jeton == true)){
 			if ((pCarte->imageCarte[X + 1][Y]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X + 1][Y]->caseParcourue == true)){
-				cout << "est" << endl;
 				trace = pCarte->imageCarte[X + 1][Y];
 				jeton = false;
 			}
@@ -225,10 +221,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		chemin.insert(cheminIterator, trace);
 		X = (int)floor((float)trace->coordonneesCase.getPosX()/40);
 		Y = (int)floor((float)trace->coordonneesCase.getPosY()/40);
-	}
-	cout << "cheminTrouve" << endl;
-	for (int i=1; i < (sizeof(chemin)+3);i++){
-		cout << (chemin[i]->coordonneesCase).getPosX() << "  " << (chemin[i]->coordonneesCase).getPosY() << endl;
 	}
 	pCarte->nettoyerCarte();
 }
