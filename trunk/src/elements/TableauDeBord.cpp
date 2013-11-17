@@ -12,7 +12,7 @@ TableauDeBord::TableauDeBord() {
 	textureTableauDeBord.loadFromFile("resources/textures/textureResources.jpg");
 	spriteTableauDeBord.setTexture(textureTableauDeBord);
 	spriteTableauDeBord.setScale(1,3);
-	spriteTableauDeBord.setPosition(700,100);
+	spriteTableauDeBord.setPosition(720,100);
 	font.loadFromFile("resources/polices/Capture it.ttf");
 	texteTableauDeBord.setFont(font);
 	texteTableauDeBord.setCharacterSize(48);

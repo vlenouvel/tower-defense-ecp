@@ -15,14 +15,14 @@ Ressources::Ressources(Etat* tEtat) : pEtat(tEtat) {
 	textureRessources = pResourcesLoader->textureRessources;
 	spriteRessources.setTexture(textureRessources);
 	spriteRessources.setScale(1,0.4);
-	spriteRessources.setPosition(680,0);
+	spriteRessources.setPosition(715,0);
 	ressources = 0;
 	font = pResourcesLoader->police;
 	texteRessources.setFont(font);
-	texteRessources.setCharacterSize(16);
+	texteRessources.setCharacterSize(14);
 	texteRessources.setColor(sf::Color::White);
 	texteRessources.setStyle(sf::Text::Bold);
-	texteRessources.setPosition(680,0);
+	texteRessources.setPosition(715,0);
 	texteRessources.setFont(font);
 
 	// TODO Changer vies et argent de depart
@@ -44,7 +44,7 @@ void Ressources::dessiner(sf::RenderWindow &pWindow){
 	//ss <<  "Score:" << (long double)ressources->getScore() << "\n" + "Argent:" << (long double)ressources->getArgent() << "\n" << "Vie:" << (long double)ressources->getVie();
 	ss << "Score:";
 	ss << ressources->getScore();
-	ss << "\nArgent:";
+	ss << "\n$:";
 	ss << ressources->getArgent();
 	ss << "\nVie:";
 	ss << ressources->getVie();
