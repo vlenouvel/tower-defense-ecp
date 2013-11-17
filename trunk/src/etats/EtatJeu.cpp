@@ -80,16 +80,15 @@ void EtatJeu::handleEvent(sf::Event event)
 			else if ((event.mouseButton.x>760)&&(event.mouseButton.x<795)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				typeTourChoisi = 0;
 			}
-			else {
+			else{
 				Coordonnees coordonneesTour((int)event.mouseButton.x,(int)event.mouseButton.y);
 				bool autorisation = true;
 				if (!manager->getPersonnage().empty()){
-					for (int i=0; i< sizeof(manager->getPersonnage());i++){
-						cout << "bug ?" << endl;
-						autorisation = (manager->getPersonnage())[i]->trouverChemin(manager->getCarte());
-						cout << "bug repere" << endl;
+					for (int i=0; i< manager->getPersonnage().size();i++){
+						autorisation = ((manager->getPersonnage())[i])->trouverChemin(manager->getCarte());
 						manager->getCarte()->nettoyerCarte();
 						if (autorisation == false)
+							system("pause");
 							break;
 					}
 				}
@@ -110,7 +109,7 @@ void EtatJeu::handleEvent(sf::Event event)
 					if (!(manager->getPersonnage()).empty()){
 						for (int i=0; i< (manager->getPersonnage()).size();i++){
 							manager->getPersonnage()[i]->ecrireChemin(manager->getCarte());
-							manager->getPersonnage()[i]->ecrireChemin(manager->getCarte());
+							manager->getCarte()->nettoyerCarte();
 						}
 					}
 				}
