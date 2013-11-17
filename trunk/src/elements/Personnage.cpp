@@ -189,8 +189,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		cout << X << "   "  << (int)floor((float)coordonnees.getPosX()/40) << "   " << Y << "   " << (int)floor((float)coordonnees.getPosY()/40) << endl;
 		cheminIterator = chemin.begin();
 		chemin.insert(cheminIterator, trace);
-		X = (int)floor((float)trace->coordonneesCase.getPosX()/40);
-		Y = (int)floor((float)trace->coordonneesCase.getPosY()/40);
 		jeton = true;
 		cout << pCarte->imageCarte[X-1][Y]->caseParcourue << "nord" << pCarte->imageCarte[X-1][Y]->distanceEntree << endl;
 		cout << pCarte->imageCarte[X+1][Y]->caseParcourue << "sud" << pCarte->imageCarte[X+1][Y]->distanceEntree << endl;
@@ -230,9 +228,11 @@ void Personnage::ecrireChemin(Carte * pCarte){
 				jeton = false;
 			}
 		}
+		X = (int)floor((float)trace->coordonneesCase.getPosX()/40);
+		Y = (int)floor((float)trace->coordonneesCase.getPosY()/40);
 	}
 	cout << "cheminTrouve" << endl;
-	for (int i=0; i<sizeof(chemin);i++){
+	for (int i=1; i<sizeof(chemin);i++){
 		cout << (chemin[i]->coordonneesCase).getPosX() << "  " << (chemin[i]->coordonneesCase).getPosY() << endl;
 	}
 	system("pause");
