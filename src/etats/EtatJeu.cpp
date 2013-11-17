@@ -34,7 +34,7 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	manager->addGenerateurVague(pGenerateur);
 
 	arriveCase.setSize(sf::Vector2f(40, 40));
-	arriveCase.setPosition(760,560);
+	arriveCase.setPosition(680,560);
 	arriveCase.setFillColor(sf::Color::Red);
 
 	tempsDisparitionErreur = sf::seconds((float)1);
@@ -107,7 +107,11 @@ void EtatJeu::handleEvent(sf::Event event)
 			else if ((event.mouseButton.x>760)&&(event.mouseButton.x<795)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				typeTourChoisi = 0;
 			}
-			else{
+			else if((event.mouseButton.x>680)&&(event.mouseButton.y>560)) {
+				setErreur("Vous ne pouvez pas construire sur la sortie !");
+			}
+			else if ((event.mouseButton.x<700)){
+
 				Coordonnees coordonneesTour((int)event.mouseButton.x,(int)event.mouseButton.y);
 				bool autorisation = true;
 				if (!manager->getPersonnage().empty()){
