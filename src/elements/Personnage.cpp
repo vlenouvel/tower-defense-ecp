@@ -35,14 +35,7 @@ void Personnage::avancer()
 			int abscissePerso = coordonnees.getPosX();
 			int ordonneePerso = coordonnees.getPosY();
 			int distanceCiblePerso = (int)sqrt((pow((float)abscisseCible - abscissePerso,2) + pow((float)ordonneeCible - ordonneePerso,2)));
-			cout << coordonnees.posX << endl;
-			cout << coordonnees.posY << endl;
-			cout << distanceCiblePerso << endl;
-			cout << imageVitesse << endl;
-			cout << (int)(476.3) << "   " << (int)(764.8) << endl;
 			if (distanceCiblePerso > imageVitesse){
-				cout << (int)floor((float)(abscisseCible - abscissePerso)*imageVitesse/distanceCiblePerso) << endl;
-				cout << (int)floor((float)(ordonneeCible - ordonneePerso)*imageVitesse/distanceCiblePerso) << endl;
 				coordonnees.setPosX(abscissePerso+(int)floor((float)(abscisseCible - abscissePerso)*imageVitesse/distanceCiblePerso));
 				coordonnees.setPosY(ordonneePerso+(int)floor((float)(ordonneeCible - ordonneePerso)*imageVitesse/distanceCiblePerso));
 				imageVitesse = 0;
@@ -53,9 +46,6 @@ void Personnage::avancer()
 				imageVitesse = distanceRestante;
 			}
 		}
-		cout << coordonnees.getPosX() << endl;
-		cout << coordonnees.getPosY() << endl;
-		system("pause");
 		spritePersonnage.setPosition(coordonnees.posX,coordonnees.posY);
 	}
 	else {
