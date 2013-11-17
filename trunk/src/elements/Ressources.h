@@ -22,6 +22,8 @@ public:
 	void gagnerArgent(int montant);
 	int getVie();
 	void perdreVie();
+	int getScore();
+	void augmenterScore(int nbPoint);
 
 private:
 	sf::Texture textureRessources;
@@ -31,6 +33,7 @@ private:
 
 	int argent;
 	int vie;
+	int score;
 };
 
 #endif /* RESSOURCES_H_ */

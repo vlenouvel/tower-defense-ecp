@@ -90,15 +90,19 @@ void Vague::genererPersonnage()
 
 void Vague::agir()
 {
+	std::cout << "V-" << endl;
 	if(horlogePop.getElapsedTime() >= tempsEntrePop)
 	{
+		std::cout << "V1" << endl;
 		genererPersonnage();
+		std::cout << "V2" << endl;
 		horlogePop.restart();
 	}
 
 }
 
 Vague::~Vague() {
+	std::cout << "vague deleted : " << this << endl;
 	// TODO Auto-generated destructor stub
 }
 

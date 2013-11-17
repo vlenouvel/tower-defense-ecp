@@ -26,6 +26,7 @@ Ressources::Ressources() {
 	// TODO Changer vies et argent de depart
 	vie = 20;
 	argent = 100;
+	score = 0;
 }
 
 Ressources::~Ressources() {
@@ -57,4 +58,12 @@ int Ressources::getVie() {
 
 void Ressources::perdreVie() {
 	vie = vie - 1;
+}
+
+int Ressources::getScore() {
+	return score;
+}
+
+void Ressources::augmenterScore(int nbPoint) {
+	score = score + nbPoint;
 }
