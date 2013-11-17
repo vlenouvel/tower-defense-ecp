@@ -32,3 +32,11 @@ void Carte::dessiner(sf::RenderWindow &pWindow){
 
 	pWindow.draw(spriteCarte);
 }
+
+void Carte::nettoyerCarte(){
+	for (int i = 0; i<20; i++){
+		for (int j = 0; j<15; i++){
+			imageCarte[i][j]->caseParcourue = false;
+		}
+	}
+}

@@ -79,6 +79,7 @@ void EtatJeu::handleEvent(sf::Event event)
 				if (!manager->getPersonnage().empty()){
 					for (int i=0; i< (manager->getPersonnage()).size();i++){
 						autorisation = (manager->getPersonnage())[i]->trouverChemin(manager->getCarte());
+						manager->getCarte()->nettoyerCarte();
 						if (autorisation == false)
 							break;
 					}
