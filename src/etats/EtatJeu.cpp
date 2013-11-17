@@ -112,18 +112,22 @@ void EtatJeu::handleEvent(sf::Event event)
 			}
 			else if ((event.mouseButton.x<700)){
 
-				Coordonnees coordonneesTour((int)event.mouseButton.x,(int)event.mouseButton.y);
 				bool autorisation = true;
+				int a = (int)floor((float)event.mouseButton.x/40);
+				int b = (int)floor((float)event.mouseButton.y/40);
+				(manager->getCarte())->imageCarte[a][b]->caseOccupee = true;
 				if (!manager->getPersonnage().empty()){
 					for (int i=0; i< manager->getPersonnage().size();i++){
 						autorisation = ((manager->getPersonnage())[i])->trouverChemin(manager->getCarte());
 						manager->getCarte()->nettoyerCarte();
-						if (autorisation == false)
+						if (autorisation == false){
 							break;
+						}
 					}
 				}
 				// TODO Mettre les bons prix de tours
 				if (autorisation == true){
+					Coordonnees coordonneesTour((int)event.mouseButton.x,(int)event.mouseButton.y);
 					switch(typeTourChoisi){
 						case 0:{
 							int prix = 1;
@@ -148,9 +152,6 @@ void EtatJeu::handleEvent(sf::Event event)
 							break;
 						}
 					}
-					int a = (int)floor((float)coordonneesTour.getPosX()/40);
-					int b = (int)floor((float)coordonneesTour.getPosY()/40);
-					(manager->getCarte())->imageCarte[a][b]->caseOccupee = true;
 					if (!(manager->getPersonnage()).empty()){
 						for (int i=0; i< (manager->getPersonnage()).size();i++){
 							manager->getPersonnage()[i]->trouverChemin(manager->getCarte());
@@ -158,6 +159,8 @@ void EtatJeu::handleEvent(sf::Event event)
 						}
 					}
 				}
+				else
+					(manager->getCarte())->imageCarte[a][b]->caseOccupee = false;
 			}
 		}
 	}
