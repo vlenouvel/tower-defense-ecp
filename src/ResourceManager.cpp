@@ -6,6 +6,7 @@
  */
 
 #include "ResourceManager.h"
+#include <iostream>
 
 // Pointeur vers l'unique instance du ResourceManager
 ResourceManager* managerPointeur = 0;
@@ -60,7 +61,6 @@ vector<Personnage*> ResourceManager::getPersonnage() {
 }
 
 void ResourceManager::removePersonnage(Personnage *entite){
-	// Remove the personnage
 	personnageConteneur.erase(remove(personnageConteneur.begin(), personnageConteneur.end(), entite), personnageConteneur.end());
 }
 

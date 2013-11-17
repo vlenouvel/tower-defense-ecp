@@ -27,7 +27,6 @@ void Personnage::agir()
 
 void Personnage::avancer()
 {
-	cout << "AVANCER" << this << endl;
 	if(!chemin.empty()){
 		float imageVitesse = (float)vitesse;
 		while (imageVitesse > 0){
@@ -35,18 +34,28 @@ void Personnage::avancer()
 			int ordonneeCible = chemin[0]->coordonneesCase.getPosY();
 			int abscissePerso = coordonnees.getPosX();
 			int ordonneePerso = coordonnees.getPosY();
-			float distanceCiblePerso = (pow((float)abscisseCible - abscissePerso,2) + pow((float)ordonneeCible - ordonneePerso,2));
-			if (distanceCiblePerso < vitesse){
-				coordonnees.setPosX((int)floor((abscisseCible - abscissePerso)/sqrt(distanceCiblePerso)));
-				coordonnees.setPosX((int)floor((ordonneeCible - ordonneePerso)/sqrt(distanceCiblePerso)));
+			int distanceCiblePerso = (int)sqrt((pow((float)abscisseCible - abscissePerso,2) + pow((float)ordonneeCible - ordonneePerso,2)));
+			cout << coordonnees.posX << endl;
+			cout << coordonnees.posY << endl;
+			cout << distanceCiblePerso << endl;
+			cout << imageVitesse << endl;
+			cout << (int)(476.3) << "   " << (int)(764.8) << endl;
+			if (distanceCiblePerso > imageVitesse){
+				cout << (int)floor((float)(abscisseCible - abscissePerso)*imageVitesse/distanceCiblePerso) << endl;
+				cout << (int)floor((float)(ordonneeCible - ordonneePerso)*imageVitesse/distanceCiblePerso) << endl;
+				coordonnees.setPosX(abscissePerso+(int)floor((float)(abscisseCible - abscissePerso)*imageVitesse/distanceCiblePerso));
+				coordonnees.setPosY(ordonneePerso+(int)floor((float)(ordonneeCible - ordonneePerso)*imageVitesse/distanceCiblePerso));
 				imageVitesse = 0;
 			}
 			else{
 				float distanceRestante = (float)vitesse - distanceCiblePerso;
 				chemin.erase(chemin.begin());
-				imageVitesse = imageVitesse - distanceCiblePerso;
+				imageVitesse = distanceRestante;
 			}
 		}
+		cout << coordonnees.getPosX() << endl;
+		cout << coordonnees.getPosY() << endl;
+		system("pause");
 		spritePersonnage.setPosition(coordonnees.posX,coordonnees.posY);
 	}
 	else {
@@ -56,7 +65,6 @@ void Personnage::avancer()
 
 void Personnage::perdrePV(int degat)
 {
-	cout << "PERDRE PV" << this << endl;
 
 	if(degat > armure){
 		vie -= (degat - armure);
@@ -69,8 +77,6 @@ void Personnage::perdrePV(int degat)
 
 void Personnage::mourir()
 {
-	cout << "MOURIR" << this << endl;
-
 	ResourceManager *manager = ResourceManager::getInstance();
 	manager->removePersonnage(this);
 
@@ -113,8 +119,6 @@ Personnage::~Personnage() {
 void Personnage::dessiner(sf::RenderWindow &pWindow){
 
 	pWindow.draw(spritePersonnage);
-	cout << "DESSINER" << this << endl;
-
 }
 
 int Personnage::getVie()
@@ -129,7 +133,6 @@ Coordonnees Personnage::getCoordonnees()
 
 // Cette fonction retourne une pair
 bool Personnage::trouverChemin(Carte * pCarte){
-	cout << "TROUVERPATH" << this << endl;
 
 	//on initialise la liste qui va contenir la suite de case a analyser avec la case d'entree
 	multimap<int,Case*> listeAParcourir;
@@ -137,9 +140,6 @@ bool Personnage::trouverChemin(Carte * pCarte){
 	
 	Case * pEntree = pCarte->imageCarte[(int)floor((float)coordonnees.getPosX()/40)][(int)floor((float)coordonnees.getPosY()/40)];
 	Case * pSortie = pCarte->pCaseSortie;
-	cout << coordonnees.getPosX() << endl;
-	cout << coordonnees.getPosY() << endl;
-	cout << pEntree->heuristique << endl;
 	listeAParcourir.insert(pair<int,Case*>(pEntree->heuristique,pEntree));
 	pCarte->imageCarte[(int)floor((float)coordonnees.getPosX()/40)][(int)floor((float)coordonnees.getPosY()/40)]->distanceEntree = 0;
 	//boucle principale de l'algo. L'algo s'arrete dans deux cas : soit on atteint la sortie, soit on ne l'atteint pas et dans ce cas, 
@@ -147,12 +147,10 @@ bool Personnage::trouverChemin(Carte * pCarte){
 	int X;
 	int Y;
 	while (!listeAParcourir.empty()){
-		cout << "BOUCLE TROUVER PATH" << endl;
 		myIterator = listeAParcourir.begin();
 		X = (int)floor((float)(myIterator->second)->coordonneesCase.getPosX()/40);
 		Y = (int)floor((float)(myIterator->second)->coordonneesCase.getPosY()/40);
 		pCarte->imageCarte[X][Y]->caseParcourue = true;
-		cout << "a" << endl;
 		//on etudie le nord, le sud, l'ouest et l'est par rapport � X,Y
 		//nord
 		//abs((int)floor((float)(pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX()/40)-(int)floor((float)(pEntree->coordonneesCase).getPosX()/40)) + abs((int)floor((float)(pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosY()/40)-(int)floor((float)(pEntree->coordonneesCase).getPosY()/40))
@@ -166,7 +164,6 @@ bool Personnage::trouverChemin(Carte * pCarte){
 				listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X][Y-1])->distanceEntree + (pCarte->imageCarte[X][Y-1])->heuristique,pCarte->imageCarte[X][Y-1]));
 			}
 		}
-		cout << "b" << endl;
 		//sud
 		//if(Y<sizeof(pCarte->imageCarte)){
 		if(Y < pCarte->imageCarteY -1) {
@@ -179,7 +176,6 @@ bool Personnage::trouverChemin(Carte * pCarte){
 				listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X][Y+1])->distanceEntree + (pCarte->imageCarte[X][Y+1])->heuristique,(pCarte->imageCarte[X][Y+1])));
 			}
 		}
-		cout << "c" << endl;
 		//ouest
 		if (X>0){
 			if (((pCarte->imageCarte[X-1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X-1][Y])->caseOccupee == false)){
@@ -191,26 +187,19 @@ bool Personnage::trouverChemin(Carte * pCarte){
 				listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X-1][Y])->distanceEntree + (pCarte->imageCarte[X-1][Y])->heuristique,(pCarte->imageCarte[X-1][Y])));
 			}
 		}
-		cout << "d" << endl;
 		//est
 		//if (X<sizeof(pCarte->imageCarte[0])){
 		if (X < pCarte->imageCarteX - 1) {
-			cout << "d1 - size :" << sizeof(pCarte->imageCarte[0]) << endl;
-			cout << "X:" << X << " et Y:" << Y << endl;
 			if (((pCarte->imageCarte[X+1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X+1][Y])->caseOccupee == false)){
-				cout << "d2" << endl;
 				(pCarte->imageCarte[X+1][Y])->distanceEntree = (pCarte->imageCarte[X][Y])->distanceEntree + 1;
 				(pCarte->imageCarte[X+1][Y])->caseParcourue = true;
 				if (((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){		
-					cout << "d3" << endl;
 					return true;
 				}
-				cout << "d4" << endl;
 
 				listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X+1][Y])->distanceEntree + (pCarte->imageCarte[X+1][Y])->heuristique,(pCarte->imageCarte[X+1][Y])));
 			}
 		}
-		cout << "e" << endl;
 		listeAParcourir.erase(myIterator);
 	}
 	return false;
@@ -230,11 +219,7 @@ void Personnage::ecrireChemin(Carte * pCarte){
 	bool jeton;
 	cheminIterator = chemin.begin();
 	chemin.insert(cheminIterator, trace);
-	cout << "t1" <<endl;
 	while ((X != (int)floor((float)coordonnees.getPosX()/40))||(Y != (int)floor((float)coordonnees.getPosY()/40))){
-		cout << "t2" << endl;
-		cout << "X:" << X << " - Y:" << Y << endl;
-		cout << (int)floor((float)coordonnees.getPosX()/40) << "-" << (int)floor((float)coordonnees.getPosY()/40) << endl;
 		cheminIterator = chemin.begin();
 		jeton = true;
 		//nord
@@ -243,7 +228,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 				trace = pCarte->imageCarte[X][Y - 1];
 				jeton = false;
 			}
-			cout << "nord" << endl;
 		}
 		//puis sud
 		//if((Y<sizeof(pCarte->imageCarte))&&(jeton == true)){
@@ -252,7 +236,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 				trace = pCarte->imageCarte[X][Y + 1];
 				jeton = false;
 			}
-			cout << "sud" << endl;
 		}
 		//puis ouest
 		if ((X>0)&&(jeton == true)){
@@ -260,7 +243,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 				trace = pCarte->imageCarte[X - 1][Y];
 				jeton = false;
 			}
-			cout << "ouest" << endl;
 		}
 		//et enfin est
 		//if ((X<sizeof(pCarte->imageCarte[0]))&&(jeton == true)){
@@ -269,12 +251,12 @@ void Personnage::ecrireChemin(Carte * pCarte){
 				trace = pCarte->imageCarte[X + 1][Y];
 				jeton = false;
 			}
-			cout << "est" << endl;
 		}
 		chemin.insert(cheminIterator, trace);
 		X = (int)floor((float)trace->coordonneesCase.getPosX()/40);
 		Y = (int)floor((float)trace->coordonneesCase.getPosY()/40);
 	}
+
 	pCarte->nettoyerCarte();
 }
 

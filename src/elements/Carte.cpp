@@ -38,6 +38,7 @@ void Carte::nettoyerCarte(){
 	for (int i = 0; i<20; i++){
 		for (int j = 0; j<15; j++){
 			imageCarte[i][j]->caseParcourue = false;
+			imageCarte[i][j]->distanceEntree = 0;
 		}
 	}
 }

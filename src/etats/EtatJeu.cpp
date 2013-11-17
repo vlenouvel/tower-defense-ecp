@@ -37,7 +37,6 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 }
 
 void EtatJeu::dessiner(sf::RenderWindow &pWindow){
-	cout << "JEU DESSINER "<< endl;
 
 	ResourceManager* manager = ResourceManager::getInstance();
 
@@ -69,10 +68,8 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 
 void EtatJeu::handleEvent(sf::Event event)
 {
-	cout << "JEU EVENT" << endl;
-
 	ResourceManager* manager = ResourceManager::getInstance();
-	if (event.type == sf::Event::MouseButtonPressed) {
+	/*if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
 			if ((event.mouseButton.x>710)&&(event.mouseButton.x<745)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				typeTourChoisi = 1;
@@ -116,31 +113,25 @@ void EtatJeu::handleEvent(sf::Event event)
 				}
 			}
 		}
-	}
+	}*/
 }
 
 void EtatJeu::agir() {
-	cout << "JEU AGIR" << endl;
 
 	ResourceManager *manager = ResourceManager::getInstance();
 
 	GenerateurVague *pGenerateurVague = manager->getGenerateurVague();
 	if(pGenerateurVague != 0)
 	{
-		cout << "if 1" << endl;
 		pGenerateurVague->agir();
 	}
-	cout << "2" << endl;
 
 	Vague *pVague = manager->getVague();
 	if(pVague != 0)
 	{
-		cout << "if 2 " << pVague << endl;
-
 		pVague->agir();
 	}
 
-	cout << "cout 3" << endl;
 
 	vector<Tour*> tourConteneur = manager->getTour();
 	if (!tourConteneur.empty()){
