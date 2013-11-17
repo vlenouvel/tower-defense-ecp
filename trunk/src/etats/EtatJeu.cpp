@@ -115,6 +115,7 @@ void EtatJeu::handleEvent(sf::Event event)
 				bool autorisation = true;
 				int a = (int)floor((float)event.mouseButton.x/40);
 				int b = (int)floor((float)event.mouseButton.y/40);
+				bool caseEstOccupee = (manager->getCarte())->imageCarte[a][b]->caseOccupee;
 				(manager->getCarte())->imageCarte[a][b]->caseOccupee = true;
 				if (!manager->getPersonnage().empty()){
 					for (int i=0; i< manager->getPersonnage().size();i++){
@@ -126,7 +127,7 @@ void EtatJeu::handleEvent(sf::Event event)
 					}
 				}
 				// TODO Mettre les bons prix de tours
-				if (autorisation == true){
+				if ((autorisation == true)&&(!caseEstOccupee)){
 					Coordonnees coordonneesTour((int)event.mouseButton.x,(int)event.mouseButton.y);
 					switch(typeTourChoisi){
 						case 0:{
@@ -158,6 +159,8 @@ void EtatJeu::handleEvent(sf::Event event)
 							manager->getPersonnage()[i]->ecrireChemin(manager->getCarte());
 						}
 					}
+				}
+				else if (caseEstOccupee){
 				}
 				else
 					(manager->getCarte())->imageCarte[a][b]->caseOccupee = false;
