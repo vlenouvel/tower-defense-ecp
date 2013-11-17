@@ -169,7 +169,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 		cout << "b" << endl;
 		//sud
 		//if(Y<sizeof(pCarte->imageCarte)){
-		if(Y < 14) {
+		if(Y < pCarte->imageCarteY -1) {
 			if (((pCarte->imageCarte[X][Y+1])->caseParcourue == false) && ((pCarte->imageCarte[X][Y+1])->caseOccupee == false)){
 				(pCarte->imageCarte[X][Y+1])->distanceEntree = (pCarte->imageCarte[X][Y])->distanceEntree + 1;
 				(pCarte->imageCarte[X][Y+1])->caseParcourue = true;
@@ -194,7 +194,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 		cout << "d" << endl;
 		//est
 		//if (X<sizeof(pCarte->imageCarte[0])){
-		if (X < 19) {
+		if (X < pCarte->imageCarteX - 1) {
 			cout << "d1 - size :" << sizeof(pCarte->imageCarte[0]) << endl;
 			cout << "X:" << X << " et Y:" << Y << endl;
 			if (((pCarte->imageCarte[X+1][Y])->caseParcourue == false) && ((pCarte->imageCarte[X+1][Y])->caseOccupee == false)){
@@ -247,7 +247,7 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		}
 		//puis sud
 		//if((Y<sizeof(pCarte->imageCarte))&&(jeton == true)){
-		if((Y < 14)&&(jeton == true)) {
+		if((Y < pCarte->imageCarteY - 1)&&(jeton == true)) {
 			if ((pCarte->imageCarte[X][Y + 1]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X][Y + 1]->caseParcourue == true)){
 				trace = pCarte->imageCarte[X][Y + 1];
 				jeton = false;
@@ -264,7 +264,7 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		}
 		//et enfin est
 		//if ((X<sizeof(pCarte->imageCarte[0]))&&(jeton == true)){
-		if((X <19)&&(jeton == true)) {
+		if((X < pCarte->imageCarteX - 1)&&(jeton == true)) {
 			if ((pCarte->imageCarte[X + 1][Y]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X + 1][Y]->caseParcourue == true)){
 				trace = pCarte->imageCarte[X + 1][Y];
 				jeton = false;

@@ -9,6 +9,7 @@
 #include "Carte.h"
 
 Carte::Carte() {
+
 	pCaseSortie = new Case(600,200);
 	for (int i=0; i<20; i++){
 		for (int j=0; j<15; j++){
