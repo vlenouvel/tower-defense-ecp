@@ -34,11 +34,10 @@ public:
 	virtual ~App();
 	void changerEtat(Etat *pNouvelEtat);
 	sf::Clock horloge;
-
+	Etat *pEtatActuel;
 
 private:
 	sf::RenderWindow window;
-	Etat *pEtatActuel;
 };
 
 #endif /* APP_H_ */

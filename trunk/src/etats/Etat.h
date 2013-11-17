@@ -22,7 +22,6 @@ public:
 	virtual void handleEvent(sf::Event event);
 	virtual void agir(void);
 	virtual void dessiner(sf::RenderWindow &pWindow);
-
 protected:
 	App* pApp;
 };

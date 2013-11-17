@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <utility>
 
+using namespace std;
 class Personnage: public ElementGraphique, public ElementJeu {
 public:
 	Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord);

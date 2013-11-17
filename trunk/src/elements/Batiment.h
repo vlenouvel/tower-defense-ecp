@@ -19,7 +19,7 @@ public:
 	virtual ~Batiment();
 	void dessiner(sf::RenderWindow &pWindow);
 	Coordonnees coordonnees;
-	bool verifierAchat();
+	static bool verifierAchat(int prixBat);
 
 protected:
 	int prix;

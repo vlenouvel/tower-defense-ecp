@@ -109,6 +109,8 @@ void Personnage::arriver() {
 
 	manager->getRessources()->perdreVie();
 
+	/*EtatJeu* etat = (EtatJeu*)manager->getEtatJeu();
+	etat->setErreur("Vous avez perdu une vie !");*/
 	manager->removePersonnage(this);
 
 	// Also remove all projectiles going for that personnage

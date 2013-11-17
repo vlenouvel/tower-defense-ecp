@@ -10,7 +10,7 @@
 #include <sstream>
 #include "../ResourceManager.h"
 
-Ressources::Ressources() {
+Ressources::Ressources(Etat* tEtat) : pEtat(tEtat) {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureRessources = pResourcesLoader->textureRessources;
 	spriteRessources.setTexture(textureRessources);
@@ -48,6 +48,7 @@ void Ressources::dessiner(sf::RenderWindow &pWindow){
 	ss << ressources->getArgent();
 	ss << "\nVie:";
 	ss << ressources->getVie();
+
 	texteRessources.setString(ss.str());
 	pWindow.draw(spriteRessources);
 	//texteRessources.setString(to_string(ressources));
