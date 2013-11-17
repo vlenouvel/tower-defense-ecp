@@ -84,8 +84,10 @@ void EtatJeu::handleEvent(sf::Event event)
 				Coordonnees coordonneesTour((int)event.mouseButton.x,(int)event.mouseButton.y);
 				bool autorisation = true;
 				if (!manager->getPersonnage().empty()){
-					for (int i=0; i< (manager->getPersonnage()).size();i++){
+					for (int i=0; i< sizeof(manager->getPersonnage());i++){
+						cout << "bug ?" << endl;
 						autorisation = (manager->getPersonnage())[i]->trouverChemin(manager->getCarte());
+						cout << "bug repere" << endl;
 						manager->getCarte()->nettoyerCarte();
 						if (autorisation == false)
 							break;
