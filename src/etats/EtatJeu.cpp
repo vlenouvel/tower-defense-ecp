@@ -16,21 +16,18 @@ using namespace std;
 EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	ResourceManager* manager = ResourceManager::getInstance();
 
+	//manager->addEtatJeu(this);
+
 	// Creation de la carte
 	carte = new Carte();
-	pRessources = new Ressources();
-	manager->addRessources(pRessources);
 	pTableauDeBord = new TableauDeBord();
 	manager->addCarte(carte);
 
-
+	pRessources = new Ressources(this);
+	manager->addRessources(pRessources);
 
 	typeTourChoisi = 0;
 
-	// TODO supprimer code ici
-	//Coordonnees coordonneesPersonnage(200,200);
-	//pPersonnage = new Personnage(1,1,1,coordonneesPersonnage);
-	//manager->addPersonnage(pPersonnage);
 
 	//Creation du generateur de vague
 	GenerateurVague* pGenerateur = new GenerateurVague();
@@ -40,6 +37,26 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	arriveCase.setPosition(760,560);
 	arriveCase.setFillColor(sf::Color::Red);
 
+	tempsDisparitionErreur = sf::seconds((float)1);
+
+
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+
+	erreur = "";
+	font = pResourcesLoader->police;
+	texteErreur.setFont(font);
+	texteErreur.setCharacterSize(16);
+	texteErreur.setColor(sf::Color::Red);
+	texteErreur.setStyle(sf::Text::Bold);
+	texteErreur.setPosition(300,250);
+
+}
+
+void EtatJeu::setErreur(string erreurMsg) {
+
+	erreur = erreurMsg;
+	tempsErreur = pApp->horloge.getElapsedTime();
+	cout << erreur << endl;
 }
 
 void EtatJeu::dessiner(sf::RenderWindow &pWindow){
@@ -47,6 +64,7 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 	ResourceManager* manager = ResourceManager::getInstance();
 
 	carte->dessiner(pWindow);
+	manager->getGenerateurVague()->dessiner(pWindow);
 	pRessources->dessiner(pWindow);
 	pTableauDeBord->dessiner(pWindow);
 
@@ -72,12 +90,18 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 			projectileConteneur[i]->dessiner(pWindow);
 		}
 	}
+
+	texteErreur.setString(erreur);
+	if(pApp->horloge.getElapsedTime() - tempsErreur < tempsDisparitionErreur) {
+		pWindow.draw(texteErreur);
+	}
 }
 
 void EtatJeu::handleEvent(sf::Event event)
 {
 	ResourceManager* manager = ResourceManager::getInstance();
 	if (event.type == sf::Event::MouseButtonPressed) {
+		cout << "event" <<endl;
 		if (event.mouseButton.button == sf::Mouse::Left) {
 			if ((event.mouseButton.x>710)&&(event.mouseButton.x<745)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				typeTourChoisi = 1;
@@ -96,16 +120,31 @@ void EtatJeu::handleEvent(sf::Event event)
 							break;
 					}
 				}
+				// TODO Mettre les bons prix de tours
 				if (autorisation == true){
 					switch(typeTourChoisi){
 						case 0:{
-							TourAttaqueBasique* ptourTest = new TourAttaqueBasique(1,coordonneesTour);
-							manager->addTour((Tour*) ptourTest);}
+							int prix = 1;
+							if(Batiment::verifierAchat(prix)) {
+								TourAttaqueBasique* ptourTest = new TourAttaqueBasique(1,coordonneesTour);
+								manager->addTour((Tour*) ptourTest);
+							}
+							else {
+								setErreur("Pas assez d'argent !");
+							}
 							break;
+						}
 						case 1:{
-							CanonLourd* ptourTest = new CanonLourd(5,coordonneesTour);
-							manager->addTour((Tour*) ptourTest);}
+							int prix = 50;
+							if(Batiment::verifierAchat(prix)) {
+								CanonLourd* ptourTest = new CanonLourd(prix,coordonneesTour);
+								manager->addTour((Tour*) ptourTest);
+							}
+							else {
+								setErreur("Pas assez d'argent !");
+							}
 							break;
+						}
 					}
 					int a = (int)floor((float)coordonneesTour.getPosX()/40);
 					int b = (int)floor((float)coordonneesTour.getPosY()/40);
@@ -167,7 +206,6 @@ void EtatJeu::agir() {
 		cout << "Vous avez perdu !" << endl;
 		pApp->changerEtat(etatmort);
 	}
-
 
 }
 

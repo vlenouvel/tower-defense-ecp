@@ -17,11 +17,12 @@
 
 using namespace std;
 
-// Forward Declaration to avoid includes issues
+// Forward Declaration
 class Projectile;
 class Personnage;
 class GenerateurVague;
 class Vague;
+class EtatJeu;
 
 class ResourceManager {
 
@@ -38,6 +39,7 @@ public:
     void addVague(Vague* vague);
     void addRessources(Ressources* ressources);
     void addGenerateurVague(GenerateurVague* generateurVague);
+    //void addEtatJeu(EtatJeu* EtatJeu);
 
     // Remove
 
@@ -53,6 +55,7 @@ public:
     Vague* getVague();
     Ressources* getRessources();
     GenerateurVague* getGenerateurVague();
+    //EtatJeu* getEtatJeu();
 
     vector<Tour*> tourConteneur;
     vector<Projectile*> projectileConteneur;
@@ -62,6 +65,8 @@ public:
     Vague* vaguePointeur;
     Ressources* ressourcesPointeur;
     GenerateurVague* vagueGenerateurPointeur;
+    //EtatJeu* pEtatJeu;
+
 private:
     ResourceManager();
 

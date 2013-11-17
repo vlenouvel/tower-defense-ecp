@@ -22,12 +22,12 @@ void Batiment::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }
 
-bool Batiment::verifierAchat() {
+bool Batiment::verifierAchat(int prixBat) {
 	ResourceManager* manager = ResourceManager::getInstance();
 
 	int argent = manager->getRessources()->getArgent();
 
-	if (argent < prix) {
+	if (argent < prixBat) {
 		return false;
 	}
 

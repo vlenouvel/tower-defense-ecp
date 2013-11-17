@@ -9,11 +9,12 @@
 #define RESSOURCES_H_
 
 #include "ElementGraphique.h"
+#include "../etats/Etat.h"
 #include <cmath>
 
 class Ressources: public ElementGraphique {
 public:
-	Ressources();
+	Ressources(Etat* pEtat);
 	virtual ~Ressources();
 	void dessiner(sf::RenderWindow &pWindow);
 	double ressources;
@@ -34,6 +35,8 @@ private:
 	int argent;
 	int vie;
 	int score;
+
+	Etat* pEtat;
 };
 
 #endif /* RESSOURCES_H_ */
