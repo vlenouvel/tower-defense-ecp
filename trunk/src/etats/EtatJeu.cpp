@@ -48,7 +48,7 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	texteErreur.setCharacterSize(16);
 	texteErreur.setColor(sf::Color::Red);
 	texteErreur.setStyle(sf::Text::Bold);
-	texteErreur.setPosition(300,250);
+	texteErreur.setPosition(200,250);
 
 }
 
@@ -125,6 +125,12 @@ void EtatJeu::handleEvent(sf::Event event)
 							break;
 						}
 					}
+				}
+				if(autorisation == false) {
+					setErreur("Vous ne pouvez pas bloquer le passage des ennemis !");
+				}
+				if(caseEstOccupee) {
+					setErreur("Il y a deja une tour sur cette case");
 				}
 				// TODO Mettre les bons prix de tours
 				if ((autorisation == true)&&(!caseEstOccupee)){
