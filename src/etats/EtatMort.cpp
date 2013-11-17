@@ -22,7 +22,9 @@ EtatMort::EtatMort(App* tApp) : Etat(tApp) {
 
 	int score = manager->getRessources()->getScore();
 	text2.setFont(font);
-	text2.setString("Votre score est de : " + to_string((long double)score));
+	ostringstream ss;
+	ss << (long double)score;
+	text2.setString("Votre score est de : " + ss.str());
 	text2.setCharacterSize(32);
 	text2.setColor(sf::Color::White);
 	text2.setStyle(sf::Text::Bold);
