@@ -227,10 +227,9 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		Y = (int)floor((float)trace->coordonneesCase.getPosY()/40);
 	}
 	cout << "cheminTrouve" << endl;
-	for (int i=1; i<sizeof(chemin)+1;i++){
+	for (int i=1; i < (sizeof(chemin)+3);i++){
 		cout << (chemin[i]->coordonneesCase).getPosX() << "  " << (chemin[i]->coordonneesCase).getPosY() << endl;
 	}
-	system("pause");
 	pCarte->nettoyerCarte();
 }
 
