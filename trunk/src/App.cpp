@@ -117,7 +117,10 @@ void App::render() {
 
 void App::changerEtat(Etat *pNouvelEtat)
 {
+	cout << "E1" << endl;
 	delete pEtatActuel;
+	cout << "E2" << endl;
 	pEtatActuel = pNouvelEtat;
+	cout << "E3" << endl;
 }
 

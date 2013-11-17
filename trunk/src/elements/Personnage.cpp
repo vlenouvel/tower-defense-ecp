@@ -41,10 +41,19 @@ void Personnage::avancer()
 				coordonnees.setPosY(ordonneePerso+(int)floor((float)(ordonneeCible - ordonneePerso)*imageVitesse/distanceCiblePerso));
 				imageVitesse = 0;
 			}
-			else{
+
+			else {
 				float distanceRestante = (float)vitesse - distanceCiblePerso;
-				chemin.erase(chemin.begin());
-				imageVitesse = distanceRestante;
+
+				// TODO Checker bugfix ici !!
+				if (!chemin.empty()) {
+					chemin.erase(chemin.begin());
+					imageVitesse = distanceRestante;
+
+				}
+				else {
+					imageVitesse = 0;
+				}
 			}
 		}
 		spritePersonnage.setPosition(coordonnees.posX,coordonnees.posY);

@@ -36,6 +36,10 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	GenerateurVague* pGenerateur = new GenerateurVague();
 	manager->addGenerateurVague(pGenerateur);
 
+	arriveCase.setSize(sf::Vector2f(40, 40));
+	arriveCase.setPosition(760,560);
+	arriveCase.setFillColor(sf::Color::Red);
+
 }
 
 void EtatJeu::dessiner(sf::RenderWindow &pWindow){
@@ -45,6 +49,8 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 	carte->dessiner(pWindow);
 	pRessources->dessiner(pWindow);
 	pTableauDeBord->dessiner(pWindow);
+
+	pWindow.draw(arriveCase);
 
 	vector<Tour*> tourConteneur = manager->getTour();
 
@@ -131,6 +137,7 @@ void EtatJeu::agir() {
 	if(pVague != 0)
 	{
 		pVague->agir();
+		cout << "FIN VAGUE AGIR" << endl;
 	}
 
 
@@ -140,13 +147,18 @@ void EtatJeu::agir() {
 			tourConteneur[i]->agir();
 		}
 	}
+	cout << "FIN TOUR AGIR" << endl;
 
 	vector<Personnage*> personnageConteneur = manager->getPersonnage();
 	if (!personnageConteneur.empty()){
 		for(unsigned int i=0;i<personnageConteneur.size();++i){
+			cout << "A" << endl;
 			personnageConteneur[i]->agir();
+			cout << "B" << endl;
 		}
 	}
+
+	cout << "FIN PERSO AGIR" << endl;
 
 	vector<Projectile*> projectileConteneur = manager->getProjectile();
 	if (!projectileConteneur.empty()){
@@ -155,9 +167,17 @@ void EtatJeu::agir() {
 		}
 	}
 
+	cout << "FIN PROJECTILE AGIR" << endl;
+
 	if(manager->getRessources()->getVie() < 1) {
-		//	pApp->changerEtat(new EtatMort(pApp));
+
+		EtatMort* etatmort = new EtatMort(pApp);
+		cout << "Vous avez perdu !" << endl;
+		pApp->changerEtat(etatmort);
 	}
+
+	cout << "FIN CHECK VIE" << endl;
+
 }
 
 EtatJeu::~EtatJeu() {

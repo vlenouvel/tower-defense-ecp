@@ -53,8 +53,7 @@ public:
     Vague* getVague();
     Ressources* getRessources();
     GenerateurVague* getGenerateurVague();
-private:
-    ResourceManager();
+
     vector<Tour*> tourConteneur;
     vector<Projectile*> projectileConteneur;
     vector<Personnage*> personnageConteneur;
@@ -63,6 +62,9 @@ private:
     Vague* vaguePointeur;
     Ressources* ressourcesPointeur;
     GenerateurVague* vagueGenerateurPointeur;
+private:
+    ResourceManager();
+
 };
 
 #endif /* RESOURCEMANAGER_H_ */

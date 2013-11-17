@@ -38,6 +38,8 @@ public:
 	Personnage * pPersonnage;
 private:
 	App* pApp;
+	sf::RectangleShape arriveCase;
+
 };
 
 #endif /* ETATJEU_H_ */
