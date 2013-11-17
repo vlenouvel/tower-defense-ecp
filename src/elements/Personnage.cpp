@@ -36,8 +36,8 @@ void Personnage::avancer()
 			int ordonneePerso = coordonnees.getPosY();
 			int distanceCiblePerso = (int)sqrt((pow((float)abscisseCible - abscissePerso,2) + pow((float)ordonneeCible - ordonneePerso,2)));
 			if (distanceCiblePerso > imageVitesse){
-				coordonnees.setPosX(abscissePerso+(int)floor((float)(abscisseCible - abscissePerso)*imageVitesse/distanceCiblePerso));
-				coordonnees.setPosY(ordonneePerso+(int)floor((float)(ordonneeCible - ordonneePerso)*imageVitesse/distanceCiblePerso));
+				coordonnees.setPosX(abscissePerso+(int)((float)(abscisseCible - abscissePerso)*imageVitesse/distanceCiblePerso+0.5));
+				coordonnees.setPosY(ordonneePerso+(int)((float)(ordonneeCible - ordonneePerso)*imageVitesse/distanceCiblePerso+0.5));
 				imageVitesse = 0;
 			}
 
