@@ -18,7 +18,6 @@ Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) 
 	spritePersonnage.setPosition(tCoord.posX,tCoord.posY);
 
 	vieInitial = vie;
-	cout << "PERSO CREE" << this << endl;
 }
 
 void Personnage::agir()
@@ -225,7 +224,6 @@ bool Personnage::trouverChemin(Carte * pCarte){
 }
 
 void Personnage::ecrireChemin(Carte * pCarte){
-	cout << "ECRIRE CHEMIN" << this << endl;
 	//maintenant que carteRecherche est remplie, on definit le chemin a prendre
 	chemin.clear();
 	Case * trace;

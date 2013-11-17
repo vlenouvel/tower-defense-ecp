@@ -49,6 +49,9 @@ void ResourcesLoader::ChargerTextures() {
 // Charge tous les sons
 void ResourcesLoader::ChargerSons() {
 	musique.openFromFile("resources/sons/musicTest.ogg");
+	bufferCreationTour.loadFromFile("resources/sons/creationTour.ogg");
+	bufferTirTourAttaqueBasique.loadFromFile("resources/sons/tirTourAttaqueBasique.ogg");
+	bufferTirCanonLourd.loadFromFile("resources/sons/tirCanonLourd.ogg");
 }
 // Charge toutes les polices
 void ResourcesLoader::ChargerPolices() {

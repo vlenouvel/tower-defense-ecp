@@ -114,7 +114,6 @@ void EtatJeu::handleEvent(sf::Event event)
 						for (int i=0; i< (manager->getPersonnage()).size();i++){
 							manager->getPersonnage()[i]->trouverChemin(manager->getCarte());
 							manager->getPersonnage()[i]->ecrireChemin(manager->getCarte());
-							manager->getCarte()->nettoyerCarte();
 						}
 					}
 				}
@@ -137,7 +136,6 @@ void EtatJeu::agir() {
 	if(pVague != 0)
 	{
 		pVague->agir();
-		cout << "FIN VAGUE AGIR" << endl;
 	}
 
 
@@ -147,18 +145,13 @@ void EtatJeu::agir() {
 			tourConteneur[i]->agir();
 		}
 	}
-	cout << "FIN TOUR AGIR" << endl;
 
 	vector<Personnage*> personnageConteneur = manager->getPersonnage();
 	if (!personnageConteneur.empty()){
 		for(unsigned int i=0;i<personnageConteneur.size();++i){
-			cout << "A" << endl;
 			personnageConteneur[i]->agir();
-			cout << "B" << endl;
 		}
 	}
-
-	cout << "FIN PERSO AGIR" << endl;
 
 	vector<Projectile*> projectileConteneur = manager->getProjectile();
 	if (!projectileConteneur.empty()){
@@ -167,7 +160,6 @@ void EtatJeu::agir() {
 		}
 	}
 
-	cout << "FIN PROJECTILE AGIR" << endl;
 
 	if(manager->getRessources()->getVie() < 1) {
 
@@ -176,7 +168,6 @@ void EtatJeu::agir() {
 		pApp->changerEtat(etatmort);
 	}
 
-	cout << "FIN CHECK VIE" << endl;
 
 }
 

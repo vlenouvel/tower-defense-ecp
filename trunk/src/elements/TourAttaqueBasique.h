@@ -18,6 +18,7 @@ public:
 	void dessiner(sf::RenderWindow & rWindow);
 
 private:
+	sf::Sound sonTirTourAttaqueBasique;
 	void attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles));
 	sf::Texture textureTourAttaqueBasique;
 	sf::Sprite spriteTourAttaqueBasique;

@@ -7,8 +7,12 @@
 
 #include "Tour.h"
 #include "../ResourceManager.h"
+#include "../ResourcesLoader.h"
 
 Tour::Tour(int tPrix, Coordonnees tCoord) : Batiment(tPrix, tCoord) , niveau(1) {
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	sonCreationTour.setBuffer(pResourcesLoader->bufferCreationTour);
+	sonCreationTour.play();
 }
 
 void Tour::monterNiveau()

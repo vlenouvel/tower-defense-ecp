@@ -20,6 +20,8 @@ CanonLourd::CanonLourd(int tPrix, Coordonnees tCoord) : TourAttaque(tPrix, tCoor
 	spriteCanonLourd.setTexture(textureCanonLourd);
 	spriteCanonLourd.setScale(0.5,0.5);
 	spriteCanonLourd.setPosition(floor(float(tCoord.posX/40))*40,floor(float(tCoord.posY/40))*40);
+	sonTirCanonLourd.setBuffer(pResourcesLoader->bufferTirCanonLourd);
+	sonTirCanonLourd.setVolume(40);
 }
 
 void CanonLourd::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles))
@@ -29,6 +31,7 @@ void CanonLourd::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*>
 	Coordonnees coord = this->coordonnees;
 	ProjectileExplosif *projo = new ProjectileExplosif(coord, cible, attackDamage, rayonExplosion);
 	manager->addProjectile((Projectile*)projo);
+	sonTirCanonLourd.play();
 }
 
 CanonLourd::~CanonLourd() {

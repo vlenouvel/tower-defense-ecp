@@ -52,7 +52,7 @@ void App::jouer() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	sf::Music * music;
 	music = &(pResourcesLoader->musique);
-	//music->play();
+	music->play();
 
 	
 	// lance l'horloge
@@ -117,10 +117,7 @@ void App::render() {
 
 void App::changerEtat(Etat *pNouvelEtat)
 {
-	cout << "E1" << endl;
 	delete pEtatActuel;
-	cout << "E2" << endl;
 	pEtatActuel = pNouvelEtat;
-	cout << "E3" << endl;
 }
 

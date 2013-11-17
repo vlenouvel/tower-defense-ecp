@@ -21,7 +21,7 @@ Carte::Carte() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureCarte = pResourcesLoader->textureCarte;
 	spriteCarte.setTexture(textureCarte);
-	spriteCarte.setScale(0.88,0.88);
+	spriteCarte.setScale(0.75,0.75);
 
 }
 

@@ -20,7 +20,6 @@ void GenerateurVague::agir()
 {
 	if(horlogeVague.getElapsedTime() >= tempsEntreVague)
 	{
-		std::cout << "New Vague generee" << std::endl;
 		horlogeVague.restart();
 		this->genererVague();
 	}

@@ -38,7 +38,7 @@ void Ressources::dessiner(sf::RenderWindow &pWindow){
 	ResourceManager* manager = ResourceManager::getInstance();
 
 	Ressources* ressources = manager->getRessources();
-	std::string scoreTexte = "Score:" + to_string(ressources->getScore()) + "\n" + "Argent:" + to_string(ressources->getArgent())+ "\n" + "Vie:" + to_string(ressources->getVie());
+	std::string scoreTexte = "Score:" + to_string((long double)ressources->getScore()) + "\n" + "Argent:" + to_string((long double)ressources->getArgent())+ "\n" + "Vie:" + to_string((long double)ressources->getVie());
 	texteRessources.setString(scoreTexte);
 	pWindow.draw(spriteRessources);
 	//texteRessources.setString(to_string(ressources));
