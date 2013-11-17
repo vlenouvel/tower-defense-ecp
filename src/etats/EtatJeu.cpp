@@ -64,6 +64,7 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 
 void EtatJeu::handleEvent(sf::Event event)
 {
+	cout << "check" << endl;
 	ResourceManager* manager = ResourceManager::getInstance();
 	if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
