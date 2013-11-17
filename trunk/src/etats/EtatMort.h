@@ -12,7 +12,7 @@
 #include "SFML/Window/Event.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "../etats/EtatMenu.h"
-
+#include <sstream>
 #include "../App.h"
 
 class EtatMort : public Etat {
