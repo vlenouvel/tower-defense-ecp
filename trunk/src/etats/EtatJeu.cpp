@@ -9,6 +9,8 @@
 #include <iostream>
 #include "../elements/Personnage.h"
 #include <cmath>
+#include "EtatMort.h"
+
 using namespace std;
 
 EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
@@ -85,18 +87,17 @@ void EtatJeu::handleEvent(sf::Event event)
 						autorisation = ((manager->getPersonnage())[i])->trouverChemin(manager->getCarte());
 						manager->getCarte()->nettoyerCarte();
 						if (autorisation == false)
-							system("pause");
 							break;
 					}
 				}
 				if (autorisation == true){
 					switch(typeTourChoisi){
 						case 0:{
-							TourAttaqueBasique* ptourTest = new TourAttaqueBasique(100,coordonneesTour);
+							TourAttaqueBasique* ptourTest = new TourAttaqueBasique(1,coordonneesTour);
 							manager->addTour((Tour*) ptourTest);}
 							break;
 						case 1:{
-							CanonLourd* ptourTest = new CanonLourd(100,coordonneesTour);
+							CanonLourd* ptourTest = new CanonLourd(5,coordonneesTour);
 							manager->addTour((Tour*) ptourTest);}
 							break;
 					}
@@ -152,6 +153,10 @@ void EtatJeu::agir() {
 		for(unsigned int i=0;i<projectileConteneur.size();++i){
 			projectileConteneur[i]->agir();
 		}
+	}
+
+	if(manager->getRessources()->getVie() < 1) {
+		//	pApp->changerEtat(new EtatMort(pApp));
 	}
 }
 

@@ -9,7 +9,9 @@
 #include "../ResourceManager.h"
 
 Batiment::Batiment(int tPrix, Coordonnees tCoord) : coordonnees(tCoord), prix(tPrix) {
+	ResourceManager* manager = ResourceManager::getInstance();
 
+	manager->getRessources()->perdreArgent(prix);
 }
 
 Batiment::~Batiment() {

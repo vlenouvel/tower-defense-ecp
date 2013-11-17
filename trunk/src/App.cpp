@@ -12,6 +12,7 @@
 #include "ResourceManager.h"
 #include "ResourcesLoader.h"
 
+
 using namespace std;
 
 ResourceManager* manager = ResourceManager::getInstance();

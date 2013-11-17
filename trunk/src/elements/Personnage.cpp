@@ -17,6 +17,7 @@ Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) 
 	spritePersonnage.setScale(0.5,0.5);
 	spritePersonnage.setPosition(tCoord.posX,tCoord.posY);
 
+	vieInitial = vie;
 	cout << "PERSO CREE" << this << endl;
 }
 
@@ -49,7 +50,7 @@ void Personnage::avancer()
 		spritePersonnage.setPosition(coordonnees.posX,coordonnees.posY);
 	}
 	else {
-		mourir();
+		arriver();
 	}
 }
 
@@ -86,8 +87,8 @@ void Personnage::mourir()
 	}
 
 	// TODO Changer gain cible tuee
-	manager->getRessources()->gagnerArgent(vie);
-
+	manager->getRessources()->gagnerArgent(vieInitial);
+	manager->getRessources()->augmenterScore(1);
 	delete this;
 
 }
@@ -99,6 +100,25 @@ void Personnage::arriver() {
 	ResourceManager *manager = ResourceManager::getInstance();
 
 	manager->getRessources()->perdreVie();
+
+	manager->removePersonnage(this);
+
+	// Also remove all projectiles going for that personnage
+	std::vector<Projectile*> projectileConteneur = manager->getProjectile();
+	vector<Projectile*>::iterator projectileIterator;
+	for(projectileIterator = projectileConteneur.begin() ; projectileIterator!= projectileConteneur.end() ; projectileIterator++)
+	{
+		Projectile* pProjo = *projectileIterator;
+		if(pProjo->getCible() == this)
+		{
+			manager->removeProjectile(pProjo);
+			// TODO : Supprimer le vrai projo de la memoire ...
+			//delete pProjo;
+			pProjo->setCible(0);
+		}
+	}
+
+	delete this;
 
 }
 
