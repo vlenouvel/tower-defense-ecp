@@ -7,6 +7,7 @@
 
 #include "Ressources.h"
 #include <string>
+#include <sstream>
 #include "../ResourceManager.h"
 
 Ressources::Ressources() {
@@ -38,8 +39,16 @@ void Ressources::dessiner(sf::RenderWindow &pWindow){
 	ResourceManager* manager = ResourceManager::getInstance();
 
 	Ressources* ressources = manager->getRessources();
-	std::string scoreTexte = "Score:" + to_string((long double)ressources->getScore()) + "\n" + "Argent:" + to_string((long double)ressources->getArgent())+ "\n" + "Vie:" + to_string((long double)ressources->getVie());
-	texteRessources.setString(scoreTexte);
+	ostringstream ss;
+	//std::string scoreTexte = "Score:" + to_string((long double)ressources->getScore()) + "\n" + "Argent:" + to_string((long double)ressources->getArgent())+ "\n" + "Vie:" + to_string((long double)ressources->getVie());
+	//ss <<  "Score:" << (long double)ressources->getScore() << "\n" + "Argent:" << (long double)ressources->getArgent() << "\n" << "Vie:" << (long double)ressources->getVie();
+	ss << "Score:";
+	ss << ressources->getScore();
+	ss << "\nArgent:";
+	ss << ressources->getArgent();
+	ss << "\nVie:";
+	ss << ressources->getVie();
+	texteRessources.setString(ss.str());
 	pWindow.draw(spriteRessources);
 	//texteRessources.setString(to_string(ressources));
 	pWindow.draw(texteRessources);
