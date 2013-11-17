@@ -17,7 +17,7 @@ public:
 	Carte();
 	virtual ~Carte();
 	void dessiner(sf::RenderWindow &pWindow);
-	const static int imageCarteX = 20;
+	const static int imageCarteX = 18;
 	const static int imageCarteY = 15;
 	Case* imageCarte [imageCarteX][imageCarteY];
 	Case * pCaseSortie;
