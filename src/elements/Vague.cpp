@@ -85,6 +85,8 @@ void Vague::genererPersonnage()
 		delete this;
 	}
 
+	std::cout << "Fin Generer Perso" << endl;
+
 }
 
 void Vague::agir()

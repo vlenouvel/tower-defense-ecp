@@ -35,8 +35,7 @@ EtatMort::EtatMort(App* tApp) : Etat(tApp) {
 	text3.setStyle(sf::Text::Bold);
 	text3.setPosition(350,400);
 
-	// Efface le Resource manager
-	delete manager;
+
 }
 
 void EtatMort::handleEvent(sf::Event event)
@@ -45,6 +44,17 @@ void EtatMort::handleEvent(sf::Event event)
 		if (event.mouseButton.button == sf::Mouse::Left) {
 			Etat *pNouvelEtat = new(EtatMenu)(pApp);
 			pApp->changerEtat(pNouvelEtat);
+			// Efface le Resource manager
+			ResourceManager* manager = ResourceManager::getInstance();
+
+			// manager->cartePointeur = 0;
+			//manager->menuPointeur = 0;
+			delete manager->ressourcesPointeur;
+			manager->projectileConteneur.clear();
+			manager->personnageConteneur.clear();
+			manager->tourConteneur.clear();
+			delete manager->vagueGenerateurPointeur;
+			delete manager->vaguePointeur;
 		}
 	}
 }
