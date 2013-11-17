@@ -42,8 +42,6 @@ void EtatMort::handleEvent(sf::Event event)
 {
 	if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
-			Etat *pNouvelEtat = new(EtatMenu)(pApp);
-			pApp->changerEtat(pNouvelEtat);
 			// Efface le Resource manager
 			ResourceManager* manager = ResourceManager::getInstance();
 
@@ -55,6 +53,10 @@ void EtatMort::handleEvent(sf::Event event)
 			manager->tourConteneur.clear();
 			delete manager->vagueGenerateurPointeur;
 			delete manager->vaguePointeur;
+
+			Etat *pNouvelEtat = new(EtatMenu)(pApp);
+			pApp->changerEtat(pNouvelEtat);
+
 		}
 	}
 }
