@@ -19,6 +19,7 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	Case* imageCarte [20][15];
 	Case * pCaseSortie;
+	void nettoyerCarte();
 private:
 	sf::Texture textureCarte;
 	sf::Sprite spriteCarte;
