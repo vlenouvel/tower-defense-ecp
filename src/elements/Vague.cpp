@@ -48,17 +48,17 @@ void Vague::genererPersonnage()
 	switch (type) {
 		case NORMAL:
 			vie = 10;
-			vitesse = 1;
+			vitesse = 5;
 			armure = 2;
 			break;
 		case RAPIDE:
 			vie = 5;
-			vitesse = 2;
+			vitesse = 10;
 			armure = 1;
 			break;
 		case SOLIDE:
 			vie = 30;
-			vitesse = 1;
+			vitesse = 3;
 			armure = 5;
 			break;
 		default:
@@ -66,7 +66,7 @@ void Vague::genererPersonnage()
 	}
 
 	// TODO Changer l'aspect random du positionnement
-	Coordonnees coordonneesDepart(rand()%800,rand()%600);
+	Coordonnees coordonneesDepart(0,560);
 	Personnage* pPersonnage = new Personnage(vie, vitesse, armure, coordonneesDepart);
 	pPersonnage->trouverChemin(manager->getCarte());
 	pPersonnage->ecrireChemin(manager->getCarte());

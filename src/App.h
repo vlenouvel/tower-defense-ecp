@@ -15,6 +15,7 @@
 #include "etats/Etat.h"
 #include "etats/EtatJeu.h"
 #include "etats/EtatMenu.h"
+#include "etats/EtatMort.h"
 #include "ResourceManager.h"
 #include "elements/Coordonnees.h"
 

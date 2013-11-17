@@ -45,6 +45,7 @@ public:
 	vector<Case *>::iterator cheminIterator;
 protected:
 	int vie;
+	int vieInitial;
 	int vitesse;
 	int armure;
 	int gain;

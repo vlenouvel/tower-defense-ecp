@@ -7,20 +7,21 @@
 
 #include "Ressources.h"
 #include <string>
+#include "../ResourceManager.h"
 
 Ressources::Ressources() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureRessources = pResourcesLoader->textureRessources;
 	spriteRessources.setTexture(textureRessources);
 	spriteRessources.setScale(1,0.4);
-	spriteRessources.setPosition(700,0);
+	spriteRessources.setPosition(680,0);
 	ressources = 0;
 	font = pResourcesLoader->police;
 	texteRessources.setFont(font);
-	texteRessources.setCharacterSize(48);
+	texteRessources.setCharacterSize(16);
 	texteRessources.setColor(sf::Color::White);
 	texteRessources.setStyle(sf::Text::Bold);
-	texteRessources.setPosition(720,0);
+	texteRessources.setPosition(680,0);
 	texteRessources.setFont(font);
 
 	// TODO Changer vies et argent de depart
@@ -34,7 +35,11 @@ Ressources::~Ressources() {
 }
 
 void Ressources::dessiner(sf::RenderWindow &pWindow){
-	texteRessources.setString("10000");
+	ResourceManager* manager = ResourceManager::getInstance();
+
+	Ressources* ressources = manager->getRessources();
+	std::string scoreTexte = "Score:" + to_string(ressources->getScore()) + "\n" + "Argent:" + to_string(ressources->getArgent())+ "\n" + "Vie:" + to_string(ressources->getVie());
+	texteRessources.setString(scoreTexte);
 	pWindow.draw(spriteRessources);
 	//texteRessources.setString(to_string(ressources));
 	pWindow.draw(texteRessources);
