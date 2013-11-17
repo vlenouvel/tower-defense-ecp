@@ -56,7 +56,6 @@ void EtatJeu::setErreur(string erreurMsg) {
 
 	erreur = erreurMsg;
 	tempsErreur = pApp->horloge.getElapsedTime();
-	cout << erreur << endl;
 }
 
 void EtatJeu::dessiner(sf::RenderWindow &pWindow){
@@ -101,7 +100,6 @@ void EtatJeu::handleEvent(sf::Event event)
 {
 	ResourceManager* manager = ResourceManager::getInstance();
 	if (event.type == sf::Event::MouseButtonPressed) {
-		cout << "event" <<endl;
 		if (event.mouseButton.button == sf::Mouse::Left) {
 			if ((event.mouseButton.x>710)&&(event.mouseButton.x<745)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				typeTourChoisi = 1;
