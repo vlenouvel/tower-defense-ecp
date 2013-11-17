@@ -6,12 +6,13 @@
  */
 
 #include "GenerateurVague.h"
+#include <iostream>
 
 GenerateurVague::GenerateurVague() {
 	niveau = 1;
 
 	// definition du temps d'attente entre deux vagues
-	tempsEntreVague = sf::seconds((float)10);
+	tempsEntreVague = sf::seconds((float)5);
 
 }
 
@@ -19,6 +20,7 @@ void GenerateurVague::agir()
 {
 	if(horlogeVague.getElapsedTime() >= tempsEntreVague)
 	{
+		std::cout << "New Vague generee" << std::endl;
 		horlogeVague.restart();
 		this->genererVague();
 	}

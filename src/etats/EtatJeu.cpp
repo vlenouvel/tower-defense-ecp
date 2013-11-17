@@ -17,15 +17,19 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	// Creation de la carte
 	carte = new Carte();
 	pRessources = new Ressources();
+	manager->addRessources(pRessources);
 	pTableauDeBord = new TableauDeBord();
 	manager->addCarte(carte);
 
 
 
 	typeTourChoisi = 0;
-	Coordonnees coordonneesPersonnage(200,200);
-	pPersonnage = new Personnage(1,1,1,coordonneesPersonnage);
-	manager->addPersonnage(pPersonnage);
+
+	// TODO supprimer code ici
+	//Coordonnees coordonneesPersonnage(200,200);
+	//pPersonnage = new Personnage(1,1,1,coordonneesPersonnage);
+	//manager->addPersonnage(pPersonnage);
+
 	//Creation du generateur de vague
 	GenerateurVague* pGenerateur = new GenerateurVague();
 	manager->addGenerateurVague(pGenerateur);
@@ -33,6 +37,7 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 }
 
 void EtatJeu::dessiner(sf::RenderWindow &pWindow){
+	cout << "JEU DESSINER "<< endl;
 
 	ResourceManager* manager = ResourceManager::getInstance();
 
@@ -64,7 +69,8 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 
 void EtatJeu::handleEvent(sf::Event event)
 {
-	cout << "check" << endl;
+	cout << "JEU EVENT" << endl;
+
 	ResourceManager* manager = ResourceManager::getInstance();
 	if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
@@ -112,20 +118,27 @@ void EtatJeu::handleEvent(sf::Event event)
 }
 
 void EtatJeu::agir() {
+	cout << "JEU AGIR" << endl;
 
 	ResourceManager *manager = ResourceManager::getInstance();
 
 	GenerateurVague *pGenerateurVague = manager->getGenerateurVague();
 	if(pGenerateurVague != 0)
 	{
+		cout << "if 1" << endl;
 		pGenerateurVague->agir();
 	}
+	cout << "2" << endl;
 
 	Vague *pVague = manager->getVague();
 	if(pVague != 0)
 	{
+		cout << "if 2 " << pVague << endl;
+
 		pVague->agir();
 	}
+
+	cout << "cout 3" << endl;
 
 	vector<Tour*> tourConteneur = manager->getTour();
 	if (!tourConteneur.empty()){

@@ -33,16 +33,19 @@ public:
 	void perdrePV(int degat);
 	void dessiner(sf::RenderWindow &pWindow);
 	int getVie();
+	void arriver();
 	Coordonnees getCoordonnees();
 	Coordonnees coordonnees;
 
 	//Pathfinding
 	bool trouverChemin(Carte * pCarte);
 	void ecrireChemin(Carte * pCarte);
+
 protected:
 	int vie;
 	int vitesse;
 	int armure;
+	int gain;
 private:
 	sf::Texture texturePersonnage;
 	sf::Sprite spritePersonnage;
