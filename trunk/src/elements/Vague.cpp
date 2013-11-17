@@ -68,9 +68,8 @@ void Vague::genererPersonnage()
 	// TODO Changer l'aspect random du positionnement
 	Coordonnees coordonneesDepart(rand()%800,rand()%600);
 	Personnage* pPersonnage = new Personnage(vie, vitesse, armure, coordonneesDepart);
-	bool solution = pPersonnage->trouverChemin(manager->getCarte());
+	pPersonnage->trouverChemin(manager->getCarte());
 	pPersonnage->ecrireChemin(manager->getCarte());
-	cout << "check" << endl;
 	manager->addPersonnage(pPersonnage);
 
 	// TODO A supprimer
@@ -90,12 +89,9 @@ void Vague::genererPersonnage()
 
 void Vague::agir()
 {
-	std::cout << "V-" << endl;
 	if(horlogePop.getElapsedTime() >= tempsEntrePop)
 	{
-		std::cout << "V1" << endl;
 		genererPersonnage();
-		std::cout << "V2" << endl;
 		horlogePop.restart();
 	}
 

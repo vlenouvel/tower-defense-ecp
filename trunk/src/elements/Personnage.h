@@ -40,7 +40,9 @@ public:
 	//Pathfinding
 	bool trouverChemin(Carte * pCarte);
 	void ecrireChemin(Carte * pCarte);
-
+	//Pathfinding
+	vector<Case *> chemin;
+	vector<Case *>::iterator cheminIterator;
 protected:
 	int vie;
 	int vitesse;
@@ -50,9 +52,7 @@ private:
 	sf::Texture texturePersonnage;
 	sf::Sprite spritePersonnage;
 
-	//Pathfinding
-	vector<Case *> chemin;
-	vector<Case *>::iterator cheminIterator;
+
 	
 };
 
