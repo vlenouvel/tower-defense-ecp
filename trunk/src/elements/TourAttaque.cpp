@@ -59,3 +59,10 @@ void TourAttaque::trouverCibles()
 		}
 	}
 }
+
+void TourAttaque::monterNiveau()
+{
+	niveau++;
+	attackDamage = (int)(attackDamage*1.5);
+	attackRange = (int)(attackRange*1.2);
+}

@@ -13,7 +13,7 @@
 class Tour: public Batiment {
 public:
 	Tour(Coordonnees tCoord);
-	void monterNiveau();
+	virtual void monterNiveau();
 	virtual ~Tour();
 	void dessiner(sf::RenderWindow &pWindow);
 	bool verifierAmelioration();
