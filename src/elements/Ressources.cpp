@@ -44,9 +44,9 @@ void Ressources::dessiner(sf::RenderWindow &pWindow){
 	ss << " $\nVie:";
 	ss << vie;
 	ss << "\nVague";
-	if(nombreVagues>0)
-		ss << "s";
-	ss << " :";
+	//if(nombreVagues>0)
+	//	ss << "s";
+	ss << ":";
 	ss << nombreVagues;
 	texteRessources.setString(ss.str());
 	pWindow.draw(spriteRessources);
