@@ -15,6 +15,7 @@
 #include "elements/Menu.h"
 #include "elements/Ressources.h"
 
+
 using namespace std;
 
 // Forward Declaration
@@ -23,6 +24,7 @@ class Personnage;
 class GenerateurVague;
 class Vague;
 class EtatJeu;
+class Personnage;
 
 class ResourceManager {
 
@@ -56,6 +58,7 @@ public:
     Ressources* getRessources();
     GenerateurVague* getGenerateurVague();
     Tour* getTourSelectionnee();
+	Personnage * pPersoFictif;
     //EtatJeu* getEtatJeu();
 
     // Set

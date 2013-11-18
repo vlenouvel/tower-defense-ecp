@@ -133,7 +133,7 @@ void Personnage::arriver() {
 		if(pProjo->getCible() == this)
 		{
 			manager->removeProjectile(pProjo);
-			// On met à 0 cible du projectile, ce qui le conduit a etre delete dans son agir.
+			// On met ï¿½ 0 cible du projectile, ce qui le conduit a etre delete dans son agir.
 			pProjo->setCible(0);
 		}
 	}
