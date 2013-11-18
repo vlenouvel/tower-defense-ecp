@@ -61,12 +61,22 @@ void EtatJeu::handleEvent(sf::Event event)
 		if (event.mouseButton.button == sf::Mouse::Left) {
 			if ((event.mouseButton.x>760)&&(event.mouseButton.x<795)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				batimentChoisi = BASIQUE;
+				manager->setTourSelectionnee(0);
 			}
 			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<745)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				batimentChoisi = CANON;
+				manager->setTourSelectionnee(0);
 			}
 			else if((event.mouseButton.x>680)&&(event.mouseButton.y>560)) {
 				setErreur("Vous ne pouvez pas construire sur la sortie !");
+			}
+			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<740)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(manager->getTourSelectionnee()!=0))
+			{
+				int prixLevelUp = 3*manager->getTourSelectionnee()->getPrix();
+				if (manager->getRessources()->getArgent() >= prixLevelUp)
+				{
+
+				}
 			}
 			else if ((event.mouseButton.x<700)){
 				manager->setTourSelectionnee(0);
