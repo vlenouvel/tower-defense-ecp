@@ -53,6 +53,8 @@ protected:
 private:
 	sf::Texture texturePersonnage;
 	sf::Sprite spritePersonnage;
+	sf::RectangleShape barreDeVieVerte;
+	sf::RectangleShape barreDeVieRouge;
 
 
 	

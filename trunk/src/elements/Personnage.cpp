@@ -17,6 +17,14 @@ Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) 
 	spritePersonnage.setTexture(texturePersonnage);
 	spritePersonnage.setScale(0.5,0.5);
 	spritePersonnage.setPosition(tCoord.posX,tCoord.posY);
+	barreDeVieVerte.setFillColor(sf::Color::Green);
+	barreDeVieVerte.setSize(sf::Vector2f(sf::Vector2f(spritePersonnage.getGlobalBounds().width, 5)));
+	barreDeVieVerte.setPosition(tCoord.posX, tCoord.posY - 8);
+
+	barreDeVieRouge.setFillColor(sf::Color::Red);
+	barreDeVieRouge.setSize(sf::Vector2f(0,5));
+	barreDeVieRouge.setPosition(tCoord.posX, tCoord.posY - 8);
+
 
 	vieInitial = vie;
 }
@@ -57,6 +65,8 @@ void Personnage::avancer()
 			}
 		}
 		spritePersonnage.setPosition(coordonnees.posX,coordonnees.posY);
+		barreDeVieRouge.setPosition(coordonnees.posX,coordonnees.posY-8);
+		barreDeVieVerte.setPosition(coordonnees.posX,coordonnees.posY-8);
 	}
 	else {
 		arriver();
@@ -123,23 +133,23 @@ void Personnage::arriver() {
 		if(pProjo->getCible() == this)
 		{
 			manager->removeProjectile(pProjo);
-			// TODO : Supprimer le vrai projo de la memoire ...
-			//delete pProjo;
+			// On met à 0 cible du projectile, ce qui le conduit a etre delete dans son agir.
 			pProjo->setCible(0);
 		}
 	}
-
 	delete this;
-
 }
 
 Personnage::~Personnage() {
 	// TODO Auto-generated destructor stub
 }
 
-void Personnage::dessiner(sf::RenderWindow &pWindow){
-
+void Personnage::dessiner(sf::RenderWindow &pWindow)
+{
+	barreDeVieRouge.setSize(sf::Vector2f(spritePersonnage.getGlobalBounds().width*(vieInitial - vie)/vieInitial,5));
 	pWindow.draw(spritePersonnage);
+	pWindow.draw(barreDeVieVerte);
+	pWindow.draw(barreDeVieRouge);
 }
 
 int Personnage::getVie()
