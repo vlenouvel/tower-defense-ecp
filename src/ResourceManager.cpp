@@ -36,6 +36,7 @@ ResourceManager::ResourceManager() {
     ressourcesPointeur = 0;
     vaguePointeur = 0;
     vagueGenerateurPointeur = 0;
+    tourSelectionnee = 0;
 }
 
 ResourceManager::~ResourceManager() {
@@ -128,6 +129,16 @@ void ResourceManager::addRessources(Ressources* ressources)
 Ressources* ResourceManager::getRessources()
 {
 	return ressourcesPointeur;
+}
+
+Tour* ResourceManager::getTourSelectionnee()
+{
+	return tourSelectionnee;
+}
+
+void ResourceManager::setTourSelectionnee(Tour* tour)
+{
+	tourSelectionnee = tour;
 }
 
 // EtatJeu

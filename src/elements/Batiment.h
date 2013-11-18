@@ -20,7 +20,7 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	Coordonnees coordonnees;
 	static bool verifierAchat(int prixBat);
-
+	Coordonnees getCoordonnees();
 protected:
 	int prix;
 	

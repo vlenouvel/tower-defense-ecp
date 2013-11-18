@@ -33,3 +33,8 @@ bool Batiment::verifierAchat(int prixBat) {
 
 	return true;
 }
+
+Coordonnees Batiment::getCoordonnees()
+{
+	return coordonnees;
+}
