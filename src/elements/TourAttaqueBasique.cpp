@@ -12,7 +12,7 @@
 TourAttaqueBasique::TourAttaqueBasique(Coordonnees tCoord) : TourAttaque(tCoord) {
 	prix = 10;
 	attackRange = 100;
-	attackDamage = 2;
+	attackDamage = 3;
 	timeBetweenAttacks = sf::milliseconds(100);
 	pCibler = ComportementCiblage::ciblerPremier;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();

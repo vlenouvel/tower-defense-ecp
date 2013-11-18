@@ -82,37 +82,40 @@ void EtatJeu::handleEvent(sf::Event event)
 				manager->setTourSelectionnee(0);
 				bool autorisation = true;
 				// Indices de la case cliquée.
-				int a = (int)floor((float)event.mouseButton.x/40);
-				int b = (int)floor((float)event.mouseButton.y/40);
-				bool caseEstOccupee = (manager->getCarte())->imageCarte[a][b]->caseOccupee;
-				if (!manager->getPersonnage().empty()){
-					for (unsigned int i=0; i< manager->getPersonnage().size();i++){
-						autorisation = ((manager->getPersonnage())[i])->trouverChemin(manager->getCarte());
-						manager->getCarte()->nettoyerCarte();
-						if (autorisation == false){
-							break;
-						}
-					}
-				}
-				if(autorisation == false) {
-					setErreur("Vous ne pouvez pas bloquer le passage des ennemis !");
-				}
-				else if(caseEstOccupee) {
+				int indiceX = (int)floor((float)event.mouseButton.x/40);
+				int indiceY = (int)floor((float)event.mouseButton.y/40);
+				bool caseEstOccupee = (manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee;
+				if(caseEstOccupee) {
 					vector<Tour*> tourConteneur = manager->getTour();
 					for (unsigned int i=0; i<tourConteneur.size(); i++)
 					{
 						int coordXTour = tourConteneur[i]->getCoordonnees().getPosX();
 						int coordYTour = tourConteneur[i]->getCoordonnees().getPosY();
-						if ((coordXTour == (40*a + 20))&&(coordYTour == (40*b + 20)))
+						if ((coordXTour == (40*indiceX + 20))&&(coordYTour == (40*indiceY + 20)))
 						{
 							manager->setTourSelectionnee(tourConteneur[i]);
 						}
 					}
 
-				}
-				else if ((autorisation == true)&&(!caseEstOccupee)){
-					Coordonnees coordonneesTour(40*a+20,40*b+20);
-					construireTour(batimentChoisi, coordonneesTour);
+				} else {
+					(manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = true;
+					if (!manager->getPersonnage().empty()){
+						for (unsigned int i=0; i< manager->getPersonnage().size();i++){
+							autorisation = ((manager->getPersonnage())[i])->trouverChemin(manager->getCarte());
+							manager->getCarte()->nettoyerCarte();
+							if (autorisation == false){
+								break;
+							}
+						}
+					}
+					if(autorisation == false) {
+						setErreur("Vous ne pouvez pas bloquer le passage des ennemis !");
+						(manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = false;
+					}
+					else if ((autorisation == true)&&(!caseEstOccupee)){
+						Coordonnees coordonneesTour(40*indiceX+20,40*indiceY+20);
+						construireTour(batimentChoisi, coordonneesTour);
+					}
 				}
 			}
 		}
@@ -228,9 +231,9 @@ void EtatJeu::construireTour(typeBatiment type, Coordonnees coord)
 		}
 	if(pTour->verifierAchat())
 	{
-		int a = (int)floor((float)coord.getPosX()/40);
-		int b = (int)floor((float)coord.getPosY()/40);
-		(pResourceManager->getCarte())->imageCarte[a][b]->caseOccupee = true;
+		int indiceX = (int)floor((float)coord.getPosX()/40);
+		int indiceY = (int)floor((float)coord.getPosY()/40);
+		(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = true;
 		pResourceManager->addTour(pTour);
 		pResourceManager->getRessources()->perdreArgent(pTour->getPrix());
 
