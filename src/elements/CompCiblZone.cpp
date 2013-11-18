@@ -23,9 +23,9 @@ Personnage* CompCiblZone::cibler(std::vector<Personnage*>* ciblesPossibles, std:
 	Personnage *cible(0);
 	int nombredevoisinsmax(0);
 	std::vector <int> nombredevoisins (ciblesPossibles->size(), 0);
-	for (int compteur(0); compteur< ciblesPossibles->size(); compteur++)
+	for (unsigned int compteur(0); compteur< ciblesPossibles->size(); compteur++)
 	{
-		for (int i(0); i< touslespersonnages->size(); i++)
+		for (unsigned int i(0); i< touslespersonnages->size(); i++)
 		{
 			double xcible= (*ciblesPossibles)[compteur]-> getCoordonnees().getPosX();
 			double ycible= (*ciblesPossibles)[compteur]-> getCoordonnees().getPosY();

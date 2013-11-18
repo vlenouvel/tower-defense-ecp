@@ -10,21 +10,19 @@
 
 
 #include "Etat.h"
+#include <iostream>
+#include <string>
+#include <cmath>
 #include "SFML/Window/Event.hpp"
 #include "../elements/Carte.h"
 #include "../App.h"
 #include "../ResourceManager.h"
 #include "../elements/Ressources.h"
-#include <iostream>
-#include <string>
 #include "../elements/TableauDeBord.h"
 #include "../elements/Personnage.h"
 #include "../elements/GenerateurVague.h"
 #include "../elements/TourAttaqueBasique.h"
 #include "../elements/CanonLourd.h"
-#include <iostream>
-#include "../elements/Personnage.h"
-#include <cmath>
 #include "EtatMort.h"
 
 

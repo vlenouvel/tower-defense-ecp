@@ -27,6 +27,8 @@ private:
 	sf::Texture textureTourAttaqueBasique;
 	sf::Sprite spriteTourAttaqueBasique;
 	sf::Text texteNiveauTour;
+	sf::Texture textureLevelUpBouton;
+	sf::Sprite spriteLevelUpBouton;
 
 };
 

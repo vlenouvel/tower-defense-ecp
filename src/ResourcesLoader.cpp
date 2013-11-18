@@ -44,6 +44,7 @@ void ResourcesLoader::ChargerTextures() {
 	textureProjectileBasique.loadFromFile("resources/textures/textureProjectileBasique.png");
 	textureProjectileExplosif.loadFromFile("resources/textures/textureProjectileExplosif.png");
 	textureRessources.loadFromFile("resources/textures/textureResources.jpg");
+	textureLevelUpBouton.loadFromFile("resources/textures/textureLevelUpBouton.png");
 
 }
 // Charge tous les sons

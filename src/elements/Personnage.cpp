@@ -9,7 +9,7 @@
 #include <cmath>
 
 Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) :
-		vie(tVie), vitesse(tVitesse), armure(tArmure), coordonnees(tCoord)
+		coordonnees(tCoord), vie(tVie), vitesse(tVitesse), armure(tArmure)
 {
 	gain = 10;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();

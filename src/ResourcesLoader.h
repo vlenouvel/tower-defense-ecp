@@ -32,6 +32,7 @@ public:
 	sf::Texture textureProjectileBasique;
 	sf::Texture textureProjectileExplosif;
 	sf::Texture textureRessources;
+	sf::Texture textureLevelUpBouton;
 
 	sf::Music musique;
 	sf::SoundBuffer bufferCreationTour;

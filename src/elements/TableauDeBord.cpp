@@ -38,6 +38,11 @@ TableauDeBord::TableauDeBord() {
 	texteNiveauTour.setColor(sf::Color::White);
 	texteNiveauTour.setStyle(sf::Text::Bold);
 	texteNiveauTour.setPosition(710, 360);
+
+	textureLevelUpBouton = pResourcesLoader->textureLevelUpBouton;
+	spriteLevelUpBouton.setTexture(textureLevelUpBouton);
+	spriteLevelUpBouton.setScale(0.75, 0.75);
+	spriteLevelUpBouton.setPosition(710, 400);
 }
 
 TableauDeBord::~TableauDeBord() {
@@ -58,5 +63,6 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 		stringNiveauTour << manager->getTourSelectionnee()->getNiveau();
 		texteNiveauTour.setString("Niveau tour : " + stringNiveauTour.str());
 		pWindow.draw(texteNiveauTour);
+		pWindow.draw(spriteLevelUpBouton);
 	}
 }
