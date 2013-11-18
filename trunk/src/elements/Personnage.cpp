@@ -286,7 +286,7 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		X = (int)floor((float)trace->coordonneesCase.getPosX()/40);
 		Y = (int)floor((float)trace->coordonneesCase.getPosY()/40);
 	}
-
+	chemin.erase(chemin.begin());
 	pCarte->nettoyerCarte();
 }
 
