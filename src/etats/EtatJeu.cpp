@@ -46,7 +46,7 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	texteErreur.setCharacterSize(16);
 	texteErreur.setColor(sf::Color::Red);
 	texteErreur.setStyle(sf::Text::Bold);
-	texteErreur.setPosition(200,250);
+	texteErreur.setPosition(100,250);
 
 }
 
@@ -72,23 +72,27 @@ void EtatJeu::handleEvent(sf::Event event)
 			else if((event.mouseButton.x>680)&&(event.mouseButton.y>560)) {
 				setErreur("Vous ne pouvez pas construire sur la sortie !");
 			}
+			else if((event.mouseButton.x<40)&&(event.mouseButton.y<40)) {
+				setErreur("Vous ne pouvez pas construire sur l'entree !");
+			}
 			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<740)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(manager->getTourSelectionnee()!=0))
 			{
-				int prixLevelUp = 3*manager->getTourSelectionnee()->getPrix();
-				if (manager->getRessources()->getArgent() >= prixLevelUp)
+				if (manager->getTourSelectionnee()->verifierAmelioration())
 				{
-					manager->getRessources()->perdreArgent(prixLevelUp);
 					manager->getTourSelectionnee()->monterNiveau();
+					cout << "K"<< endl;
+
 				}
 				else
 				{
+					cout << "C"<< endl;
 					setErreur("Vous n'avez pas assez d'argent pour ameliorer cette tour.");
 				}
 			}
 			else if ((event.mouseButton.x<700)){
 				manager->setTourSelectionnee(0);
 				bool autorisation = true;
-				// Indices de la case cliquée.
+				// Indices de la case cliquee.
 				int indiceX = (int)floor((float)event.mouseButton.x/40);
 				int indiceY = (int)floor((float)event.mouseButton.y/40);
 				bool caseEstOccupee = (manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee;
