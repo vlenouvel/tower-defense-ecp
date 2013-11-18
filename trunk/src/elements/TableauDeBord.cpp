@@ -11,24 +11,24 @@
 
 
 TableauDeBord::TableauDeBord() {
-	textureTableauDeBord.loadFromFile("resources/textures/textureResources.jpg");
+	ResourcesLoader *pResourcesLoader = ResourcesLoader::getInstance();
+	textureTableauDeBord = pResourcesLoader->textureRessources;
 	spriteTableauDeBord.setTexture(textureTableauDeBord);
 	spriteTableauDeBord.setScale(1,3);
 	spriteTableauDeBord.setPosition(720,100);
-	font.loadFromFile("resources/polices/Capture it.ttf");
+	font = pResourcesLoader->policeTableauDeBord;
 	texteTableauDeBord.setFont(font);
 	texteTableauDeBord.setCharacterSize(48);
 	texteTableauDeBord.setColor(sf::Color::White);
 	texteTableauDeBord.setStyle(sf::Text::Bold);
 	texteTableauDeBord.setPosition(720,0);
-	texteTableauDeBord.setFont(font);
 
-	textureCanonLourd.loadFromFile("resources/textures/textureCanonLourd.jpg");
+	textureCanonLourd = pResourcesLoader->textureCanonLourd;
 	spriteCanonLourd.setTexture(textureCanonLourd);
 	spriteCanonLourd.setScale(0.5,0.5);
 	spriteCanonLourd.setPosition(710,300);
 
-	textureTourAttaqueBasique.loadFromFile("resources/textures/textureTourAttaqueBasique.jpg");
+	textureTourAttaqueBasique = pResourcesLoader->textureTourAttaqueBasique;
 	spriteTourAttaqueBasique.setTexture(textureTourAttaqueBasique);
 	spriteTourAttaqueBasique.setScale(0.5,0.5);
 	spriteTourAttaqueBasique.setPosition(760,300);

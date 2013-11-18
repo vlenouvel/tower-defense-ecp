@@ -16,12 +16,11 @@
 #include <iostream>
 
 
-class GenerateurVague : public ElementJeu, ElementGraphique {
+class GenerateurVague : public ElementJeu{
 public:
 	GenerateurVague();
 	virtual ~GenerateurVague();
 	void agir();
-	void dessiner(sf::RenderWindow &pWindow);
 	void genererVague();
 	int niveau;
 private:

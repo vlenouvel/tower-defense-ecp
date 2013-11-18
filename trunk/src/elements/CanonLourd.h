@@ -13,7 +13,7 @@
 
 class CanonLourd: public TourAttaque {
 public:
-	CanonLourd(int tPrix, Coordonnees tCoord);
+	CanonLourd(Coordonnees tCoord);
 	virtual ~CanonLourd();
 	void dessiner(sf::RenderWindow & rWindow);
 

@@ -38,7 +38,8 @@ public:
 	sf::SoundBuffer bufferTirTourAttaqueBasique;
 	sf::SoundBuffer bufferTirCanonLourd;
 
-	sf::Font police;
+	sf::Font policeMenu;
+	sf::Font policeTableauDeBord;
 };
 
 #endif /* RESOURCESLOADER_H_ */

@@ -9,7 +9,7 @@
 
 Menu::Menu() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	font = pResourcesLoader->police;;
+	font = pResourcesLoader->policeMenu;
 	text1.setFont(font);
 	text1.setString("Entrez dans l'arene");
 	text1.setCharacterSize(48);

@@ -12,7 +12,7 @@ EtatMort::EtatMort(App* tApp) : Etat(tApp) {
 
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 
-	font = pResourcesLoader->police;
+	font = pResourcesLoader->policeTableauDeBord;
 	text1.setFont(font);
 	text1.setString("Vous avez perdu !");
 	text1.setCharacterSize(48);

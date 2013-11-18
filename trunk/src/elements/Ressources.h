@@ -14,17 +14,21 @@
 
 class Ressources: public ElementGraphique {
 public:
-	Ressources(Etat* pEtat);
+	Ressources();
 	virtual ~Ressources();
 	void dessiner(sf::RenderWindow &pWindow);
-	double ressources;
+
+	int getVie();
+	void perdreVie();
+
 	int getArgent();
 	void perdreArgent(int montant);
 	void gagnerArgent(int montant);
-	int getVie();
-	void perdreVie();
+
 	int getScore();
 	void augmenterScore(int nbPoint);
+
+	void setVagues(int nbVagues);
 
 private:
 	sf::Texture textureRessources;
@@ -35,6 +39,7 @@ private:
 	int argent;
 	int vie;
 	int score;
+	int nombreVagues;
 
 	Etat* pEtat;
 };

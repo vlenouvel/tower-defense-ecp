@@ -9,10 +9,11 @@
 #define MUR_H_
 
 #include "Batiment.h"
+#include "../ResourceManager.h"
 
 class Mur: public Batiment {
 public:
-	Mur(int tPrix, Coordonnees tCoord);
+	Mur(Coordonnees tCoord);
 	virtual ~Mur();
 	void dessiner(sf::RenderWindow &pWindow);
 };

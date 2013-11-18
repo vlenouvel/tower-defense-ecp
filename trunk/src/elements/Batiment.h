@@ -15,11 +15,12 @@
 
 class Batiment: public ElementGraphique, public ElementJeu {
 public:
-	Batiment(int tPrix, Coordonnees tCoord);
+	Batiment(Coordonnees tCoord);
 	virtual ~Batiment();
+	virtual bool verifierAchat();
 	void dessiner(sf::RenderWindow &pWindow);
 	Coordonnees coordonnees;
-	static bool verifierAchat(int prixBat);
+	virtual int getPrix();
 	Coordonnees getCoordonnees();
 protected:
 	int prix;

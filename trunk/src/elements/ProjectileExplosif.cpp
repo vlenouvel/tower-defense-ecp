@@ -10,6 +10,7 @@
 
 ProjectileExplosif::ProjectileExplosif(Coordonnees tCoord, Personnage* tCible, int tDommages, int tRayonExplosion) :
 	Projectile(tCoord, tCible, tDommages), rayonExplosion(tRayonExplosion) {
+	vitesse = 20;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureProjectile = pResourcesLoader->textureProjectileExplosif;
 	spriteProjectile.setTexture(textureProjectile);

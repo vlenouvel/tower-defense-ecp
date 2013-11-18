@@ -11,6 +11,7 @@
 Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) :
 		vie(tVie), vitesse(tVitesse), armure(tArmure), coordonnees(tCoord)
 {
+	gain = 10;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	texturePersonnage = pResourcesLoader->texturePersonnage;
 	spritePersonnage.setTexture(texturePersonnage);
@@ -95,7 +96,7 @@ void Personnage::mourir()
 	}
 
 	// TODO Changer gain cible tuee
-	manager->getRessources()->gagnerArgent(vieInitial);
+	manager->getRessources()->gagnerArgent(gain);
 	manager->getRessources()->augmenterScore(1);
 	delete this;
 
