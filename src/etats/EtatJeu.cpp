@@ -29,6 +29,8 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	GenerateurVague* pGenerateur = new GenerateurVague();
 	manager->addGenerateurVague(pGenerateur);
 
+	Coordonnees coordonneesPersoFictif(1,1);
+	manager->pPersoFictif = new Personnage(1,0,1,coordonneesPersoFictif);
 	arriveCase.setSize(sf::Vector2f(40, 40));
 	arriveCase.setPosition(680,560);
 	arriveCase.setFillColor(sf::Color::Red);
@@ -100,6 +102,8 @@ void EtatJeu::handleEvent(sf::Event event)
 
 				} else {
 					(manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = true;
+					autorisation = manager->pPersoFictif->trouverChemin(manager->getCarte());
+					manager->getCarte()->nettoyerCarte();
 					if (!manager->getPersonnage().empty()){
 						for (unsigned int i=0; i< manager->getPersonnage().size();i++){
 							autorisation = ((manager->getPersonnage())[i])->trouverChemin(manager->getCarte());
