@@ -24,6 +24,7 @@ public:
 	void agir();
 	virtual ~TourAttaque();
 	virtual void dessiner(sf::RenderWindow &pWindow);
+	virtual void monterNiveau();
 
 protected:
 	// On utilise un pointeur vers une fonction statique pour le ciblage

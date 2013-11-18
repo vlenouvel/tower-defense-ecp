@@ -75,7 +75,8 @@ void EtatJeu::handleEvent(sf::Event event)
 				int prixLevelUp = 3*manager->getTourSelectionnee()->getPrix();
 				if (manager->getRessources()->getArgent() >= prixLevelUp)
 				{
-
+					manager->getRessources()->perdreArgent(prixLevelUp);
+					manager->getTourSelectionnee()->monterNiveau();
 				}
 			}
 			else if ((event.mouseButton.x<700)){
