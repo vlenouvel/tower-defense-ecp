@@ -102,8 +102,6 @@ void EtatJeu::handleEvent(sf::Event event)
 
 				} else {
 					(manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = true;
-					autorisation = manager->pPersoFictif->trouverChemin(manager->getCarte());
-					manager->getCarte()->nettoyerCarte();
 					if (!manager->getPersonnage().empty()){
 						for (unsigned int i=0; i< manager->getPersonnage().size();i++){
 							autorisation = ((manager->getPersonnage())[i])->trouverChemin(manager->getCarte());
@@ -113,6 +111,8 @@ void EtatJeu::handleEvent(sf::Event event)
 							}
 						}
 					}
+					autorisation = manager->pPersoFictif->trouverChemin(manager->getCarte());
+					manager->getCarte()->nettoyerCarte();
 					if(autorisation == false) {
 						setErreur("Vous ne pouvez pas bloquer le passage des ennemis !");
 						(manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = false;
