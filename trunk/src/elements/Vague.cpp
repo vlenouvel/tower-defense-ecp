@@ -66,7 +66,7 @@ void Vague::genererPersonnage()
 
 	// TODO Changer l'aspect random du positionnement
 	Coordonnees coordonneesDepart(0,0);
-	Personnage* pPersonnage = new Personnage(vie, vitesse, armure, coordonneesDepart);
+	Personnage* pPersonnage = new Personnage(niveauType*vie, vitesse, armure, coordonneesDepart);
 	pPersonnage->trouverChemin(manager->getCarte());
 	pPersonnage->ecrireChemin(manager->getCarte());
 	manager->addPersonnage(pPersonnage);
