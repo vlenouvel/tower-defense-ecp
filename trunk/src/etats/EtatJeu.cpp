@@ -216,6 +216,8 @@ void EtatJeu::construireTour(typeBatiment type, Coordonnees coord)
 {
 	ResourceManager *pResourceManager = ResourceManager::getInstance();
 	Tour *pTour = 0;
+	int indiceX = (int)floor((float)coord.getPosX()/40);
+	int indiceY = (int)floor((float)coord.getPosY()/40);
 	switch(batimentChoisi){
 		case BASIQUE:
 			pTour = new TourAttaqueBasique(coord);
@@ -232,8 +234,6 @@ void EtatJeu::construireTour(typeBatiment type, Coordonnees coord)
 		}
 	if(pTour->verifierAchat())
 	{
-		int indiceX = (int)floor((float)coord.getPosX()/40);
-		int indiceY = (int)floor((float)coord.getPosY()/40);
 		(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = true;
 		pResourceManager->addTour(pTour);
 		pResourceManager->getRessources()->perdreArgent(pTour->getPrix());
@@ -247,6 +247,7 @@ void EtatJeu::construireTour(typeBatiment type, Coordonnees coord)
 		}
 	} else {
 		delete pTour;
+		(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = false;
 		setErreur("Pas assez d'argent !");
 	}
 }
