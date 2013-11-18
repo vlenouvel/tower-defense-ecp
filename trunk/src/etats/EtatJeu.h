@@ -37,6 +37,7 @@ public:
 	// cet entier nous dit quel type de tour on cree, c'est sale donc a changer
 	int typeTourChoisi;
 	TableauDeBord* pTableauDeBord;
+
 private:
 	App* pApp;
 	sf::RectangleShape arriveCase;

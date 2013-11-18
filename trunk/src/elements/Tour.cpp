@@ -40,3 +40,8 @@ bool Tour::verifierAmelioration() {
 
 	return true;
 }
+
+int Tour::getNiveau()
+{
+	return niveau;
+}

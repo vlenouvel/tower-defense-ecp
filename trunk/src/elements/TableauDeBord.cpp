@@ -7,6 +7,8 @@
 
 #include "TableauDeBord.h"
 #include <string>
+#include <sstream>
+
 
 TableauDeBord::TableauDeBord() {
 	textureTableauDeBord.loadFromFile("resources/textures/textureResources.jpg");
@@ -31,6 +33,11 @@ TableauDeBord::TableauDeBord() {
 	spriteTourAttaqueBasique.setScale(0.5,0.5);
 	spriteTourAttaqueBasique.setPosition(760,300);
 
+	texteNiveauTour.setFont(font);
+	texteNiveauTour.setCharacterSize(8);
+	texteNiveauTour.setColor(sf::Color::White);
+	texteNiveauTour.setStyle(sf::Text::Bold);
+	texteNiveauTour.setPosition(710, 360);
 }
 
 TableauDeBord::~TableauDeBord() {
@@ -38,8 +45,18 @@ TableauDeBord::~TableauDeBord() {
 }
 
 void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
+	ResourceManager* manager = ResourceManager::getInstance();
+
 	pWindow.draw(spriteTableauDeBord);
 	pWindow.draw(texteTableauDeBord);
 	pWindow.draw(spriteCanonLourd);
 	pWindow.draw(spriteTourAttaqueBasique);
+
+	if (manager->getTourSelectionnee()!=0)
+	{
+		ostringstream stringNiveauTour;
+		stringNiveauTour << manager->getTourSelectionnee()->getNiveau();
+		texteNiveauTour.setString("Niveau tour : " + stringNiveauTour.str());
+		pWindow.draw(texteNiveauTour);
+	}
 }

@@ -17,6 +17,7 @@ public:
 	virtual ~Tour();
 	void dessiner(sf::RenderWindow &pWindow);
 	bool verifierAmelioration();
+	int getNiveau();
 
 protected:
 	int niveau;

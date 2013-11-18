@@ -55,7 +55,13 @@ public:
     Vague* getVague();
     Ressources* getRessources();
     GenerateurVague* getGenerateurVague();
+    Tour* getTourSelectionnee();
     //EtatJeu* getEtatJeu();
+
+    // Set
+
+    void setTourSelectionnee(Tour* tour);
+
 
     vector<Tour*> tourConteneur;
     vector<Projectile*> projectileConteneur;
@@ -66,7 +72,9 @@ public:
     Ressources* ressourcesPointeur;
     GenerateurVague* vagueGenerateurPointeur;
     //EtatJeu* pEtatJeu;
+    Tour* tourSelectionnee;
 
+    //TODO choisir entre public et private, si public, methodes get inutiles
 private:
     ResourceManager();
 

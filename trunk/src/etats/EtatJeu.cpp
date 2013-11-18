@@ -118,7 +118,7 @@ void EtatJeu::handleEvent(sf::Event event)
 				bool caseEstOccupee = (manager->getCarte())->imageCarte[a][b]->caseOccupee;
 				(manager->getCarte())->imageCarte[a][b]->caseOccupee = true;
 				if (!manager->getPersonnage().empty()){
-					for (int i=0; i< manager->getPersonnage().size();i++){
+					for (unsigned int i=0; i< manager->getPersonnage().size();i++){
 						autorisation = ((manager->getPersonnage())[i])->trouverChemin(manager->getCarte());
 						manager->getCarte()->nettoyerCarte();
 						if (autorisation == false){
@@ -130,16 +130,28 @@ void EtatJeu::handleEvent(sf::Event event)
 					setErreur("Vous ne pouvez pas bloquer le passage des ennemis !");
 				}
 				if(caseEstOccupee) {
-					setErreur("Il y a deja une tour sur cette case");
+					//setErreur("Il y a deja une tour sur cette case");
+					//caseSelectionnee = (manager->getCarte())->imageCarte[a][b];
+					vector<Tour*> tourConteneur = manager->getTour();
+					for (unsigned int i=0; i<tourConteneur.size(); i++)
+					{
+						int coordXTour = tourConteneur[i]->getCoordonnees().getPosX();
+						int coordYTour = tourConteneur[i]->getCoordonnees().getPosX();
+						if ((coordXTour == 40*a + 20)&&(coordYTour == 40*b + 20))
+						{
+							manager->setTourSelectionnee(tourConteneur[i]);
+						}
+					}
+
 				}
 				// TODO Mettre les bons prix de tours
 				if ((autorisation == true)&&(!caseEstOccupee)){
-					Coordonnees coordonneesTour((int)event.mouseButton.x,(int)event.mouseButton.y);
+					Coordonnees coordonneesTour(40*a+20,40*b+20);
 					switch(typeTourChoisi){
 						case 0:{
-							int prix = 1;
+							int prix = 10;
 							if(Batiment::verifierAchat(prix)) {
-								TourAttaqueBasique* ptourTest = new TourAttaqueBasique(1,coordonneesTour);
+								TourAttaqueBasique* ptourTest = new TourAttaqueBasique(prix,coordonneesTour);
 								manager->addTour((Tour*) ptourTest);
 							}
 							else {
@@ -160,7 +172,7 @@ void EtatJeu::handleEvent(sf::Event event)
 						}
 					}
 					if (!(manager->getPersonnage()).empty()){
-						for (int i=0; i< (manager->getPersonnage()).size();i++){
+						for (unsigned int i=0; i< (manager->getPersonnage()).size();i++){
 							manager->getPersonnage()[i]->trouverChemin(manager->getCarte());
 							manager->getPersonnage()[i]->ecrireChemin(manager->getCarte());
 						}
@@ -222,6 +234,7 @@ void EtatJeu::agir() {
 	}
 
 }
+
 
 EtatJeu::~EtatJeu() {
 	// TODO Auto-generated destructor stub

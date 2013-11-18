@@ -10,6 +10,7 @@
 
 #include "ElementGraphique.h"
 #include <cmath>
+#include "../ResourceManager.h"
 
 class TableauDeBord: public ElementGraphique {
 public:
@@ -25,6 +26,8 @@ private:
 	sf::Sprite spriteCanonLourd;
 	sf::Texture textureTourAttaqueBasique;
 	sf::Sprite spriteTourAttaqueBasique;
+	sf::Text texteNiveauTour;
+
 };
 
 #endif /* TABLEAUDEBORD_H_ */
