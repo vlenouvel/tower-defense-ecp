@@ -80,12 +80,9 @@ void EtatJeu::handleEvent(sf::Event event)
 				if (manager->getTourSelectionnee()->verifierAmelioration())
 				{
 					manager->getTourSelectionnee()->monterNiveau();
-					cout << "K"<< endl;
-
 				}
 				else
 				{
-					cout << "C"<< endl;
 					setErreur("Vous n'avez pas assez d'argent pour ameliorer cette tour.");
 				}
 			}
