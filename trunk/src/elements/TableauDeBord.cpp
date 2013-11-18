@@ -61,7 +61,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 	{
 		ostringstream stringNiveauTour;
 		stringNiveauTour << manager->getTourSelectionnee()->getNiveau();
-		texteNiveauTour.setString("Niveau tour : " + stringNiveauTour.str());
+		texteNiveauTour.setString("Niveau tour:" + stringNiveauTour.str());
 		pWindow.draw(texteNiveauTour);
 		pWindow.draw(spriteLevelUpBouton);
 	}

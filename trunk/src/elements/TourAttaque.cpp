@@ -62,7 +62,14 @@ void TourAttaque::trouverCibles()
 
 void TourAttaque::monterNiveau()
 {
-	niveau++;
 	attackDamage = (int)(attackDamage*1.5);
 	attackRange = (int)(attackRange*1.2);
+
+	// TODO Revoir prix amelioration
+	ResourceManager* manager = ResourceManager::getInstance();
+
+	manager->getRessources()->perdreArgent(prix*niveau*2);
+
+	niveau++;
+
 }
