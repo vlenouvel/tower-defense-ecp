@@ -22,10 +22,15 @@
 #include "../elements/GenerateurVague.h"
 #include "../elements/TourAttaqueBasique.h"
 #include "../elements/CanonLourd.h"
+#include <iostream>
+#include "../elements/Personnage.h"
+#include <cmath>
+#include "EtatMort.h"
 
 
 class EtatJeu: public Etat {
 public:
+
 	EtatJeu(App* tApp);
 	virtual ~EtatJeu();
 	void handleEvent(sf::Event event);
@@ -35,10 +40,12 @@ public:
 	Carte* carte;
 	Ressources* pRessources;
 	// cet entier nous dit quel type de tour on cree, c'est sale donc a changer
-	int typeTourChoisi;
 	TableauDeBord* pTableauDeBord;
 
 private:
+	enum typeBatiment {BASIQUE, CANON, EXPLOSIF, FROST, MUR};
+	void construireTour(typeBatiment type, Coordonnees coord);
+	typeBatiment batimentChoisi;
 	App* pApp;
 	sf::RectangleShape arriveCase;
 	std::string erreur;

@@ -9,7 +9,7 @@
 #include "../ResourceManager.h"
 #include "../ResourcesLoader.h"
 
-Tour::Tour(int tPrix, Coordonnees tCoord) : Batiment(tPrix, tCoord) , niveau(1) {
+Tour::Tour(Coordonnees tCoord) : Batiment(tCoord), niveau(1) {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	sonCreationTour.setBuffer(pResourcesLoader->bufferCreationTour);
 	sonCreationTour.play();

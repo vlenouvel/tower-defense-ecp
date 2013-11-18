@@ -13,7 +13,7 @@
 
 class TourAttaqueBasique: public TourAttaque {
 public:
-	TourAttaqueBasique(int tPrix, Coordonnees tCoord);
+	TourAttaqueBasique(Coordonnees tCoord);
 	virtual ~TourAttaqueBasique();
 	void dessiner(sf::RenderWindow & rWindow);
 

@@ -12,7 +12,7 @@
 
 class TourSupport : public Tour {
 public:
-	TourSupport(int tPrix, Coordonnees tCoord);
+	TourSupport(Coordonnees tCoord);
 	virtual ~TourSupport();
 	void dessiner(sf::RenderWindow &pWindow);
 };

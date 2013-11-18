@@ -29,7 +29,7 @@ App::App() {
 	texteFPS.setColor(sf::Color::White);
 	texteFPS.setStyle(sf::Text::Bold);
 	texteFPS.setPosition(20,20);
-	window.create(sf::VideoMode(800, 600), "Tower Defense");
+	window.create(sf::VideoMode(800, 600), "Tower Defense", sf::Style::Close);
 }
 App::~App() {
 	// TODO Auto-generated destructor stub
@@ -37,7 +37,6 @@ App::~App() {
 
 
 void App::jouer() {
-	bool AppEnCours;
 	sf::Clock horloge;
 	sf::Time framestartTime;
 	sf::Time difference;

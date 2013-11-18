@@ -55,5 +55,6 @@ void ResourcesLoader::ChargerSons() {
 }
 // Charge toutes les polices
 void ResourcesLoader::ChargerPolices() {
-	police.loadFromFile("resources/polices/Capture it.ttf");
+	policeMenu.loadFromFile("resources/polices/Capture it.ttf");
+	policeTableauDeBord.loadFromFile("resources/polices/animeace2_reg.ttf");
 }

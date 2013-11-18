@@ -17,7 +17,7 @@ GenerateurVague::GenerateurVague() {
 
 
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	font = pResourcesLoader->police;
+	font = pResourcesLoader->policeMenu;
 	texteNiveau.setFont(font);
 	texteNiveau.setCharacterSize(14);
 	texteNiveau.setColor(sf::Color::White);
@@ -42,17 +42,7 @@ void GenerateurVague::genererVague()
 	Vague* pVague = new Vague(niveau);
 	manager->addVague(pVague);
 	++niveau;
-}
-
-void GenerateurVague::dessiner(sf::RenderWindow &pWindow){
-		ResourceManager* manager = ResourceManager::getInstance();
-
-		ostringstream ss;
-		ss << "\n\n\n\nVague:";
-		ss << niveau;
-
-		texteNiveau.setString(ss.str());
-		pWindow.draw(texteNiveau);
+	manager->getRessources()->setVagues(niveau);
 }
 
 GenerateurVague::~GenerateurVague() {

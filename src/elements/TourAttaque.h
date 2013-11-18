@@ -19,7 +19,7 @@
 
 class TourAttaque: public Tour {
 public:
-	TourAttaque(int tPrix, Coordonnees tCoord);
+	TourAttaque(Coordonnees tCoord);
 	void virtual changerComportementCiblage(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles));
 	void agir();
 	virtual ~TourAttaque();

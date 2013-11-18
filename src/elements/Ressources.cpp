@@ -10,25 +10,23 @@
 #include <sstream>
 #include "../ResourceManager.h"
 
-Ressources::Ressources(Etat* tEtat) : pEtat(tEtat) {
+Ressources::Ressources() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureRessources = pResourcesLoader->textureRessources;
 	spriteRessources.setTexture(textureRessources);
 	spriteRessources.setScale(1,0.4);
 	spriteRessources.setPosition(715,0);
-	ressources = 0;
-	font = pResourcesLoader->police;
+	font = pResourcesLoader->policeTableauDeBord;
 	texteRessources.setFont(font);
 	texteRessources.setCharacterSize(14);
 	texteRessources.setColor(sf::Color::White);
-	texteRessources.setStyle(sf::Text::Bold);
 	texteRessources.setPosition(715,0);
-	texteRessources.setFont(font);
 
 	// TODO Changer vies et argent de depart
 	vie = 20;
 	argent = 100;
 	score = 0;
+	nombreVagues = 0;
 }
 
 Ressources::~Ressources() {
@@ -36,19 +34,20 @@ Ressources::~Ressources() {
 }
 
 void Ressources::dessiner(sf::RenderWindow &pWindow){
-	ResourceManager* manager = ResourceManager::getInstance();
-
-	Ressources* ressources = manager->getRessources();
 	ostringstream ss;
 	//std::string scoreTexte = "Score:" + to_string((long double)ressources->getScore()) + "\n" + "Argent:" + to_string((long double)ressources->getArgent())+ "\n" + "Vie:" + to_string((long double)ressources->getVie());
 	//ss <<  "Score:" << (long double)ressources->getScore() << "\n" + "Argent:" << (long double)ressources->getArgent() << "\n" << "Vie:" << (long double)ressources->getVie();
 	ss << "Score:";
-	ss << ressources->getScore();
-	ss << "\n$:";
-	ss << ressources->getArgent();
-	ss << "\nVie:";
-	ss << ressources->getVie();
-
+	ss << score;
+	ss << "\n";
+	ss << argent;
+	ss << " $\nVie:";
+	ss << vie;
+	ss << "\nVague";
+	if(nombreVagues>0)
+		ss << "s";
+	ss << " :";
+	ss << nombreVagues;
 	texteRessources.setString(ss.str());
 	pWindow.draw(spriteRessources);
 	//texteRessources.setString(to_string(ressources));
@@ -81,4 +80,9 @@ int Ressources::getScore() {
 
 void Ressources::augmenterScore(int nbPoint) {
 	score = score + nbPoint;
+}
+
+void Ressources::setVagues(int nbVagues)
+{
+	nombreVagues = nbVagues;
 }

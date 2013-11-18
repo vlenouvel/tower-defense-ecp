@@ -8,32 +8,29 @@
 #include "Batiment.h"
 #include "../ResourceManager.h"
 
-Batiment::Batiment(int tPrix, Coordonnees tCoord) : coordonnees(tCoord), prix(tPrix) {
+Batiment::Batiment(Coordonnees tCoord) : coordonnees(tCoord) {
 	ResourceManager* manager = ResourceManager::getInstance();
-
-	manager->getRessources()->perdreArgent(prix);
 }
 
 Batiment::~Batiment() {
 
 }
 
+int Batiment::getPrix()
+{
+	return prix;
+}
+
+bool Batiment::verifierAchat()
+{
+	ResourceManager *pResourceManager = ResourceManager::getInstance();
+	int argent = pResourceManager->getRessources()->getArgent();
+	return (argent >= prix);
+}
+
 void Batiment::dessiner(sf::RenderWindow &pWindow){
 	// TO DO
 }
-
-bool Batiment::verifierAchat(int prixBat) {
-	ResourceManager* manager = ResourceManager::getInstance();
-
-	int argent = manager->getRessources()->getArgent();
-
-	if (argent < prixBat) {
-		return false;
-	}
-
-	return true;
-}
-
 Coordonnees Batiment::getCoordonnees()
 {
 	return coordonnees;

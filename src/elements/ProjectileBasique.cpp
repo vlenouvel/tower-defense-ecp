@@ -8,6 +8,7 @@
 #include "ProjectileBasique.h"
 
 ProjectileBasique::ProjectileBasique(Coordonnees tCoord, Personnage* tCible, int tDommages) : Projectile(tCoord, tCible, tDommages) {
+	vitesse = 15;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureProjectile = pResourcesLoader->textureProjectileBasique;
 	spriteProjectile.setTexture(textureProjectile);

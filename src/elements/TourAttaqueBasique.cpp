@@ -9,8 +9,8 @@
 #include <iostream>
 #include <cmath>
 
-TourAttaqueBasique::TourAttaqueBasique(int tPrix, Coordonnees tCoord) : TourAttaque(tPrix, tCoord) {
-
+TourAttaqueBasique::TourAttaqueBasique(Coordonnees tCoord) : TourAttaque(tCoord) {
+	prix = 10;
 	attackRange = 100;
 	attackDamage = 2;
 	timeBetweenAttacks = sf::milliseconds(100);
@@ -41,4 +41,3 @@ TourAttaqueBasique::~TourAttaqueBasique() {
 void TourAttaqueBasique::dessiner(sf::RenderWindow & rWindow){
 	rWindow.draw(spriteTourAttaqueBasique);
 }
-
