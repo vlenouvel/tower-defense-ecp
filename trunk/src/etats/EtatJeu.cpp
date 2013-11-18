@@ -80,6 +80,10 @@ void EtatJeu::handleEvent(sf::Event event)
 					manager->getRessources()->perdreArgent(prixLevelUp);
 					manager->getTourSelectionnee()->monterNiveau();
 				}
+				else
+				{
+					setErreur("Vous n'avez pas assez d'argent pour ameliorer cette tour.");
+				}
 			}
 			else if ((event.mouseButton.x<700)){
 				manager->setTourSelectionnee(0);
