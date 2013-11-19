@@ -69,7 +69,7 @@ void EtatJeu::handleEvent(sf::Event event)
 				batimentChoisi = CANON;
 				manager->setTourSelectionnee(0);
 			}
-			else if ((event.mouseButton.x>705)&&(event.mouseButton.x<745)&&(event.mouseButton.y<390)&&(event.mouseButton.y>350)){
+			else if ((event.mouseButton.x>705)&&(event.mouseButton.x<745)&&(event.mouseButton.y<290)&&(event.mouseButton.y>250)){
 				batimentChoisi = FROST;
 				manager->setTourSelectionnee(0);
 			}
