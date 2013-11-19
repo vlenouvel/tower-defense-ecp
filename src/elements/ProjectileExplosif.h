@@ -19,7 +19,7 @@ public:
 	void toucherEnnemi();
 	virtual ~ProjectileExplosif();
 	void dessiner(sf::RenderWindow & rWindow);
-
+	void avancer();
 private:
 	int rayonExplosion;
 };

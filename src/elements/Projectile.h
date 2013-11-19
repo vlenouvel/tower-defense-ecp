@@ -22,7 +22,7 @@ public:
 	virtual void agir();
 	Personnage* getCible();
 	void setCible(Personnage* nouvelleCible);
-	void avancer();
+	virtual void avancer() = 0;
 
 protected:
 	virtual void toucherEnnemi() = 0;

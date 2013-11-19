@@ -45,6 +45,17 @@ void ResourcesLoader::ChargerTextures() {
 	textureProjectileExplosif.loadFromFile("resources/textures/textureProjectileExplosif.png");
 	textureRessources.loadFromFile("resources/textures/textureResources.jpg");
 	textureLevelUpBouton.loadFromFile("resources/textures/textureLevelUpBouton.png");
+	// textures missile
+	textureTraineeMissile1.loadFromFile("resources/textures/traineeMissile1.png");
+	textureTraineeMissile2.loadFromFile("resources/textures/traineeMissile2.png");
+	textureTraineeMissile3.loadFromFile("resources/textures/traineeMissile3.png");
+	textureTraineeMissile4.loadFromFile("resources/textures/traineeMissile4.png");
+	textureTraineeMissile5.loadFromFile("resources/textures/traineeMissile5.png");
+	textureTraineeMissile6.loadFromFile("resources/textures/traineeMissile6.png");
+	textureTraineeMissile7.loadFromFile("resources/textures/traineeMissile7.png");
+	textureTraineeMissile8.loadFromFile("resources/textures/traineeMissile8.png");
+	textureTraineeMissile9.loadFromFile("resources/textures/traineeMissile9.png");
+	textureMissile.loadFromFile("resources/textures/missile.png");
 
 }
 // Charge tous les sons

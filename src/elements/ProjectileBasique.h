@@ -17,6 +17,7 @@ public:
 	void toucherEnnemi();
 	virtual ~ProjectileBasique();
 	void dessiner(sf::RenderWindow & rWindow);
+	void avancer();
 };
 
 #endif /* PROJECTILEBASIQUE_H_ */

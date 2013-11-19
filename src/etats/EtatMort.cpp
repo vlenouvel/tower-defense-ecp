@@ -56,6 +56,7 @@ void EtatMort::handleEvent(sf::Event event)
 			delete manager->vagueGenerateurPointeur;
 			delete manager->vaguePointeur;
 
+
 			Etat *pNouvelEtat = new(EtatMenu)(pApp);
 			pApp->changerEtat(pNouvelEtat);
 

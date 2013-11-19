@@ -58,7 +58,6 @@ public:
     Ressources* getRessources();
     GenerateurVague* getGenerateurVague();
     Tour* getTourSelectionnee();
-	Personnage * pPersoFictif;
     //EtatJeu* getEtatJeu();
 
     // Set
@@ -76,6 +75,7 @@ public:
     GenerateurVague* vagueGenerateurPointeur;
     //EtatJeu* pEtatJeu;
     Tour* tourSelectionnee;
+	Personnage * pPersoFictif;
 
     //TODO choisir entre public et private, si public, methodes get inutiles
 private:
