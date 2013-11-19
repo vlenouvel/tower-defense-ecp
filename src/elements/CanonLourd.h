@@ -16,6 +16,7 @@ public:
 	CanonLourd(Coordonnees tCoord);
 	virtual ~CanonLourd();
 	void dessiner(sf::RenderWindow & rWindow);
+	void actionSpeciale();
 
 private:
 	sf::Sound sonTirCanonLourd;

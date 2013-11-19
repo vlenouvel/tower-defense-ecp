@@ -33,6 +33,10 @@ TableauDeBord::TableauDeBord() {
 	spriteTourAttaqueBasique.setScale(0.5,0.5);
 	spriteTourAttaqueBasique.setPosition(760,300);
 
+	spriteTourDeGlace.setTexture(pResourcesLoader->textureTourDeGlace);
+	spriteTourDeGlace.setScale(0.3,0.3);
+	spriteTourDeGlace.setPosition(705,350);
+
 	texteNiveauTour.setFont(font);
 	texteNiveauTour.setCharacterSize(8);
 	texteNiveauTour.setColor(sf::Color::White);
@@ -66,6 +70,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 	pWindow.draw(texteTableauDeBord);
 	pWindow.draw(spriteCanonLourd);
 	pWindow.draw(spriteTourAttaqueBasique);
+	pWindow.draw(spriteTourDeGlace);
 
 	if (manager->getTourSelectionnee()!=0)
 	{

@@ -23,6 +23,7 @@
 #include "../elements/GenerateurVague.h"
 #include "../elements/TourAttaqueBasique.h"
 #include "../elements/CanonLourd.h"
+#include "../elements/TourDeGlace.h"
 #include "EtatMort.h"
 
 

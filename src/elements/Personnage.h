@@ -37,7 +37,7 @@ public:
 	void arriver();
 	Coordonnees getCoordonnees();
 	Coordonnees coordonnees;
-
+	int pourcentageVitesseMalus;
 	//Pathfinding
 	bool trouverChemin(Carte * pCarte);
 	void ecrireChemin(Carte * pCarte);

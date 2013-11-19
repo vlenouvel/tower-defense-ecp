@@ -55,6 +55,10 @@ public:
 	sf::Texture textureExplosionMissile8;
 	sf::Texture textureExplosionMissile9;
 	sf::Texture textureExplosionMissile10;
+	// TourDeGlace
+	sf::Texture textureTourDeGlace;
+	sf::Texture textureEnvironnementGlace;
+	sf::Texture textureTirDeGlace;
 
 	sf::Music musique;
 	sf::SoundBuffer bufferCreationTour;

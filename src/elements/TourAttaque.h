@@ -23,6 +23,7 @@ public:
 	void virtual changerComportementCiblage(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles));
 	void agir();
 	virtual ~TourAttaque();
+	virtual void actionSpeciale()=0;
 	virtual void dessiner(sf::RenderWindow &pWindow);
 	virtual void monterNiveau();
 	virtual bool isTourAttaque();
