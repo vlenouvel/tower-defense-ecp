@@ -116,6 +116,9 @@ void Missile::toucherEnnemi()
 			perso->perdrePV(this->dommages);
 		}
 	}
+	Coordonnees coordonneesImpact(this->coordonnees.getPosX()-15,this->coordonnees.getPosY()-15);
+	ExplosionMissile * explosionMissile = new ExplosionMissile(coordonneesImpact);
+	manager->addObjetAnnexe(explosionMissile);
 	manager->removeProjectile(this);
 	delete this;
 }

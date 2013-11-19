@@ -52,9 +52,21 @@ vector<Tour*> ResourceManager::getTour() {
 	return tourConteneur;
 }
 
+void ResourceManager::addObjetAnnexe(ElementGraphique* objetAnnexe){
+	objetAnnexeConteneur.push_back(objetAnnexe);
+}
+
+vector<ElementGraphique*> ResourceManager::getObjetAnnexe(){
+	return objetAnnexeConteneur;
+}
+
 void ResourceManager::removeTour(Tour* entite)
 {
 	tourConteneur.erase(remove(tourConteneur.begin(), tourConteneur.end(), entite), tourConteneur.end());
+}
+void ResourceManager::removeObjetAnnexe(ElementGraphique* objetAnnexe)
+{
+	objetAnnexeConteneur.erase(remove(objetAnnexeConteneur.begin(), objetAnnexeConteneur.end(), objetAnnexe), objetAnnexeConteneur.end());
 }
 
 // Personnage

@@ -9,6 +9,7 @@
 #define MISSILE_H_
 
 #include "Projectile.h"
+#include "ExplosionMissile.h"
 #include "../ResourceManager.h"
 #include "math.h"
 #include "../ResourcesLoader.h"

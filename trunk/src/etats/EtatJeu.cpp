@@ -216,6 +216,12 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 			projectileConteneur[i]->dessiner(pWindow);
 		}
 	}
+	vector<ElementGraphique*> objetAnnexeConteneur = manager->getObjetAnnexe();
+	if (!objetAnnexeConteneur.empty()){
+		for(unsigned int i=0;i<objetAnnexeConteneur.size();++i){
+			objetAnnexeConteneur[i]->dessiner(pWindow);
+		}
+	}
 
 	texteErreur.setString(erreur);
 	if(pApp->horloge.getElapsedTime() - tempsErreur < tempsDisparitionErreur) {

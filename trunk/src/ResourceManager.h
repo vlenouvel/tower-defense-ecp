@@ -36,6 +36,7 @@ public:
     void addTour(Tour* entite);
     void addProjectile(Projectile* entite);
     void addPersonnage(Personnage* entite);
+	void addObjetAnnexe(ElementGraphique* objetAnnexe);
     void addMenu(Menu* menu);
     void addCarte(Carte* carte);
     void addVague(Vague* vague);
@@ -48,11 +49,13 @@ public:
     void removeProjectile(Projectile* entite);
     void removePersonnage(Personnage* entite);
     void removeTour(Tour* entite);
+	void removeObjetAnnexe(ElementGraphique* objetAnnexe);
 
     // Get
     vector<Tour*> getTour();
     vector<Personnage*> getPersonnage();
     vector<Projectile*> getProjectile();
+	vector<ElementGraphique*> getObjetAnnexe();
     Menu* getMenu();
     Carte* getCarte();
     Vague* getVague();
@@ -69,6 +72,7 @@ public:
     vector<Tour*> tourConteneur;
     vector<Projectile*> projectileConteneur;
     vector<Personnage*> personnageConteneur;
+	vector<ElementGraphique*> objetAnnexeConteneur;
     Menu* menuPointeur;
     Carte* cartePointeur;
     Vague* vaguePointeur;
