@@ -52,6 +52,11 @@ vector<Tour*> ResourceManager::getTour() {
 	return tourConteneur;
 }
 
+void ResourceManager::removeTour(Tour* entite)
+{
+	tourConteneur.erase(remove(tourConteneur.begin(), tourConteneur.end(), entite), tourConteneur.end());
+}
+
 // Personnage
 void ResourceManager::addPersonnage(Personnage* entite) {
 	personnageConteneur.push_back(entite);

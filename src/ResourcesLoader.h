@@ -33,6 +33,7 @@ public:
 	sf::Texture textureProjectileExplosif;
 	sf::Texture textureRessources;
 	sf::Texture textureLevelUpBouton;
+	sf::Texture textureSellBouton;
 	sf::Texture textureTraineeMissile1;
 	sf::Texture textureTraineeMissile2;
 	sf::Texture textureTraineeMissile3;

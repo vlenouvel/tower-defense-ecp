@@ -20,6 +20,7 @@ public:
 	int getNiveau();
 	virtual bool isTourAttaque();
 	virtual int getDommages();
+	virtual void vendreTour();
 
 protected:
 	int niveau;

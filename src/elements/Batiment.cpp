@@ -35,3 +35,4 @@ Coordonnees Batiment::getCoordonnees()
 {
 	return coordonnees;
 }
+

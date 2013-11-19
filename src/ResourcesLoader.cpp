@@ -43,6 +43,7 @@ void ResourcesLoader::ChargerTextures() {
 	textureProjectileExplosif.loadFromFile("resources/textures/textureProjectileExplosif.png");
 	textureRessources.loadFromFile("resources/textures/textureResources.jpg");
 	textureLevelUpBouton.loadFromFile("resources/textures/textureLevelUpBouton.png");
+	textureSellBouton.loadFromFile("resources/textures/textureSellBouton.png");
 	// textures missile
 	textureTraineeMissile1.loadFromFile("resources/textures/traineeMissile1.png");
 	textureTraineeMissile2.loadFromFile("resources/textures/traineeMissile2.png");
