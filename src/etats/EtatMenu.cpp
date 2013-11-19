@@ -31,7 +31,6 @@ void EtatMenu::handleEvent(sf::Event event)
 
 void EtatMenu::dessiner(sf::RenderWindow &pWindow)
 {
-
 	menu->dessiner(pWindow);
 }
 EtatMenu::~EtatMenu() {

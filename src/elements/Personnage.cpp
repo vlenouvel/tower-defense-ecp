@@ -75,7 +75,6 @@ void Personnage::avancer()
 
 void Personnage::perdrePV(int degat)
 {
-
 	if(degat > armure){
 		vie -= (degat - armure);
 		if(vie <= 0)
