@@ -49,6 +49,10 @@ TableauDeBord::TableauDeBord() {
 	spriteLevelUpBouton.setTexture(textureLevelUpBouton);
 	spriteLevelUpBouton.setScale(0.75, 0.75);
 	spriteLevelUpBouton.setPosition(710, 400);
+
+	textureSellBouton = pResourcesLoader->textureSellBouton;
+	spriteSellBouton.setTexture(textureSellBouton);
+	spriteSellBouton.setPosition(750, 400);
 }
 
 TableauDeBord::~TableauDeBord() {
@@ -71,6 +75,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 
 		pWindow.draw(texteNiveauTour);
 		pWindow.draw(spriteLevelUpBouton);
+		pWindow.draw(spriteSellBouton);
 
 		if(manager->getTourSelectionnee()->isTourAttaque())
 		{

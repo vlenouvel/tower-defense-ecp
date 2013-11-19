@@ -47,6 +47,7 @@ public:
 
     void removeProjectile(Projectile* entite);
     void removePersonnage(Personnage* entite);
+    void removeTour(Tour* entite);
 
     // Get
     vector<Tour*> getTour();

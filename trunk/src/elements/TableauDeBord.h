@@ -30,6 +30,8 @@ private:
 	sf::Texture textureLevelUpBouton;
 	sf::Sprite spriteLevelUpBouton;
 	sf::Text texteDommagesTour;
+	sf::Texture textureSellBouton;
+	sf::Sprite spriteSellBouton;
 
 };
 

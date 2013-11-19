@@ -53,3 +53,13 @@ int Tour::getDommages()
 {
 	return 0;
 }
+
+void Tour::vendreTour()
+{
+	ResourceManager* pResourceManager = ResourceManager::getInstance();
+	pResourceManager->getRessources()->gagnerArgent((int)(prix*0.75));
+	pResourceManager->removeTour(this);
+	pResourceManager->setTourSelectionnee(0);
+
+	delete this;
+}

@@ -86,6 +86,13 @@ void EtatJeu::handleEvent(sf::Event event)
 					setErreur("Vous n'avez pas assez d'argent pour ameliorer cette tour.");
 				}
 			}
+			else if ((event.mouseButton.x>750)&&(event.mouseButton.x<780)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(manager->getTourSelectionnee()!=0))
+			{
+				int indiceX = (manager->getTourSelectionnee()->getCoordonnees().getPosX()-20)/40;
+				int indiceY = (manager->getTourSelectionnee()->getCoordonnees().getPosY()-20)/40;
+				manager->getTourSelectionnee()->vendreTour();
+				manager->getCarte()->imageCarte[indiceX][indiceY]->caseOccupee = false;
+			}
 			else if ((event.mouseButton.x<700)){
 				manager->setTourSelectionnee(0);
 				bool autorisation = true;
