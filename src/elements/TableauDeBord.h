@@ -29,6 +29,7 @@ private:
 	sf::Text texteNiveauTour;
 	sf::Texture textureLevelUpBouton;
 	sf::Sprite spriteLevelUpBouton;
+	sf::Text texteDommagesTour;
 
 };
 
