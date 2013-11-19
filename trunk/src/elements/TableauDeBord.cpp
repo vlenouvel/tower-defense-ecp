@@ -39,6 +39,12 @@ TableauDeBord::TableauDeBord() {
 	texteNiveauTour.setStyle(sf::Text::Bold);
 	texteNiveauTour.setPosition(710, 360);
 
+	texteDommagesTour.setFont(font);
+	texteDommagesTour.setCharacterSize(8);
+	texteDommagesTour.setColor(sf::Color::White);
+	texteDommagesTour.setStyle(sf::Text::Bold);
+	texteDommagesTour.setPosition(710, 370);
+
 	textureLevelUpBouton = pResourcesLoader->textureLevelUpBouton;
 	spriteLevelUpBouton.setTexture(textureLevelUpBouton);
 	spriteLevelUpBouton.setScale(0.75, 0.75);
@@ -61,8 +67,20 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 	{
 		ostringstream stringNiveauTour;
 		stringNiveauTour << manager->getTourSelectionnee()->getNiveau();
-		texteNiveauTour.setString("Niveau tour:" + stringNiveauTour.str());
+		texteNiveauTour.setString("Niveau tour : " + stringNiveauTour.str());
+
 		pWindow.draw(texteNiveauTour);
 		pWindow.draw(spriteLevelUpBouton);
+
+		if(manager->getTourSelectionnee()->isTourAttaque())
+		{
+			ostringstream stringDommagesTour;
+			stringDommagesTour << manager->getTourSelectionnee()->getDommages();
+			texteDommagesTour.setString("Dommages : " + stringDommagesTour.str());
+
+			pWindow.draw(texteDommagesTour);
+		}
+
+
 	}
 }

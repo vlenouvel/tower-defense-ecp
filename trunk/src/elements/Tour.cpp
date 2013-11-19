@@ -17,6 +17,8 @@ Tour::Tour(Coordonnees tCoord) : Batiment(tCoord), niveau(1) {
 
 void Tour::monterNiveau()
 {
+	niveau++;
+	prix += (int)(prix*0.75);
 }
 
 Tour::~Tour() {
@@ -34,14 +36,20 @@ bool Tour::verifierAmelioration() {
 	int argent = manager->getRessources()->getArgent();
 
 	// TODO Revoir prix d'amelioration de tour
-	if (argent < prix * niveau * 2) {
-		return false;
-	}
-
-	return true;
+	return(argent >= (int)(prix*0.75));
 }
 
 int Tour::getNiveau()
 {
 	return niveau;
+}
+
+bool Tour::isTourAttaque()
+{
+	return false;
+}
+
+int Tour::getDommages()
+{
+	return 0;
 }

@@ -18,6 +18,8 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	bool verifierAmelioration();
 	int getNiveau();
+	virtual bool isTourAttaque();
+	virtual int getDommages();
 
 protected:
 	int niveau;

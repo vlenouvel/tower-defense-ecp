@@ -68,8 +68,18 @@ void TourAttaque::monterNiveau()
 	// TODO Revoir prix amelioration
 	ResourceManager* manager = ResourceManager::getInstance();
 
-	manager->getRessources()->perdreArgent(prix*niveau*2);
-
+	manager->getRessources()->perdreArgent((int)(prix*0.75));
+	prix += (int)(prix*0.75);
 	niveau++;
 
+}
+
+bool TourAttaque::isTourAttaque()
+{
+	return true;
+}
+
+int TourAttaque::getDommages()
+{
+	return attackDamage;
 }
