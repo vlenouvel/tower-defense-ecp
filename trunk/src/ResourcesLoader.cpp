@@ -27,9 +27,7 @@ ResourcesLoader* ResourcesLoader::getInstance() {
 }
 
 ResourcesLoader::ResourcesLoader() {
-	ChargerTextures();
-	ChargerSons();
-	ChargerPolices();
+
 }
 
 ResourcesLoader::~ResourcesLoader() {

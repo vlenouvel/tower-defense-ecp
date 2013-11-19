@@ -140,16 +140,3 @@ void ResourceManager::setTourSelectionnee(Tour* tour)
 {
 	tourSelectionnee = tour;
 }
-
-// EtatJeu
-/*
-void ResourceManager::addEtatJeu(EtatJeu* EtatJeu)
-{
-	pEtatJeu = EtatJeu;
-}
-
-EtatJeu* ResourceManager::getEtatJeu()
-{
-	return pEtatJeu;
-}
-*/

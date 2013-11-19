@@ -116,6 +116,8 @@ void Missile::toucherEnnemi()
 			perso->perdrePV(this->dommages);
 		}
 	}
+	manager->removeProjectile(this);
+	delete this;
 }
 
 void Missile::dessiner(sf::RenderWindow & rWindow){

@@ -19,10 +19,7 @@ ResourceManager* manager = ResourceManager::getInstance();
 
 
 App::App() {
-	pEtatActuel = new(EtatMenu)(this);
-	running = true;
 	test = 0;
-
 	font.loadFromFile("resources/polices/Capture it.ttf");
 	texteFPS.setFont(font);
 	texteFPS.setCharacterSize(48);
@@ -30,9 +27,10 @@ App::App() {
 	texteFPS.setStyle(sf::Text::Bold);
 	texteFPS.setPosition(20,20);
 	window.create(sf::VideoMode(800, 600), "Tower Defense", sf::Style::Close);
+	pEtatActuel = new EtatChargement(this);
 }
 App::~App() {
-	// TODO Auto-generated destructor stub
+
 }
 
 
@@ -48,12 +46,10 @@ void App::jouer() {
 	tempsLegal = sf::seconds(tempsUneImage);
 
 	// Charge la musique de fond
-	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	sf::Music * music;
-	music = &(pResourcesLoader->musique);
-	music->play();
+	sf::Music music;
+	music.openFromFile("resources/sons/musicTest.ogg");
+	music.play();
 
-	
 	// lance l'horloge
 	horloge.restart();
 
@@ -97,7 +93,6 @@ void App::gererEvents() {
 
 void App::update() {
 	pEtatActuel->agir();
-
 }
 
 void App::render() {
@@ -108,7 +103,6 @@ void App::render() {
 	ostringstream ss;
 	ss << test;
 	texteFPS.setString(ss.str());
-	//texteFPS.setString(to_string(test));
 
 	window.draw(texteFPS);
 	window.display();

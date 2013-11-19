@@ -16,15 +16,12 @@
 #include "etats/EtatJeu.h"
 #include "etats/EtatMenu.h"
 #include "etats/EtatMort.h"
+#include "etats/EtatChargement.h"
 #include "ResourceManager.h"
 #include "elements/Coordonnees.h"
 
 class App {
 public:
-	bool running;
-	long double test;
-	sf::Font font;
-	sf::Text texteFPS;
 	App();
 	void jouer();
 	void boucle();
@@ -34,9 +31,12 @@ public:
 	virtual ~App();
 	void changerEtat(Etat *pNouvelEtat);
 	sf::Clock horloge;
-	Etat *pEtatActuel;
 
 private:
+	long double test;
+	Etat *pEtatActuel;
+	sf::Font font;
+	sf::Text texteFPS;
 	sf::RenderWindow window;
 };
 
