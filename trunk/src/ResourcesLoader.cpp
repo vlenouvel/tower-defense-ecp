@@ -66,6 +66,10 @@ void ResourcesLoader::ChargerTextures() {
 	textureExplosionMissile8.loadFromFile("resources/textures/impactMissile8.png");
 	textureExplosionMissile9.loadFromFile("resources/textures/impactMissile9.png");
 	textureExplosionMissile10.loadFromFile("resources/textures/impactMissile10.png");
+	// TourDeGlace
+	textureTourDeGlace.loadFromFile("resources/textures/frostTower.png");
+	textureEnvironnementGlace.loadFromFile("resources/textures/frostEnvironement.png");
+	textureTirDeGlace.loadFromFile("resources/textures/frostTir.png");
 
 }
 // Charge tous les sons

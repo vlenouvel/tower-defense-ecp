@@ -23,6 +23,7 @@ void TourAttaque::agir()
 			this->attaque(pCibler);
 		}
 	}
+	this->actionSpeciale();
 }
 
 void TourAttaque::changerComportementCiblage(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles))

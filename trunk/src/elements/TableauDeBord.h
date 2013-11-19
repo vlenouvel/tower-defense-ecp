@@ -26,6 +26,7 @@ private:
 	sf::Sprite spriteCanonLourd;
 	sf::Texture textureTourAttaqueBasique;
 	sf::Sprite spriteTourAttaqueBasique;
+	sf::Sprite spriteTourDeGlace;
 	sf::Text texteNiveauTour;
 	sf::Texture textureLevelUpBouton;
 	sf::Sprite spriteLevelUpBouton;

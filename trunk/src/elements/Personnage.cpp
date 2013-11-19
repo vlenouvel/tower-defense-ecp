@@ -20,7 +20,7 @@ Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) 
 	barreDeVieVerte.setFillColor(sf::Color::Green);
 	barreDeVieVerte.setSize(sf::Vector2f(sf::Vector2f(spritePersonnage.getGlobalBounds().width, 5)));
 	barreDeVieVerte.setPosition(tCoord.posX, tCoord.posY - 8);
-
+	pourcentageVitesseMalus = 0;
 	barreDeVieRouge.setFillColor(sf::Color::Red);
 	barreDeVieRouge.setSize(sf::Vector2f(0,5));
 	barreDeVieRouge.setPosition(tCoord.posX, tCoord.posY - 8);
@@ -38,6 +38,8 @@ void Personnage::avancer()
 {
 	if(!chemin.empty()){
 		float imageVitesse = (float)vitesse;
+		if (pourcentageVitesseMalus > 0)
+			imageVitesse = 1;
 		while (imageVitesse > 0){
 			int abscisseCible = chemin[0]->coordonneesCase.getPosX();
 			int ordonneeCible = chemin[0]->coordonneesCase.getPosY();
@@ -71,6 +73,8 @@ void Personnage::avancer()
 	else {
 		arriver();
 	}
+	if (pourcentageVitesseMalus > 0)
+		pourcentageVitesseMalus--;
 }
 
 void Personnage::perdrePV(int degat)

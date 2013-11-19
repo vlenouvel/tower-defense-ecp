@@ -69,6 +69,10 @@ void EtatJeu::handleEvent(sf::Event event)
 				batimentChoisi = CANON;
 				manager->setTourSelectionnee(0);
 			}
+			else if ((event.mouseButton.x>705)&&(event.mouseButton.x<745)&&(event.mouseButton.y<390)&&(event.mouseButton.y>350)){
+				batimentChoisi = FROST;
+				manager->setTourSelectionnee(0);
+			}
 			else if((event.mouseButton.x>680)&&(event.mouseButton.y>560)) {
 				setErreur("Vous ne pouvez pas construire sur la sortie !");
 			}
@@ -250,6 +254,7 @@ void EtatJeu::construireTour(typeBatiment type, Coordonnees coord)
 		case EXPLOSIF:
 			break;
 		case FROST:
+			pTour = new TourDeGlace(coord);
 			break;
 		case MUR:
 			break;
