@@ -45,6 +45,16 @@ public:
 	sf::Texture textureTraineeMissile8;
 	sf::Texture textureTraineeMissile9;
 	sf::Texture textureMissile;
+	sf::Texture textureExplosionMissile1;
+	sf::Texture textureExplosionMissile2;
+	sf::Texture textureExplosionMissile3;
+	sf::Texture textureExplosionMissile4;
+	sf::Texture textureExplosionMissile5;
+	sf::Texture textureExplosionMissile6;
+	sf::Texture textureExplosionMissile7;
+	sf::Texture textureExplosionMissile8;
+	sf::Texture textureExplosionMissile9;
+	sf::Texture textureExplosionMissile10;
 
 	sf::Music musique;
 	sf::SoundBuffer bufferCreationTour;
