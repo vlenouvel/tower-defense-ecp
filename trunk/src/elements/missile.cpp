@@ -26,6 +26,7 @@ void Missile::avancer()
 {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	if (momentDuCycle > 19){
+		vitesse++;
 		switch(momentDuCycle%4){
 		case 0:
 			spriteTrainee.setTexture(pResourcesLoader->textureTraineeMissile6);
