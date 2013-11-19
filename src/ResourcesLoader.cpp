@@ -38,7 +38,7 @@ void ResourcesLoader::ChargerTextures() {
 	textureMenu.loadFromFile("resources/textures/menu.png");
 	texturePersonnage.loadFromFile("resources/textures/texturePersonnage.jpg");
 	textureCarte.loadFromFile("resources/textures/champDeBataille.jpg");
-	textureCanonLourd.loadFromFile("resources/textures/textureCanonLourd.jpg");
+	textureCanonLourd.loadFromFile("resources/textures/textureCanonLourd.png");
 	textureTourAttaqueBasique.loadFromFile("resources/textures/textureTourAttaqueBasique.jpg");
 	textureProjectileBasique.loadFromFile("resources/textures/textureProjectileBasique.png");
 	textureProjectileExplosif.loadFromFile("resources/textures/textureProjectileExplosif.png");

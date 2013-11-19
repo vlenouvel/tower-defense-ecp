@@ -43,12 +43,12 @@ TourDeGlace::~TourDeGlace() {
 void TourDeGlace::actionSpeciale(){
 	ResourceManager *manager = ResourceManager::getInstance();
 	vector<Personnage *> persosProches;
-	for (int i=0; i<manager->getPersonnage().size();i++){
+	for (unsigned int i=0; i<manager->getPersonnage().size();i++){
 		if (pow((double)(manager->getPersonnage()[i]->coordonnees.getPosX() - this->coordonnees.getPosX()),2) + pow((double)(manager->getPersonnage()[i]->coordonnees.getPosY() - this->coordonnees.getPosY()),2) < 4000){
 			persosProches.push_back(manager->getPersonnage()[i]);
 		}
 	}
-	for (int i=0;i<persosProches.size();i++){
+	for (unsigned int i=0;i<persosProches.size();i++){
 		persosProches[i]->pourcentageVitesseMalus += 1;
 	}
 	persosProches.clear();

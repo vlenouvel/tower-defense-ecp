@@ -36,6 +36,7 @@ bool Tour::verifierAmelioration() {
 	int argent = manager->getRessources()->getArgent();
 
 	// TODO Revoir prix d'amelioration de tour
+	// TODO Verifier coherence avec affichage
 	return(argent >= (int)(prix*0.75));
 }
 
@@ -56,6 +57,8 @@ int Tour::getDommages()
 
 void Tour::vendreTour()
 {
+	//TODO Equilibrage : prix de vente
+	//TODO Coherence avec affichage
 	ResourceManager* pResourceManager = ResourceManager::getInstance();
 	pResourceManager->getRessources()->gagnerArgent((int)(prix*0.75));
 	pResourceManager->removeTour(this);

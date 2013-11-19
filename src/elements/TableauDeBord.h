@@ -33,6 +33,10 @@ private:
 	sf::Text texteDommagesTour;
 	sf::Texture textureSellBouton;
 	sf::Sprite spriteSellBouton;
+	sf::Text texteCoutAmelioration;
+	sf::Text textePrixDeVente;
+	sf::Texture textureTourSelectionnee;
+	sf::Sprite spriteTourSelectionnee;
 
 };
 
