@@ -35,6 +35,7 @@ ResourcesLoader::~ResourcesLoader() {
 }
 // Charge toutes les textures
 void ResourcesLoader::ChargerTextures() {
+	textureMenu.loadFromFile("resources/textures/menu.png");
 	texturePersonnage.loadFromFile("resources/textures/texturePersonnage.jpg");
 	textureCarte.loadFromFile("resources/textures/champDeBataille.jpg");
 	textureCanonLourd.loadFromFile("resources/textures/textureCanonLourd.jpg");

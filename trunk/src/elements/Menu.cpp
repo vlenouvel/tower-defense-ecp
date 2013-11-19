@@ -9,6 +9,8 @@
 
 Menu::Menu() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	spriteMenu.setTexture(pResourcesLoader->textureMenu);
+	spriteMenu.setScale(0.63,0.83);
 	font = pResourcesLoader->policeMenu;
 	text1.setFont(font);
 	text1.setString("Entrez dans l'arene");
@@ -35,6 +37,7 @@ Menu::~Menu() {
 }
 
 void Menu::dessiner(sf::RenderWindow &pWindow){
+	pWindow.draw(spriteMenu);
 	pWindow.draw(text1);
 	pWindow.draw(text2);
 	pWindow.draw(text3);

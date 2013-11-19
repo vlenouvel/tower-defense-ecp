@@ -25,6 +25,7 @@ public:
 	void ChargerSons();
 	void ChargerPolices();
 
+	sf::Texture textureMenu;
 	sf::Texture texturePersonnage;
 	sf::Texture textureCarte;
 	sf::Texture textureCanonLourd;
