@@ -5,9 +5,8 @@
 
 #include "EtatMort.h"
 
-EtatMort::EtatMort(App* tApp) : Etat(tApp) {
+EtatMort::EtatMort(App* tApp) : Etat(tApp)  {
 	pApp = tApp;
-
 	ResourceManager* manager = ResourceManager::getInstance();
 
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
@@ -23,43 +22,59 @@ EtatMort::EtatMort(App* tApp) : Etat(tApp) {
 	int score = manager->getRessources()->getScore();
 	text2.setFont(font);
 	ostringstream ss;
-	ss << (long double)score;
+	ss << score;
 	text2.setString("Votre score est de : " + ss.str());
-	text2.setCharacterSize(32);
+	text2.setCharacterSize(24);
 	text2.setColor(sf::Color::White);
 	text2.setStyle(sf::Text::Bold);
 	text2.setPosition(180, 250);
 
+
+	text4.setFont(font);
+	text4.setString("Cliquez pour revenir au menu");
+	text4.setCharacterSize(24);
+	text4.setColor(sf::Color::White);
+	text4.setStyle(sf::Text::Bold);
+	text4.setPosition(150,400);
+
+	ofstream fichierScoreOut;
+	fichierScoreOut.open("scores.txt",ios_base::app);
+	fichierScoreOut << score << "\n";
+	fichierScoreOut.close();
+
+	ifstream fichierScoreIn("scores.txt");
+	int max = 0;
+	int temp;
+	while(fichierScoreIn >> temp)
+	{
+		if(temp > max)
+			max = temp;
+	}
+	fichierScoreIn.close();
 	text3.setFont(font);
-	text3.setString("Cliquez pour revenir au menu");
 	text3.setCharacterSize(24);
 	text3.setColor(sf::Color::White);
 	text3.setStyle(sf::Text::Bold);
-	text3.setPosition(350,400);
-
-
+	text3.setPosition(180, 325);
+	if (score > max)
+	{
+		text3.setString("Vous avez battu votre meilleur score !");
+	} else {
+		ostringstream ss2;
+		ss2 << max;
+		text3.setString("Votre meilleur score était de: " + ss2.str());
+	}
 }
 
 void EtatMort::handleEvent(sf::Event event)
 {
 	if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
-			// Efface le Resource manager
 			ResourceManager* manager = ResourceManager::getInstance();
+			manager->clearResourcesManager();
 
-			// manager->cartePointeur = 0;
-			//manager->menuPointeur = 0;
-			delete manager->ressourcesPointeur;
-			manager->projectileConteneur.clear();
-			manager->personnageConteneur.clear();
-			manager->tourConteneur.clear();
-			delete manager->vagueGenerateurPointeur;
-			delete manager->vaguePointeur;
-
-
-			Etat *pNouvelEtat = new(EtatMenu)(pApp);
+			Etat *pNouvelEtat = new EtatMenu(pApp);
 			pApp->changerEtat(pNouvelEtat);
-
 		}
 	}
 }
@@ -69,6 +84,7 @@ void EtatMort::dessiner(sf::RenderWindow &pWindow)
 	pWindow.draw(text1);
 	pWindow.draw(text2);
 	pWindow.draw(text3);
+	pWindow.draw(text4);
 }
 EtatMort::~EtatMort() {
 	// TODO Auto-generated destructor stub

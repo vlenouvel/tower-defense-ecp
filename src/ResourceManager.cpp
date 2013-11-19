@@ -31,7 +31,6 @@ ResourceManager::ResourceManager() {
     vector<Tour*> tourConteneur;
     vector<Personnage*> personnageConteneur;
     vector<Projectile*> projectileConteneur;
-    menuPointeur = 0;
     cartePointeur = 0;
     ressourcesPointeur = 0;
     vaguePointeur = 0;
@@ -41,6 +40,39 @@ ResourceManager::ResourceManager() {
 
 ResourceManager::~ResourceManager() {
 	delete managerPointeur;
+	instance = false;
+}
+
+void ResourceManager::clearResourcesManager()
+{
+	delete cartePointeur;
+	cartePointeur = 0;
+	delete ressourcesPointeur;
+    ressourcesPointeur = 0;
+    delete vaguePointeur;
+    vaguePointeur = 0;
+    delete vagueGenerateurPointeur;
+    vagueGenerateurPointeur = 0;
+    delete tourSelectionnee;
+    tourSelectionnee = 0;
+
+    for(unsigned int i = 0; i < tourConteneur.size() ; i++)
+    {
+    	delete tourConteneur[i];
+    }
+    tourConteneur.clear();
+
+    for(unsigned int i = 0; i < personnageConteneur.size() ; i++)
+    {
+    	delete personnageConteneur[i];
+    }
+    personnageConteneur.clear();
+
+    for(unsigned int i = 0; i < projectileConteneur.size() ; i++)
+    {
+    	delete projectileConteneur[i];
+    }
+    projectileConteneur.clear();
 }
 
 // Tour
@@ -95,17 +127,10 @@ void ResourceManager::removeProjectile(Projectile *entite){
 	projectileConteneur.erase(remove(projectileConteneur.begin(), projectileConteneur.end(), entite), projectileConteneur.end());
 }
 
-// Menu
-void ResourceManager::addMenu(Menu* menu) {
-	menuPointeur = menu;
-}
-
-Menu* ResourceManager::getMenu() {
-	return menuPointeur;
-}
-
 // Carte
 void ResourceManager::addCarte(Carte* carte) {
+	if(cartePointeur != 0)
+		delete cartePointeur;
 	cartePointeur = carte;
 }
 
@@ -116,6 +141,8 @@ Carte* ResourceManager::getCarte() {
 // Vague
 void ResourceManager::addVague(Vague* vague)
 {
+	if(vaguePointeur != 0)
+		delete vaguePointeur;
 	vaguePointeur = vague;
 }
 
@@ -128,6 +155,8 @@ Vague* ResourceManager::getVague()
 
 void ResourceManager::addGenerateurVague(GenerateurVague* generateurVague)
 {
+	if(vagueGenerateurPointeur != 0)
+		delete vagueGenerateurPointeur;
 	vagueGenerateurPointeur = generateurVague;
 }
 
@@ -140,6 +169,8 @@ GenerateurVague* ResourceManager::getGenerateurVague()
 
 void ResourceManager::addRessources(Ressources* ressources)
 {
+	if(ressourcesPointeur != 0)
+		delete ressourcesPointeur;
 	ressourcesPointeur = ressources;
 }
 

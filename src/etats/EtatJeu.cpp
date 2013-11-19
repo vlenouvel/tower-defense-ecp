@@ -13,8 +13,6 @@ using namespace std;
 EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	ResourceManager* manager = ResourceManager::getInstance();
 
-	//manager->addEtatJeu(this);
-
 	// Creation de la carte
 	carte = new Carte();
 	pTableauDeBord = new TableauDeBord();
@@ -47,7 +45,6 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	texteErreur.setColor(sf::Color::Red);
 	texteErreur.setStyle(sf::Text::Bold);
 	texteErreur.setPosition(100,250);
-
 }
 
 void EtatJeu::setErreur(string erreurMsg) {

@@ -10,7 +10,7 @@
 #include <sstream>
 
 GenerateurVague::GenerateurVague() {
-	niveau = 0;
+	niveau = 1;
 
 	// definition du temps d'attente entre deux vagues
 	tempsEntreVague = sf::seconds((float)5);
@@ -42,7 +42,7 @@ void GenerateurVague::genererVague()
 	Vague* pVague = new Vague(niveau);
 	manager->addVague(pVague);
 	++niveau;
-	manager->getRessources()->setVagues(niveau);
+	manager->getRessources()->setVagues(niveau-1);
 }
 
 GenerateurVague::~GenerateurVague() {

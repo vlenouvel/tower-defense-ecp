@@ -9,7 +9,6 @@
 #include "../ResourceManager.h"
 
 Batiment::Batiment(Coordonnees tCoord) : coordonnees(tCoord) {
-	ResourceManager* manager = ResourceManager::getInstance();
 }
 
 Batiment::~Batiment() {

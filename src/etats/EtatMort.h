@@ -14,6 +14,8 @@
 #include "../etats/EtatMenu.h"
 #include <sstream>
 #include "../App.h"
+#include <iostream>
+#include <fstream>
 
 class EtatMort : public Etat {
 public:
@@ -28,6 +30,7 @@ private:
 	sf::Text text1;
 	sf::Text text2;
 	sf::Text text3;
+	sf::Text text4;
 
 };
 

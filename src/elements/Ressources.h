@@ -40,8 +40,6 @@ private:
 	int vie;
 	int score;
 	int nombreVagues;
-
-	Etat* pEtat;
 };
 
 #endif /* RESSOURCES_H_ */
