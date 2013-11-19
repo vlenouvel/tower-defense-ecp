@@ -31,8 +31,6 @@ Vague::Vague(int niveau) {
 		niveauType = niveauType - 1;
 	}
 
-	// TODO A supprimer
-
 }
 
 void Vague::genererPersonnage()
@@ -64,17 +62,11 @@ void Vague::genererPersonnage()
 			break;
 	}
 
-	// TODO Changer l'aspect random du positionnement
 	Coordonnees coordonneesDepart(0,0);
 	Personnage* pPersonnage = new Personnage(niveauType*vie, vitesse, armure, coordonneesDepart);
 	pPersonnage->trouverChemin(manager->getCarte());
 	pPersonnage->ecrireChemin(manager->getCarte());
 	manager->addPersonnage(pPersonnage);
-
-	// TODO A supprimer
-	vector<Personnage*> pPerso = manager->getPersonnage();
-	int testVie = pPerso.back()->getVie();
-	int s = pPerso.size();
 
 	nombrePersoRestant--;
 	if(nombrePersoRestant == 0)

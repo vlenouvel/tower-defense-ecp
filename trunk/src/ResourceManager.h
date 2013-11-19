@@ -37,7 +37,6 @@ public:
     void addProjectile(Projectile* entite);
     void addPersonnage(Personnage* entite);
 	void addObjetAnnexe(ElementGraphique* objetAnnexe);
-    void addMenu(Menu* menu);
     void addCarte(Carte* carte);
     void addVague(Vague* vague);
     void addRessources(Ressources* ressources);
@@ -45,6 +44,7 @@ public:
     //void addEtatJeu(EtatJeu* EtatJeu);
 
     // Remove
+    void clearResourcesManager();
 
     void removeProjectile(Projectile* entite);
     void removePersonnage(Personnage* entite);
@@ -56,7 +56,6 @@ public:
     vector<Personnage*> getPersonnage();
     vector<Projectile*> getProjectile();
 	vector<ElementGraphique*> getObjetAnnexe();
-    Menu* getMenu();
     Carte* getCarte();
     Vague* getVague();
     Ressources* getRessources();
@@ -73,7 +72,6 @@ public:
     vector<Projectile*> projectileConteneur;
     vector<Personnage*> personnageConteneur;
 	vector<ElementGraphique*> objetAnnexeConteneur;
-    Menu* menuPointeur;
     Carte* cartePointeur;
     Vague* vaguePointeur;
     Ressources* ressourcesPointeur;

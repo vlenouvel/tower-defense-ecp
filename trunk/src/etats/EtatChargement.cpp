@@ -9,6 +9,7 @@
 
 EtatChargement::EtatChargement(App *tApp) : Etat(tApp)
 {
+	pApp = tApp;
 	etape = RIEN;
 	keepLoading = true;
 	fontLoading.loadFromFile("resources/polices/Capture it.ttf");
@@ -32,7 +33,12 @@ void EtatChargement::handleEvent(sf::Event event)
 
 void EtatChargement::dessiner(sf::RenderWindow &pWindow)
 {
-	pWindow.draw(textLoading);
+	if(!keepLoading)
+	{
+		pWindow.close();
+	} else {
+		pWindow.draw(textLoading);
+	}
 }
 
 void EtatChargement::agir()
@@ -57,14 +63,13 @@ void EtatChargement::agir()
 		case SONS:
 			if(clockLoading.getElapsedTime() >= tempsMinimum)
 			{
-				keepLoading = false;
+				Etat *pNouvelEtat = new EtatMenu(pApp);
+				pApp->changerEtat(pNouvelEtat);
 			}
 			break;
 		}
-	} else {
-		Etat *pNouvelEtat = new EtatMenu(pApp);
-		pApp->changerEtat(pNouvelEtat);
 	}
+
 }
 
 

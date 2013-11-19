@@ -20,7 +20,6 @@ TirDeGlace::TirDeGlace(Coordonnees tCoord, Personnage* tCible, int tDommages, in
 
 void TirDeGlace::avancer()
 {
-	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	int xproj = this->coordonnees.getPosX();
 	int yproj = this->coordonnees.getPosY();
 	int xperso = this->cible->getCoordonnees().getPosX();

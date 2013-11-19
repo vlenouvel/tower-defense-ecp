@@ -8,11 +8,7 @@
 #include "EtatMenu.h"
 
 EtatMenu::EtatMenu(App* tApp) : Etat(tApp) {
-	ResourceManager* manager = ResourceManager::getInstance();
-	// Creation du menu
-	Menu* pMenu = new Menu();
-	manager->addMenu(pMenu);
-	menu = manager->getMenu();
+	menu = new Menu();
 }
 
 void EtatMenu::handleEvent(sf::Event event)
@@ -22,7 +18,13 @@ void EtatMenu::handleEvent(sf::Event event)
 			if ((event.mouseButton.x > 150) && (event.mouseButton.x < 650)
 					&& (event.mouseButton.y > 100)
 					&& (event.mouseButton.y < 150)) {
-				Etat *pNouvelEtat = new(EtatJeu)(pApp);
+				Etat *pNouvelEtat = new EtatJeu(pApp);
+				pApp->changerEtat(pNouvelEtat);
+			} else if((event.mouseButton.x > 150) && (event.mouseButton.x < 650)
+					&& (event.mouseButton.y > 250)
+					&& (event.mouseButton.y < 300))
+			{
+				Etat *pNouvelEtat = new EtatScores(pApp);
 				pApp->changerEtat(pNouvelEtat);
 			}
 		}

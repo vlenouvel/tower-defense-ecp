@@ -10,6 +10,7 @@
 
 #include "SFML/Window.hpp"
 #include "SFML/Graphics.hpp"
+#include "../ResourcesLoader.h"
 
 class App;
 class Etat {

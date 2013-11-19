@@ -11,7 +11,7 @@
 Personnage::Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord) :
 		coordonnees(tCoord), vie(tVie), vitesse(tVitesse), armure(tArmure)
 {
-	gain = 10;
+	gain = tVie;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	texturePersonnage = pResourcesLoader->texturePersonnage;
 	spritePersonnage.setTexture(texturePersonnage);
@@ -110,7 +110,7 @@ void Personnage::mourir()
 
 	// TODO Changer gain cible tuee
 	manager->getRessources()->gagnerArgent(gain);
-	manager->getRessources()->augmenterScore(1);
+	manager->getRessources()->augmenterScore(gain);
 	delete this;
 
 }
@@ -244,7 +244,6 @@ void Personnage::ecrireChemin(Carte * pCarte){
 	chemin.clear();
 	Case * trace;
 	trace = pCarte->pCaseSortie;
-	int distanceEntree;
 	int X;
 	int Y;
 	X = (int)floor((float)trace->coordonneesCase.getPosX()/40);
