@@ -33,6 +33,16 @@ public:
 	sf::Texture textureProjectileExplosif;
 	sf::Texture textureRessources;
 	sf::Texture textureLevelUpBouton;
+	sf::Texture textureTraineeMissile1;
+	sf::Texture textureTraineeMissile2;
+	sf::Texture textureTraineeMissile3;
+	sf::Texture textureTraineeMissile4;
+	sf::Texture textureTraineeMissile5;
+	sf::Texture textureTraineeMissile6;
+	sf::Texture textureTraineeMissile7;
+	sf::Texture textureTraineeMissile8;
+	sf::Texture textureTraineeMissile9;
+	sf::Texture textureMissile;
 
 	sf::Music musique;
 	sf::SoundBuffer bufferCreationTour;

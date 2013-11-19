@@ -9,7 +9,7 @@
 #define CANONLOURD_H_
 
 #include "TourAttaque.h"
-#include "ProjectileExplosif.h"
+#include "missile.h"
 
 class CanonLourd: public TourAttaque {
 public:
