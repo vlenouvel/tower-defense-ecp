@@ -41,7 +41,7 @@ public:
     void addVague(Vague* vague);
     void addRessources(Ressources* ressources);
     void addGenerateurVague(GenerateurVague* generateurVague);
-    //void addEtatJeu(EtatJeu* EtatJeu);
+    void addPersoFictif(Personnage* pPersoFictif);
 
     // Remove
     void clearResourcesManager();
@@ -61,12 +61,15 @@ public:
     Ressources* getRessources();
     GenerateurVague* getGenerateurVague();
     Tour* getTourSelectionnee();
-    //EtatJeu* getEtatJeu();
+    Personnage* getPersoFictif();
 
     // Set
 
     void setTourSelectionnee(Tour* tour);
 
+    //TODO choisir entre public et private, si public, methodes get inutiles
+private:
+    ResourceManager();
 
     vector<Tour*> tourConteneur;
     vector<Projectile*> projectileConteneur;
@@ -76,13 +79,8 @@ public:
     Vague* vaguePointeur;
     Ressources* ressourcesPointeur;
     GenerateurVague* vagueGenerateurPointeur;
-    //EtatJeu* pEtatJeu;
     Tour* tourSelectionnee;
 	Personnage * pPersoFictif;
-
-    //TODO choisir entre public et private, si public, methodes get inutiles
-private:
-    ResourceManager();
 
 };
 

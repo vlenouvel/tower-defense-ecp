@@ -1,7 +1,11 @@
+/*
+ * TowerDefense.cpp
+ *
+ * Point d'entrée du jeu
+ *
+ */
 #include <iostream>
-#include <exception>
 #include "App.h"
-#include <SFML/Audio.hpp>
 
 using namespace std;
 
