@@ -32,23 +32,23 @@ void ConfigManager::loadConfig()
 
 	fps = atoi(config->FirstChildElement("fps")->GetText());
 
-	tinyxml2::XMLElement* tours = config->FirstChildElement("tours");
+	tinyxml2::XMLElement* batiments = config->FirstChildElement("batiments");
 
-	tinyxml2::XMLElement* tourAttaqueBasique = tours->FirstChildElement("tourAttaqueBasique");
+	tinyxml2::XMLElement* tourAttaqueBasique = batiments->FirstChildElement("tourAttaqueBasique");
 
 	mapTourBasique["prix"] = atoi(tourAttaqueBasique->FirstChildElement("prix")->GetText());
 	mapTourBasique["attaque"] = atoi(tourAttaqueBasique->FirstChildElement("attaque")->GetText());
 	mapTourBasique["portee"] = atoi(tourAttaqueBasique->FirstChildElement("portee")->GetText());
 	mapTourBasique["temps"] = atoi(tourAttaqueBasique->FirstChildElement("temps")->GetText());
 
-	tinyxml2::XMLElement* tourFrost = tours->FirstChildElement("tourFrost");
+	tinyxml2::XMLElement* tourFrost = batiments->FirstChildElement("tourFrost");
 
 	mapTourDeGlace["prix"] = atoi(tourFrost->FirstChildElement("prix")->GetText());
 	mapTourDeGlace["attaque"] = atoi(tourFrost->FirstChildElement("attaque")->GetText());
 	mapTourDeGlace["portee"] = atoi(tourFrost->FirstChildElement("portee")->GetText());
 	mapTourDeGlace["temps"] = atoi(tourFrost->FirstChildElement("temps")->GetText());
 
-	tinyxml2::XMLElement* tourCanon = tours->FirstChildElement("tourCanon");
+	tinyxml2::XMLElement* tourCanon = batiments->FirstChildElement("tourCanon");
 
 	mapTourCanon["prix"] = atoi(tourCanon->FirstChildElement("prix")->GetText());
 	mapTourCanon["attaque"] = atoi(tourCanon->FirstChildElement("attaque")->GetText());
@@ -56,6 +56,9 @@ void ConfigManager::loadConfig()
 	mapTourCanon["temps"] = atoi(tourCanon->FirstChildElement("temps")->GetText());
 	mapTourCanon["rayonExplosion"] = atoi(tourCanon->FirstChildElement("rayonExplosion")->GetText());
 
+	tinyxml2::XMLElement* mur = batiments->FirstChildElement("mur");
+
+	mapMur["prix"] = atoi(mur->FirstChildElement("prix")->GetText());
 
 	tinyxml2::XMLElement* personnages = config->FirstChildElement("personnages");
 

@@ -24,6 +24,7 @@
 #include "../elements/TourAttaqueBasique.h"
 #include "../elements/CanonLourd.h"
 #include "../elements/TourDeGlace.h"
+#include "../elements/Mur.h"
 #include "EtatMort.h"
 
 class EtatJeu: public Etat {
@@ -40,7 +41,7 @@ public:
 	TableauDeBord* pTableauDeBord;
 
 private:
-	void construireTour(TableauDeBord::typeBatiment type, Coordonnees coord);
+	void construireBatiment(TableauDeBord::typeBatiment type, Coordonnees coord);
 	TableauDeBord::typeBatiment batimentChoisi;
 	App* pApp;
 	sf::RectangleShape arriveCase;

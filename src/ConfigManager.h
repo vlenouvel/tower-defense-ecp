@@ -22,6 +22,7 @@ public:
 	std::map<std::string, int> mapTourBasique;
 	std::map<std::string, int> mapTourCanon;
 	std::map<std::string, int> mapTourDeGlace;
+	std::map<std::string, int> mapMur;
 	std::map<std::string, int> mapPersonnageNormal;
 	std::map<std::string, int> mapPersonnageRapide;
 	std::map<std::string, int> mapPersonnageSolide;

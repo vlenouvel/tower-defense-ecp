@@ -13,6 +13,8 @@
 #include <cmath>
 #include <string>
 #include <sstream>
+#include <iostream>
+#include "TourAttaque.h"
 
 class TableauDeBord: public ElementGraphique {
 public:
@@ -27,11 +29,10 @@ private:
 	sf::Sprite spriteTableauDeBord;
 	sf::Text texteTableauDeBord;
 	sf::Font font;
-	sf::Texture textureCanonLourd;
 	sf::Sprite spriteCanonLourd;
-	sf::Texture textureTourAttaqueBasique;
 	sf::Sprite spriteTourAttaqueBasique;
 	sf::Sprite spriteTourDeGlace;
+	sf::Sprite spriteMur;
 	sf::Text texteNiveauTour;
 	sf::Texture textureLevelUpBouton;
 	sf::Sprite spriteLevelUpBouton;

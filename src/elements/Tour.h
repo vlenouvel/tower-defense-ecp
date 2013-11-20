@@ -18,10 +18,8 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	bool verifierAmelioration();
 	int getNiveau();
-	virtual bool isTourAttaque();
-	virtual int getDommages();
-	virtual void vendreTour();
-
+	bool isTour();
+	virtual bool isTourAttaque() = 0;
 protected:
 	int niveau;
 	sf::Sound sonCreationTour;

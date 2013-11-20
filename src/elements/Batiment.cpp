@@ -34,4 +34,14 @@ Coordonnees Batiment::getCoordonnees()
 {
 	return coordonnees;
 }
+void Batiment::vendreBatiment()
+{
+	//TODO Equilibrage : prix de vente
+	//TODO Coherence avec affichage
+	ResourceManager* pResourceManager = ResourceManager::getInstance();
+	pResourceManager->getRessources()->gagnerArgent((int)(prix*0.75));
+	pResourceManager->removeBatiment(this);
+	pResourceManager->setBatimentSelectionne(0);
 
+	delete this;
+}

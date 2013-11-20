@@ -10,7 +10,6 @@
 
 #include "TableauDeBord.h"
 
-#include <iostream>
 TableauDeBord::TableauDeBord() {
 	typeSelection = 0;
 
@@ -26,22 +25,20 @@ TableauDeBord::TableauDeBord() {
 	texteTableauDeBord.setStyle(sf::Text::Bold);
 	texteTableauDeBord.setPosition(720,0);
 
-
-	textureCanonLourd = pResourcesLoader->textureCanonLourd;
-	spriteCanonLourd.setTexture(textureCanonLourd);
+	spriteCanonLourd.setTexture(pResourcesLoader->textureCanonLourd);
 	spriteCanonLourd.setScale(0.5,0.5);
 	spriteCanonLourd.setPosition(710,300);
 
-	textureTourAttaqueBasique = pResourcesLoader->textureTourAttaqueBasique;
-	spriteTourAttaqueBasique.setTexture(textureTourAttaqueBasique);
+	spriteTourAttaqueBasique.setTexture(pResourcesLoader->textureTourAttaqueBasique);
 	spriteTourAttaqueBasique.setScale(0.5,0.5);
 	spriteTourAttaqueBasique.setPosition(760,300);
-
 
 	spriteTourDeGlace.setTexture(pResourcesLoader->textureTourDeGlace);
 	spriteTourDeGlace.setScale(0.5,0.5);
 	spriteTourDeGlace.setPosition(710,260);
 
+	spriteMur.setTexture(pResourcesLoader->textureMur);
+	spriteMur.setPosition(760,260);
 
 	texteNiveauTour.setFont(font);
 	texteNiveauTour.setCharacterSize(7);
@@ -92,42 +89,44 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 	pWindow.draw(spriteCanonLourd);
 	pWindow.draw(spriteTourAttaqueBasique);
 	pWindow.draw(spriteTourDeGlace);
+	pWindow.draw(spriteMur);
 
-	if (manager->getTourSelectionnee()!=0)
+	if (manager->getBatimentSelectionne()!=0)
 	{
-		int coordTourX = manager->getTourSelectionnee()->getCoordonnees().getPosX()-20;
-		int coordTourY = manager->getTourSelectionnee()->getCoordonnees().getPosY()-20;
+		int coordTourX = manager->getBatimentSelectionne()->getCoordonnees().getPosX()-20;
+		int coordTourY = manager->getBatimentSelectionne()->getCoordonnees().getPosY()-20;
 		spriteTourSelectionnee.setPosition(coordTourX, coordTourY);
+		if(manager->getBatimentSelectionne()->isTour())
+		{
+			Tour* tourSelectionnee = (Tour*)manager->getBatimentSelectionne();
+			ostringstream stringNiveauTour;
+			stringNiveauTour << tourSelectionnee->getNiveau();
+			texteNiveauTour.setString("Niveau tour : " + stringNiveauTour.str());
+			pWindow.draw(texteNiveauTour);
+			pWindow.draw(spriteLevelUpBouton);
 
-		ostringstream stringNiveauTour;
-		stringNiveauTour << manager->getTourSelectionnee()->getNiveau();
-		texteNiveauTour.setString("Niveau tour : " + stringNiveauTour.str());
+			ostringstream stringCoutAmelioration;
+			stringCoutAmelioration << (int)(tourSelectionnee->getPrix()*0.75); // TODO Verifier coherence avec "verifierAmelioration()"
+			texteCoutAmelioration.setString("Ameliorer : " + stringCoutAmelioration.str() + "$");
+			pWindow.draw(texteCoutAmelioration);
 
-		ostringstream stringCoutAmelioration;
-		stringCoutAmelioration << (int)(manager->getTourSelectionnee()->getPrix()*0.75); // TODO Verifier coherence avec "verifierAmelioration()"
-		texteCoutAmelioration.setString("Ameliorer : " + stringCoutAmelioration.str() + "$");
+			if(tourSelectionnee->isTourAttaque())
+			{
+				ostringstream stringDommagesTour;
+				stringDommagesTour << ((TourAttaque*)tourSelectionnee)->getDommages();
+				texteDommagesTour.setString("Dommages : " + stringDommagesTour.str());
 
+				pWindow.draw(texteDommagesTour);
+			}
+
+		}
 		ostringstream stringPrixDeVente;
-		stringPrixDeVente << (int)(manager->getTourSelectionnee()->getPrix()*0.75); //TODO Coherence avec "vendreTour()"
+		stringPrixDeVente << (int)(manager->getBatimentSelectionne()->getPrix()*0.75); //TODO Coherence avec "vendreTour()"
 		textePrixDeVente.setString("Vendre : " + stringPrixDeVente.str() + "$");
-
-		pWindow.draw(texteNiveauTour);
-		pWindow.draw(spriteLevelUpBouton);
 		pWindow.draw(spriteSellBouton);
-		pWindow.draw(texteCoutAmelioration);
+
 		pWindow.draw(textePrixDeVente);
 		pWindow.draw(spriteTourSelectionnee);
-
-		if(manager->getTourSelectionnee()->isTourAttaque())
-		{
-			ostringstream stringDommagesTour;
-			stringDommagesTour << manager->getTourSelectionnee()->getDommages();
-			texteDommagesTour.setString("Dommages : " + stringDommagesTour.str());
-
-			pWindow.draw(texteDommagesTour);
-		}
-
-
 	}
 }
 
@@ -142,24 +141,35 @@ void TableauDeBord::setSelectionBat(typeBatiment type) {
 		spriteCanonLourd.setColor(couleurSelection);
 		spriteTourAttaqueBasique.setColor(couleurNormale);
 		spriteTourDeGlace.setColor(couleurNormale);
+		spriteMur.setColor(couleurNormale);
 	}
 	else if(typeSelection == BASIQUE)
 	{
 		spriteTourAttaqueBasique.setColor(couleurSelection);
 		spriteTourDeGlace.setColor(couleurNormale);
 		spriteCanonLourd.setColor(couleurNormale);
+		spriteMur.setColor(couleurNormale);
 	}
 	else if(typeSelection == FROST)
 	{
 		spriteTourAttaqueBasique.setColor(couleurNormale);
 		spriteTourDeGlace.setColor(couleurSelection);
 		spriteCanonLourd.setColor(couleurNormale);
+		spriteMur.setColor(couleurNormale);
 	}
 	else if(typeSelection == AUCUN)
 	{
 		spriteTourAttaqueBasique.setColor(couleurNormale);
 		spriteTourDeGlace.setColor(couleurNormale);
 		spriteCanonLourd.setColor(couleurNormale);
+		spriteMur.setColor(couleurNormale);
+	}
+	else if(typeSelection == MUR)
+	{
+		spriteTourAttaqueBasique.setColor(couleurNormale);
+		spriteTourDeGlace.setColor(couleurNormale);
+		spriteCanonLourd.setColor(couleurNormale);
+		spriteMur.setColor(couleurSelection);
 	}
 
 }
