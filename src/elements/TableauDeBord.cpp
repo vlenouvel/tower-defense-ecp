@@ -2,15 +2,18 @@
  * TableauDeBord.cpp
  *
  *  TowerDefense ECP
+ *
+ *  Gere l'affichage des elements du menu de droite pour la gestion des batiments
+ *
  *      
  */
 
 #include "TableauDeBord.h"
-#include <string>
-#include <sstream>
 
-
+#include <iostream>
 TableauDeBord::TableauDeBord() {
+	typeSelection = 0;
+
 	ResourcesLoader *pResourcesLoader = ResourcesLoader::getInstance();
 	textureTableauDeBord = pResourcesLoader->textureRessources;
 	spriteTableauDeBord.setTexture(textureTableauDeBord);
@@ -23,6 +26,7 @@ TableauDeBord::TableauDeBord() {
 	texteTableauDeBord.setStyle(sf::Text::Bold);
 	texteTableauDeBord.setPosition(720,0);
 
+
 	textureCanonLourd = pResourcesLoader->textureCanonLourd;
 	spriteCanonLourd.setTexture(textureCanonLourd);
 	spriteCanonLourd.setScale(0.5,0.5);
@@ -33,9 +37,12 @@ TableauDeBord::TableauDeBord() {
 	spriteTourAttaqueBasique.setScale(0.5,0.5);
 	spriteTourAttaqueBasique.setPosition(760,300);
 
+
+
 	spriteTourDeGlace.setTexture(pResourcesLoader->textureTourDeGlace);
 	spriteTourDeGlace.setScale(0.3,0.3);
 	spriteTourDeGlace.setPosition(705,250);
+
 
 	texteNiveauTour.setFont(font);
 	texteNiveauTour.setCharacterSize(7);
@@ -115,4 +122,28 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 
 
 	}
+}
+
+void TableauDeBord::setSelectionBat(int type) {
+	typeSelection = type;
+
+	if(typeSelection == 1) {
+		spriteCanonLourd.setColor(sf::Color::Blue);
+		spriteTourAttaqueBasique.setColor(sf::Color::White);
+		spriteTourDeGlace.setColor(sf::Color::White);
+	}
+
+	if(typeSelection == 0) {
+		spriteTourAttaqueBasique.setColor(sf::Color::Blue);
+		spriteTourDeGlace.setColor(sf::Color::White);
+		spriteCanonLourd.setColor(sf::Color::White);
+	}
+
+	if(typeSelection == 3) {
+		spriteTourAttaqueBasique.setColor(sf::Color::White);
+		spriteTourDeGlace.setColor(sf::Color::Blue);
+		spriteCanonLourd.setColor(sf::Color::White);
+
+	}
+
 }
