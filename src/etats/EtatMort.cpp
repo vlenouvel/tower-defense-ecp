@@ -62,7 +62,7 @@ EtatMort::EtatMort(App* tApp) : Etat(tApp)  {
 	} else {
 		ostringstream ss2;
 		ss2 << max;
-		text3.setString("Votre meilleur score était de: " + ss2.str());
+		text3.setString("Votre meilleur score est de: " + ss2.str());
 	}
 }
 
