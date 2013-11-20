@@ -6,7 +6,7 @@
 			<prix>10</prix>
 			<attaque>3</attaque>
 			<portee>100</portee>
-			<temps>100</temps>
+			<temps>250</temps>
 		</tourAttaqueBasique>
 		<tourFrost>
 			<prix>80</prix>

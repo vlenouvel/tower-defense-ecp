@@ -48,14 +48,14 @@ void Vague::genererPersonnage()
 			armure = configManager->mapPersonnageNormal["armure"];
 			break;
 		case RAPIDE:
-			vie = configManager->mapPersonnageNormal["vie"];
-			vitesse = configManager->mapPersonnageNormal["vitesse"];
-			armure = configManager->mapPersonnageNormal["armure"];
-			break;
-		case SOLIDE:
 			vie = configManager->mapPersonnageRapide["vie"];
 			vitesse = configManager->mapPersonnageRapide["vitesse"];
 			armure = configManager->mapPersonnageRapide["armure"];
+			break;
+		case SOLIDE:
+			vie = configManager->mapPersonnageSolide["vie"];
+			vitesse = configManager->mapPersonnageSolide["vitesse"];
+			armure = configManager->mapPersonnageSolide["armure"];
 			break;
 		default:
 			break;

@@ -70,15 +70,15 @@ void ConfigManager::loadConfig()
 
 	tinyxml2::XMLElement* persoRapide = personnages->FirstChildElement("rapide");
 
-	mapPersonnageNormal["vie"] = atoi(persoRapide->FirstChildElement("vie")->GetText());
-	mapPersonnageNormal["vitesse"] = atoi(persoRapide->FirstChildElement("vitesse")->GetText());
-	mapPersonnageNormal["armure"] = atoi(persoRapide->FirstChildElement("armure")->GetText());
+	mapPersonnageRapide["vie"] = atoi(persoRapide->FirstChildElement("vie")->GetText());
+	mapPersonnageRapide["vitesse"] = atoi(persoRapide->FirstChildElement("vitesse")->GetText());
+	mapPersonnageRapide["armure"] = atoi(persoRapide->FirstChildElement("armure")->GetText());
 
 	tinyxml2::XMLElement* persoSolide = personnages->FirstChildElement("solide");
 
-	mapPersonnageNormal["vie"] = atoi(persoSolide->FirstChildElement("vie")->GetText());
-	mapPersonnageNormal["vitesse"] = atoi(persoSolide->FirstChildElement("vitesse")->GetText());
-	mapPersonnageNormal["armure"] = atoi(persoSolide->FirstChildElement("armure")->GetText());
+	mapPersonnageSolide["vie"] = atoi(persoSolide->FirstChildElement("vie")->GetText());
+	mapPersonnageSolide["vitesse"] = atoi(persoSolide->FirstChildElement("vitesse")->GetText());
+	mapPersonnageSolide["armure"] = atoi(persoSolide->FirstChildElement("armure")->GetText());
 
 }
 
