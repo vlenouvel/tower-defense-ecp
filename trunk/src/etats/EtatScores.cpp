@@ -21,7 +21,6 @@ EtatScores::EtatScores(App *tApp) : Etat(tApp){
 	text.setColor(sf::Color::White);
 	text.setStyle(sf::Text::Bold);
 	text.setPosition(180, 150);
-
 	std::ostringstream ss;
 	ss << "Vos meilleurs scores :\n\n";
 	for(int i = 0; i < 3 ; i++)
@@ -64,7 +63,7 @@ void EtatScores::lireMeilleursScores()
 	}
 	// sort in descending order
 	std::sort(tousLesScores.begin(), tousLesScores.end(), std::greater<int>());
-	for(int i = 0; i < tousLesScores.size(); i++)
+	for(int i = 0; i < 3 ; i++)
 	{
 		meilleursScores[i] = tousLesScores[i];
 	}

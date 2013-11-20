@@ -11,10 +11,11 @@
 #define PI 3.14159265
 
 TourDeGlace::TourDeGlace(Coordonnees tCoord) : TourAttaque(tCoord), rayonExplosion(10) {
-	prix = 80;
-	attackRange = 500;
-	attackDamage = 0;
-	timeBetweenAttacks = sf::milliseconds(2000);
+	ConfigManager *configManager = ConfigManager::getInstance();
+	prix = configManager->mapTourDeGlace["prix"];
+	attackRange = configManager->mapTourDeGlace["portee"];
+	attackDamage = configManager->mapTourDeGlace["attaque"];
+	timeBetweenAttacks = sf::milliseconds(configManager->mapTourDeGlace["temps"]);
 	pCibler = ComportementCiblage::ciblerPremier;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spriteTourDeGlace.setTexture(pResourcesLoader->textureTourDeGlace);

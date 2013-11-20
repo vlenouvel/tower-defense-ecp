@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<config>
+	<fps>20</fps>
+	<tours>
+		<tourAttaqueBasique>
+			<prix>10</prix>
+			<attaque>3</attaque>
+			<portee>100</portee>
+			<temps>100</temps>
+		</tourAttaqueBasique>
+		<tourFrost>
+			<prix>80</prix>
+			<attaque>0</attaque>
+			<portee>500</portee>
+			<temps>2000</temps>
+		</tourFrost>
+		<tourCanon>
+			<prix>50</prix>
+			<attaque>10</attaque>
+			<portee>500</portee>
+			<temps>2000</temps>	
+			<rayonExplosion>75</rayonExplosion>
+		</tourCanon>
+	</tours>
+	<personnages>
+		<normal>
+			<vie>10</vie>
+			<vitesse>5</vitesse>
+			<armure>2</armure>
+		</normal>
+		<rapide>
+			<vie>5</vie>
+			<vitesse>10</vitesse>
+			<armure>1</armure>
+		</rapide>
+		<solide>
+			<vie>30</vie>
+			<vitesse>3</vitesse>
+			<armure>5</armure>
+		</solide>
+	</personnages>
+</config>

@@ -35,28 +35,27 @@ Vague::Vague(int niveau) {
 
 void Vague::genererPersonnage()
 {
-	ResourceManager* manager = ResourceManager::getInstance();
+	ResourceManager* ResourceManager = ResourceManager::getInstance();
+	ConfigManager *configManager = ConfigManager::getInstance();
 
-
-	// TODO Parametre des unites totalement arbitraire
 	int vie;
 	int vitesse;
 	int armure;
 	switch (type) {
 		case NORMAL:
-			vie = 10;
-			vitesse = 5;
-			armure = 2;
+			vie = configManager->mapPersonnageNormal["vie"];
+			vitesse = configManager->mapPersonnageNormal["vitesse"];
+			armure = configManager->mapPersonnageNormal["armure"];
 			break;
 		case RAPIDE:
-			vie = 5;
-			vitesse = 10;
-			armure = 1;
+			vie = configManager->mapPersonnageNormal["vie"];
+			vitesse = configManager->mapPersonnageNormal["vitesse"];
+			armure = configManager->mapPersonnageNormal["armure"];
 			break;
 		case SOLIDE:
-			vie = 30;
-			vitesse = 3;
-			armure = 5;
+			vie = configManager->mapPersonnageRapide["vie"];
+			vitesse = configManager->mapPersonnageRapide["vitesse"];
+			armure = configManager->mapPersonnageRapide["armure"];
 			break;
 		default:
 			break;
@@ -64,14 +63,14 @@ void Vague::genererPersonnage()
 
 	Coordonnees coordonneesDepart(0,0);
 	Personnage* pPersonnage = new Personnage(niveauType*vie, vitesse, armure, coordonneesDepart);
-	pPersonnage->trouverChemin(manager->getCarte());
-	pPersonnage->ecrireChemin(manager->getCarte());
-	manager->addPersonnage(pPersonnage);
+	pPersonnage->trouverChemin(ResourceManager->getCarte());
+	pPersonnage->ecrireChemin(ResourceManager->getCarte());
+	ResourceManager->addPersonnage(pPersonnage);
 
 	nombrePersoRestant--;
 	if(nombrePersoRestant == 0)
 	{
-		manager->addVague(0);
+		ResourceManager->addVague(0);
 		delete this;
 	}
 
