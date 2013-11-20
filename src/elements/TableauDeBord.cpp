@@ -38,10 +38,9 @@ TableauDeBord::TableauDeBord() {
 	spriteTourAttaqueBasique.setPosition(760,300);
 
 
-
 	spriteTourDeGlace.setTexture(pResourcesLoader->textureTourDeGlace);
-	spriteTourDeGlace.setScale(0.3,0.3);
-	spriteTourDeGlace.setPosition(705,250);
+	spriteTourDeGlace.setScale(0.5,0.5);
+	spriteTourDeGlace.setPosition(710,260);
 
 
 	texteNiveauTour.setFont(font);
@@ -76,6 +75,9 @@ TableauDeBord::TableauDeBord() {
 	textePrixDeVente.setColor(sf::Color::White);
 	textePrixDeVente.setStyle(sf::Text::Bold);
 	textePrixDeVente.setPosition(710,450);
+
+	textureTourSelectionnee = pResourcesLoader->textureSelection;
+	spriteTourSelectionnee.setTexture(textureTourSelectionnee);
 }
 
 TableauDeBord::~TableauDeBord() {
@@ -93,6 +95,10 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 
 	if (manager->getTourSelectionnee()!=0)
 	{
+		int coordTourX = manager->getTourSelectionnee()->getCoordonnees().getPosX()-20;
+		int coordTourY = manager->getTourSelectionnee()->getCoordonnees().getPosY()-20;
+		spriteTourSelectionnee.setPosition(coordTourX, coordTourY);
+
 		ostringstream stringNiveauTour;
 		stringNiveauTour << manager->getTourSelectionnee()->getNiveau();
 		texteNiveauTour.setString("Niveau tour : " + stringNiveauTour.str());
@@ -110,6 +116,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 		pWindow.draw(spriteSellBouton);
 		pWindow.draw(texteCoutAmelioration);
 		pWindow.draw(textePrixDeVente);
+		pWindow.draw(spriteTourSelectionnee);
 
 		if(manager->getTourSelectionnee()->isTourAttaque())
 		{

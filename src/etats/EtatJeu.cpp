@@ -194,10 +194,7 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 
 	carte->dessiner(pWindow);
 	pRessources->dessiner(pWindow);
-	pTableauDeBord->dessiner(pWindow);
 
-	// Met en couleur le batiment selectionnee dans le menu
-	pTableauDeBord->setSelectionBat(batimentChoisi);
 
 
 	pWindow.draw(arriveCase);
@@ -229,6 +226,11 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 		}
 	}
 
+	pTableauDeBord->dessiner(pWindow);
+
+	// Met en couleur le batiment selectionnee dans le menu
+	pTableauDeBord->setSelectionBat(batimentChoisi);
+
 	texteErreur.setString(erreur);
 	if(pApp->horloge.getElapsedTime() - tempsErreur < tempsDisparitionErreur) {
 		pWindow.draw(texteErreur);
@@ -247,6 +249,8 @@ void EtatJeu::construireTour(TableauDeBord::typeBatiment type, Coordonnees coord
 	int indiceX = (int)floor((float)coord.getPosX()/40);
 	int indiceY = (int)floor((float)coord.getPosY()/40);
 	switch(batimentChoisi){
+		case TableauDeBord::AUCUN:
+			break;
 		case TableauDeBord::BASIQUE:
 			pTour = new TourAttaqueBasique(coord);
 			break;

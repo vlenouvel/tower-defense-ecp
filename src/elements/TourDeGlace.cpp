@@ -19,10 +19,10 @@ TourDeGlace::TourDeGlace(Coordonnees tCoord) : TourAttaque(tCoord), rayonExplosi
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spriteTourDeGlace.setTexture(pResourcesLoader->textureTourDeGlace);
 	spriteEnvironementTourDeGlace.setTexture(pResourcesLoader->textureEnvironnementGlace);
-	spriteTourDeGlace.setScale(0.27,0.28);
+	spriteTourDeGlace.setScale(0.5,0.5);
 	spriteTourDeGlace.setPosition(floor(float(tCoord.posX/40))*40,floor(float(tCoord.posY/40))*40);
 	spriteEnvironementTourDeGlace.setScale(0.68,0.76);
-	spriteEnvironementTourDeGlace.setPosition(floor(float(tCoord.posX/40))*40-30,floor(float(tCoord.posY/40))*40-30);
+	spriteEnvironementTourDeGlace.setPosition(floor(float(tCoord.posX/40))*40-25,floor(float(tCoord.posY/40))*40-30);
 	rotation = 0;
 }
 

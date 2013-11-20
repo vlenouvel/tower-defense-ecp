@@ -39,6 +39,7 @@ public:
 	sf::Texture textureLevelUpBouton;
 	sf::Texture textureSellBouton;
 	sf::Texture textureMur;
+	sf::Texture textureSelection;
 	// Missile
 	sf::Texture textureTraineeMissile1;
 	sf::Texture textureTraineeMissile2;
