@@ -10,10 +10,9 @@
  */
 
 #include "App.h"
+#include "ConfigManager.h"
 
 using namespace std;
-
-ResourceManager* manager = ResourceManager::getInstance();
 
 
 App::App() {
@@ -44,8 +43,8 @@ void App::jouer() {
 	sf::Time difference;
 	sf::Time tempsLegal;
 	sf::Time hibernation;
-
-	long double imagesParSeconde = 20;
+	ConfigManager *configManager = ConfigManager::getInstance();
+	long double imagesParSeconde = configManager->fps;
 	float tempsUneImage = 1.f/imagesParSeconde;
 	tempsLegal = sf::seconds(tempsUneImage);
 

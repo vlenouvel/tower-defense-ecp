@@ -17,6 +17,7 @@
 #include "Personnage.h"
 #include "Coordonnees.h"
 #include <iostream>
+#include "../ConfigManager.h"
 
 class Vague: public ElementJeu {
 public:

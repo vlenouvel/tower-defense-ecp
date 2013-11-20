@@ -16,6 +16,7 @@
 #include "../ResourceManager.h"
 #include "Projectile.h"
 #include "math.h"
+#include "../ConfigManager.h"
 
 class TourAttaque: public Tour {
 public:

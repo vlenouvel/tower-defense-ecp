@@ -12,11 +12,12 @@
 
 CanonLourd::CanonLourd(Coordonnees tCoord) : TourAttaque(tCoord) {
 	pCibler = ComportementCiblage::ciblerPremier;
-	prix = 50;
-	attackDamage = 10;
-	attackRange = 1000;
-	rayonExplosion = 75;
-	timeBetweenAttacks = sf::seconds((float)2);
+	ConfigManager *configManager = ConfigManager::getInstance();
+	prix = configManager->mapTourCanon["prix"];
+	attackRange = configManager->mapTourCanon["portee"];
+	attackDamage = configManager->mapTourCanon["attaque"];
+	rayonExplosion = configManager->mapTourCanon["rayonExplosion"];
+	timeBetweenAttacks = sf::milliseconds(configManager->mapTourCanon["temps"]);
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureCanonLourd = pResourcesLoader->textureCanonLourd;
 	spriteCanonLourd.setTexture(textureCanonLourd);

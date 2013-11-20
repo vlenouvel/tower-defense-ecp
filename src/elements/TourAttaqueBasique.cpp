@@ -10,10 +10,11 @@
 #include <cmath>
 
 TourAttaqueBasique::TourAttaqueBasique(Coordonnees tCoord) : TourAttaque(tCoord) {
-	prix = 10;
-	attackRange = 100;
-	attackDamage = 3;
-	timeBetweenAttacks = sf::milliseconds(100);
+	ConfigManager *configManager = ConfigManager::getInstance();
+	prix = configManager->mapTourBasique["prix"];
+	attackRange = configManager->mapTourBasique["portee"];
+	attackDamage = configManager->mapTourBasique["attaque"];
+	timeBetweenAttacks = sf::milliseconds(configManager->mapTourBasique["temps"]);
 	pCibler = ComportementCiblage::ciblerPremier;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureTourAttaqueBasique = pResourcesLoader->textureTourAttaqueBasique;
