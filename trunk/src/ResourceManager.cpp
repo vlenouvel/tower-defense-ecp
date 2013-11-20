@@ -30,14 +30,14 @@ ResourceManager* ResourceManager::getInstance() {
 }
 
 ResourceManager::ResourceManager() {
-    vector<Tour*> tourConteneur;
+    vector<Batiment*> tourConteneur;
     vector<Personnage*> personnageConteneur;
     vector<Projectile*> projectileConteneur;
     cartePointeur = 0;
     ressourcesPointeur = 0;
     vaguePointeur = 0;
     vagueGenerateurPointeur = 0;
-    tourSelectionnee = 0;
+    batimentSelectionne = 0;
     pPersoFictif = 0;
 }
 
@@ -56,14 +56,14 @@ void ResourceManager::clearResourcesManager()
     vaguePointeur = 0;
     delete vagueGenerateurPointeur;
     vagueGenerateurPointeur = 0;
-    delete tourSelectionnee;
-    tourSelectionnee = 0;
+    delete batimentSelectionne;
+    batimentSelectionne = 0;
 
-    for(unsigned int i = 0; i < tourConteneur.size() ; i++)
+    for(unsigned int i = 0; i < batimentConteneur.size() ; i++)
     {
-    	delete tourConteneur[i];
+    	delete batimentConteneur[i];
     }
-    tourConteneur.clear();
+    batimentConteneur.clear();
 
     for(unsigned int i = 0; i < personnageConteneur.size() ; i++)
     {
@@ -78,13 +78,13 @@ void ResourceManager::clearResourcesManager()
     projectileConteneur.clear();
 }
 
-// Tour
-void ResourceManager::addTour(Tour* entite) {
-	tourConteneur.push_back(entite);
+// Batiment
+void ResourceManager::addBatiment(Batiment* entite) {
+	batimentConteneur.push_back(entite);
 }
 
-vector<Tour*> ResourceManager::getTour() {
-	return tourConteneur;
+vector<Batiment*> ResourceManager::getBatiment() {
+	return batimentConteneur;
 }
 
 void ResourceManager::addObjetAnnexe(ElementGraphique* objetAnnexe){
@@ -95,9 +95,9 @@ vector<ElementGraphique*> ResourceManager::getObjetAnnexe(){
 	return objetAnnexeConteneur;
 }
 
-void ResourceManager::removeTour(Tour* entite)
+void ResourceManager::removeBatiment(Batiment* entite)
 {
-	tourConteneur.erase(remove(tourConteneur.begin(), tourConteneur.end(), entite), tourConteneur.end());
+	batimentConteneur.erase(remove(batimentConteneur.begin(), batimentConteneur.end(), entite), batimentConteneur.end());
 }
 void ResourceManager::removeObjetAnnexe(ElementGraphique* objetAnnexe)
 {
@@ -182,15 +182,15 @@ Ressources* ResourceManager::getRessources()
 	return ressourcesPointeur;
 }
 
-// Tour selectionnee
-Tour* ResourceManager::getTourSelectionnee()
+// Batiment selectionnee
+Batiment* ResourceManager::getBatimentSelectionne()
 {
-	return tourSelectionnee;
+	return batimentSelectionne;
 }
 
-void ResourceManager::setTourSelectionnee(Tour* tour)
+void ResourceManager::setBatimentSelectionne(Batiment* tour)
 {
-	tourSelectionnee = tour;
+	batimentSelectionne = tour;
 }
 
 // Personnage Fictif

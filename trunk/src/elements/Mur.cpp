@@ -15,6 +15,16 @@ Mur::Mur(Coordonnees tCoord) : Batiment(tCoord) {
 	spriteMur.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
 }
 
+bool Mur::isTour()
+{
+	return false;
+}
+
+void Mur::agir()
+{
+
+}
+
 Mur::~Mur() {
 	// TODO Auto-generated destructor stub
 }

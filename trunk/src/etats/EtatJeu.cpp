@@ -60,15 +60,20 @@ void EtatJeu::handleEvent(sf::Event event)
 		if (event.mouseButton.button == sf::Mouse::Left) {
 			if ((event.mouseButton.x>760)&&(event.mouseButton.x<795)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				batimentChoisi = TableauDeBord::BASIQUE;
-				manager->setTourSelectionnee(0);
+				manager->setBatimentSelectionne(0);
 			}
 			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<745)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				batimentChoisi = TableauDeBord::CANON;
-				manager->setTourSelectionnee(0);
+				manager->setBatimentSelectionne(0);
 			}
 			else if ((event.mouseButton.x>705)&&(event.mouseButton.x<745)&&(event.mouseButton.y<290)&&(event.mouseButton.y>250)){
 				batimentChoisi = TableauDeBord::FROST;
-				manager->setTourSelectionnee(0);
+				manager->setBatimentSelectionne(0);
+			}
+			else if((event.mouseButton.x>760)&&(event.mouseButton.x<795)&&(event.mouseButton.y<290)&&(event.mouseButton.y>250))
+			{
+				batimentChoisi = TableauDeBord::MUR;
+				manager->setBatimentSelectionne(0);
 			}
 			else if((event.mouseButton.x>680)&&(event.mouseButton.y>560)) {
 				setErreur("Vous ne pouvez pas construire sur la sortie !");
@@ -76,26 +81,28 @@ void EtatJeu::handleEvent(sf::Event event)
 			else if((event.mouseButton.x<40)&&(event.mouseButton.y<40)) {
 				setErreur("Vous ne pouvez pas construire sur l'entree !");
 			}
-			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<740)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(manager->getTourSelectionnee()!=0))
+			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<740)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(manager->getBatimentSelectionne()!=0))
 			{
-				if (manager->getTourSelectionnee()->verifierAmelioration())
-				{
-					manager->getTourSelectionnee()->monterNiveau();
-				}
-				else
-				{
-					setErreur("Vous n'avez pas assez d'argent pour ameliorer cette tour.");
+				if(manager->getBatimentSelectionne()->isTour()){
+					if (((Tour*)manager->getBatimentSelectionne())->verifierAmelioration())
+					{
+						((Tour*)manager->getBatimentSelectionne())->monterNiveau();
+					}
+					else
+					{
+						setErreur("Vous n'avez pas assez d'argent pour ameliorer cette tour.");
+					}
 				}
 			}
-			else if ((event.mouseButton.x>750)&&(event.mouseButton.x<780)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(manager->getTourSelectionnee()!=0))
+			else if ((event.mouseButton.x>750)&&(event.mouseButton.x<780)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(manager->getBatimentSelectionne()!=0))
 			{
-				int indiceX = (manager->getTourSelectionnee()->getCoordonnees().getPosX()-20)/40;
-				int indiceY = (manager->getTourSelectionnee()->getCoordonnees().getPosY()-20)/40;
-				manager->getTourSelectionnee()->vendreTour();
+				int indiceX = (manager->getBatimentSelectionne()->getCoordonnees().getPosX()-20)/40;
+				int indiceY = (manager->getBatimentSelectionne()->getCoordonnees().getPosY()-20)/40;
+				manager->getBatimentSelectionne()->vendreBatiment();
 				manager->getCarte()->imageCarte[indiceX][indiceY]->caseOccupee = false;
 			}
 			else if ((event.mouseButton.x<700)){
-				manager->setTourSelectionnee(0);
+				manager->setBatimentSelectionne(0);
 				bool autorisation = true;
 				// Indices de la case cliquee.
 				int indiceX = (int)floor((float)event.mouseButton.x/40);
@@ -103,14 +110,14 @@ void EtatJeu::handleEvent(sf::Event event)
 				bool caseEstOccupee = (manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee;
 				if(caseEstOccupee) {
 					batimentChoisi = TableauDeBord::AUCUN;
-					vector<Tour*> tourConteneur = manager->getTour();
-					for (unsigned int i=0; i<tourConteneur.size(); i++)
+					vector<Batiment*> batimentConteneur = manager->getBatiment();
+					for (unsigned int i=0; i<batimentConteneur.size(); i++)
 					{
-						int coordXTour = tourConteneur[i]->getCoordonnees().getPosX();
-						int coordYTour = tourConteneur[i]->getCoordonnees().getPosY();
+						int coordXTour = batimentConteneur[i]->getCoordonnees().getPosX();
+						int coordYTour = batimentConteneur[i]->getCoordonnees().getPosY();
 						if ((coordXTour == (40*indiceX + 20))&&(coordYTour == (40*indiceY + 20)))
 						{
-							manager->setTourSelectionnee(tourConteneur[i]);
+							manager->setBatimentSelectionne(batimentConteneur[i]);
 						}
 					}
 
@@ -133,7 +140,7 @@ void EtatJeu::handleEvent(sf::Event event)
 					}
 					else if ((autorisation == true)&&(!caseEstOccupee)&&(batimentChoisi!=TableauDeBord::AUCUN)){
 						Coordonnees coordonneesTour(40*indiceX+20,40*indiceY+20);
-						construireTour(batimentChoisi, coordonneesTour);
+						construireBatiment(batimentChoisi, coordonneesTour);
 					}
 				}
 			}
@@ -158,10 +165,10 @@ void EtatJeu::agir() {
 	}
 
 
-	vector<Tour*> tourConteneur = manager->getTour();
-	if (!tourConteneur.empty()){
-		for(unsigned int i=0;i<tourConteneur.size();i++){
-			tourConteneur[i]->agir();
+	vector<Batiment*> batimentConteneur = manager->getBatiment();
+	if (!batimentConteneur.empty()){
+		for(unsigned int i=0;i<batimentConteneur.size();i++){
+			batimentConteneur[i]->agir();
 		}
 	}
 
@@ -199,11 +206,11 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 
 	pWindow.draw(arriveCase);
 
-	vector<Tour*> tourConteneur = manager->getTour();
+	vector<Batiment*> batimentConteneur = manager->getBatiment();
 
-	if (!tourConteneur.empty()){
-		for(unsigned int i=0;i<tourConteneur.size();i++){
-			tourConteneur[i]->dessiner(pWindow);
+	if (!batimentConteneur.empty()){
+		for(unsigned int i=0;i<batimentConteneur.size();i++){
+			batimentConteneur[i]->dessiner(pWindow);
 		}
 	}
 	vector<Personnage*> personnageConteneur = manager->getPersonnage();
@@ -242,34 +249,36 @@ EtatJeu::~EtatJeu() {
 }
 
 
-void EtatJeu::construireTour(TableauDeBord::typeBatiment type, Coordonnees coord)
+void EtatJeu::construireBatiment(TableauDeBord::typeBatiment type, Coordonnees coord)
 {
 	ResourceManager *pResourceManager = ResourceManager::getInstance();
-	Tour *pTour = 0;
+	Batiment *pBatiment = 0;
 	int indiceX = (int)floor((float)coord.getPosX()/40);
 	int indiceY = (int)floor((float)coord.getPosY()/40);
 	switch(batimentChoisi){
 		case TableauDeBord::AUCUN:
+			(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = false;
 			break;
 		case TableauDeBord::BASIQUE:
-			pTour = new TourAttaqueBasique(coord);
+			pBatiment = new TourAttaqueBasique(coord);
 			break;
 		case TableauDeBord::CANON:
-			pTour = new CanonLourd(coord);
+			pBatiment = new CanonLourd(coord);
 			break;
 		case TableauDeBord::EXPLOSIF:
 			break;
 		case TableauDeBord::FROST:
-			pTour = new TourDeGlace(coord);
+			pBatiment = new TourDeGlace(coord);
 			break;
 		case TableauDeBord::MUR:
+			pBatiment = new Mur(coord);
 			break;
 		}
-	if(pTour->verifierAchat())
+	if(pBatiment->verifierAchat())
 	{
 		(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = true;
-		pResourceManager->addTour(pTour);
-		pResourceManager->getRessources()->perdreArgent(pTour->getPrix());
+		pResourceManager->addBatiment(pBatiment);
+		pResourceManager->getRessources()->perdreArgent(pBatiment->getPrix());
 
 		// On recalcule les chemins pour les ennemis, car on a construit un batiment.
 		if (!(pResourceManager->getPersonnage()).empty()){
@@ -279,7 +288,7 @@ void EtatJeu::construireTour(TableauDeBord::typeBatiment type, Coordonnees coord
 			}
 		}
 	} else {
-		delete pTour;
+		delete pBatiment;
 		(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = false;
 		setErreur("Pas assez d'argent !");
 	}

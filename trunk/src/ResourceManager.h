@@ -11,6 +11,7 @@
 #include <vector>
 #include <algorithm>
 #include "elements/Tour.h"
+#include "elements/Batiment.h"
 #include "elements/Carte.h"
 #include "elements/Menu.h"
 #include "elements/Ressources.h"
@@ -33,7 +34,7 @@ public:
     static ResourceManager* getInstance();
 
     // Add
-    void addTour(Tour* entite);
+    void addBatiment(Batiment* entite);
     void addProjectile(Projectile* entite);
     void addPersonnage(Personnage* entite);
 	void addObjetAnnexe(ElementGraphique* objetAnnexe);
@@ -48,11 +49,11 @@ public:
 
     void removeProjectile(Projectile* entite);
     void removePersonnage(Personnage* entite);
-    void removeTour(Tour* entite);
+    void removeBatiment(Batiment* entite);
 	void removeObjetAnnexe(ElementGraphique* objetAnnexe);
 
     // Get
-    vector<Tour*> getTour();
+    vector<Batiment*> getBatiment();
     vector<Personnage*> getPersonnage();
     vector<Projectile*> getProjectile();
 	vector<ElementGraphique*> getObjetAnnexe();
@@ -60,18 +61,17 @@ public:
     Vague* getVague();
     Ressources* getRessources();
     GenerateurVague* getGenerateurVague();
-    Tour* getTourSelectionnee();
+    Batiment* getBatimentSelectionne();
     Personnage* getPersoFictif();
 
     // Set
 
-    void setTourSelectionnee(Tour* tour);
+    void setBatimentSelectionne(Batiment* tour);
 
-    //TODO choisir entre public et private, si public, methodes get inutiles
 private:
     ResourceManager();
 
-    vector<Tour*> tourConteneur;
+    vector<Batiment*> batimentConteneur;
     vector<Projectile*> projectileConteneur;
     vector<Personnage*> personnageConteneur;
 	vector<ElementGraphique*> objetAnnexeConteneur;
@@ -79,7 +79,7 @@ private:
     Vague* vaguePointeur;
     Ressources* ressourcesPointeur;
     GenerateurVague* vagueGenerateurPointeur;
-    Tour* tourSelectionnee;
+    Batiment* batimentSelectionne;
 	Personnage * pPersoFictif;
 
 };

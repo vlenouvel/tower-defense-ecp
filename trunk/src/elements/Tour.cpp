@@ -45,24 +45,7 @@ int Tour::getNiveau()
 	return niveau;
 }
 
-bool Tour::isTourAttaque()
+bool Tour::isTour()
 {
-	return false;
-}
-
-int Tour::getDommages()
-{
-	return 0;
-}
-
-void Tour::vendreTour()
-{
-	//TODO Equilibrage : prix de vente
-	//TODO Coherence avec affichage
-	ResourceManager* pResourceManager = ResourceManager::getInstance();
-	pResourceManager->getRessources()->gagnerArgent((int)(prix*0.75));
-	pResourceManager->removeTour(this);
-	pResourceManager->setTourSelectionnee(0);
-
-	delete this;
+	return true;
 }

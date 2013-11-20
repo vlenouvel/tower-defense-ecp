@@ -16,6 +16,8 @@ public:
 	Mur(Coordonnees tCoord);
 	virtual ~Mur();
 	void dessiner(sf::RenderWindow &pWindow);
+	void agir();
+	bool isTour();
 
 private:
 	sf::Texture textureMur;

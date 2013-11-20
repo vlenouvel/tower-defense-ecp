@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <config>
 	<fps>20</fps>
-	<tours>
+	<batiments>
 		<tourAttaqueBasique>
 			<prix>10</prix>
 			<attaque>3</attaque>
@@ -21,7 +21,10 @@
 			<temps>2000</temps>	
 			<rayonExplosion>75</rayonExplosion>
 		</tourCanon>
-	</tours>
+		<mur>
+			<prix>1</prix>
+		</mur>
+	</batiments>
 	<personnages>
 		<normal>
 			<vie>10</vie>
