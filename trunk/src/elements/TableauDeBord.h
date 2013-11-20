@@ -9,14 +9,17 @@
 #define TABLEAUDEBORD_H_
 
 #include "ElementGraphique.h"
-#include <cmath>
 #include "../ResourceManager.h"
+#include <cmath>
+#include <string>
+#include <sstream>
 
 class TableauDeBord: public ElementGraphique {
 public:
 	TableauDeBord();
 	virtual ~TableauDeBord();
 	void dessiner(sf::RenderWindow &pWindow);
+	void setSelectionBat(int type);
 private:
 	sf::Texture textureTableauDeBord;
 	sf::Sprite spriteTableauDeBord;
@@ -37,6 +40,8 @@ private:
 	sf::Text textePrixDeVente;
 	sf::Texture textureTourSelectionnee;
 	sf::Sprite spriteTourSelectionnee;
+
+	int typeSelection;
 
 };
 

@@ -195,6 +195,10 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 	pRessources->dessiner(pWindow);
 	pTableauDeBord->dessiner(pWindow);
 
+	// Met en couleur le batiment selectionnee dans le menu
+	pTableauDeBord->setSelectionBat(batimentChoisi);
+
+
 	pWindow.draw(arriveCase);
 
 	vector<Tour*> tourConteneur = manager->getTour();
