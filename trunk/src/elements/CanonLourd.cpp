@@ -10,11 +10,12 @@
 #include <cmath>
 
 
-CanonLourd::CanonLourd(Coordonnees tCoord) : TourAttaque(tCoord), rayonExplosion(10) {
+CanonLourd::CanonLourd(Coordonnees tCoord) : TourAttaque(tCoord) {
 	pCibler = ComportementCiblage::ciblerPremier;
 	prix = 50;
 	attackDamage = 10;
 	attackRange = 1000;
+	rayonExplosion = 75;
 	timeBetweenAttacks = sf::seconds((float)2);
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureCanonLourd = pResourcesLoader->textureCanonLourd;

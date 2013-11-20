@@ -124,29 +124,35 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 	}
 }
 
-void TableauDeBord::setSelectionBat(int type) {
+void TableauDeBord::setSelectionBat(typeBatiment type) {
 	typeSelection = type;
 
 	sf::Color couleurSelection = sf::Color::White;
 	sf::Color couleurNormale = sf::Color::White;
 	couleurNormale.a = 125;
-	if(typeSelection == 1) {
+	if(typeSelection == CANON)
+	{
 		spriteCanonLourd.setColor(couleurSelection);
 		spriteTourAttaqueBasique.setColor(couleurNormale);
 		spriteTourDeGlace.setColor(couleurNormale);
 	}
-
-	if(typeSelection == 0) {
+	else if(typeSelection == BASIQUE)
+	{
 		spriteTourAttaqueBasique.setColor(couleurSelection);
 		spriteTourDeGlace.setColor(couleurNormale);
 		spriteCanonLourd.setColor(couleurNormale);
 	}
-
-	if(typeSelection == 3) {
+	else if(typeSelection == FROST)
+	{
 		spriteTourAttaqueBasique.setColor(couleurNormale);
 		spriteTourDeGlace.setColor(couleurSelection);
 		spriteCanonLourd.setColor(couleurNormale);
-
+	}
+	else if(typeSelection == AUCUN)
+	{
+		spriteTourAttaqueBasique.setColor(couleurNormale);
+		spriteTourDeGlace.setColor(couleurNormale);
+		spriteCanonLourd.setColor(couleurNormale);
 	}
 
 }

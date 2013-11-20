@@ -21,7 +21,7 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	pRessources = new Ressources();
 	manager->addRessources(pRessources);
 
-	batimentChoisi = BASIQUE;
+	batimentChoisi = TableauDeBord::AUCUN;
 
 	//Creation du generateur de vague
 	GenerateurVague* pGenerateur = new GenerateurVague();
@@ -59,15 +59,15 @@ void EtatJeu::handleEvent(sf::Event event)
 	if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
 			if ((event.mouseButton.x>760)&&(event.mouseButton.x<795)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
-				batimentChoisi = BASIQUE;
+				batimentChoisi = TableauDeBord::BASIQUE;
 				manager->setTourSelectionnee(0);
 			}
 			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<745)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
-				batimentChoisi = CANON;
+				batimentChoisi = TableauDeBord::CANON;
 				manager->setTourSelectionnee(0);
 			}
 			else if ((event.mouseButton.x>705)&&(event.mouseButton.x<745)&&(event.mouseButton.y<290)&&(event.mouseButton.y>250)){
-				batimentChoisi = FROST;
+				batimentChoisi = TableauDeBord::FROST;
 				manager->setTourSelectionnee(0);
 			}
 			else if((event.mouseButton.x>680)&&(event.mouseButton.y>560)) {
@@ -102,6 +102,7 @@ void EtatJeu::handleEvent(sf::Event event)
 				int indiceY = (int)floor((float)event.mouseButton.y/40);
 				bool caseEstOccupee = (manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee;
 				if(caseEstOccupee) {
+					batimentChoisi = TableauDeBord::AUCUN;
 					vector<Tour*> tourConteneur = manager->getTour();
 					for (unsigned int i=0; i<tourConteneur.size(); i++)
 					{
@@ -130,7 +131,7 @@ void EtatJeu::handleEvent(sf::Event event)
 						setErreur("Vous ne pouvez pas bloquer le passage des ennemis !");
 						(manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = false;
 					}
-					else if ((autorisation == true)&&(!caseEstOccupee)){
+					else if ((autorisation == true)&&(!caseEstOccupee)&&(batimentChoisi!=TableauDeBord::AUCUN)){
 						Coordonnees coordonneesTour(40*indiceX+20,40*indiceY+20);
 						construireTour(batimentChoisi, coordonneesTour);
 					}
@@ -239,25 +240,25 @@ EtatJeu::~EtatJeu() {
 }
 
 
-void EtatJeu::construireTour(typeBatiment type, Coordonnees coord)
+void EtatJeu::construireTour(TableauDeBord::typeBatiment type, Coordonnees coord)
 {
 	ResourceManager *pResourceManager = ResourceManager::getInstance();
 	Tour *pTour = 0;
 	int indiceX = (int)floor((float)coord.getPosX()/40);
 	int indiceY = (int)floor((float)coord.getPosY()/40);
 	switch(batimentChoisi){
-		case BASIQUE:
+		case TableauDeBord::BASIQUE:
 			pTour = new TourAttaqueBasique(coord);
 			break;
-		case CANON:
+		case TableauDeBord::CANON:
 			pTour = new CanonLourd(coord);
 			break;
-		case EXPLOSIF:
+		case TableauDeBord::EXPLOSIF:
 			break;
-		case FROST:
+		case TableauDeBord::FROST:
 			pTour = new TourDeGlace(coord);
 			break;
-		case MUR:
+		case TableauDeBord::MUR:
 			break;
 		}
 	if(pTour->verifierAchat())
