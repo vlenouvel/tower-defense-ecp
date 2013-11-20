@@ -26,7 +26,6 @@
 #include "../elements/TourDeGlace.h"
 #include "EtatMort.h"
 
-
 class EtatJeu: public Etat {
 public:
 
@@ -38,13 +37,11 @@ public:
 	void setErreur(std::string err);
 	Carte* carte;
 	Ressources* pRessources;
-	// cet entier nous dit quel type de tour on cree, c'est sale donc a changer
 	TableauDeBord* pTableauDeBord;
 
 private:
-	enum typeBatiment {BASIQUE, CANON, EXPLOSIF, FROST, MUR};
-	void construireTour(typeBatiment type, Coordonnees coord);
-	typeBatiment batimentChoisi;
+	void construireTour(TableauDeBord::typeBatiment type, Coordonnees coord);
+	TableauDeBord::typeBatiment batimentChoisi;
 	App* pApp;
 	sf::RectangleShape arriveCase;
 	std::string erreur;

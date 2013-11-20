@@ -19,7 +19,9 @@ public:
 	TableauDeBord();
 	virtual ~TableauDeBord();
 	void dessiner(sf::RenderWindow &pWindow);
-	void setSelectionBat(int type);
+	enum typeBatiment {AUCUN, BASIQUE, CANON, EXPLOSIF, FROST, MUR};
+	void setSelectionBat(typeBatiment type);
+
 private:
 	sf::Texture textureTableauDeBord;
 	sf::Sprite spriteTableauDeBord;
