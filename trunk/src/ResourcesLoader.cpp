@@ -44,13 +44,14 @@ void ResourcesLoader::ChargerTextures() {
 	texturePersonnage.loadFromFile("resources/textures/texturePersonnage.jpg");
 	textureCarte.loadFromFile("resources/textures/champDeBataille.jpg");
 	textureCanonLourd.loadFromFile("resources/textures/textureCanonLourd.png");
-	textureTourAttaqueBasique.loadFromFile("resources/textures/textureTourAttaqueBasique.jpg");
+	textureTourAttaqueBasique.loadFromFile("resources/textures/textureTourAttaqueBasique.png");
 	textureProjectileBasique.loadFromFile("resources/textures/textureProjectileBasique.png");
 	textureProjectileExplosif.loadFromFile("resources/textures/textureProjectileExplosif.png");
 	textureRessources.loadFromFile("resources/textures/textureResources.jpg");
 	textureLevelUpBouton.loadFromFile("resources/textures/textureLevelUpBouton.png");
 	textureSellBouton.loadFromFile("resources/textures/textureSellBouton.png");
 	textureMur.loadFromFile("resources/textures/textureMur.png");
+	textureSelection.loadFromFile("resources/textures/cercleSelection.png");
 	// textures missile
 	textureTraineeMissile1.loadFromFile("resources/textures/traineeMissile1.png");
 	textureTraineeMissile2.loadFromFile("resources/textures/traineeMissile2.png");
