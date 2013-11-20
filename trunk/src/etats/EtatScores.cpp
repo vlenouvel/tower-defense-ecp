@@ -1,14 +1,18 @@
 /*
  * EtatScores.cpp
  *
- *  Created on: 19 nov. 2013
- *      Author: Vincent Lenouvel
+ *  Etat qui permet d'afficher les 3 meilleurs scores du joueurs par ordre decroissant
  */
 
 #include "EtatScores.h"
 
 EtatScores::EtatScores(App *tApp) : Etat(tApp){
 	pApp = tApp;
+
+	for(int i = 0; i < 3 ; i++)
+	{
+		meilleursScores[i] = 0;
+	}
 	lireMeilleursScores();
 	ResourcesLoader *pResourcesLoader = ResourcesLoader::getInstance();
 	font = pResourcesLoader->policeTableauDeBord;
@@ -17,20 +21,22 @@ EtatScores::EtatScores(App *tApp) : Etat(tApp){
 	text.setColor(sf::Color::White);
 	text.setStyle(sf::Text::Bold);
 	text.setPosition(180, 150);
+
 	std::ostringstream ss;
-	ss << "Vos meilleurs scores :";
+	ss << "Vos meilleurs scores :\n\n";
 	for(int i = 0; i < 3 ; i++)
 	{
-		ss << "\n";
-		ss << meilleursScores[i];
+		if(meilleursScores[i] != 0) {
+			ss << "\n";
+			ss << meilleursScores[i];
+		}
 	}
-	std::cout << ss.str() << std::endl;
 	text.setString(ss.str());
 }
 
 void EtatScores::handleEvent(sf::Event event)
 {
-	if((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape))
+	if((event.type == sf::Event::KeyPressed))
 	{
 		Etat *pNouvelEtat = new EtatMenu(pApp);
 		pApp->changerEtat(pNouvelEtat);
@@ -58,7 +64,7 @@ void EtatScores::lireMeilleursScores()
 	}
 	// sort in descending order
 	std::sort(tousLesScores.begin(), tousLesScores.end(), std::greater<int>());
-	for(int i = 0; i < 3; i++)
+	for(int i = 0; i < tousLesScores.size(); i++)
 	{
 		meilleursScores[i] = tousLesScores[i];
 	}
