@@ -127,22 +127,24 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 void TableauDeBord::setSelectionBat(int type) {
 	typeSelection = type;
 
+	sf::Color couleurSelection = sf::Color::Blue;
+	sf::Color couleurNormale = sf::Color::White;
 	if(typeSelection == 1) {
-		spriteCanonLourd.setColor(sf::Color::Blue);
-		spriteTourAttaqueBasique.setColor(sf::Color::White);
-		spriteTourDeGlace.setColor(sf::Color::White);
+		spriteCanonLourd.setColor(couleurSelection);
+		spriteTourAttaqueBasique.setColor(couleurNormale);
+		spriteTourDeGlace.setColor(couleurNormale);
 	}
 
 	if(typeSelection == 0) {
-		spriteTourAttaqueBasique.setColor(sf::Color::Blue);
-		spriteTourDeGlace.setColor(sf::Color::White);
-		spriteCanonLourd.setColor(sf::Color::White);
+		spriteTourAttaqueBasique.setColor(couleurSelection);
+		spriteTourDeGlace.setColor(couleurNormale);
+		spriteCanonLourd.setColor(couleurNormale);
 	}
 
 	if(typeSelection == 3) {
-		spriteTourAttaqueBasique.setColor(sf::Color::White);
-		spriteTourDeGlace.setColor(sf::Color::Blue);
-		spriteCanonLourd.setColor(sf::Color::White);
+		spriteTourAttaqueBasique.setColor(couleurNormale);
+		spriteTourDeGlace.setColor(couleurSelection);
+		spriteCanonLourd.setColor(couleurNormale);
 
 	}
 
