@@ -2,16 +2,14 @@
  * App.cpp
  *
  *  TowerDefense ECP
+ *
+ *  Classe principale du Jeu, qui comprend la boucle, les fonctions d'affichage, de gestion d'event
+ *  et de mise à jours des entités de jeu.
+ *  Elle gere egalement le changement d'etat du jeu.
  *       
  */
 
 #include "App.h"
-#include <iostream>
-#include <string>
-#include <sstream>
-#include "ResourceManager.h"
-#include "ResourcesLoader.h"
-
 
 using namespace std;
 
@@ -26,7 +24,11 @@ App::App() {
 	texteFPS.setColor(sf::Color::White);
 	texteFPS.setStyle(sf::Text::Bold);
 	texteFPS.setPosition(20,20);
+
+	// Creation de la fenetre de jeu
 	window.create(sf::VideoMode(800, 600), "Tower Defense", sf::Style::Close);
+
+	// Creation de l'etat de l'ecran de chargement
 	pEtatActuel = new EtatChargement(this);
 }
 App::~App() {
@@ -35,6 +37,8 @@ App::~App() {
 
 
 void App::jouer() {
+
+	// Timer de la Boucle de jeu
 	sf::Clock horloge;
 	sf::Time framestartTime;
 	sf::Time difference;
@@ -81,10 +85,12 @@ void App::boucle() {
 void App::gererEvents() {
 	sf::Event event;
 	while (window.pollEvent(event)) {
+		// Ferme la fenetre de jeu
 		if (event.type == sf::Event::Closed)
 			window.close();
 		else
 		{
+			// Sinon on delegue au gestionnaire d'event de l'Etat
 			pEtatActuel->handleEvent(event);
 		}
 
@@ -100,14 +106,18 @@ void App::render() {
 	window.clear();
 
 	pEtatActuel->dessiner(rWindow);
+
+	// Affichage du nombre de FPS
 	ostringstream ss;
 	ss << test;
 	texteFPS.setString(ss.str());
-
 	window.draw(texteFPS);
+
+	// Affichage de l'ensemble de la fenetre
 	window.display();
 }
 
+// Gere le changement d'etat de jeu
 void App::changerEtat(Etat *pNouvelEtat)
 {
 	delete pEtatActuel;

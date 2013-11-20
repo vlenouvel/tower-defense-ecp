@@ -28,7 +28,7 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	manager->addGenerateurVague(pGenerateur);
 
 	Coordonnees coordonneesPersoFictif(1,1);
-	manager->pPersoFictif = new Personnage(1,0,1,coordonneesPersoFictif);
+	manager->addPersoFictif(new Personnage(1,0,1,coordonneesPersoFictif));
 	arriveCase.setSize(sf::Vector2f(40, 40));
 	arriveCase.setPosition(680,560);
 	arriveCase.setFillColor(sf::Color::Red);
@@ -124,7 +124,7 @@ void EtatJeu::handleEvent(sf::Event event)
 							}
 						}
 					}
-					autorisation = manager->pPersoFictif->trouverChemin(manager->getCarte());
+					autorisation = manager->getPersoFictif()->trouverChemin(manager->getCarte());
 					manager->getCarte()->nettoyerCarte();
 					if(autorisation == false) {
 						setErreur("Vous ne pouvez pas bloquer le passage des ennemis !");

@@ -2,11 +2,16 @@
  * ResourcesLoader.cpp
  *
  *  TowerDefense ECP
+ *
+ * Cette classe est destinee a charger tout ce qui est dans le dossier resources/,
+ * c'est-a-dire la police, les sons et les textures.
+ * Les objets crees par la suite viennent chercher ce dont ils ont besoin dans cette fonction.
  *      
  */
 
 #include "ResourcesLoader.h"
 #define NULL 0 
+
 // Pointeur vers l'unique instance du ResourceLoader
 ResourcesLoader* pResourcesLoader = NULL;
 // ResourcesLoaderInstance = true si une instance existe deja

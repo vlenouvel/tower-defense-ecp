@@ -20,7 +20,7 @@ EtatChargement::EtatChargement(App *tApp) : Etat(tApp)
 	textLoading.setPosition(220,250);
 	textLoading.setString("Chargement...");
 	clockLoading.restart();
-	tempsMinimum = sf::seconds(2);
+	tempsMinimum = sf::seconds(1);
 }
 
 void EtatChargement::handleEvent(sf::Event event)

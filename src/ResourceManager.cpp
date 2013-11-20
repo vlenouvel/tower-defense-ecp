@@ -2,18 +2,20 @@
  * ResourceManager.cpp
  *
  *  TowerDefense ECP
+ *
+ *  Cette classe, qui utilise le pattern Singleton, stocke les pointeurs de l'ensemble
+ *  des elements de jeu afin de les rendre facilement accessibles au travers du programme.
  *      
  */
 
 #include "ResourceManager.h"
-#include <iostream>
 
 // Pointeur vers l'unique instance du ResourceManager
 ResourceManager* managerPointeur = 0;
 // instance = true si une instance existe deja
 bool instance = false;
 
-// Retourne le pointeur du ResourceManager
+// Retourne le pointeur du ResourceManager (cree un objet de type ResourceManager s'il n'existe pas deja)
 ResourceManager* ResourceManager::getInstance() {
     if (!instance)
     {
@@ -36,6 +38,7 @@ ResourceManager::ResourceManager() {
     vaguePointeur = 0;
     vagueGenerateurPointeur = 0;
     tourSelectionnee = 0;
+    pPersoFictif = 0;
 }
 
 ResourceManager::~ResourceManager() {
@@ -179,6 +182,7 @@ Ressources* ResourceManager::getRessources()
 	return ressourcesPointeur;
 }
 
+// Tour selectionnee
 Tour* ResourceManager::getTourSelectionnee()
 {
 	return tourSelectionnee;
@@ -187,4 +191,14 @@ Tour* ResourceManager::getTourSelectionnee()
 void ResourceManager::setTourSelectionnee(Tour* tour)
 {
 	tourSelectionnee = tour;
+}
+
+// Personnage Fictif
+
+void ResourceManager::addPersoFictif(Personnage* pPerso) {
+	pPersoFictif = pPerso;
+}
+
+Personnage* ResourceManager::getPersoFictif() {
+	return pPersoFictif;
 }
