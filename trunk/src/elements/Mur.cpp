@@ -9,6 +9,10 @@
 
 Mur::Mur(Coordonnees tCoord) : Batiment(tCoord) {
 	prix = 1;
+	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
+	textureMur = pResourcesLoader->textureMur;
+	spriteMur.setTexture(textureMur);
+	spriteMur.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
 }
 
 Mur::~Mur() {
@@ -17,5 +21,5 @@ Mur::~Mur() {
 
 
 void Mur::dessiner(sf::RenderWindow &pWindow){
-	// TO DO
+	pWindow.draw(spriteMur);
 }

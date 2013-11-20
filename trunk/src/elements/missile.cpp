@@ -68,8 +68,8 @@ void Missile::avancer()
 	momentDuCycle++;
 	int xproj = this->coordonnees.getPosX();
 	int yproj = this->coordonnees.getPosY();
-	int xperso = this->cible->getCoordonnees().getPosX();
-	int yperso = this->cible->getCoordonnees().getPosY();
+	int xperso = this->cible->getCoordonnees().getPosX() + 12;
+	int yperso = this->cible->getCoordonnees().getPosY() + 20;
 	double distance = sqrt(pow((float)(xperso-xproj),2)+pow((float)(yperso-yproj),2));
 	double alpha = this->vitesse/distance;
 	if (alpha > 1)
@@ -116,7 +116,7 @@ void Missile::toucherEnnemi()
 			perso->perdrePV(this->dommages);
 		}
 	}
-	Coordonnees coordonneesImpact(this->coordonnees.getPosX()-15,this->coordonnees.getPosY()-15);
+	Coordonnees coordonneesImpact(this->coordonnees.getPosX(),this->coordonnees.getPosY());
 	ExplosionMissile * explosionMissile = new ExplosionMissile(coordonneesImpact);
 	manager->addObjetAnnexe(explosionMissile);
 	manager->removeProjectile(this);

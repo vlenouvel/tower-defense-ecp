@@ -16,6 +16,10 @@ public:
 	Mur(Coordonnees tCoord);
 	virtual ~Mur();
 	void dessiner(sf::RenderWindow &pWindow);
+
+private:
+	sf::Texture textureMur;
+	sf::Sprite spriteMur;
 };
 
 #endif /* MUR_H_ */

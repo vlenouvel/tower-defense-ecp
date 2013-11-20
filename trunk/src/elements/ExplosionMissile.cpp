@@ -11,7 +11,7 @@
 ExplosionMissile::ExplosionMissile(Coordonnees tCoord){
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile1);
-	spriteExplosion.setPosition(tCoord.posX,tCoord.posY);
+	spriteExplosion.setPosition(tCoord.posX-40,tCoord.posY-40);
 	momentDuCycle = 0;
 }
 
