@@ -127,8 +127,9 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 void TableauDeBord::setSelectionBat(int type) {
 	typeSelection = type;
 
-	sf::Color couleurSelection = sf::Color::Blue;
+	sf::Color couleurSelection = sf::Color::White;
 	sf::Color couleurNormale = sf::Color::White;
+	couleurNormale.a = 125;
 	if(typeSelection == 1) {
 		spriteCanonLourd.setColor(couleurSelection);
 		spriteTourAttaqueBasique.setColor(couleurNormale);
