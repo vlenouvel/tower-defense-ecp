@@ -45,6 +45,7 @@ private:
 	sf::Sprite spriteTourSelectionnee;
 	sf::Text texteComportementPremier;
 	sf::Text texteComportementMoinsVie;
+	sf::Text texteComportementZone;
 
 	int typeSelection;
 

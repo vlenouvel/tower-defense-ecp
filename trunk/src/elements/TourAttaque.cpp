@@ -37,6 +37,10 @@ void TourAttaque::changerComportementCiblage(ComportementCiblage::Comportement n
 		comportementChoisi = nouveauComportement;
 		pCibler = ComportementCiblage::ciblerPlusFaible;
 		break;
+	case ComportementCiblage::Zone:
+		comportementChoisi = nouveauComportement;
+		pCibler = ComportementCiblage::ciblerZone;
+		break;
 	}
 
 }
