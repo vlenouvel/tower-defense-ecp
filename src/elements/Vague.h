@@ -17,6 +17,7 @@
 #include "Personnage.h"
 #include "Personnages\PersonnageBasique.h"
 #include "Personnages\PersonnageDouble.h"
+#include "Personnages\PersonnageGenerateur.h"
 #include "Coordonnees.h"
 #include <iostream>
 #include "../ConfigManager.h"
