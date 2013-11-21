@@ -37,7 +37,7 @@ Personnage* ComportementCiblage::ciblerZone(std::vector<Personnage*> ciblesPossi
 	 */
 	//TODO : On ne peut pas envoyer la range en param�tre car on ne peut pas changer le prototype de la fonction
 	// Il faut donc trouver un moyen de l'obtenir autrement
-	int range = 10;
+	int range = 75;
 	ResourceManager *manager = ResourceManager::getInstance();
 	std::vector<Personnage*> tousLesPersonnages = manager->getPersonnage();
 	Personnage *cible(0);

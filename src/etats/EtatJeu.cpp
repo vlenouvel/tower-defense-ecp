@@ -121,6 +121,16 @@ void EtatJeu::handleEvent(sf::Event event)
 					}
 				}
 			}
+			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<780)&&(event.mouseButton.y>490)&&(event.mouseButton.y<500)&&(manager->getBatimentSelectionne()!=0))
+			{
+				if(manager->getBatimentSelectionne()->isTour())
+				{
+					if(((Tour*)manager->getBatimentSelectionne())->isTourAttaque())
+					{
+					((TourAttaque*)manager->getBatimentSelectionne())->changerComportementCiblage(ComportementCiblage::Zone);
+					}
+				}
+			}
 			else if ((event.mouseButton.x<700)){
 				manager->setBatimentSelectionne(0);
 				bool autorisation = true;

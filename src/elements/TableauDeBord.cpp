@@ -31,13 +31,14 @@ TableauDeBord::TableauDeBord() {
 
 	spriteTourAttaqueBasique.setTexture(pResourcesLoader->textureTourAttaqueBasique);
 	spriteTourAttaqueBasique.setScale(0.5,0.5);
-	spriteTourAttaqueBasique.setPosition(760,300);
+	spriteTourAttaqueBasique.setPosition(755,300);
 
 	spriteTourDeGlace.setTexture(pResourcesLoader->textureTourDeGlace);
 	spriteTourDeGlace.setScale(0.5,0.5);
 	spriteTourDeGlace.setPosition(710,260);
 
 	spriteMur.setTexture(pResourcesLoader->textureMur);
+	spriteMur.setScale(0.75,0.75);
 	spriteMur.setPosition(760,260);
 
 	texteNiveauTour.setFont(font);
@@ -89,6 +90,13 @@ TableauDeBord::TableauDeBord() {
 	texteComportementMoinsVie.setStyle(sf::Text::Bold);
 	texteComportementMoinsVie.setPosition(710, 480);
 	texteComportementMoinsVie.setString("Moins de vie");
+
+	texteComportementZone.setFont(font);
+	texteComportementZone.setCharacterSize(7);
+	texteComportementZone.setColor(sf::Color::White);
+	texteComportementZone.setStyle(sf::Text::Bold);
+	texteComportementZone.setPosition(710, 490);
+	texteComportementZone.setString("Plus de touches");
 }
 
 TableauDeBord::~TableauDeBord() {
@@ -133,22 +141,27 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 				case ComportementCiblage::Premier:
 					texteComportementPremier.setColor(sf::Color::Red);
 					texteComportementMoinsVie.setColor(sf::Color::White);
+					texteComportementZone.setColor(sf::Color::White);
 					break;
 				case ComportementCiblage::PlusFaible:
 					texteComportementPremier.setColor(sf::Color::White);
 					texteComportementMoinsVie.setColor(sf::Color::Red);
+					texteComportementZone.setColor(sf::Color::White);
 					break;
+				case ComportementCiblage::Zone:
+					texteComportementPremier.setColor(sf::Color::White);
+					texteComportementMoinsVie.setColor(sf::Color::White);
+					texteComportementZone.setColor(sf::Color::Red);
 				}
 
 				ostringstream stringDommagesTour;
 				stringDommagesTour << (tourAttaqueSelectionnee)->getDommages();
 				texteDommagesTour.setString("Dommages : " + stringDommagesTour.str());
 
-
-
 				pWindow.draw(texteDommagesTour);
 				pWindow.draw(texteComportementPremier);
 				pWindow.draw(texteComportementMoinsVie);
+				pWindow.draw(texteComportementZone);
 			}
 		}
 		ostringstream stringPrixDeVente;
