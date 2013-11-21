@@ -26,6 +26,7 @@ CanonLourd::CanonLourd(Coordonnees tCoord) : TourAttaque(tCoord) {
 	spriteCanonLourd.setPosition(floor(float(tCoord.posX/40))*40,floor(float(tCoord.posY/40))*40);
 	sonTirCanonLourd.setBuffer(pResourcesLoader->bufferTirCanonLourd);
 	sonTirCanonLourd.setVolume(40);
+	calculerValeursAmeliorees();
 }
 
 void CanonLourd::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles))

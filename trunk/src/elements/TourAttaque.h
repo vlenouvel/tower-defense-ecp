@@ -40,7 +40,7 @@ protected:
 	// en changeant la fonction sur laquelle est le pointeur.
 	void virtual attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles)) = 0;
 	void trouverCibles();
-	void calculerValeursAmeliorees();
+	void virtual calculerValeursAmeliorees();
 	Personnage* (*pCibler)(std::vector<Personnage*> ciblesPossibles);
 	ComportementCiblage::Comportement comportementChoisi;
 	int attackDamage;

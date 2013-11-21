@@ -26,6 +26,7 @@ TourDeGlace::TourDeGlace(Coordonnees tCoord) : TourAttaque(tCoord), rayonExplosi
 	spriteEnvironementTourDeGlace.setScale(0.68,0.76);
 	spriteEnvironementTourDeGlace.setPosition(floor(float(tCoord.posX/40))*40-25,floor(float(tCoord.posY/40))*40-30);
 	rotation = 0;
+	calculerValeursAmeliorees();
 }
 
 void TourDeGlace::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles))
