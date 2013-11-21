@@ -101,6 +101,26 @@ void EtatJeu::handleEvent(sf::Event event)
 				manager->getBatimentSelectionne()->vendreBatiment();
 				manager->getCarte()->imageCarte[indiceX][indiceY]->caseOccupee = false;
 			}
+			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<780)&&(event.mouseButton.y>470)&&(event.mouseButton.y<480)&&(manager->getBatimentSelectionne()!=0))
+			{
+				if(manager->getBatimentSelectionne()->isTour())
+				{
+					if(((Tour*)manager->getBatimentSelectionne())->isTourAttaque())
+					{
+						((TourAttaque*)manager->getBatimentSelectionne())->changerComportementCiblage(ComportementCiblage::Premier);
+					}
+				}
+			}
+			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<780)&&(event.mouseButton.y>480)&&(event.mouseButton.y<490)&&(manager->getBatimentSelectionne()!=0))
+			{
+				if(manager->getBatimentSelectionne()->isTour())
+				{
+					if(((Tour*)manager->getBatimentSelectionne())->isTourAttaque())
+					{
+						((TourAttaque*)manager->getBatimentSelectionne())->changerComportementCiblage(ComportementCiblage::PlusFaible);
+					}
+				}
+			}
 			else if ((event.mouseButton.x<700)){
 				manager->setBatimentSelectionne(0);
 				bool autorisation = true;

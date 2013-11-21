@@ -16,6 +16,7 @@ TourAttaqueBasique::TourAttaqueBasique(Coordonnees tCoord) : TourAttaque(tCoord)
 	attackDamage = configManager->mapTourBasique["attaque"];
 	timeBetweenAttacks = sf::milliseconds(configManager->mapTourBasique["temps"]);
 	pCibler = ComportementCiblage::ciblerPremier;
+	comportementChoisi = ComportementCiblage::Premier;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	textureTourAttaqueBasique = pResourcesLoader->textureTourAttaqueBasique;
 	spriteTourAttaqueBasique.setTexture(textureTourAttaqueBasique);

@@ -43,6 +43,8 @@ private:
 	sf::Text textePrixDeVente;
 	sf::Texture textureTourSelectionnee;
 	sf::Sprite spriteTourSelectionnee;
+	sf::Text texteComportementPremier;
+	sf::Text texteComportementMoinsVie;
 
 	int typeSelection;
 
