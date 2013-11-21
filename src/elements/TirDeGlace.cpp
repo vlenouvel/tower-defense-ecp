@@ -65,7 +65,7 @@ void TirDeGlace::toucherEnnemi()
 
 		if((pow((float)(posXPerso - posXTour),2)+pow((float)(posYPerso - posYTour),2)) <= pow((float)(this->rayonExplosion),2))
 		{
-			perso->pourcentageVitesseMalus += 60;
+			perso->pourcentageVitesseMalus = 60;
 			perso->perdrePV(this->dommages);
 		}
 	}

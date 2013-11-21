@@ -52,7 +52,7 @@ void TourDeGlace::actionSpeciale(){
 		}
 	}
 	for (unsigned int i=0;i<persosProches.size();i++){
-		persosProches[i]->pourcentageVitesseMalus += 1;
+		persosProches[i]->pourcentageVitesseMalus = 50;
 	}
 	persosProches.clear();
 	rotation++;
