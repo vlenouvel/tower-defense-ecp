@@ -11,8 +11,8 @@
 Carte::Carte() {
 
 	pCaseSortie = new Case(680,560);
-	for (int i=0; i<18; i++){
-		for (int j=0; j<15; j++){
+	for (int i=0; i<imageCarteX; i++){
+		for (int j=0; j<imageCarteY; j++){
 			Case* pCaseImageCarte = new Case(40*i,40*j);
 			pCaseImageCarte->setHeuristique(&(pCaseSortie->coordonneesCase));
 			imageCarte[i][j] = pCaseImageCarte;
@@ -35,8 +35,8 @@ void Carte::dessiner(sf::RenderWindow &pWindow){
 }
 
 void Carte::nettoyerCarte(){
-	for (int i = 0; i<18; i++){
-		for (int j = 0; j<15; j++){
+	for (int i = 0; i<imageCarteX; i++){
+		for (int j = 0; j<imageCarteY; j++){
 			imageCarte[i][j]->caseParcourue = false;
 			imageCarte[i][j]->distanceEntree = 0;
 		}

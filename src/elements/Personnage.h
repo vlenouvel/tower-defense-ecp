@@ -25,7 +25,7 @@
 using namespace std;
 class Personnage: public ElementGraphique, public ElementJeu {
 public:
-	Personnage(int tVie, int tVitesse, int tArmure, Coordonnees tCoord);
+	Personnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord);
 	virtual ~Personnage();
 
 	void agir();
@@ -50,7 +50,6 @@ protected:
 	int vitesse;
 	int armure;
 	int gain;
-private:
 	sf::Texture texturePersonnage;
 	sf::Sprite spritePersonnage;
 	sf::RectangleShape barreDeVieVerte;
