@@ -10,7 +10,7 @@
 
 #include "../Personnage.h"
 
-class PersonnageGenerateur: public Personnage{
+class PersonnageGenerateur{
 public:
 	PersonnageGenerateur(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord);
 	virtual ~PersonnageGenerateur();

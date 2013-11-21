@@ -28,19 +28,30 @@ public:
 	Personnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord);
 	virtual ~Personnage();
 
-	void agir();
-	void avancer();
-	void mourir();
-	void perdrePV(int degat);
-	void dessiner(sf::RenderWindow &pWindow);
-	int getVie();
-	void arriver();
-	Coordonnees getCoordonnees();
+	void virtual agir()=0;
+	void virtual avancer()=0;
+	void virtual mourir()=0;
+	void virtual perdrePV(int degat)=0;
+	void virtual dessiner(sf::RenderWindow &pWindow)=0;
+	int  virtual getVie()=0;
+	void virtual arriver()=0;
+	Coordonnees virtual getCoordonnees()=0;
+	bool virtual trouverChemin(Carte * pCarte)=0;
+	void virtual ecrireChemin(Carte * pCarte)=0;
+
+	void mourirPersonnage();
+	void agirPersonnage();
+	void avancerPersonnage();
+	void perdrePVPersonnage(int degat);
+	void dessinerPersonnage(sf::RenderWindow &pWindow);
+	int getViePersonnage();
+	void arriverPersonnage();
+	Coordonnees getCoordonneesPersonnage();
 	Coordonnees coordonnees;
 	int pourcentageVitesseMalus;
 	//Pathfinding
-	bool trouverChemin(Carte * pCarte);
-	void ecrireChemin(Carte * pCarte);
+	bool trouverCheminPersonnage(Carte * pCarte);
+	void ecrireCheminPersonnage(Carte * pCarte);
 	//Pathfinding
 	vector<Case *> chemin;
 	vector<Case *>::iterator cheminIterator;
