@@ -75,6 +75,20 @@ TableauDeBord::TableauDeBord() {
 
 	textureTourSelectionnee = pResourcesLoader->textureSelection;
 	spriteTourSelectionnee.setTexture(textureTourSelectionnee);
+
+	texteComportementPremier.setFont(font);
+	texteComportementPremier.setCharacterSize(7);
+	texteComportementPremier.setColor(sf::Color::White);
+	texteComportementPremier.setStyle(sf::Text::Bold);
+	texteComportementPremier.setPosition(710, 470);
+	texteComportementPremier.setString("Plus ancien");
+
+	texteComportementMoinsVie.setFont(font);
+	texteComportementMoinsVie.setCharacterSize(7);
+	texteComportementMoinsVie.setColor(sf::Color::White);
+	texteComportementMoinsVie.setStyle(sf::Text::Bold);
+	texteComportementMoinsVie.setPosition(710, 480);
+	texteComportementMoinsVie.setString("Moins de vie");
 }
 
 TableauDeBord::~TableauDeBord() {
@@ -112,13 +126,30 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 
 			if(tourSelectionnee->isTourAttaque())
 			{
+				TourAttaque* tourAttaqueSelectionnee = (TourAttaque*)tourSelectionnee;
+
+				switch(tourAttaqueSelectionnee->getComportement())
+				{
+				case ComportementCiblage::Premier:
+					texteComportementPremier.setColor(sf::Color::Red);
+					texteComportementMoinsVie.setColor(sf::Color::White);
+					break;
+				case ComportementCiblage::PlusFaible:
+					texteComportementPremier.setColor(sf::Color::White);
+					texteComportementMoinsVie.setColor(sf::Color::Red);
+					break;
+				}
+
 				ostringstream stringDommagesTour;
-				stringDommagesTour << ((TourAttaque*)tourSelectionnee)->getDommages();
+				stringDommagesTour << (tourAttaqueSelectionnee)->getDommages();
 				texteDommagesTour.setString("Dommages : " + stringDommagesTour.str());
 
-				pWindow.draw(texteDommagesTour);
-			}
 
+
+				pWindow.draw(texteDommagesTour);
+				pWindow.draw(texteComportementPremier);
+				pWindow.draw(texteComportementMoinsVie);
+			}
 		}
 		ostringstream stringPrixDeVente;
 		stringPrixDeVente << (int)(manager->getBatimentSelectionne()->getPrix()*0.75); //TODO Coherence avec "vendreTour()"
@@ -127,6 +158,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 
 		pWindow.draw(textePrixDeVente);
 		pWindow.draw(spriteTourSelectionnee);
+
 	}
 }
 

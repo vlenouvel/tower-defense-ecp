@@ -12,6 +12,7 @@
 
 CanonLourd::CanonLourd(Coordonnees tCoord) : TourAttaque(tCoord) {
 	pCibler = ComportementCiblage::ciblerPremier;
+	comportementChoisi = ComportementCiblage::Premier;
 	ConfigManager *configManager = ConfigManager::getInstance();
 	prix = configManager->mapTourCanon["prix"];
 	attackRange = configManager->mapTourCanon["portee"];

@@ -21,7 +21,7 @@
 class TourAttaque: public Tour {
 public:
 	TourAttaque(Coordonnees tCoord);
-	void virtual changerComportementCiblage(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles));
+	void virtual changerComportementCiblage(ComportementCiblage::Comportement nouveauComportement);
 	void agir();
 	virtual ~TourAttaque();
 	virtual void actionSpeciale()=0;
@@ -29,6 +29,7 @@ public:
 	virtual void monterNiveau();
 	virtual bool isTourAttaque();
 	virtual int getDommages();
+	ComportementCiblage::Comportement getComportement();
 
 protected:
 	// On utilise un pointeur vers une fonction statique pour le ciblage
@@ -37,6 +38,7 @@ protected:
 	void virtual attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles)) = 0;
 	void trouverCibles();
 	Personnage* (*pCibler)(std::vector<Personnage*> ciblesPossibles);
+	ComportementCiblage::Comportement comportementChoisi;
 	int attackDamage;
 	int attackRange;
 	std::vector<Personnage*> ciblesPossibles;

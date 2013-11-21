@@ -17,6 +17,7 @@ TourDeGlace::TourDeGlace(Coordonnees tCoord) : TourAttaque(tCoord), rayonExplosi
 	attackDamage = configManager->mapTourDeGlace["attaque"];
 	timeBetweenAttacks = sf::milliseconds(configManager->mapTourDeGlace["temps"]);
 	pCibler = ComportementCiblage::ciblerPremier;
+	comportementChoisi = ComportementCiblage::Premier;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spriteTourDeGlace.setTexture(pResourcesLoader->textureTourDeGlace);
 	spriteEnvironementTourDeGlace.setTexture(pResourcesLoader->textureEnvironnementGlace);

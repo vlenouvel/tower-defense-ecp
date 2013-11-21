@@ -26,9 +26,19 @@ void TourAttaque::agir()
 	this->actionSpeciale();
 }
 
-void TourAttaque::changerComportementCiblage(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles))
+void TourAttaque::changerComportementCiblage(ComportementCiblage::Comportement nouveauComportement)
 {
-	pCibler = fonctionCiblage;
+	switch(nouveauComportement){
+	case ComportementCiblage::Premier:
+		comportementChoisi = nouveauComportement;
+		pCibler = ComportementCiblage::ciblerPremier;
+		break;
+	case ComportementCiblage::PlusFaible:
+		comportementChoisi = nouveauComportement;
+		pCibler = ComportementCiblage::ciblerPlusFaible;
+		break;
+	}
+
 }
 
 
@@ -83,4 +93,9 @@ bool TourAttaque::isTourAttaque()
 int TourAttaque::getDommages()
 {
 	return attackDamage;
+}
+
+ComportementCiblage::Comportement TourAttaque::getComportement()
+{
+	return comportementChoisi;
 }

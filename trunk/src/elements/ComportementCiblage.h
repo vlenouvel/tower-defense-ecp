@@ -23,6 +23,7 @@ public:
 	static Personnage* ciblerPlusFaible(std::vector<Personnage*> ciblesPossibles);
 	static Personnage* ciblerZone(std::vector<Personnage*> ciblesPossibles);
 	static Personnage* ciblerPremier(std::vector<Personnage*> ciblesPossibles);
+	enum Comportement {PlusFaible, Premier, Zone};
 };
 
 #endif /* COMPORTEMENTCIBLAGE_H_ */
