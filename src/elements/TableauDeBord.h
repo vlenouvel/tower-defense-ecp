@@ -21,7 +21,7 @@ public:
 	TableauDeBord();
 	virtual ~TableauDeBord();
 	void dessiner(sf::RenderWindow &pWindow);
-	enum typeBatiment {AUCUN, BASIQUE, CANON, EXPLOSIF, FROST, MUR};
+	enum typeBatiment {AUCUN, BASIQUE, CANON, EXPLOSIF, FROST, SUPPORT, MUR};
 	void setSelectionBat(typeBatiment type);
 
 private:
@@ -33,6 +33,7 @@ private:
 	sf::Sprite spriteTourAttaqueBasique;
 	sf::Sprite spriteTourDeGlace;
 	sf::Sprite spriteMur;
+	sf::Sprite spriteTourSupport;
 	sf::Text texteNiveauTour;
 	sf::Texture textureLevelUpBouton;
 	sf::Sprite spriteLevelUpBouton;
@@ -47,7 +48,7 @@ private:
 	sf::Text texteComportementMoinsVie;
 	sf::Text texteComportementZone;
 
-	int typeSelection;
+	typeBatiment typeSelection;
 
 };
 

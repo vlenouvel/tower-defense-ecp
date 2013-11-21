@@ -56,6 +56,11 @@ void ConfigManager::loadConfig()
 	mapTourCanon["temps"] = atoi(tourCanon->FirstChildElement("temps")->GetText());
 	mapTourCanon["rayonExplosion"] = atoi(tourCanon->FirstChildElement("rayonExplosion")->GetText());
 
+	tinyxml2::XMLElement* tourSupport = batiments->FirstChildElement("tourSupport");
+
+	mapTourSupport["prix"] = atoi(tourSupport->FirstChildElement("prix")->GetText());
+
+
 	tinyxml2::XMLElement* mur = batiments->FirstChildElement("mur");
 
 	mapMur["prix"] = atoi(mur->FirstChildElement("prix")->GetText());

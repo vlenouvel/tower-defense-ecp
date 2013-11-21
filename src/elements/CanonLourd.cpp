@@ -33,7 +33,7 @@ void CanonLourd::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*>
 	ResourceManager *manager = ResourceManager::getInstance();
 	Personnage *cible = fonctionCiblage(this->ciblesPossibles);
 	Coordonnees coord = this->coordonnees;
-	Missile *projo = new Missile(coord, cible, attackDamage, rayonExplosion);
+	Missile *projo = new Missile(coord, cible, attackDamageBuffed, rayonExplosion);
 	manager->addProjectile((Projectile*)projo);
 	sonTirCanonLourd.play();
 }

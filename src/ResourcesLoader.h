@@ -37,6 +37,7 @@ public:
 	sf::Texture textureCarte;
 	sf::Texture textureCanonLourd;
 	sf::Texture textureTourAttaqueBasique;
+	sf::Texture textureTourSupport;
 	sf::Texture textureProjectileBasique;
 	sf::Texture textureProjectileExplosif;
 	sf::Texture textureRessources;

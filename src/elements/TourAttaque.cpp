@@ -8,12 +8,32 @@
 #include "TourAttaque.h"
 
 TourAttaque::TourAttaque(Coordonnees tCoord) : Tour(tCoord), pCibler(0), attackDamage(0), attackRange(0) {
+	amelioration = 0;
+	attackDamageBuffed = 0;
+	attackRangeBuffed = 0;
+
+	//Recalculer toutes les améliorations ajoutées par les tours support
+	ResourceManager *pResourceManager = ResourceManager::getInstance();
+	std::vector<Batiment*> listeBat = pResourceManager->getBatiment();
+	// On selectionne les tourSupport dans les batiments presents
+	// Pour chacune, on lui fait supprimer son amélioration, puis remettre
+	for(unsigned int i = 0; i < listeBat.size() ; i++)
+	{
+		if(listeBat[i]->isTour())
+		{
+			if(!((Tour*)listeBat[i])->isTourAttaque())
+			{
+				TourSupport* pTourSupport = (TourSupport*)listeBat[i];
+				pTourSupport->recalculerAmelioration();
+			}
+		}
+	}
 }
 
 void TourAttaque::agir()
 {
 	sf::Time timeSinceLastAttack = clockFromLastAttack.getElapsedTime();
-	if(timeSinceLastAttack > timeBetweenAttacks)
+	if(timeSinceLastAttack > timeBetweenAttacksBuffed)
 	{
 
 		this->trouverCibles();
@@ -67,7 +87,7 @@ void TourAttaque::trouverCibles()
 			Personnage *perso = listesDeTousLesPersonnages[i];
 			int posXPerso = perso->getCoordonnees().getPosX();
 			int posYPerso = perso->getCoordonnees().getPosY();
-			if((pow((float)(posXPerso - posXTour),2)+pow((float)(posYPerso - posYTour),2)) <= pow((float)(this->attackRange),2))
+			if((pow((float)(posXPerso - posXTour),2)+pow((float)(posYPerso - posYTour),2)) <= pow((float)attackRangeBuffed,2))
 			{
 				this->ciblesPossibles.push_back(perso);
 			}
@@ -86,7 +106,6 @@ void TourAttaque::monterNiveau()
 	manager->getRessources()->perdreArgent((int)(prix*0.75));
 	prix += (int)(prix*0.75);
 	niveau++;
-
 }
 
 bool TourAttaque::isTourAttaque()
@@ -96,7 +115,28 @@ bool TourAttaque::isTourAttaque()
 
 int TourAttaque::getDommages()
 {
-	return attackDamage;
+	return attackDamageBuffed;
+}
+
+void TourAttaque::addAmelioration(int amelio)
+{
+	amelioration+=amelio;
+	calculerValeursAmeliorees();
+}
+
+void TourAttaque::removeAmelioration(int amelio)
+{
+	amelioration-=amelio;
+	if(amelioration < 0)
+		amelioration = 0;
+	calculerValeursAmeliorees();
+}
+
+void TourAttaque::calculerValeursAmeliorees()
+{
+	attackDamageBuffed = (int)(attackDamage*(1+amelioration/10));
+	attackRangeBuffed = (int)(attackRange*(1+amelioration/10));
+	timeBetweenAttacksBuffed = sf::milliseconds((sf::Int32)timeBetweenAttacks.asMilliseconds()/(1+0.75*(1-exp(-amelioration/10))));
 }
 
 ComportementCiblage::Comportement TourAttaque::getComportement()

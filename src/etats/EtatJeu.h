@@ -25,6 +25,7 @@
 #include "../elements/CanonLourd.h"
 #include "../elements/TourDeGlace.h"
 #include "../elements/Mur.h"
+#include "../elements/TourSupport.h"
 #include "EtatMort.h"
 
 class EtatJeu: public Etat {
