@@ -136,7 +136,7 @@ void TourAttaque::calculerValeursAmeliorees()
 {
 	attackDamageBuffed = (int)(attackDamage*(1+amelioration/10));
 	attackRangeBuffed = (int)(attackRange*(1+amelioration/10));
-	timeBetweenAttacksBuffed = sf::milliseconds((sf::Int32)timeBetweenAttacks.asMilliseconds()/(1+0.75*(1-exp(-amelioration/10))));
+	timeBetweenAttacksBuffed = sf::milliseconds((sf::Int32)timeBetweenAttacks.asMilliseconds()/(1+0.75*(1-exp((float)-amelioration/10))));
 }
 
 ComportementCiblage::Comportement TourAttaque::getComportement()

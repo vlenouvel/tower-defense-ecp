@@ -43,9 +43,15 @@ void ResourcesLoader::ChargerTextures() {
 	textureMenu.loadFromFile("resources/textures/menu.png");
 
 	texturePersonnage.loadFromFile("resources/textures/texturePersonnage.jpg");
-	texturePersonnageDouble.loadFromFile("resources/textures/PersonnageDouble.png");
+	texturePersonnageDoubleGauche.loadFromFile("resources/textures/PersonnageDoubleGauche.png");
+	texturePersonnageDoubleDroite.loadFromFile("resources/textures/PersonnageDoubleDroite.png");
+	texturePersonnageDoubleBas.loadFromFile("resources/textures/PersonnageDoubleBas.png");
+	texturePersonnageDoubleHaut.loadFromFile("resources/textures/PersonnageDoubleHaut.png");
+	texturePersonnageBasiqueGauche.loadFromFile("resources/textures/PersonnageBasiqueGauche.png");
+	texturePersonnageBasiqueDroite.loadFromFile("resources/textures/PersonnageBasiqueDroite.png");
+	texturePersonnageBasiqueBas.loadFromFile("resources/textures/PersonnageBasiqueBas.png");
+	texturePersonnageBasiqueHaut.loadFromFile("resources/textures/PersonnageBasiqueHaut.png");
 	texturePersonnageGenerateur.loadFromFile("resources/textures/texturePersonnage.jpg");
-	texturePersonnageBasique.loadFromFile("resources/textures/texturePersonnage.jpg");
 	texturePersonnageVolant.loadFromFile("resources/textures/texturePersonnage.jpg");
 
 	textureCarte.loadFromFile("resources/textures/champDeBataille.jpg");

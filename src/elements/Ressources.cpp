@@ -9,6 +9,7 @@
 #include <string>
 #include <sstream>
 #include "../ResourceManager.h"
+#include <iostream>
 
 Ressources::Ressources() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();

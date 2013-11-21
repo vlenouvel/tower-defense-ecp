@@ -15,6 +15,8 @@
 #include "GenerateurVague.h"
 #include "ElementJeu.h"
 #include "Personnage.h"
+#include "Personnages\PersonnageBasique.h"
+#include "Personnages\PersonnageDouble.h"
 #include "Coordonnees.h"
 #include <iostream>
 #include "../ConfigManager.h"

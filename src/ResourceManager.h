@@ -27,6 +27,7 @@ class Vague;
 class EtatJeu;
 class Personnage;
 
+
 class ResourceManager {
 
 public:

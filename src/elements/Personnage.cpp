@@ -13,8 +13,6 @@ Personnage::Personnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonne
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 
 	// on traite les textures du personnage et de sa barre de vie
-	spritePersonnage.setTexture(pResourcesLoader->texturePersonnage);
-	spritePersonnage.setScale(0.5,0.5);
 	spritePersonnage.setPosition(tCoord.posX,tCoord.posY);
 	barreDeVieVerte.setFillColor(sf::Color::Green);
 	barreDeVieVerte.setSize(sf::Vector2f(sf::Vector2f(spritePersonnage.getGlobalBounds().width, 5)));
@@ -27,12 +25,12 @@ Personnage::Personnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonne
 	vieInitial = vie;
 }
 
-void Personnage::agir()
+void Personnage::agirPersonnage()
 {
 	this->avancer();
 }
 
-void Personnage::avancer()
+void Personnage::avancerPersonnage()
 {
 	if(!chemin.empty()){
 		int imageVitesse = (int)(vitesse*(100 - pourcentageVitesseMalus)/100+0.5);
@@ -64,22 +62,22 @@ void Personnage::avancer()
 		barreDeVieVerte.setPosition(coordonnees.posX,coordonnees.posY-8);
 	}
 	else {
-		arriver();
+		arriverPersonnage();
 	}
 	if (pourcentageVitesseMalus > 0)
 		pourcentageVitesseMalus--;
 }
 
-void Personnage::perdrePV(int degat)
+void Personnage::perdrePVPersonnage(int degat)
 {
 	if(degat > armure){
 		vie -= (degat - armure);
 		if(vie <= 0)
-			this->mourir();
+			this->mourirPersonnage();
 	}
 }
 
-void Personnage::mourir()
+void Personnage::mourirPersonnage()
 {
 	ResourceManager *manager = ResourceManager::getInstance();
 	manager->removePersonnage(this);
@@ -108,7 +106,7 @@ void Personnage::mourir()
 
 
 
-void Personnage::arriver() {
+void Personnage::arriverPersonnage() {
 
 	ResourceManager *manager = ResourceManager::getInstance();
 
@@ -131,14 +129,13 @@ void Personnage::arriver() {
 			pProjo->setCible(0);
 		}
 	}
-	delete this;
 }
 
 Personnage::~Personnage() {
-	// TODO Auto-generated destructor stub
+	// TODO Auto-generated destructor stub.
 }
 
-void Personnage::dessiner(sf::RenderWindow &pWindow)
+void Personnage::dessinerPersonnage(sf::RenderWindow &pWindow)
 {
 	barreDeVieRouge.setSize(sf::Vector2f(spritePersonnage.getGlobalBounds().width*(vieInitial - vie)/vieInitial,5));
 	pWindow.draw(spritePersonnage);
@@ -146,12 +143,12 @@ void Personnage::dessiner(sf::RenderWindow &pWindow)
 	pWindow.draw(barreDeVieRouge);
 }
 
-int Personnage::getVie()
+int Personnage::getViePersonnage()
 {
 	return this->vie;
 }
 
-Coordonnees Personnage::getCoordonnees()
+Coordonnees Personnage::getCoordonneesPersonnage()
 {
 	return this->coordonnees;
 }
@@ -163,7 +160,7 @@ Coordonnees Personnage::getCoordonnees()
 	personnage a un chemin possible vers la sortie. Si oui, vrai est retourne. Si non, faux est retourne.
 	L'algorithme implemente est A* 
 */
-bool Personnage::trouverChemin(Carte * pCarte){
+bool Personnage::trouverCheminPersonnage(Carte * pCarte){
 
 	//on initialise la liste triee qui va contenir la suite de case a analyser avec la case d'entree
 	multimap<int,Case*> listeAParcourir;
@@ -241,7 +238,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 	a prendre vers la sortie. Ce chemin est une suite de cases qu'emprunte ensuite le personnage qui se deplace alors
 	de case en case. Il faut que la fonction precedente ait ete appelee juste avant celle-ci
 */
-void Personnage::ecrireChemin(Carte * pCarte){
+void Personnage::ecrireCheminPersonnage(Carte * pCarte){
 	chemin.clear();
 	Case * trace;
 	trace = pCarte->pCaseSortie;

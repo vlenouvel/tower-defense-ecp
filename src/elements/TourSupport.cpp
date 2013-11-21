@@ -94,7 +94,7 @@ void TourSupport::enleverAmelioration()
 			if(((Tour*)listeBat[i])->isTourAttaque())
 			{
 				TourAttaque* pTourAttaque = (TourAttaque*)listeBat[i];
-				if(pow((float)(coordonnees.getPosX() - pTourAttaque->getCoordonnees().getPosX()),2) + pow((float)(coordonnees.getPosX() - pTourAttaque->getCoordonnees().getPosX()),2) == pow(40,2))
+				if(pow((float)(coordonnees.getPosX() - pTourAttaque->getCoordonnees().getPosX()),2) + pow((float)(coordonnees.getPosX() - pTourAttaque->getCoordonnees().getPosX()),2) == pow((float)40,2))
 				{
 					pTourAttaque->removeAmelioration(niveau);
 				}

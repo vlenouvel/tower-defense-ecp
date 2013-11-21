@@ -10,7 +10,7 @@
 
 #include "../Personnage.h"
 
-class PersonnageVolant: public Personnage{
+class PersonnageVolant{
 public:
 	PersonnageVolant(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord);
 	virtual ~PersonnageVolant();
