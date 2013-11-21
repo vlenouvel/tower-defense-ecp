@@ -11,7 +11,7 @@
 #include "TableauDeBord.h"
 
 TableauDeBord::TableauDeBord() {
-	typeSelection = 0;
+	typeSelection = AUCUN;
 
 	ResourcesLoader *pResourcesLoader = ResourcesLoader::getInstance();
 	textureTableauDeBord = pResourcesLoader->textureRessources;
@@ -39,7 +39,11 @@ TableauDeBord::TableauDeBord() {
 
 	spriteMur.setTexture(pResourcesLoader->textureMur);
 	spriteMur.setScale(0.75,0.75);
-	spriteMur.setPosition(760,260);
+	spriteMur.setPosition(735,220);
+
+	spriteTourSupport.setTexture(pResourcesLoader->textureTourSupport);
+	spriteTourSupport.setScale(0.5,0.5);
+	spriteTourSupport.setPosition(750, 260);
 
 	texteNiveauTour.setFont(font);
 	texteNiveauTour.setCharacterSize(7);
@@ -111,6 +115,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 	pWindow.draw(spriteCanonLourd);
 	pWindow.draw(spriteTourAttaqueBasique);
 	pWindow.draw(spriteTourDeGlace);
+	pWindow.draw(spriteTourSupport);
 	pWindow.draw(spriteMur);
 
 	if (manager->getBatimentSelectionne()!=0)
@@ -181,40 +186,33 @@ void TableauDeBord::setSelectionBat(typeBatiment type) {
 	sf::Color couleurSelection = sf::Color::White;
 	sf::Color couleurNormale = sf::Color::White;
 	couleurNormale.a = 125;
-	if(typeSelection == CANON)
+	spriteCanonLourd.setColor(couleurNormale);
+	spriteTourAttaqueBasique.setColor(couleurNormale);
+	spriteTourDeGlace.setColor(couleurNormale);
+	spriteMur.setColor(couleurNormale);
+	spriteTourSupport.setColor(couleurNormale);
+	switch(typeSelection)
 	{
+	case CANON:
 		spriteCanonLourd.setColor(couleurSelection);
-		spriteTourAttaqueBasique.setColor(couleurNormale);
-		spriteTourDeGlace.setColor(couleurNormale);
-		spriteMur.setColor(couleurNormale);
-	}
-	else if(typeSelection == BASIQUE)
-	{
-		spriteTourAttaqueBasique.setColor(couleurSelection);
-		spriteTourDeGlace.setColor(couleurNormale);
-		spriteCanonLourd.setColor(couleurNormale);
-		spriteMur.setColor(couleurNormale);
-	}
-	else if(typeSelection == FROST)
-	{
-		spriteTourAttaqueBasique.setColor(couleurNormale);
-		spriteTourDeGlace.setColor(couleurSelection);
-		spriteCanonLourd.setColor(couleurNormale);
-		spriteMur.setColor(couleurNormale);
-	}
-	else if(typeSelection == AUCUN)
-	{
-		spriteTourAttaqueBasique.setColor(couleurNormale);
-		spriteTourDeGlace.setColor(couleurNormale);
-		spriteCanonLourd.setColor(couleurNormale);
-		spriteMur.setColor(couleurNormale);
-	}
-	else if(typeSelection == MUR)
-	{
-		spriteTourAttaqueBasique.setColor(couleurNormale);
-		spriteTourDeGlace.setColor(couleurNormale);
-		spriteCanonLourd.setColor(couleurNormale);
-		spriteMur.setColor(couleurSelection);
-	}
+		break;
 
+	case BASIQUE:
+		spriteTourAttaqueBasique.setColor(couleurSelection);
+		break;
+
+	case FROST:
+		spriteTourDeGlace.setColor(couleurSelection);
+		break;
+
+	case SUPPORT:
+		spriteTourSupport.setColor(couleurSelection);
+		break;
+
+	case MUR:
+		spriteMur.setColor(couleurSelection);
+		break;
+	default:
+		break;
+	}
 }

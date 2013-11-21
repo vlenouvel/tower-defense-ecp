@@ -31,7 +31,7 @@ void TourAttaqueBasique::attaque(Personnage* (*fonctionCiblage)(std::vector<Pers
 	ResourceManager *manager = ResourceManager::getInstance();
 	Personnage *cible = fonctionCiblage(this->ciblesPossibles);
 	Coordonnees coord = this->coordonnees;
-	ProjectileBasique *projo = new ProjectileBasique(coord, cible, attackDamage);
+	ProjectileBasique *projo = new ProjectileBasique(coord, cible, attackDamageBuffed);
 	manager->addProjectile((Projectile*)projo);
 	sonTirTourAttaqueBasique.play();
 }

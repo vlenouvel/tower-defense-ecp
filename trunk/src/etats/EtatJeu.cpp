@@ -66,13 +66,18 @@ void EtatJeu::handleEvent(sf::Event event)
 				batimentChoisi = TableauDeBord::CANON;
 				manager->setBatimentSelectionne(0);
 			}
-			else if ((event.mouseButton.x>705)&&(event.mouseButton.x<745)&&(event.mouseButton.y<290)&&(event.mouseButton.y>250)){
+			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<745)&&(event.mouseButton.y<290)&&(event.mouseButton.y>250)){
 				batimentChoisi = TableauDeBord::FROST;
+				manager->setBatimentSelectionne(0);
+			}
+			else if((event.mouseButton.x>735)&&(event.mouseButton.x<760)&&(event.mouseButton.y<250)&&(event.mouseButton.y>210))
+			{
+				batimentChoisi = TableauDeBord::MUR;
 				manager->setBatimentSelectionne(0);
 			}
 			else if((event.mouseButton.x>760)&&(event.mouseButton.x<795)&&(event.mouseButton.y<290)&&(event.mouseButton.y>250))
 			{
-				batimentChoisi = TableauDeBord::MUR;
+				batimentChoisi = TableauDeBord::SUPPORT;
 				manager->setBatimentSelectionne(0);
 			}
 			else if((event.mouseButton.x>680)&&(event.mouseButton.y>560)) {
@@ -302,6 +307,9 @@ void EtatJeu::construireBatiment(TableauDeBord::typeBatiment type, Coordonnees c
 			break;
 		case TableauDeBord::MUR:
 			pBatiment = new Mur(coord);
+			break;
+		case TableauDeBord::SUPPORT:
+			pBatiment = new TourSupport(coord);
 			break;
 		}
 	if(pBatiment->verifierAchat())

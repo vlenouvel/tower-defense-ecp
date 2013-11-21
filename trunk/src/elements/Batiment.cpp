@@ -9,6 +9,7 @@
 #include "../ResourceManager.h"
 
 Batiment::Batiment(Coordonnees tCoord) : coordonnees(tCoord) {
+	prix = 0;
 }
 
 Batiment::~Batiment() {

@@ -21,6 +21,9 @@
 			<temps>2000</temps>	
 			<rayonExplosion>75</rayonExplosion>
 		</tourCanon>
+		<tourSupport>
+			<prix>20</prix>
+		</tourSupport>
 		<mur>
 			<prix>1</prix>
 		</mur>

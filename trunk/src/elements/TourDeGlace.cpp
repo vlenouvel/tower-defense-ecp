@@ -33,7 +33,7 @@ void TourDeGlace::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*
 	ResourceManager *manager = ResourceManager::getInstance();
 	Personnage *cible = fonctionCiblage(this->ciblesPossibles);
 	Coordonnees coord = this->coordonnees;
-	TirDeGlace *projo = new TirDeGlace(coord, cible, attackDamage, rayonExplosion);
+	TirDeGlace *projo = new TirDeGlace(coord, cible, attackDamageBuffed, rayonExplosion);
 	manager->addProjectile((Projectile*)projo);
 
 }
