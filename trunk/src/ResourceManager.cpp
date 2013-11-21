@@ -56,7 +56,7 @@ void ResourceManager::clearResourcesManager()
     vaguePointeur = 0;
     delete vagueGenerateurPointeur;
     vagueGenerateurPointeur = 0;
-    delete batimentSelectionne;
+
     batimentSelectionne = 0;
 
     for(unsigned int i = 0; i < batimentConteneur.size() ; i++)
