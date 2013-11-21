@@ -141,7 +141,7 @@ void EtatJeu::handleEvent(sf::Event event)
 						}
 					}
 
-				} else {
+				} else if (batimentChoisi != TableauDeBord::AUCUN) {
 					(manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = true;
 					if (!manager->getPersonnage().empty()){
 						for (unsigned int i=0; i< manager->getPersonnage().size();i++){
