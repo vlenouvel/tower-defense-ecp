@@ -30,6 +30,10 @@ public:
 
 	sf::Texture textureMenu;
 	sf::Texture texturePersonnage;
+	sf::Texture texturePersonnageDouble;
+	sf::Texture texturePersonnageGenerateur;
+	sf::Texture texturePersonnageBasique;
+	sf::Texture texturePersonnageVolant;
 	sf::Texture textureCarte;
 	sf::Texture textureCanonLourd;
 	sf::Texture textureTourAttaqueBasique;

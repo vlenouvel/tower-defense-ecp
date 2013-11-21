@@ -28,7 +28,7 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	manager->addGenerateurVague(pGenerateur);
 
 	Coordonnees coordonneesPersoFictif(1,1);
-	manager->addPersoFictif(new Personnage(1,0,1,coordonneesPersoFictif));
+	manager->addPersoFictif(new Personnage(1,0,1,0,coordonneesPersoFictif));
 	arriveCase.setSize(sf::Vector2f(40, 40));
 	arriveCase.setPosition(680,560);
 	arriveCase.setFillColor(sf::Color::Red);

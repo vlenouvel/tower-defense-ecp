@@ -61,8 +61,9 @@ void Vague::genererPersonnage()
 			break;
 	}
 
+	int gain = 0;
 	Coordonnees coordonneesDepart(0,0);
-	Personnage* pPersonnage = new Personnage(niveauType*vie, vitesse, armure, coordonneesDepart);
+	Personnage* pPersonnage = new Personnage(niveauType*vie, vitesse, armure, gain , coordonneesDepart);
 	pPersonnage->trouverChemin(ResourceManager->getCarte());
 	pPersonnage->ecrireChemin(ResourceManager->getCarte());
 	ResourceManager->addPersonnage(pPersonnage);
