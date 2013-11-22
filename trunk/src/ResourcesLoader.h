@@ -43,6 +43,10 @@ public:
 	sf::Texture texturePersonnageGenerateurDroite;
 	sf::Texture texturePersonnageGenerateurHaut;
 	sf::Texture texturePersonnageGenerateurBas;
+	sf::Texture texturePersonnageVolantGauche;
+	sf::Texture texturePersonnageVolantDroite;
+	sf::Texture texturePersonnageVolantHaut;
+	sf::Texture texturePersonnageVolantBas;
 	sf::Texture textureCarte;
 	sf::Texture textureCanonLourd;
 	sf::Texture textureTourAttaqueBasique;

@@ -55,6 +55,9 @@ public:
 	//Pathfinding
 	vector<Case *> chemin;
 	vector<Case *>::iterator cheminIterator;
+	// ce booleen sert a savoir si le personnage est volant, c'est-a-dire s'il n'a pas a recalculer son chemin si une
+	// nouvelle tour est cree
+	bool volant;
 protected:
 	int vie;
 	int vieInitial;
