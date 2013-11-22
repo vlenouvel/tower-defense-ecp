@@ -51,7 +51,7 @@ void App::jouer() {
 	// Charge la musique de fond
 	sf::Music music;
 	music.openFromFile("resources/sons/musicTest.ogg");
-	music.play();
+	//music.play();
 
 	// lance l'horloge
 	horloge.restart();
