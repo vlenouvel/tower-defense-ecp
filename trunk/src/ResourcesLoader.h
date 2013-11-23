@@ -92,6 +92,7 @@ public:
 	sf::SoundBuffer bufferCreationTour;
 	sf::SoundBuffer bufferTirTourAttaqueBasique;
 	sf::SoundBuffer bufferTirCanonLourd;
+	sf::SoundBuffer bufferTirTourGlace;
 
 	sf::Font policeMenu;
 	sf::Font policeTableauDeBord;
