@@ -35,8 +35,8 @@ void Personnage::avancerPersonnage()
 {
 	if(!chemin.empty()){
 		int imageVitesse = (int)(vitesse*(100 - pourcentageVitesseMalus)/100+0.5);
-		if (imageVitesse < 1)
-			imageVitesse = 1;
+		if (imageVitesse < 2)
+			imageVitesse = 2;
 		int abscisseCible,ordonneeCible,abscissePerso,ordonneePerso,distanceCiblePerso;
 		while (imageVitesse > 0){
 			abscisseCible = chemin[0]->coordonneesCase.getPosX();

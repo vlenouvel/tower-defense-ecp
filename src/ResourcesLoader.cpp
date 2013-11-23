@@ -63,7 +63,10 @@ void ResourcesLoader::ChargerTextures() {
 	texturePersonnageAccelerantDroite.loadFromFile("resources/textures/PersonnageAccelerantDroite.png");
 	texturePersonnageAccelerantBas.loadFromFile("resources/textures/PersonnageAccelerantBas.png");
 	texturePersonnageAccelerantHaut.loadFromFile("resources/textures/PersonnageAccelerantHaut.png");
+
+	// boss
 	textureSuperPersonnage.loadFromFile("resources/textures/SuperPersonnage.png");
+
 
 	textureCarte.loadFromFile("resources/textures/champDeBataille.jpg");
 	textureCanonLourd.loadFromFile("resources/textures/textureCanonLourd.png");
@@ -109,6 +112,7 @@ void ResourcesLoader::ChargerSons() {
 	bufferCreationTour.loadFromFile("resources/sons/creationTour.ogg");
 	bufferTirTourAttaqueBasique.loadFromFile("resources/sons/tirTourAttaqueBasique.ogg");
 	bufferTirCanonLourd.loadFromFile("resources/sons/tirCanonLourd.ogg");
+	bufferTirTourGlace.loadFromFile("resources/sons/tirTourGlace.ogg");
 }
 // Charge toutes les polices
 void ResourcesLoader::ChargerPolices() {
