@@ -144,8 +144,7 @@ Carte* ResourceManager::getCarte() {
 // Vague
 void ResourceManager::addVague(Vague* vague)
 {
-	if(vaguePointeur != 0)
-		delete vaguePointeur;
+	delete vaguePointeur;
 	vaguePointeur = vague;
 }
 

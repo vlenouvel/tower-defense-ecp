@@ -19,6 +19,8 @@
 #include "Personnages/PersonnageDouble.h"
 #include "Personnages/PersonnageGenerateur.h"
 #include "Personnages/PersonnageVolant.h"
+#include "Personnages/PersonnageAccelerant.h"
+#include "Personnages/SuperPersonnage.h"
 #include "Coordonnees.h"
 #include <iostream>
 #include "../ConfigManager.h"
@@ -32,7 +34,6 @@ public:
 
 private:
 	int niveauType;
-	int nombreType;
 	int nombrePersoRestant;
 	int type;
 	sf::Clock horlogePop;
