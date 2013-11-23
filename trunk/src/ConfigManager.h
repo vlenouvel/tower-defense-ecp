@@ -27,6 +27,19 @@ public:
 	std::map<std::string, int> mapPersonnageNormal;
 	std::map<std::string, int> mapPersonnageRapide;
 	std::map<std::string, int> mapPersonnageSolide;
+	std::map<std::string, int> mapPersonnageVolant;
+	std::map<std::string, int> mapPersonnageGenerateur;
+	std::map<std::string, int> mapPersonnageAccelerant;
+	std::map<std::string, int> mapPersonnageDouble;
+	std::map<std::string, int> mapPersonnageBoss;
+	std::map<std::string, int> mapVague1;
+	std::map<std::string, int> mapVague2;
+	std::map<std::string, int> mapVague3;
+	std::map<std::string, int> mapVague4;
+	std::map<std::string, int> mapVague5;
+	std::map<std::string, int> mapVague6;
+	std::map<std::string, int> mapVague7;
+	std::map<std::string, int> mapVague8;
 
 private:
 	ConfigManager();

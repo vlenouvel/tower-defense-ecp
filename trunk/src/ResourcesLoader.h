@@ -38,7 +38,6 @@ public:
 	sf::Texture texturePersonnageBasiqueDroite;
 	sf::Texture texturePersonnageBasiqueHaut;
 	sf::Texture texturePersonnageBasiqueBas;
-	sf::Texture texturePersonnageVolant;
 	sf::Texture texturePersonnageGenerateurGauche;
 	sf::Texture texturePersonnageGenerateurDroite;
 	sf::Texture texturePersonnageGenerateurHaut;
@@ -47,6 +46,11 @@ public:
 	sf::Texture texturePersonnageVolantDroite;
 	sf::Texture texturePersonnageVolantHaut;
 	sf::Texture texturePersonnageVolantBas;
+	sf::Texture texturePersonnageAccelerantGauche;
+	sf::Texture texturePersonnageAccelerantDroite;
+	sf::Texture texturePersonnageAccelerantHaut;
+	sf::Texture texturePersonnageAccelerantBas;
+	sf::Texture textureSuperPersonnage;
 	sf::Texture textureCarte;
 	sf::Texture textureCanonLourd;
 	sf::Texture textureTourAttaqueBasique;

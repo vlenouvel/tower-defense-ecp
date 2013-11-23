@@ -13,7 +13,7 @@ GenerateurVague::GenerateurVague() {
 	niveau = 1;
 
 	// definition du temps d'attente entre deux vagues
-	tempsEntreVague = sf::seconds((float)5);
+	tempsEntreVague = sf::seconds((float)15);
 
 
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();

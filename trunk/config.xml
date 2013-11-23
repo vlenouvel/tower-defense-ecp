@@ -31,18 +31,85 @@
 	<personnages>
 		<normal>
 			<vie>10</vie>
-			<vitesse>5</vitesse>
+			<vitesse>3</vitesse>
 			<armure>2</armure>
+			<gain>5</gain>
 		</normal>
 		<rapide>
 			<vie>5</vie>
-			<vitesse>10</vitesse>
+			<vitesse>5</vitesse>
 			<armure>1</armure>
+			<gain>5</gain>
 		</rapide>
 		<solide>
 			<vie>30</vie>
-			<vitesse>3</vitesse>
-			<armure>5</armure>
+			<vitesse>2</vitesse>
+			<armure>2</armure>
+			<gain>5</gain>
 		</solide>
+		<volant>
+			<vie>10</vie>
+			<vitesse>3</vitesse>
+			<armure>2</armure>
+			<gain>5</gain>
+		</volant>
+		<generateur>
+			<vie>30</vie>
+			<vitesse>2</vitesse>
+			<armure>3</armure>
+			<gain>20</gain>
+		</generateur>
+		<accelerant>
+			<vie>20</vie>
+			<vitesse>2</vitesse>
+			<armure>2</armure>
+			<gain>5</gain>
+		</accelerant>
+		<double>
+			<vie>22</vie>
+			<vitesse>3</vitesse>
+			<armure>2</armure>
+			<gain>10</gain>
+		</double>
+		<boss>
+			<vie>300</vie>
+			<vitesse>2</vitesse>
+			<armure>8</armure>
+			<gain>300</gain>
+		</boss>
 	</personnages>
+	<vagues>
+		<vague1>
+			<typePersos>1</typePersos>
+			<nombre>10</nombre>
+		</vague1>
+		<vague2>
+			<typePersos>2</typePersos>
+			<nombre>10</nombre>
+		</vague2>
+		<vague3>
+			<typePersos>4</typePersos>
+			<nombre>10</nombre>
+		</vague3>
+		<vague4>
+			<typePersos>7</typePersos>
+			<nombre>6</nombre>
+		</vague4>
+		<vague5>
+			<typePersos>6</typePersos>
+			<nombre>10</nombre>
+		</vague5>
+		<vague6>
+			<typePersos>5</typePersos>
+			<nombre>4</nombre>
+		</vague6>
+		<vague7>
+			<typePersos>3</typePersos>
+			<nombre>10</nombre>
+		</vague7>
+		<vague8>
+			<typePersos>8</typePersos>
+			<nombre>1</nombre>
+		</vague8>
+	</vagues>
 </config>
