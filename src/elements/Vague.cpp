@@ -74,7 +74,7 @@ void Vague::genererPersonnage()
 	int armure;
 	int gain;
 	Coordonnees coordonneesDepart(0,0);
-	Personnage* pPersonnage;
+	Personnage* pPersonnage = 0;
 	switch (type) {
 		case NORMAL:
 			vie = configManager->mapPersonnageNormal["vie"]*niveauType;

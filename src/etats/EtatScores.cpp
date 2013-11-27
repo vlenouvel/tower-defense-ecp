@@ -35,7 +35,7 @@ EtatScores::EtatScores(App *tApp) : Etat(tApp){
 
 void EtatScores::handleEvent(sf::Event event)
 {
-	if((event.type == sf::Event::KeyPressed))
+	if(event.type == sf::Event::KeyPressed)
 	{
 		Etat *pNouvelEtat = new EtatMenu(pApp);
 		pApp->changerEtat(pNouvelEtat);
