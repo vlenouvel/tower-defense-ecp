@@ -26,7 +26,7 @@ public:
 	void agir();
 	virtual ~TourAttaque();
 	virtual void actionSpeciale()=0;
-	virtual void dessiner(sf::RenderWindow &pWindow);
+	virtual void dessiner(sf::RenderWindow &pWindow)=0;
 	virtual void monterNiveau();
 	virtual bool isTourAttaque();
 	virtual int getDommages();

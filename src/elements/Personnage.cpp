@@ -14,7 +14,6 @@ Personnage::Personnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonne
 	// on traite les textures du personnage et de sa barre de vie
 	spritePersonnage.setPosition(tCoord.posX,tCoord.posY);
 	barreDeVieVerte.setFillColor(sf::Color::Green);
-	barreDeVieVerte.setSize(sf::Vector2f(sf::Vector2f(spritePersonnage.getGlobalBounds().width, 5)));
 	barreDeVieVerte.setPosition(tCoord.posX, tCoord.posY - 8);
 	barreDeVieRouge.setFillColor(sf::Color::Red);
 	barreDeVieRouge.setSize(sf::Vector2f(0,5));

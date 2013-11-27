@@ -67,17 +67,13 @@ void TourAttaque::changerComportementCiblage(ComportementCiblage::Comportement n
 
 
 TourAttaque::~TourAttaque() {
-	// TODO Auto-generated destructor stub
-}
-
-void TourAttaque::dessiner(sf::RenderWindow &pWindow){
-	// TODO
+	// VIDE
 }
 
 void TourAttaque::trouverCibles()
 {
-	ResourceManager *manager = ResourceManager::getInstance();
-	std::vector<Personnage*> listesDeTousLesPersonnages = manager->getPersonnage();
+	ResourceManager *pResourceManager = ResourceManager::getInstance();
+	std::vector<Personnage*> listesDeTousLesPersonnages = pResourceManager->getPersonnage();
 	this->ciblesPossibles.clear();
 	if(!listesDeTousLesPersonnages.empty()){
 		int posXTour = this->coordonnees.getPosX();
@@ -100,12 +96,13 @@ void TourAttaque::monterNiveau()
 	attackDamage = (int)(attackDamage*1.5);
 	attackRange = (int)(attackRange*1.2);
 
-	// TODO Revoir prix amelioration
-	ResourceManager* manager = ResourceManager::getInstance();
+	ResourceManager* pResourceManager = ResourceManager::getInstance();
 
-	manager->getRessources()->perdreArgent((int)(prix*0.75));
+	pResourceManager->getRessources()->perdreArgent((int)(prix*0.75));
 	prix += (int)(prix*0.75);
 	niveau++;
+
+	calculerValeursAmeliorees();
 }
 
 bool TourAttaque::isTourAttaque()

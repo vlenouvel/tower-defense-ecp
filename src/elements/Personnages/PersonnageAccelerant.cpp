@@ -7,13 +7,14 @@
 
 #include "PersonnageAccelerant.h"
 
-PersonnageAccelerant::PersonnageAccelerant(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord) : 
+PersonnageAccelerant::PersonnageAccelerant(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord) :
 	Personnage(tVie,tVitesse,tArmure,tGain,tCoord){
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spritePersonnage.setTexture(pResourcesLoader->texturePersonnageAccelerantDroite);
 	spritePersonnage.setScale(0.23,0.23);
 	vieDebut = vie;
 	vitesseDebut = vitesse;
+	barreDeVieVerte.setSize(sf::Vector2f(sf::Vector2f(spritePersonnage.getGlobalBounds().width, 5)));
 }
 
 

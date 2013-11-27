@@ -14,10 +14,7 @@ TourSupport::TourSupport(Coordonnees tCoord) : Tour(tCoord) {
 	spriteTourSupport.setTexture(pResourcesLoader->textureTourSupport);
 	spriteTourSupport.setScale(0.5,0.5);
 	spriteTourSupport.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
-
-	//TODO: Buff tours environnantes
 	ajouterAmelioration(niveau);
-
 }
 
 void TourSupport::agir()

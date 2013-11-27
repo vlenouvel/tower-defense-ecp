@@ -13,7 +13,7 @@ Batiment::Batiment(Coordonnees tCoord) : coordonnees(tCoord) {
 }
 
 Batiment::~Batiment() {
-
+	// VIDE
 }
 
 int Batiment::getPrix()
@@ -28,9 +28,6 @@ bool Batiment::verifierAchat()
 	return (argent >= prix);
 }
 
-void Batiment::dessiner(sf::RenderWindow &pWindow){
-	// TO DO
-}
 Coordonnees Batiment::getCoordonnees()
 {
 	return coordonnees;
