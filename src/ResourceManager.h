@@ -10,7 +10,7 @@
 
 #include <vector>
 #include <algorithm>
-#include "elements/Tour.h"
+#include "elements/Batiments/Tour.h"
 #include "elements/Batiment.h"
 #include "elements/Carte.h"
 #include "elements/Menu.h"

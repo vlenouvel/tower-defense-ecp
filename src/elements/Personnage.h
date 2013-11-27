@@ -28,37 +28,31 @@ public:
 	Personnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord);
 	virtual ~Personnage();
 
-	void virtual agir()=0;
-	void virtual avancer()=0;
-	void virtual mourir()=0;
-	void virtual perdrePV(int degat)=0;
-	void virtual dessiner(sf::RenderWindow &pWindow)=0;
-	int  virtual getVie()=0;
-	void virtual arriver()=0;
-	Coordonnees virtual getCoordonnees()=0;
-	bool virtual trouverChemin(Carte * pCarte)=0;
-	void virtual ecrireChemin(Carte * pCarte)=0;
+	void virtual agir();
+	void virtual avancer();
+	void virtual mourir();
+	void virtual perdrePV(int degat);
+	void virtual dessiner(sf::RenderWindow &pWindow);
+	int  virtual getVie();
+	void virtual arriver();
+	Coordonnees virtual getCoordonnees();
+	bool virtual trouverChemin(Carte * pCarte);
+	void virtual ecrireChemin(Carte * pCarte);
+	int getPoucentageVitesseMalus();
+	void setPourcentageVitesseMalus(int malus);
+	bool virtual isVolant();
 
-	void mourirPersonnage();
-	void agirPersonnage();
-	void avancerPersonnage();
-	void perdrePVPersonnage(int degat);
-	void dessinerPersonnage(sf::RenderWindow &pWindow);
-	int getViePersonnage();
-	void arriverPersonnage();
-	Coordonnees getCoordonneesPersonnage();
-	Coordonnees coordonnees;
-	int pourcentageVitesseMalus;
 	//Pathfinding
 	bool trouverCheminPersonnage(Carte * pCarte);
 	void ecrireCheminPersonnage(Carte * pCarte);
 	//Pathfinding
 	vector<Case *> chemin;
 	vector<Case *>::iterator cheminIterator;
+protected:
 	// ce booleen sert a savoir si le personnage est volant, c'est-a-dire s'il n'a pas a recalculer son chemin si une
 	// nouvelle tour est cree
-	bool volant;
-protected:
+	int pourcentageVitesseMalus;
+	Coordonnees coordonnees;
 	int vie;
 	int vieInitial;
 	int vitesse;

@@ -9,7 +9,7 @@
 #define TOURDEGLACE_H_
 
 #include "TourAttaque.h"
-#include "TirDeGlace.h"
+#include "../Projectiles/TirDeGlace.h"
 
 
 class TourDeGlace: public TourAttaque {

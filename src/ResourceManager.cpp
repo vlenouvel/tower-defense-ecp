@@ -48,33 +48,13 @@ ResourceManager::~ResourceManager() {
 
 void ResourceManager::clearResourcesManager()
 {
-	delete cartePointeur;
 	cartePointeur = 0;
-	delete ressourcesPointeur;
     ressourcesPointeur = 0;
-    delete vaguePointeur;
     vaguePointeur = 0;
-    delete vagueGenerateurPointeur;
     vagueGenerateurPointeur = 0;
-
     batimentSelectionne = 0;
-
-    for(unsigned int i = 0; i < batimentConteneur.size() ; i++)
-    {
-    	delete batimentConteneur[i];
-    }
     batimentConteneur.clear();
-
-    for(unsigned int i = 0; i < personnageConteneur.size() ; i++)
-    {
-    	delete personnageConteneur[i];
-    }
     personnageConteneur.clear();
-
-    for(unsigned int i = 0; i < projectileConteneur.size() ; i++)
-    {
-    	delete projectileConteneur[i];
-    }
     projectileConteneur.clear();
 }
 
@@ -144,7 +124,6 @@ Carte* ResourceManager::getCarte() {
 // Vague
 void ResourceManager::addVague(Vague* vague)
 {
-	delete vaguePointeur;
 	vaguePointeur = vague;
 }
 
@@ -157,8 +136,6 @@ Vague* ResourceManager::getVague()
 
 void ResourceManager::addGenerateurVague(GenerateurVague* generateurVague)
 {
-	if(vagueGenerateurPointeur != 0)
-		delete vagueGenerateurPointeur;
 	vagueGenerateurPointeur = generateurVague;
 }
 
@@ -171,8 +148,6 @@ GenerateurVague* ResourceManager::getGenerateurVague()
 
 void ResourceManager::addRessources(Ressources* ressources)
 {
-	if(ressourcesPointeur != 0)
-		delete ressourcesPointeur;
 	ressourcesPointeur = ressources;
 }
 

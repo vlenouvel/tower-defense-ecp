@@ -8,7 +8,7 @@
 #ifndef TOUR_H_
 #define TOUR_H_
 
-#include "Batiment.h"
+#include "../Batiment.h"
 
 class Tour: public Batiment {
 public:

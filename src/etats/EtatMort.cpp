@@ -70,8 +70,7 @@ void EtatMort::handleEvent(sf::Event event)
 {
 	if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
-			ResourceManager* manager = ResourceManager::getInstance();
-			manager->clearResourcesManager();
+			clearAllElements();
 
 			Etat *pNouvelEtat = new EtatMenu(pApp);
 			pApp->changerEtat(pNouvelEtat);
@@ -90,3 +89,31 @@ EtatMort::~EtatMort() {
 	// TODO Auto-generated destructor stub
 }
 
+void EtatMort::clearAllElements()
+{
+	ResourceManager *pResourcesManager = ResourceManager::getInstance();
+	delete pResourcesManager->getCarte();
+	delete pResourcesManager->getRessources();
+    delete pResourcesManager->getVague();
+    delete pResourcesManager->getGenerateurVague();
+
+    vector<Batiment*> batimentConteneur = pResourcesManager->getBatiment();
+    for(unsigned int i = 0; i < batimentConteneur.size() ; i++)
+    {
+    	delete batimentConteneur[i];
+    }
+
+    vector<Personnage*> personnageConteneur = pResourcesManager->getPersonnage();
+    for(unsigned int i = 0; i < personnageConteneur.size() ; i++)
+    {
+    	delete personnageConteneur[i];
+    }
+
+    vector<Projectile*> projectileConteneur = pResourcesManager->getProjectile();
+    for(unsigned int i = 0; i < projectileConteneur.size() ; i++)
+    {
+    	delete projectileConteneur[i];
+    }
+
+    pResourcesManager->clearResourcesManager();
+}

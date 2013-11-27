@@ -14,7 +14,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
-#include "TourAttaque.h"
+#include "Batiments/TourAttaque.h"
 
 class TableauDeBord: public ElementGraphique {
 public:

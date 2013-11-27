@@ -56,7 +56,6 @@ public:
 	sf::Texture textureTourAttaqueBasique;
 	sf::Texture textureTourSupport;
 	sf::Texture textureProjectileBasique;
-	sf::Texture textureProjectileExplosif;
 	sf::Texture textureRessources;
 	sf::Texture textureLevelUpBouton;
 	sf::Texture textureSellBouton;

@@ -38,11 +38,14 @@ void GenerateurVague::agir()
 
 void GenerateurVague::genererVague()
 {
-	ResourceManager *manager = ResourceManager::getInstance();
+	ResourceManager *pResourceManager = ResourceManager::getInstance();
 	Vague* pVague = new Vague(niveau);
-	manager->addVague(pVague);
+
+	if(pResourceManager->getVague() != 0)
+		delete pResourceManager->getVague();
+	pResourceManager->addVague(pVague);
 	++niveau;
-	manager->getRessources()->setVagues(niveau-1);
+	pResourceManager->getRessources()->setVagues(niveau-1);
 }
 
 GenerateurVague::~GenerateurVague() {

@@ -8,11 +8,11 @@
 #ifndef TIRDEGLACE_H_
 #define TIRDEGLACE_H_
 
-#include "Projectile.h"
+#include "../Projectile.h"
 #include "ExplosionMissile.h"
-#include "../ResourceManager.h"
+#include "../../ResourceManager.h"
 #include "math.h"
-#include "../ResourcesLoader.h"
+#include "../../ResourcesLoader.h"
 #include <SFML/Graphics.hpp>
 
 class TirDeGlace: public Projectile {

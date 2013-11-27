@@ -31,14 +31,14 @@ void PersonnageDouble::mourir(){
 	pPersonnage2->trouverChemin(ResourceManager->getCarte());
 	pPersonnage2->ecrireChemin(ResourceManager->getCarte());
 	ResourceManager->addPersonnage(pPersonnage2);
-	Personnage::mourirPersonnage();
+	Personnage::mourir();
 }
 
 void PersonnageDouble::avancer(){
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	int abscisseAvant = coordonnees.getPosX();
 	int ordonneeAvant = coordonnees.getPosY();
-	Personnage::avancerPersonnage();
+	Personnage::avancer();
 	int abscisseApres = coordonnees.getPosX();
 	int ordonneeApres = coordonnees.getPosY();
 	if (abscisseAvant - abscisseApres>0)
@@ -50,17 +50,3 @@ void PersonnageDouble::avancer(){
 	else if (ordonneeAvant - ordonneeApres<0)
 		spritePersonnage.setTexture(pResourcesLoader->texturePersonnageDoubleBas);
 }
-void PersonnageDouble::agir(){Personnage::agirPersonnage();};
-void PersonnageDouble::perdrePV(int degat){
-	if(degat > armure){
-		vie -= (degat - armure);
-		if(vie <= 0)
-			this->mourir();
-	}
-};
-void PersonnageDouble::dessiner(sf::RenderWindow &pWindow){Personnage::dessinerPersonnage(pWindow);};
-int  PersonnageDouble::getVie(){return Personnage::getViePersonnage();};
-void PersonnageDouble::arriver(){Personnage::arriverPersonnage();delete this;};
-Coordonnees PersonnageDouble::getCoordonnees(){return Personnage::getCoordonneesPersonnage();};
-bool PersonnageDouble::trouverChemin(Carte * pCarte){return Personnage::trouverCheminPersonnage(pCarte);};
-void PersonnageDouble::ecrireChemin(Carte * pCarte){Personnage::ecrireCheminPersonnage(pCarte);};

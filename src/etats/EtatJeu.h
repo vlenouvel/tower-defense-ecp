@@ -21,11 +21,11 @@
 #include "../elements/TableauDeBord.h"
 #include "../elements/Personnage.h"
 #include "../elements/GenerateurVague.h"
-#include "../elements/TourAttaqueBasique.h"
-#include "../elements/CanonLourd.h"
-#include "../elements/TourDeGlace.h"
-#include "../elements/Mur.h"
-#include "../elements/TourSupport.h"
+#include "../elements/Batiments/TourAttaqueBasique.h"
+#include "../elements/Batiments/CanonLourd.h"
+#include "../elements/Batiments/TourDeGlace.h"
+#include "../elements/Batiments/Mur.h"
+#include "../elements/Batiments/TourSupport.h"
 #include "EtatMort.h"
 
 class EtatJeu: public Etat {

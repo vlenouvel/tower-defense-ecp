@@ -10,7 +10,7 @@
  */
 
 #include "ResourcesLoader.h"
-#define NULL 0 
+//#define NULL 0
 
 // Pointeur vers l'unique instance du ResourceLoader
 ResourcesLoader* pResourcesLoader = NULL;
@@ -73,7 +73,6 @@ void ResourcesLoader::ChargerTextures() {
 	textureTourAttaqueBasique.loadFromFile("resources/textures/textureTourAttaqueBasique.png");
 	textureTourSupport.loadFromFile("resources/textures/textureTourSupport.png");
 	textureProjectileBasique.loadFromFile("resources/textures/textureProjectileBasique.png");
-	textureProjectileExplosif.loadFromFile("resources/textures/textureProjectileExplosif.png");
 	textureRessources.loadFromFile("resources/textures/textureResources.jpg");
 	textureLevelUpBouton.loadFromFile("resources/textures/textureLevelUpBouton.png");
 	textureSellBouton.loadFromFile("resources/textures/textureSellBouton.png");

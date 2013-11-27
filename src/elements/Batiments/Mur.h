@@ -8,8 +8,8 @@
 #ifndef MUR_H_
 #define MUR_H_
 
-#include "Batiment.h"
-#include "../ResourceManager.h"
+#include "../Batiment.h"
+#include "../../ResourceManager.h"
 
 class Mur: public Batiment {
 public:
