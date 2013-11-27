@@ -1,7 +1,7 @@
 /*
  * EtatPropos.cpp
  *
- *  Etat qui affiche quelques
+ *  Etat qui affiche quelques informations sur le jeu
  */
 
 #include "EtatPropos.h"
