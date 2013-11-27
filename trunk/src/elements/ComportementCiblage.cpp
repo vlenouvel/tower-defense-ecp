@@ -19,7 +19,7 @@ Personnage* ComportementCiblage::ciblerPlusFaible(std::vector<Personnage*> cible
 	 */
 	Personnage *cible(0);
 	// Grande valeur initiale de vieMinimum (idealement infinie) pour trouver le min
-	int vieMinimum(1000);
+	int vieMinimum(10000);
 	for (unsigned int compteur(0); compteur < ciblesPossibles.size(); compteur++)
 	{
 		if (vieMinimum > ciblesPossibles[compteur]->getVie())
@@ -77,6 +77,13 @@ Personnage* ComportementCiblage::ciblerPremier(std::vector<Personnage*> ciblesPo
 	//Est-ce suffisant ?
 
 	return cible;
+}
+
+Personnage* ComportementCiblage::ciblerRandom(std::vector<Personnage*> ciblesPossibles)
+{
+	int indice = rand() % ciblesPossibles.size();
+	return ciblesPossibles[indice];
+
 }
 
 ComportementCiblage::~ComportementCiblage() {

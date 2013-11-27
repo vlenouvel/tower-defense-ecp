@@ -97,6 +97,15 @@ TableauDeBord::TableauDeBord() {
 	texteComportementZone.setStyle(sf::Text::Bold);
 	texteComportementZone.setPosition(710, 490);
 	texteComportementZone.setString("Plus de touches");
+
+
+	texteComportementRandom.setFont(font);
+	texteComportementRandom.setCharacterSize(7);
+	texteComportementRandom.setColor(sf::Color::White);
+	texteComportementRandom.setStyle(sf::Text::Bold);
+	texteComportementRandom.setPosition(710, 500);
+	texteComportementRandom.setString("Ciblage aléatoire");
+
 }
 
 TableauDeBord::~TableauDeBord() {
@@ -139,6 +148,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 				texteComportementPremier.setColor(sf::Color::White);
 				texteComportementMoinsVie.setColor(sf::Color::White);
 				texteComportementZone.setColor(sf::Color::White);
+				texteComportementRandom.setColor(sf::Color::White);
 				switch(tourAttaqueSelectionnee->getComportement())
 				{
 				case ComportementCiblage::Premier:
@@ -150,6 +160,9 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 				case ComportementCiblage::Zone:
 					texteComportementZone.setColor(sf::Color::Red);
 					break;
+				case ComportementCiblage::Random:
+					texteComportementRandom.setColor(sf::Color::Red);
+					break;
 				}
 
 				ostringstream stringDommagesTour;
@@ -160,6 +173,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 				pWindow.draw(texteComportementPremier);
 				pWindow.draw(texteComportementMoinsVie);
 				pWindow.draw(texteComportementZone);
+				pWindow.draw(texteComportementRandom);
 			}
 		}
 		ostringstream stringPrixDeVente;

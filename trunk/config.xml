@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <config>
-	<fps>20</fps>
+	<fps>30</fps>
 	<argent>300</argent>
 	<vie>30</vie>
 	<batiments>

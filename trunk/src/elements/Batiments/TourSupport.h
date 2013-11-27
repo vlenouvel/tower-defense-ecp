@@ -23,6 +23,7 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	bool isTourAttaque();
 	void recalculerAmelioration();
+	void vendreBatiment();
 private:
 	sf::Sprite spriteTourSupport;
 	void enleverAmelioration();

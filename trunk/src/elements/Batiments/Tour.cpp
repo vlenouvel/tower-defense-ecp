@@ -17,6 +17,8 @@ Tour::Tour(Coordonnees tCoord) : Batiment(tCoord), niveau(1) {
 
 void Tour::monterNiveau()
 {
+	ResourceManager* pResourceManager = ResourceManager::getInstance();
+	pResourceManager->getRessources()->perdreArgent((int)(prix*0.75));
 	niveau++;
 	prix += (int)(prix*0.75);
 }

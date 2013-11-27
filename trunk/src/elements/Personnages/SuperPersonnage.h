@@ -14,9 +14,11 @@ class SuperPersonnage: public Personnage{
 public:
 	SuperPersonnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord);
 	virtual ~SuperPersonnage();
+	void virtual dessiner(sf::RenderWindow &pWindow);
 	void avancer();
 private:
 	int vieDebut;
+	int tailleSpriteInitial;
 };
 
 #endif /* SUPERPERSONNAGE_H_ */
