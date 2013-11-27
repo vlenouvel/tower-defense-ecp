@@ -22,7 +22,7 @@ public:
 	Coordonnees coordonnees;
 	virtual int getPrix();
 	Coordonnees getCoordonnees();
-	void vendreBatiment();
+	void virtual vendreBatiment();
 
 	virtual bool isTour() = 0;
 protected:

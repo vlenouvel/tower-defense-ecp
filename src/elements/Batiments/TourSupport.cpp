@@ -34,7 +34,6 @@ void TourSupport::monterNiveau()
 }
 
 TourSupport::~TourSupport() {
-
 }
 
 void TourSupport::dessiner(sf::RenderWindow &pWindow){
@@ -91,11 +90,19 @@ void TourSupport::enleverAmelioration()
 			if(((Tour*)listeBat[i])->isTourAttaque())
 			{
 				TourAttaque* pTourAttaque = (TourAttaque*)listeBat[i];
-				if(pow((float)(coordonnees.getPosX() - pTourAttaque->getCoordonnees().getPosX()),2) + pow((float)(coordonnees.getPosX() - pTourAttaque->getCoordonnees().getPosX()),2) == pow((float)40,2))
+				int distX = abs((float)(coordonnees.getPosX() - pTourAttaque->getCoordonnees().getPosX()));
+				int distY = abs((float)(coordonnees.getPosY() - pTourAttaque->getCoordonnees().getPosY()));
+				if((distX == 40 && distY != 40)||(distX != 40 && distY == 40))
 				{
 					pTourAttaque->removeAmelioration(niveau);
 				}
 			}
 		}
 	}
+}
+
+void TourSupport::vendreBatiment()
+{
+	enleverAmelioration();
+	Batiment::vendreBatiment();
 }

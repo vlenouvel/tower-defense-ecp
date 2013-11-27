@@ -43,6 +43,7 @@ private:
 	sf::Text texteComportementPremier;
 	sf::Text texteComportementMoinsVie;
 	sf::Text texteComportementZone;
+	sf::Text texteComportementRandom;
 
 	typeBatiment typeSelection;
 

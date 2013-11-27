@@ -16,7 +16,7 @@ using namespace std;
 
 
 App::App() {
-	test = 0;
+	fpsReels = 0;
 	font.loadFromFile("resources/polices/Capture it.ttf");
 	texteFPS.setFont(font);
 	texteFPS.setCharacterSize(48);
@@ -45,8 +45,8 @@ void App::jouer() {
 	sf::Time hibernation;
 	ConfigManager *configManager = ConfigManager::getInstance();
 	long double imagesParSeconde = configManager->fps;
-	float tempsUneImage = 1.f/imagesParSeconde;
-	tempsLegal = sf::seconds(tempsUneImage);
+	sf::Int32 tempsUneImage = 1000.f/imagesParSeconde;
+	tempsLegal = sf::milliseconds(tempsUneImage);
 
 	// Charge la musique de fond
 	sf::Music music;
@@ -59,19 +59,16 @@ void App::jouer() {
 	
 	// boucle de jeu
 	while (window.isOpen()) {
-		framestartTime = horloge.getElapsedTime();
+		horloge.restart();
+
 		// la boucle en soi
 		boucle();
 		//fin de la boucle de jeu
-		difference = horloge.getElapsedTime() - framestartTime;
 
-		if (difference < tempsLegal){
-			hibernation = tempsLegal - difference;
-			sf::sleep(hibernation);
-			test = imagesParSeconde;
+		if (horloge.getElapsedTime() < tempsLegal){
+			sf::sleep(tempsLegal - horloge.getElapsedTime());
 		}
-		else
-			test = 1./difference.asSeconds();
+		fpsReels = (int)(1000.f/horloge.getElapsedTime().asMilliseconds());
 	}
 }
 
@@ -108,7 +105,7 @@ void App::render() {
 
 	// Affichage du nombre de FPS
 	ostringstream ss;
-	ss << test;
+	ss << fpsReels;
 	texteFPS.setString(ss.str());
 	window.draw(texteFPS);
 

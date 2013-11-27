@@ -39,7 +39,7 @@ public:
 	sf::Clock horloge;
 
 private:
-	long double test;
+	int fpsReels;
 	Etat *pEtatActuel;
 	sf::Font font;
 	sf::Text texteFPS;

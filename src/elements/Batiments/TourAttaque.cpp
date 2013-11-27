@@ -11,23 +11,6 @@ TourAttaque::TourAttaque(Coordonnees tCoord) : Tour(tCoord), pCibler(0), attackD
 	amelioration = 0;
 	attackDamageBuffed = 0;
 	attackRangeBuffed = 0;
-
-	//Recalculer toutes les améliorations ajoutées par les tours support
-	ResourceManager *pResourceManager = ResourceManager::getInstance();
-	std::vector<Batiment*> listeBat = pResourceManager->getBatiment();
-	// On selectionne les tourSupport dans les batiments presents
-	// Pour chacune, on lui fait supprimer son amélioration, puis remettre
-	for(unsigned int i = 0; i < listeBat.size() ; i++)
-	{
-		if(listeBat[i]->isTour())
-		{
-			if(!((Tour*)listeBat[i])->isTourAttaque())
-			{
-				TourSupport* pTourSupport = (TourSupport*)listeBat[i];
-				pTourSupport->recalculerAmelioration();
-			}
-		}
-	}
 }
 
 void TourAttaque::agir()
@@ -48,21 +31,21 @@ void TourAttaque::agir()
 
 void TourAttaque::changerComportementCiblage(ComportementCiblage::Comportement nouveauComportement)
 {
+	comportementChoisi = nouveauComportement;
 	switch(nouveauComportement){
 	case ComportementCiblage::Premier:
-		comportementChoisi = nouveauComportement;
 		pCibler = ComportementCiblage::ciblerPremier;
 		break;
 	case ComportementCiblage::PlusFaible:
-		comportementChoisi = nouveauComportement;
 		pCibler = ComportementCiblage::ciblerPlusFaible;
 		break;
 	case ComportementCiblage::Zone:
-		comportementChoisi = nouveauComportement;
 		pCibler = ComportementCiblage::ciblerZone;
 		break;
+	case ComportementCiblage::Random:
+		pCibler = ComportementCiblage::ciblerRandom;
+		break;
 	}
-
 }
 
 
@@ -94,14 +77,7 @@ void TourAttaque::trouverCibles()
 void TourAttaque::monterNiveau()
 {
 	attackDamage = (int)(attackDamage*1.5);
-	attackRange = (int)(attackRange*1.2);
-
-	ResourceManager* pResourceManager = ResourceManager::getInstance();
-
-	pResourceManager->getRessources()->perdreArgent((int)(prix*0.75));
-	prix += (int)(prix*0.75);
-	niveau++;
-
+	Tour::monterNiveau();
 	calculerValeursAmeliorees();
 }
 
@@ -118,7 +94,6 @@ int TourAttaque::getDommages()
 void TourAttaque::addAmelioration(int amelio)
 {
 	amelioration+=amelio;
-	cout << amelioration << endl;
 	calculerValeursAmeliorees();
 }
 

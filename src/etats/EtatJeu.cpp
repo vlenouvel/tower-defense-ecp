@@ -140,6 +140,16 @@ void EtatJeu::handleEvent(sf::Event event)
 					}
 				}
 			}
+			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<780)&&(event.mouseButton.y>500)&&(event.mouseButton.y<510)&&(manager->getBatimentSelectionne()!=0))
+			{
+				if(manager->getBatimentSelectionne()->isTour())
+				{
+					if(((Tour*)manager->getBatimentSelectionne())->isTourAttaque())
+					{
+					((TourAttaque*)manager->getBatimentSelectionne())->changerComportementCiblage(ComportementCiblage::Random);
+					}
+				}
+			}
 			else if ((event.mouseButton.x<700)){
 				manager->setBatimentSelectionne(0);
 				bool autorisation = true;
@@ -330,6 +340,28 @@ void EtatJeu::construireBatiment(TableauDeBord::typeBatiment type, Coordonnees c
 				if (!pResourceManager->getPersonnage()[i]->isVolant()){
 					pResourceManager->getPersonnage()[i]->trouverChemin(pResourceManager->getCarte());
 					pResourceManager->getPersonnage()[i]->ecrireChemin(pResourceManager->getCarte());
+				}
+			}
+		}
+		if(pBatiment->isTour())
+		{
+			if(((Tour*)pBatiment)->isTourAttaque())
+			{
+				// On recalcule toutes les valeurs des ameliorations des tours supports
+				//Recalculer toutes les améliorations ajoutées par les tours support
+				std::vector<Batiment*> listeBat = pResourceManager->getBatiment();
+				// On selectionne les tourSupport dans les batiments presents
+				// Pour chacune, on lui fait supprimer son amélioration, puis remettre
+				for(unsigned int i = 0; i < listeBat.size() ; i++)
+				{
+					if(listeBat[i]->isTour())
+					{
+						if(!((Tour*)listeBat[i])->isTourAttaque())
+						{
+							TourSupport* pTourSupport = (TourSupport*)listeBat[i];
+							pTourSupport->recalculerAmelioration();
+						}
+					}
 				}
 			}
 		}
