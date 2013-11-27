@@ -35,7 +35,7 @@ EtatScores::EtatScores(App *tApp) : Etat(tApp){
 
 void EtatScores::handleEvent(sf::Event event)
 {
-	if(event.type == sf::Event::KeyPressed)
+	if(event.type == sf::Event::KeyPressed or event.type == sf::Event::MouseButtonPressed)
 	{
 		Etat *pNouvelEtat = new EtatMenu(pApp);
 		pApp->changerEtat(pNouvelEtat);
@@ -61,11 +61,15 @@ void EtatScores::lireMeilleursScores()
 	{
 		tousLesScores.push_back(temp);
 	}
-	// sort in descending order
-	std::sort(tousLesScores.begin(), tousLesScores.end(), std::greater<int>());
-	for(int i = 0; i < 3 ; i++)
-	{
-		meilleursScores[i] = tousLesScores[i];
+
+	// S'il y a des scores dans le fichier, on affiche les 3 meilleurs
+	if(tousLesScores.size() > 0) {
+		// sort in descending order
+		std::sort(tousLesScores.begin(), tousLesScores.end(), std::greater<int>());
+		for(int i = 0; i < 3 ; i++)
+		{
+			meilleursScores[i] = tousLesScores[i];
+		}
 	}
 }
 
