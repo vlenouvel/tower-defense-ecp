@@ -25,11 +25,11 @@ Menu::Menu() {
 	text2.setStyle(sf::Text::Bold);
 	text2.setPosition(180,250);	
 	text3.setFont(font);
-	text3.setString("Tuto");
+	text3.setString("A propos");
 	text3.setCharacterSize(48);
 	text3.setColor(sf::Color::White);
 	text3.setStyle(sf::Text::Bold);
-	text3.setPosition(350,400);
+	text3.setPosition(300,400);
 }
 
 Menu::~Menu() {

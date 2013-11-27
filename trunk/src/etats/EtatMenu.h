@@ -12,6 +12,7 @@
 #include "SFML/Window/Event.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "../elements/Menu.h"
+#include "EtatPropos.h"
 #include "../App.h"
 
 class EtatMenu: public Etat {
