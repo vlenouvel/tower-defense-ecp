@@ -141,3 +141,8 @@ ComportementCiblage::Comportement TourAttaque::getComportement()
 {
 	return comportementChoisi;
 }
+
+void TourAttaque::actionSpeciale()
+{
+
+}

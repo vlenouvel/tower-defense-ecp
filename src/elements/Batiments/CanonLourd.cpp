@@ -46,6 +46,4 @@ CanonLourd::~CanonLourd() {
 void CanonLourd::dessiner(sf::RenderWindow & rWindow){
 	rWindow.draw(spriteCanonLourd);
 }
-void CanonLourd::actionSpeciale(){
-	// TODO
-}
+

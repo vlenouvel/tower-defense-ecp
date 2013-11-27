@@ -31,6 +31,8 @@ void ConfigManager::loadConfig()
 	tinyxml2::XMLElement* config = doc.FirstChildElement("config");
 
 	fps = atoi(config->FirstChildElement("fps")->GetText());
+	argent = atoi(config->FirstChildElement("argent")->GetText());
+	vie = atoi(config->FirstChildElement("vie")->GetText());
 
 	tinyxml2::XMLElement* batiments = config->FirstChildElement("batiments");
 
