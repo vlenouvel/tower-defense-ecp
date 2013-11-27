@@ -140,23 +140,20 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 			if(tourSelectionnee->isTourAttaque())
 			{
 				TourAttaque* tourAttaqueSelectionnee = (TourAttaque*)tourSelectionnee;
-
+				texteComportementPremier.setColor(sf::Color::White);
+				texteComportementMoinsVie.setColor(sf::Color::White);
+				texteComportementZone.setColor(sf::Color::White);
 				switch(tourAttaqueSelectionnee->getComportement())
 				{
 				case ComportementCiblage::Premier:
 					texteComportementPremier.setColor(sf::Color::Red);
-					texteComportementMoinsVie.setColor(sf::Color::White);
-					texteComportementZone.setColor(sf::Color::White);
 					break;
 				case ComportementCiblage::PlusFaible:
-					texteComportementPremier.setColor(sf::Color::White);
 					texteComportementMoinsVie.setColor(sf::Color::Red);
-					texteComportementZone.setColor(sf::Color::White);
 					break;
 				case ComportementCiblage::Zone:
-					texteComportementPremier.setColor(sf::Color::White);
-					texteComportementMoinsVie.setColor(sf::Color::White);
 					texteComportementZone.setColor(sf::Color::Red);
+					break;
 				}
 
 				ostringstream stringDommagesTour;

@@ -7,11 +7,12 @@
 
 #include "PersonnageVolant.h"
 
-PersonnageVolant::PersonnageVolant(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord) : 
+PersonnageVolant::PersonnageVolant(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord) :
 	Personnage(tVie,tVitesse,tArmure,tGain,tCoord){
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spritePersonnage.setTexture(pResourcesLoader->texturePersonnageVolantDroite);
 	spritePersonnage.setScale(0.4,0.4);
+	barreDeVieVerte.setSize(sf::Vector2f(sf::Vector2f(spritePersonnage.getGlobalBounds().width, 5)));
 }
 
 

@@ -7,11 +7,12 @@
 
 #include "PersonnageBasique.h"
 
-PersonnageBasique::PersonnageBasique(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord) : 
+PersonnageBasique::PersonnageBasique(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord) :
 	Personnage(tVie,tVitesse,tArmure,tGain,tCoord){
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spritePersonnage.setTexture(pResourcesLoader->texturePersonnageBasiqueDroite);
 	spritePersonnage.setScale(0.23,0.23);
+	barreDeVieVerte.setSize(sf::Vector2f(sf::Vector2f(spritePersonnage.getGlobalBounds().width, 5)));
 }
 
 

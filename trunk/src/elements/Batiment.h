@@ -18,7 +18,7 @@ public:
 	Batiment(Coordonnees tCoord);
 	virtual ~Batiment();
 	virtual bool verifierAchat();
-	void dessiner(sf::RenderWindow &pWindow);
+	void dessiner(sf::RenderWindow &pWindow)=0;
 	Coordonnees coordonnees;
 	virtual int getPrix();
 	Coordonnees getCoordonnees();
