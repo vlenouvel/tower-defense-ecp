@@ -6,8 +6,8 @@
  */
 
 #include "Tour.h"
-#include "../ResourceManager.h"
-#include "../ResourcesLoader.h"
+#include "../../ResourceManager.h"
+#include "../../ResourcesLoader.h"
 #include <iostream>
 Tour::Tour(Coordonnees tCoord) : Batiment(tCoord), niveau(1) {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();

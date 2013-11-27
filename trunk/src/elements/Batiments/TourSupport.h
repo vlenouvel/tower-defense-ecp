@@ -10,7 +10,7 @@
 
 #include "Tour.h"
 #include <math.h>
-#include "../ResourceManager.h"
+#include "../../ResourceManager.h"
 #include "TourAttaque.h"
 
 class TourSupport : public Tour {

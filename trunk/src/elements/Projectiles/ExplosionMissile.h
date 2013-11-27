@@ -8,9 +8,9 @@
 #ifndef EXPLOSIONMISSILE_H_
 #define EXPLOSIONMISSILE_H_
 
-#include "../ResourceManager.h"
-#include "../ResourcesLoader.h"
-#include "ElementGraphique.h"
+#include "../../ResourceManager.h"
+#include "../../ResourcesLoader.h"
+#include "../ElementGraphique.h"
 #include <SFML/Graphics.hpp>
 
 class ExplosionMissile: public ElementGraphique{

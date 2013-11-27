@@ -10,7 +10,6 @@
 Personnage::Personnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord) : 
 	coordonnees(tCoord), vie(tVie), vitesse(tVitesse), armure(tArmure), gain(tGain)
 {
-	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 
 	// on traite les textures du personnage et de sa barre de vie
 	spritePersonnage.setPosition(tCoord.posX,tCoord.posY);
@@ -23,15 +22,14 @@ Personnage::Personnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonne
 
 	pourcentageVitesseMalus = 0;
 	vieInitial = vie;
-	volant = false;
 }
 
-void Personnage::agirPersonnage()
+void Personnage::agir()
 {
 	this->avancer();
 }
 
-void Personnage::avancerPersonnage()
+void Personnage::avancer()
 {
 	if(!chemin.empty()){
 		int imageVitesse = (int)(vitesse*(100 - pourcentageVitesseMalus)/100+0.5);
@@ -51,7 +49,7 @@ void Personnage::avancerPersonnage()
 			}
 
 			else {
-				int imageVitesse = imageVitesse - distanceCiblePerso;
+				imageVitesse -= distanceCiblePerso;
 				// TODO Checker bugfix ici !!
 				if (!chemin.empty())
 					chemin.erase(chemin.begin());
@@ -63,22 +61,22 @@ void Personnage::avancerPersonnage()
 		barreDeVieVerte.setPosition(coordonnees.posX,coordonnees.posY-8);
 	}
 	else {
-		arriverPersonnage();
+		arriver();
 	}
 	if (pourcentageVitesseMalus > 0)
 		pourcentageVitesseMalus--;
 }
 
-void Personnage::perdrePVPersonnage(int degat)
+void Personnage::perdrePV(int degat)
 {
 	if(degat > armure){
 		vie -= (degat - armure);
 		if(vie <= 0)
-			this->mourirPersonnage();
+			this->mourir();
 	}
 }
 
-void Personnage::mourirPersonnage()
+void Personnage::mourir()
 {
 	ResourceManager *manager = ResourceManager::getInstance();
 	manager->removePersonnage(this);
@@ -92,22 +90,18 @@ void Personnage::mourirPersonnage()
 		if(pProjo->getCible() == this)
 		{
 			manager->removeProjectile(pProjo);
-			// TODO : Supprimer le vrai projo de la m�moire ...
-			//delete pProjo;
 			pProjo->setCible(0);
 		}
 	}
 
-	// TODO Changer gain cible tuee
 	manager->getRessources()->gagnerArgent(gain);
 	manager->getRessources()->augmenterScore(gain);
 	delete this;
-
 }
 
 
 
-void Personnage::arriverPersonnage() {
+void Personnage::arriver() {
 
 	ResourceManager *manager = ResourceManager::getInstance();
 
@@ -136,7 +130,7 @@ Personnage::~Personnage() {
 	// TODO Auto-generated destructor stub.
 }
 
-void Personnage::dessinerPersonnage(sf::RenderWindow &pWindow)
+void Personnage::dessiner(sf::RenderWindow &pWindow)
 {
 	barreDeVieRouge.setSize(sf::Vector2f(spritePersonnage.getGlobalBounds().width*(vieInitial - vie)/vieInitial,5));
 	pWindow.draw(spritePersonnage);
@@ -144,12 +138,12 @@ void Personnage::dessinerPersonnage(sf::RenderWindow &pWindow)
 	pWindow.draw(barreDeVieRouge);
 }
 
-int Personnage::getViePersonnage()
+int Personnage::getVie()
 {
 	return this->vie;
 }
 
-Coordonnees Personnage::getCoordonneesPersonnage()
+Coordonnees Personnage::getCoordonnees()
 {
 	return this->coordonnees;
 }
@@ -161,7 +155,7 @@ Coordonnees Personnage::getCoordonneesPersonnage()
 	personnage a un chemin possible vers la sortie. Si oui, vrai est retourne. Si non, faux est retourne.
 	L'algorithme implemente est A* 
 */
-bool Personnage::trouverCheminPersonnage(Carte * pCarte){
+bool Personnage::trouverChemin(Carte * pCarte){
 
 	//on initialise la liste triee qui va contenir la suite de case a analyser avec la case d'entree
 	multimap<int,Case*> listeAParcourir;
@@ -187,7 +181,7 @@ bool Personnage::trouverCheminPersonnage(Carte * pCarte){
 		//on etudie le nord, le sud, l'ouest et l'est par rapport a X,Y
 		//nord
 		if (Y>0){
-			if (((pCarte->imageCarte[X][Y-1])->caseParcourue == false) && (((pCarte->imageCarte[X][Y-1])->caseOccupee == false)||volant == true)){
+			if (((pCarte->imageCarte[X][Y-1])->caseParcourue == false) && (((pCarte->imageCarte[X][Y-1])->caseOccupee == false)||isVolant())){
 				(pCarte->imageCarte[X][Y-1])->distanceEntree = (pCarte->imageCarte[X][Y])->distanceEntree + 1;
 				(pCarte->imageCarte[X][Y-1])->caseParcourue = true;
 				if (((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
@@ -198,7 +192,7 @@ bool Personnage::trouverCheminPersonnage(Carte * pCarte){
 		}
 		//sud
 		if(Y < pCarte->imageCarteY -1) {
-			if (((pCarte->imageCarte[X][Y+1])->caseParcourue == false) && (((pCarte->imageCarte[X][Y+1])->caseOccupee == false)||volant == true)){
+			if (((pCarte->imageCarte[X][Y+1])->caseParcourue == false) && (((pCarte->imageCarte[X][Y+1])->caseOccupee == false)|| isVolant())){
 				(pCarte->imageCarte[X][Y+1])->distanceEntree = (pCarte->imageCarte[X][Y])->distanceEntree + 1;
 				(pCarte->imageCarte[X][Y+1])->caseParcourue = true;
 				if (((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
@@ -209,7 +203,7 @@ bool Personnage::trouverCheminPersonnage(Carte * pCarte){
 		}
 		//ouest
 		if (X>0){
-			if (((pCarte->imageCarte[X-1][Y])->caseParcourue == false) && (((pCarte->imageCarte[X-1][Y])->caseOccupee == false)||volant == true)){
+			if (((pCarte->imageCarte[X-1][Y])->caseParcourue == false) && (((pCarte->imageCarte[X-1][Y])->caseOccupee == false)||isVolant())){
 				(pCarte->imageCarte[X-1][Y])->distanceEntree = (pCarte->imageCarte[X][Y])->distanceEntree + 1;
 				(pCarte->imageCarte[X-1][Y])->caseParcourue = true;
 				if (((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
@@ -221,7 +215,7 @@ bool Personnage::trouverCheminPersonnage(Carte * pCarte){
 		//est
 		//if (X<sizeof(pCarte->imageCarte[0])){
 		if (X < pCarte->imageCarteX - 1) {
-			if (((pCarte->imageCarte[X+1][Y])->caseParcourue == false) && (((pCarte->imageCarte[X+1][Y])->caseOccupee == false)||volant == true)){
+			if (((pCarte->imageCarte[X+1][Y])->caseParcourue == false) && (((pCarte->imageCarte[X+1][Y])->caseOccupee == false)||isVolant())){
 				(pCarte->imageCarte[X+1][Y])->distanceEntree = (pCarte->imageCarte[X][Y])->distanceEntree + 1;
 				(pCarte->imageCarte[X+1][Y])->caseParcourue = true;
 				if (((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){		
@@ -240,7 +234,7 @@ bool Personnage::trouverCheminPersonnage(Carte * pCarte){
 	a prendre vers la sortie. Ce chemin est une suite de cases qu'emprunte ensuite le personnage qui se deplace alors
 	de case en case. Il faut que la fonction precedente ait ete appelee juste avant celle-ci
 */
-void Personnage::ecrireCheminPersonnage(Carte * pCarte){
+void Personnage::ecrireChemin(Carte * pCarte){
 	chemin.clear();
 	Case * trace;
 	trace = pCarte->pCaseSortie;
@@ -295,4 +289,17 @@ void Personnage::ecrireCheminPersonnage(Carte * pCarte){
 	pCarte->nettoyerCarte();
 }
 
+int Personnage::getPoucentageVitesseMalus()
+{
+	return pourcentageVitesseMalus;
+}
 
+void Personnage::setPourcentageVitesseMalus(int malus)
+{
+	pourcentageVitesseMalus = malus;
+}
+
+bool Personnage::isVolant()
+{
+	return false;
+}

@@ -7,7 +7,7 @@
 
 #include "TourAttaque.h"
 
-TourAttaque::TourAttaque(Coordonnees tCoord) : Tour(tCoord), pCibler(0), attackDamage(0), attackRange(0) {
+TourAttaque::TourAttaque(Coordonnees tCoord) : Tour(tCoord), pCibler(0), attackDamage(0), attackRange(0), comportementChoisi(ComportementCiblage::PlusFaible) {
 	amelioration = 0;
 	attackDamageBuffed = 0;
 	attackRangeBuffed = 0;

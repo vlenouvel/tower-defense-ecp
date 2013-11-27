@@ -19,12 +19,16 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	manager->addCarte(carte);
 
 	pRessources = new Ressources();
+	if(manager->getRessources() != 0)
+		delete manager->getRessources();
 	manager->addRessources(pRessources);
 
 	batimentChoisi = TableauDeBord::AUCUN;
 
 	//Creation du generateur de vague
 	GenerateurVague* pGenerateur = new GenerateurVague();
+	if(manager->getGenerateurVague() != 0)
+		delete manager->getGenerateurVague();
 	manager->addGenerateurVague(pGenerateur);
 
 	Coordonnees coordonneesPersoFictif(1,1);
@@ -160,7 +164,7 @@ void EtatJeu::handleEvent(sf::Event event)
 					(manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = true;
 					if (!manager->getPersonnage().empty()){
 						for (unsigned int i=0; i< manager->getPersonnage().size();i++){
-							if (((manager->getPersonnage())[i])->volant == false){
+							if (((manager->getPersonnage())[i])->isVolant()){
 								autorisation = ((manager->getPersonnage())[i])->trouverChemin(manager->getCarte());
 								manager->getCarte()->nettoyerCarte();
 								if (autorisation == false){
@@ -323,7 +327,7 @@ void EtatJeu::construireBatiment(TableauDeBord::typeBatiment type, Coordonnees c
 		// On recalcule les chemins pour les ennemis, car on a construit un batiment.
 		if (!(pResourceManager->getPersonnage()).empty()){
 			for (unsigned int i=0; i< (pResourceManager->getPersonnage()).size();i++){
-				if (pResourceManager->getPersonnage()[i]->volant == false){
+				if (pResourceManager->getPersonnage()[i]->isVolant()){
 					pResourceManager->getPersonnage()[i]->trouverChemin(pResourceManager->getCarte());
 					pResourceManager->getPersonnage()[i]->ecrireChemin(pResourceManager->getCarte());
 				}

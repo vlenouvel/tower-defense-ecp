@@ -11,12 +11,12 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/System/Time.hpp>
 
-#include "ComportementCiblage.h"
+#include "../ComportementCiblage.h"
 #include "Tour.h"
-#include "../ResourceManager.h"
-#include "Projectile.h"
+#include "../../ResourceManager.h"
+#include "../Projectile.h"
 #include "math.h"
-#include "../ConfigManager.h"
+#include "../../ConfigManager.h"
 #include "TourSupport.h"
 
 class TourAttaque: public Tour {
@@ -42,9 +42,9 @@ protected:
 	void trouverCibles();
 	void virtual calculerValeursAmeliorees();
 	Personnage* (*pCibler)(std::vector<Personnage*> ciblesPossibles);
-	ComportementCiblage::Comportement comportementChoisi;
 	int attackDamage;
 	int attackRange;
+	ComportementCiblage::Comportement comportementChoisi;
 	std::vector<Personnage*> ciblesPossibles;
 	sf::Time timeBetweenAttacks;
 	sf::Clock clockFromLastAttack;

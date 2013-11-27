@@ -26,6 +26,7 @@ public:
 	void update();
 
 private:
+	void clearAllElements();
 	sf::Font font;
 	sf::Text text1;
 	sf::Text text2;
