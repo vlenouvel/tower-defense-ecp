@@ -27,6 +27,13 @@ void EtatMenu::handleEvent(sf::Event event)
 				Etat *pNouvelEtat = new EtatScores(pApp);
 				pApp->changerEtat(pNouvelEtat);
 			}
+			else if((event.mouseButton.x > 300) && (event.mouseButton.x < 650)
+					&& (event.mouseButton.y > 400)
+					&& (event.mouseButton.y < 450))
+			{
+				Etat *pNouvelEtat = new EtatPropos(pApp);
+				pApp->changerEtat(pNouvelEtat);
+			}
 		}
 	}
 }
