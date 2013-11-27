@@ -16,7 +16,6 @@ public:
 	TourAttaqueBasique(Coordonnees tCoord);
 	virtual ~TourAttaqueBasique();
 	void dessiner(sf::RenderWindow & rWindow);
-	void actionSpeciale();
 
 private:
 	sf::Sound sonTirTourAttaqueBasique;

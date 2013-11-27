@@ -14,8 +14,7 @@ TableauDeBord::TableauDeBord() {
 	typeSelection = AUCUN;
 
 	ResourcesLoader *pResourcesLoader = ResourcesLoader::getInstance();
-	textureTableauDeBord = pResourcesLoader->textureRessources;
-	spriteTableauDeBord.setTexture(textureTableauDeBord);
+	spriteTableauDeBord.setTexture(pResourcesLoader->textureRessources);
 	spriteTableauDeBord.setScale(1,3);
 	spriteTableauDeBord.setPosition(720,100);
 	font = pResourcesLoader->policeTableauDeBord;
@@ -57,13 +56,11 @@ TableauDeBord::TableauDeBord() {
 	texteDommagesTour.setStyle(sf::Text::Bold);
 	texteDommagesTour.setPosition(710, 370);
 
-	textureLevelUpBouton = pResourcesLoader->textureLevelUpBouton;
-	spriteLevelUpBouton.setTexture(textureLevelUpBouton);
+	spriteLevelUpBouton.setTexture(pResourcesLoader->textureLevelUpBouton);
 	spriteLevelUpBouton.setScale(0.75, 0.75);
 	spriteLevelUpBouton.setPosition(710, 400);
 
-	textureSellBouton = pResourcesLoader->textureSellBouton;
-	spriteSellBouton.setTexture(textureSellBouton);
+	spriteSellBouton.setTexture(pResourcesLoader->textureSellBouton);
 	spriteSellBouton.setPosition(750, 400);
 
 	texteCoutAmelioration.setFont(font);
@@ -78,8 +75,7 @@ TableauDeBord::TableauDeBord() {
 	textePrixDeVente.setStyle(sf::Text::Bold);
 	textePrixDeVente.setPosition(710,450);
 
-	textureTourSelectionnee = pResourcesLoader->textureSelection;
-	spriteTourSelectionnee.setTexture(textureTourSelectionnee);
+	spriteTourSelectionnee.setTexture(pResourcesLoader->textureSelection);
 
 	texteComportementPremier.setFont(font);
 	texteComportementPremier.setCharacterSize(7);

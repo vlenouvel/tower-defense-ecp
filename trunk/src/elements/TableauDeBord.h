@@ -25,7 +25,6 @@ public:
 	void setSelectionBat(typeBatiment type);
 
 private:
-	sf::Texture textureTableauDeBord;
 	sf::Sprite spriteTableauDeBord;
 	sf::Text texteTableauDeBord;
 	sf::Font font;
@@ -35,14 +34,11 @@ private:
 	sf::Sprite spriteMur;
 	sf::Sprite spriteTourSupport;
 	sf::Text texteNiveauTour;
-	sf::Texture textureLevelUpBouton;
 	sf::Sprite spriteLevelUpBouton;
 	sf::Text texteDommagesTour;
-	sf::Texture textureSellBouton;
 	sf::Sprite spriteSellBouton;
 	sf::Text texteCoutAmelioration;
 	sf::Text textePrixDeVente;
-	sf::Texture textureTourSelectionnee;
 	sf::Sprite spriteTourSelectionnee;
 	sf::Text texteComportementPremier;
 	sf::Text texteComportementMoinsVie;

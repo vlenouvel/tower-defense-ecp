@@ -19,6 +19,8 @@ public:
 	virtual ~ConfigManager();
 	void loadConfig();
 	int fps;
+	int argent;
+	int vie;
 	std::map<std::string, int> mapTourBasique;
 	std::map<std::string, int> mapTourCanon;
 	std::map<std::string, int> mapTourDeGlace;

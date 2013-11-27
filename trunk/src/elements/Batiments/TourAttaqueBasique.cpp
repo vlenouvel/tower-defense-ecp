@@ -44,6 +44,4 @@ TourAttaqueBasique::~TourAttaqueBasique() {
 void TourAttaqueBasique::dessiner(sf::RenderWindow & rWindow){
 	rWindow.draw(spriteTourAttaqueBasique);
 }
-void TourAttaqueBasique::actionSpeciale(){
-	// TODO
-}
+

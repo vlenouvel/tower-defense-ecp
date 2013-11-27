@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 <config>
 	<fps>20</fps>
+	<argent>300</argent>
+	<vie>30</vie>
 	<batiments>
 		<tourAttaqueBasique>
 			<prix>10</prix>

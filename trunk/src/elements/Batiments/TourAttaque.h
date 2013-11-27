@@ -25,7 +25,7 @@ public:
 	void virtual changerComportementCiblage(ComportementCiblage::Comportement nouveauComportement);
 	void agir();
 	virtual ~TourAttaque();
-	virtual void actionSpeciale()=0;
+	virtual void actionSpeciale();
 	virtual void dessiner(sf::RenderWindow &pWindow)=0;
 	virtual void monterNiveau();
 	virtual bool isTourAttaque();

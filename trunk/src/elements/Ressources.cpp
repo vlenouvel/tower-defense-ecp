@@ -9,6 +9,7 @@
 #include <string>
 #include <sstream>
 #include "../ResourceManager.h"
+#include "../ConfigManager.h"
 #include <iostream>
 
 Ressources::Ressources() {
@@ -23,9 +24,9 @@ Ressources::Ressources() {
 	texteRessources.setColor(sf::Color::White);
 	texteRessources.setPosition(715,0);
 
-	// TODO Changer vies et argent de depart
-	vie = 20;
-	argent = 100;
+	ConfigManager *pConfigManager = ConfigManager::getInstance();
+	vie = pConfigManager->vie;
+	argent = pConfigManager->argent;
 	score = 0;
 	nombreVagues = 0;
 }
