@@ -327,7 +327,7 @@ void EtatJeu::construireBatiment(TableauDeBord::typeBatiment type, Coordonnees c
 		// On recalcule les chemins pour les ennemis, car on a construit un batiment.
 		if (!(pResourceManager->getPersonnage()).empty()){
 			for (unsigned int i=0; i< (pResourceManager->getPersonnage()).size();i++){
-				if (pResourceManager->getPersonnage()[i]->isVolant()){
+				if (!pResourceManager->getPersonnage()[i]->isVolant()){
 					pResourceManager->getPersonnage()[i]->trouverChemin(pResourceManager->getCarte());
 					pResourceManager->getPersonnage()[i]->ecrireChemin(pResourceManager->getCarte());
 				}
