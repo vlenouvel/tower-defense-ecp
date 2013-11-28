@@ -8,8 +8,8 @@
 #include "CanonLourd.h"
 
 CanonLourd::CanonLourd(Coordonnees tCoord) : TourAttaque(tCoord) {
-	pCibler = ComportementCiblage::ciblerPremier;
-	comportementChoisi = ComportementCiblage::Premier;
+	pCibler = ComportementCiblage::ciblerZone;
+	comportementChoisi = ComportementCiblage::Zone;
 	ConfigManager *configManager = ConfigManager::getInstance();
 	prix = configManager->mapTourCanon["prix"];
 	attackRange = configManager->mapTourCanon["portee"];

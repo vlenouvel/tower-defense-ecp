@@ -58,30 +58,30 @@ void EtatJeu::setErreur(std::string erreurMsg) {
 
 void EtatJeu::handleEvent(sf::Event event)
 {
-	ResourceManager* manager = ResourceManager::getInstance();
+	ResourceManager* pResourceManager = ResourceManager::getInstance();
 	if (event.type == sf::Event::MouseButtonPressed) {
 		if (event.mouseButton.button == sf::Mouse::Left) {
 			if ((event.mouseButton.x>760)&&(event.mouseButton.x<795)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				batimentChoisi = TableauDeBord::BASIQUE;
-				manager->setBatimentSelectionne(0);
+				pResourceManager->setBatimentSelectionne(0);
 			}
 			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<745)&&(event.mouseButton.y<335)&&(event.mouseButton.y>300)){
 				batimentChoisi = TableauDeBord::CANON;
-				manager->setBatimentSelectionne(0);
+				pResourceManager->setBatimentSelectionne(0);
 			}
 			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<745)&&(event.mouseButton.y<290)&&(event.mouseButton.y>250)){
 				batimentChoisi = TableauDeBord::FROST;
-				manager->setBatimentSelectionne(0);
+				pResourceManager->setBatimentSelectionne(0);
 			}
 			else if((event.mouseButton.x>735)&&(event.mouseButton.x<760)&&(event.mouseButton.y<250)&&(event.mouseButton.y>210))
 			{
 				batimentChoisi = TableauDeBord::MUR;
-				manager->setBatimentSelectionne(0);
+				pResourceManager->setBatimentSelectionne(0);
 			}
 			else if((event.mouseButton.x>760)&&(event.mouseButton.x<795)&&(event.mouseButton.y<290)&&(event.mouseButton.y>250))
 			{
 				batimentChoisi = TableauDeBord::SUPPORT;
-				manager->setBatimentSelectionne(0);
+				pResourceManager->setBatimentSelectionne(0);
 			}
 			else if((event.mouseButton.x>680)&&(event.mouseButton.y>560)) {
 				setErreur("Vous ne pouvez pas construire sur la sortie !");
@@ -89,12 +89,12 @@ void EtatJeu::handleEvent(sf::Event event)
 			else if((event.mouseButton.x<40)&&(event.mouseButton.y<40)) {
 				setErreur("Vous ne pouvez pas construire sur l'entree !");
 			}
-			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<740)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(manager->getBatimentSelectionne()!=0))
+			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<740)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(pResourceManager->getBatimentSelectionne()!=0))
 			{
-				if(manager->getBatimentSelectionne()->isTour()){
-					if (((Tour*)manager->getBatimentSelectionne())->verifierAmelioration())
+				if(pResourceManager->getBatimentSelectionne()->isTour()){
+					if (((Tour*)pResourceManager->getBatimentSelectionne())->verifierAmelioration())
 					{
-						((Tour*)manager->getBatimentSelectionne())->monterNiveau();
+						((Tour*)pResourceManager->getBatimentSelectionne())->monterNiveau();
 					}
 					else
 					{
@@ -102,91 +102,72 @@ void EtatJeu::handleEvent(sf::Event event)
 					}
 				}
 			}
-			else if ((event.mouseButton.x>750)&&(event.mouseButton.x<780)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(manager->getBatimentSelectionne()!=0))
+			else if ((event.mouseButton.x>750)&&(event.mouseButton.x<780)&&(event.mouseButton.y>400)&&(event.mouseButton.y<430)&&(pResourceManager->getBatimentSelectionne()!=0))
 			{
-				int indiceX = (manager->getBatimentSelectionne()->getCoordonnees().getPosX()-20)/40;
-				int indiceY = (manager->getBatimentSelectionne()->getCoordonnees().getPosY()-20)/40;
-				manager->getBatimentSelectionne()->vendreBatiment();
-				manager->getCarte()->imageCarte[indiceX][indiceY]->caseOccupee = false;
+				int indiceX = (pResourceManager->getBatimentSelectionne()->getCoordonnees().getPosX()-20)/40;
+				int indiceY = (pResourceManager->getBatimentSelectionne()->getCoordonnees().getPosY()-20)/40;
+				pResourceManager->getBatimentSelectionne()->vendreBatiment();
+				pResourceManager->getCarte()->imageCarte[indiceX][indiceY]->setOccupee(false);
+				// On recalcule le pathfinding
+				recalculerPathfinding();
 			}
-			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<780)&&(event.mouseButton.y>470)&&(event.mouseButton.y<480)&&(manager->getBatimentSelectionne()!=0))
+			// Clicks sur les textes de comportements
+			else if((event.mouseButton.x>710)&&(event.mouseButton.x<780)&&(event.mouseButton.y>470)&&(event.mouseButton.y<510)&&(pResourceManager->getBatimentSelectionne()!=0))
 			{
-				if(manager->getBatimentSelectionne()->isTour())
+				if(pResourceManager->getBatimentSelectionne()->isTour())
 				{
-					if(((Tour*)manager->getBatimentSelectionne())->isTourAttaque())
+					if(((Tour*)pResourceManager->getBatimentSelectionne())->isTourAttaque())
 					{
-						((TourAttaque*)manager->getBatimentSelectionne())->changerComportementCiblage(ComportementCiblage::Premier);
-					}
-				}
-			}
-			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<780)&&(event.mouseButton.y>480)&&(event.mouseButton.y<490)&&(manager->getBatimentSelectionne()!=0))
-			{
-				if(manager->getBatimentSelectionne()->isTour())
-				{
-					if(((Tour*)manager->getBatimentSelectionne())->isTourAttaque())
-					{
-						((TourAttaque*)manager->getBatimentSelectionne())->changerComportementCiblage(ComportementCiblage::PlusFaible);
-					}
-				}
-			}
-			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<780)&&(event.mouseButton.y>490)&&(event.mouseButton.y<500)&&(manager->getBatimentSelectionne()!=0))
-			{
-				if(manager->getBatimentSelectionne()->isTour())
-				{
-					if(((Tour*)manager->getBatimentSelectionne())->isTourAttaque())
-					{
-					((TourAttaque*)manager->getBatimentSelectionne())->changerComportementCiblage(ComportementCiblage::Zone);
-					}
-				}
-			}
-			else if ((event.mouseButton.x>710)&&(event.mouseButton.x<780)&&(event.mouseButton.y>500)&&(event.mouseButton.y<510)&&(manager->getBatimentSelectionne()!=0))
-			{
-				if(manager->getBatimentSelectionne()->isTour())
-				{
-					if(((Tour*)manager->getBatimentSelectionne())->isTourAttaque())
-					{
-					((TourAttaque*)manager->getBatimentSelectionne())->changerComportementCiblage(ComportementCiblage::Random);
+						TourAttaque* pTourAttaque = ((TourAttaque*)pResourceManager->getBatimentSelectionne());
+						if ((event.mouseButton.y>470)&&(event.mouseButton.y<480))
+							pTourAttaque->changerComportementCiblage(ComportementCiblage::PlusProche);
+						else if((event.mouseButton.y>480)&&(event.mouseButton.y<490))
+							pTourAttaque->changerComportementCiblage(ComportementCiblage::PlusFaible);
+						else if((event.mouseButton.y>490)&&(event.mouseButton.y<500))
+							pTourAttaque->changerComportementCiblage(ComportementCiblage::Zone);
+						else if((event.mouseButton.y>500)&&(event.mouseButton.y<510))
+							pTourAttaque->changerComportementCiblage(ComportementCiblage::Random);
 					}
 				}
 			}
 			else if ((event.mouseButton.x<700)){
-				manager->setBatimentSelectionne(0);
+				pResourceManager->setBatimentSelectionne(0);
 				bool autorisation = true;
 				// Indices de la case cliquee.
 				int indiceX = (int)floor((float)event.mouseButton.x/40);
 				int indiceY = (int)floor((float)event.mouseButton.y/40);
-				bool caseEstOccupee = (manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee;
+				bool caseEstOccupee = (pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->isOccupee();
 				if(caseEstOccupee) {
 					batimentChoisi = TableauDeBord::AUCUN;
-					std::vector<Batiment*> batimentConteneur = manager->getBatiment();
+					std::vector<Batiment*> batimentConteneur = pResourceManager->getBatiment();
 					for (unsigned int i=0; i<batimentConteneur.size(); i++)
 					{
 						int coordXTour = batimentConteneur[i]->getCoordonnees().getPosX();
 						int coordYTour = batimentConteneur[i]->getCoordonnees().getPosY();
 						if ((coordXTour == (40*indiceX + 20))&&(coordYTour == (40*indiceY + 20)))
 						{
-							manager->setBatimentSelectionne(batimentConteneur[i]);
+							pResourceManager->setBatimentSelectionne(batimentConteneur[i]);
 						}
 					}
 
 				} else if (batimentChoisi != TableauDeBord::AUCUN) {
-					(manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = true;
-					if (!manager->getPersonnage().empty()){
-						for (unsigned int i=0; i< manager->getPersonnage().size();i++){
-							if (((manager->getPersonnage())[i])->isVolant()){
-								autorisation = ((manager->getPersonnage())[i])->trouverChemin(manager->getCarte());
-								manager->getCarte()->nettoyerCarte();
+					(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->setOccupee(true);
+					if (!pResourceManager->getPersonnage().empty()){
+						for (unsigned int i=0; i< pResourceManager->getPersonnage().size();i++){
+							if (((pResourceManager->getPersonnage())[i])->isVolant()){
+								autorisation = ((pResourceManager->getPersonnage())[i])->trouverChemin(pResourceManager->getCarte());
+								pResourceManager->getCarte()->nettoyerCarte();
 								if (autorisation == false){
 									break;
 								}
 							}
 						}
 					}
-					autorisation = manager->getPersoFictif()->trouverChemin(manager->getCarte());
-					manager->getCarte()->nettoyerCarte();
+					autorisation = pResourceManager->getPersoFictif()->trouverChemin(pResourceManager->getCarte());
+					pResourceManager->getCarte()->nettoyerCarte();
 					if(autorisation == false) {
 						setErreur("Vous ne pouvez pas bloquer le passage des ennemis !");
-						(manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = false;
+						(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->setOccupee(false);
 					}
 					else if ((autorisation == true)&&(!caseEstOccupee)&&(batimentChoisi!=TableauDeBord::AUCUN)){
 						Coordonnees coordonneesTour(40*indiceX+20,40*indiceY+20);
@@ -307,7 +288,7 @@ void EtatJeu::construireBatiment(TableauDeBord::typeBatiment type, Coordonnees c
 	int indiceY = (int)floor((float)coord.getPosY()/40);
 	switch(batimentChoisi){
 		case TableauDeBord::AUCUN:
-			(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = false;
+			(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->setOccupee(false);
 			break;
 		case TableauDeBord::BASIQUE:
 			pBatiment = new TourAttaqueBasique(coord);
@@ -329,19 +310,12 @@ void EtatJeu::construireBatiment(TableauDeBord::typeBatiment type, Coordonnees c
 		}
 	if(pBatiment->verifierAchat())
 	{
-		(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = true;
+		(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->setOccupee(true);
 		pResourceManager->addBatiment(pBatiment);
 		pResourceManager->getRessources()->perdreArgent(pBatiment->getPrix());
 
 		// On recalcule les chemins pour les ennemis, car on a construit un batiment.
-		if (!(pResourceManager->getPersonnage()).empty()){
-			for (unsigned int i=0; i< (pResourceManager->getPersonnage()).size();i++){
-				if (!pResourceManager->getPersonnage()[i]->isVolant()){
-					pResourceManager->getPersonnage()[i]->trouverChemin(pResourceManager->getCarte());
-					pResourceManager->getPersonnage()[i]->ecrireChemin(pResourceManager->getCarte());
-				}
-			}
-		}
+		recalculerPathfinding();
 		if(pBatiment->isTour())
 		{
 			if(((Tour*)pBatiment)->isTourAttaque())
@@ -366,7 +340,20 @@ void EtatJeu::construireBatiment(TableauDeBord::typeBatiment type, Coordonnees c
 		}
 	} else {
 		delete pBatiment;
-		(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee = false;
+		(pResourceManager->getCarte())->imageCarte[indiceX][indiceY]->setOccupee(false);
 		setErreur("Pas assez d'argent !");
+	}
+}
+
+void EtatJeu::recalculerPathfinding()
+{
+	ResourceManager *pResourceManager = ResourceManager::getInstance();
+	if (!(pResourceManager->getPersonnage()).empty()){
+		for (unsigned int i=0; i< (pResourceManager->getPersonnage()).size();i++){
+			if (!pResourceManager->getPersonnage()[i]->isVolant()){
+				pResourceManager->getPersonnage()[i]->trouverChemin(pResourceManager->getCarte());
+				pResourceManager->getPersonnage()[i]->ecrireChemin(pResourceManager->getCarte());
+			}
+		}
 	}
 }

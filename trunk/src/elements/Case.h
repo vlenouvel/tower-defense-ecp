@@ -14,12 +14,23 @@ class Case{
 public:
 	Case(int abscisse, int ordonnee);
 	virtual ~Case();
+	Coordonnees getCoordonnees();
+	int getHeuristique();
+	void setHeuristique(Case * pCase);
+	int getDistanceEntree();
+	void setDistanceEntree(int distance);
+	bool isParcourue();
+	void setParcourue(bool parcourue);
+	bool isOccupee();
+	void setOccupee(bool occupee);
+
+private:
 	Coordonnees coordonneesCase;
 	int distanceEntree;
 	int heuristique;
 	bool caseParcourue;
 	bool caseOccupee;
-	void setHeuristique(Coordonnees * pSortie);
+
 };
 
 #endif /* CASE_H_ */

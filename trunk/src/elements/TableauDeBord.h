@@ -39,7 +39,7 @@ private:
 	sf::Text texteCoutAmelioration;
 	sf::Text textePrixDeVente;
 	sf::Sprite spriteTourSelectionnee;
-	sf::Text texteComportementPremier;
+	sf::Text texteComportementPlusProche;
 	sf::Text texteComportementMoinsVie;
 	sf::Text texteComportementZone;
 	sf::Text texteComportementRandom;
