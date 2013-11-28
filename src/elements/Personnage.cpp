@@ -12,12 +12,12 @@ Personnage::Personnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonne
 {
 
 	// on traite les textures du personnage et de sa barre de vie
-	spriteElement.setPosition(tCoord.posX,tCoord.posY);
+	spriteElement.setPosition(tCoord.getPosX(),tCoord.getPosY());
 	barreDeVieVerte.setFillColor(sf::Color::Green);
-	barreDeVieVerte.setPosition(tCoord.posX, tCoord.posY - 8);
+	barreDeVieVerte.setPosition(tCoord.getPosX(), tCoord.getPosY() - 8);
 	barreDeVieRouge.setFillColor(sf::Color::Red);
 	barreDeVieRouge.setSize(sf::Vector2f(0,5));
-	barreDeVieRouge.setPosition(tCoord.posX, tCoord.posY - 8);
+	barreDeVieRouge.setPosition(tCoord.getPosX(), tCoord.getPosY() - 8);
 
 	pourcentageVitesseMalus = 0;
 	vieInitial = vie;
@@ -55,9 +55,9 @@ void Personnage::avancer()
 					break;
 			}
 		}
-		spriteElement.setPosition(coordonnees.posX,coordonnees.posY);
-		barreDeVieRouge.setPosition(coordonnees.posX,coordonnees.posY-8);
-		barreDeVieVerte.setPosition(coordonnees.posX,coordonnees.posY-8);
+		spriteElement.setPosition(coordonnees.getPosX(),coordonnees.getPosY());
+		barreDeVieRouge.setPosition(coordonnees.getPosX(),coordonnees.getPosY()-8);
+		barreDeVieVerte.setPosition(coordonnees.getPosX(),coordonnees.getPosY()-8);
 	}
 	else {
 		arriver();

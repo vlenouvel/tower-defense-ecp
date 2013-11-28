@@ -20,7 +20,7 @@ TourAttaqueBasique::TourAttaqueBasique(Coordonnees tCoord) : TourAttaque(tCoord)
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spriteElement.setTexture(pResourcesLoader->textureTourAttaqueBasique);
 	spriteElement.setScale(0.5,0.5);
-	spriteElement.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
+	spriteElement.setPosition((float)(tCoord.getPosX()/40)*40,floor((float)(tCoord.getPosY()/40))*40);
 	sonTirTourAttaqueBasique.setBuffer(pResourcesLoader->bufferTirTourAttaqueBasique);
 	sonTirTourAttaqueBasique.setVolume(40);
 	calculerValeursAmeliorees();

@@ -14,7 +14,7 @@ Missile::Missile(Coordonnees tCoord, Personnage* tCible, int tDommages, int tRay
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spriteElement.setTexture(pResourcesLoader->textureMissile);
 	spriteElement.setScale(0.04,0.08);
-	spriteElement.setPosition(tCoord.posX,tCoord.posY);
+	spriteElement.setPosition(tCoord.getPosX(),tCoord.getPosY());
 	spriteTrainee.setTexture(pResourcesLoader->textureTraineeMissile1);
 	spriteTrainee.setScale(0.4,0.4);
 	momentDuCycle = 0;

@@ -11,7 +11,7 @@ Mur::Mur(Coordonnees tCoord) : Batiment(tCoord) {
 	prix = 1;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spriteElement.setTexture(pResourcesLoader->textureMur);
-	spriteElement.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
+	spriteElement.setPosition((float)(tCoord.getPosX()/40)*40,floor((float)(tCoord.getPosY()/40))*40);
 }
 
 bool Mur::isTour()

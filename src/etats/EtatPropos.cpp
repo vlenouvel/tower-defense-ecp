@@ -23,7 +23,7 @@ EtatPropos::EtatPropos(App *tApp) : Etat(tApp){
 
 void EtatPropos::handleEvent(sf::Event event)
 {
-	if(event.type == sf::Event::KeyPressed or event.type == sf::Event::MouseButtonPressed)
+	if((event.type == sf::Event::KeyPressed)||(event.type == sf::Event::MouseButtonPressed))
 	{
 		Etat *pNouvelEtat = new EtatMenu(pApp);
 		pApp->changerEtat(pNouvelEtat);

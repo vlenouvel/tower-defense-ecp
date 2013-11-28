@@ -13,7 +13,7 @@ TourSupport::TourSupport(Coordonnees tCoord) : Tour(tCoord) {
 	ResourcesLoader *pResourcesLoader = ResourcesLoader::getInstance();
 	spriteElement.setTexture(pResourcesLoader->textureTourSupport);
 	spriteElement.setScale(0.5,0.5);
-	spriteElement.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
+	spriteElement.setPosition((float)(tCoord.getPosX()/40)*40,floor((float)(tCoord.getPosY()/40))*40);
 	ajouterAmelioration(niveau);
 }
 

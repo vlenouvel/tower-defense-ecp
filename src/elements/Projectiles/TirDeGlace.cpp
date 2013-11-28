@@ -14,7 +14,7 @@ TirDeGlace::TirDeGlace(Coordonnees tCoord, Personnage* tCible, int tDommages, in
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spriteElement.setTexture(pResourcesLoader->textureTirDeGlace);
 	spriteElement.setScale(0.5,0.3);
-	spriteElement.setPosition(tCoord.posX,tCoord.posY);
+	spriteElement.setPosition(tCoord.getPosX(),tCoord.getPosY());
 	rotation = 0;
 }
 
