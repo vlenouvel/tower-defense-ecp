@@ -19,11 +19,11 @@ class TirDeGlace: public Projectile {
 public:
 	TirDeGlace(Coordonnees tCoord, Personnage* tCible, int tDommages, int tRayonExplosion);
 	void avancer();
-	void toucherEnnemi();
 	virtual ~TirDeGlace();
 	void dessiner(sf::RenderWindow & rWindow);
 
 private:
+	void toucherEnnemi();
 	int rayonExplosion;
 	float rotation;
 };
