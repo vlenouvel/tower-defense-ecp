@@ -29,8 +29,6 @@ protected:
 	int vitesse;
 	Coordonnees coordonnees;
 	Personnage *cible;
-	sf::Texture textureProjectile;
-	sf::Sprite spriteProjectile;
 };
 
 #endif /* PROJECTILE_H_ */

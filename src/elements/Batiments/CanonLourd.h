@@ -23,8 +23,6 @@ private:
 	sf::Sound sonTirCanonLourd;
 	void attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles));
 	int rayonExplosion;
-	sf::Texture textureCanonLourd;
-	sf::Sprite spriteCanonLourd;
 };
 
 #endif /* CANONLOURD_H_ */

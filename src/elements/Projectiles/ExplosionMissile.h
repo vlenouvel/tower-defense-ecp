@@ -21,7 +21,6 @@ public:
 
 private:
 	int momentDuCycle;
-	sf::Sprite spriteExplosion;
 };
 
 #endif /* EXPLOSIONMISSILE_H_ */

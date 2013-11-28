@@ -12,10 +12,9 @@ Missile::Missile(Coordonnees tCoord, Personnage* tCible, int tDommages, int tRay
 	Projectile(tCoord, tCible, tDommages), rayonExplosion(tRayonExplosion) {
 	vitesse = 1;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	textureProjectile = pResourcesLoader->textureMissile;
-	spriteProjectile.setTexture(pResourcesLoader->textureMissile);
-	spriteProjectile.setScale(0.04,0.08);
-	spriteProjectile.setPosition(tCoord.posX,tCoord.posY);
+	spriteElement.setTexture(pResourcesLoader->textureMissile);
+	spriteElement.setScale(0.04,0.08);
+	spriteElement.setPosition(tCoord.posX,tCoord.posY);
 	spriteTrainee.setTexture(pResourcesLoader->textureTraineeMissile1);
 	spriteTrainee.setScale(0.4,0.4);
 	momentDuCycle = 0;
@@ -92,8 +91,8 @@ void Missile::avancer()
 		rotation = (float)atan((float)(newyproj - yperso)/(newxproj - xperso))*180/PI;
 		if ((newxproj - xperso)>0)
 			rotation +=180;
-		spriteProjectile.setRotation(rotation+180);
-		spriteProjectile.setPosition(newxproj, newyproj);
+		spriteElement.setRotation(rotation+180);
+		spriteElement.setPosition(newxproj, newyproj);
 		spriteTrainee.setRotation(rotation+180);
 		spriteTrainee.setPosition(newxproj+26*(newxproj-xperso)/distance,newyproj+26*(newyproj-yperso)/distance);
 	}
@@ -124,7 +123,7 @@ void Missile::toucherEnnemi()
 }
 
 void Missile::dessiner(sf::RenderWindow & rWindow){
-	rWindow.draw(spriteProjectile);
+	rWindow.draw(spriteElement);
 	rWindow.draw(spriteTrainee);
 }
 

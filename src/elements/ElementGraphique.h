@@ -18,6 +18,9 @@ public:
 	ElementGraphique();
 	void virtual dessiner(sf::RenderWindow &pWindow)=0;
 	virtual ~ElementGraphique();
+
+protected:
+	sf::Sprite spriteElement;
 };
 
 #endif /* ELEMENTGRAPHIQUE_H_ */

@@ -18,10 +18,6 @@ public:
 	void dessiner(sf::RenderWindow &pWindow);
 	void agir();
 	bool isTour();
-
-private:
-	sf::Texture textureMur;
-	sf::Sprite spriteMur;
 };
 
 #endif /* MUR_H_ */

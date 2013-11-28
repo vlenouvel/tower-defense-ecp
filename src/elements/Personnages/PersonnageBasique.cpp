@@ -10,9 +10,9 @@
 PersonnageBasique::PersonnageBasique(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord) :
 	Personnage(tVie,tVitesse,tArmure,tGain,tCoord){
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	spritePersonnage.setTexture(pResourcesLoader->texturePersonnageBasiqueDroite);
-	spritePersonnage.setScale(0.23,0.23);
-	barreDeVieVerte.setSize(sf::Vector2f(sf::Vector2f(spritePersonnage.getGlobalBounds().width, 5)));
+	spriteElement.setTexture(pResourcesLoader->texturePersonnageBasiqueDroite);
+	spriteElement.setScale(0.23,0.23);
+	barreDeVieVerte.setSize(sf::Vector2f(sf::Vector2f(spriteElement.getGlobalBounds().width, 5)));
 }
 
 
@@ -27,11 +27,11 @@ void PersonnageBasique::avancer(){
 	int abscisseApres = coordonnees.getPosX();
 	int ordonneeApres = coordonnees.getPosY();
 	if (abscisseAvant - abscisseApres>0)
-		spritePersonnage.setTexture(pResourcesLoader->texturePersonnageBasiqueGauche);
+		spriteElement.setTexture(pResourcesLoader->texturePersonnageBasiqueGauche);
 	else if (abscisseAvant - abscisseApres<0)
-		spritePersonnage.setTexture(pResourcesLoader->texturePersonnageBasiqueDroite);
+		spriteElement.setTexture(pResourcesLoader->texturePersonnageBasiqueDroite);
 	else if (ordonneeAvant - ordonneeApres>0)
-		spritePersonnage.setTexture(pResourcesLoader->texturePersonnageBasiqueHaut);
+		spriteElement.setTexture(pResourcesLoader->texturePersonnageBasiqueHaut);
 	else if (ordonneeAvant - ordonneeApres<0)
-		spritePersonnage.setTexture(pResourcesLoader->texturePersonnageBasiqueBas);
+		spriteElement.setTexture(pResourcesLoader->texturePersonnageBasiqueBas);
 }

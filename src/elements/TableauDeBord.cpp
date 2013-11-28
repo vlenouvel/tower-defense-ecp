@@ -14,9 +14,9 @@ TableauDeBord::TableauDeBord() {
 	typeSelection = AUCUN;
 
 	ResourcesLoader *pResourcesLoader = ResourcesLoader::getInstance();
-	spriteTableauDeBord.setTexture(pResourcesLoader->textureRessources);
-	spriteTableauDeBord.setScale(1,3);
-	spriteTableauDeBord.setPosition(720,100);
+	spriteElement.setTexture(pResourcesLoader->textureRessources);
+	spriteElement.setScale(1,3);
+	spriteElement.setPosition(720,100);
 	font = pResourcesLoader->policeTableauDeBord;
 	texteTableauDeBord.setFont(font);
 	texteTableauDeBord.setCharacterSize(48);
@@ -117,7 +117,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 	ConfigManager * pConfigManager = ConfigManager::getInstance();
 	int tauxRevente = pConfigManager->tauxRevente;
 
-	pWindow.draw(spriteTableauDeBord);
+	pWindow.draw(spriteElement);
 	pWindow.draw(texteTableauDeBord);
 	pWindow.draw(spriteCanonLourd);
 	pWindow.draw(spriteTourAttaqueBasique);

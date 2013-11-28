@@ -10,10 +10,9 @@
 ProjectileBasique::ProjectileBasique(Coordonnees tCoord, Personnage* tCible, int tDommages) : Projectile(tCoord, tCible, tDommages) {
 	vitesse = 15;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	textureProjectile = pResourcesLoader->textureProjectileBasique;
-	spriteProjectile.setTexture(textureProjectile);
-	spriteProjectile.setScale(0.5,0.5);
-	spriteProjectile.setPosition(tCoord.posX,tCoord.posY);
+	spriteElement.setTexture(pResourcesLoader->textureProjectileBasique);
+	spriteElement.setScale(0.5,0.5);
+	spriteElement.setPosition(tCoord.posX,tCoord.posY);
 }
 
 void ProjectileBasique::toucherEnnemi()
@@ -25,7 +24,7 @@ void ProjectileBasique::toucherEnnemi()
 }
 
 void ProjectileBasique::dessiner(sf::RenderWindow & rWindow){
-	rWindow.draw(spriteProjectile);
+	rWindow.draw(spriteElement);
 }
 
 
@@ -51,7 +50,7 @@ void ProjectileBasique::avancer()
 	yproj += (int)floor(alpha*(yperso-yproj));
 	this->coordonnees.setPosX(xproj);
 	this->coordonnees.setPosY(yproj);
-	spriteProjectile.setPosition(xproj, yproj);
+	spriteElement.setPosition(xproj, yproj);
 
 	if(((xperso-xproj)+(yperso-yproj)) == 0){
 		this->toucherEnnemi();

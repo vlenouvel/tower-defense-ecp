@@ -11,9 +11,9 @@ TourSupport::TourSupport(Coordonnees tCoord) : Tour(tCoord) {
 	ConfigManager *pConfigManager = ConfigManager::getInstance();
 	prix = pConfigManager->mapTourSupport["prix"];
 	ResourcesLoader *pResourcesLoader = ResourcesLoader::getInstance();
-	spriteTourSupport.setTexture(pResourcesLoader->textureTourSupport);
-	spriteTourSupport.setScale(0.5,0.5);
-	spriteTourSupport.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
+	spriteElement.setTexture(pResourcesLoader->textureTourSupport);
+	spriteElement.setScale(0.5,0.5);
+	spriteElement.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
 	ajouterAmelioration(niveau);
 }
 
@@ -37,7 +37,7 @@ TourSupport::~TourSupport() {
 }
 
 void TourSupport::dessiner(sf::RenderWindow &pWindow){
-	pWindow.draw(spriteTourSupport);
+	pWindow.draw(spriteElement);
 }
 
 bool TourSupport::isTourAttaque()

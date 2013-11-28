@@ -18,9 +18,8 @@ Carte::Carte() {
 		}
 	}
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	textureCarte = pResourcesLoader->textureCarte;
-	spriteCarte.setTexture(textureCarte);
-	spriteCarte.setScale(0.75,0.75);
+	spriteElement.setTexture(pResourcesLoader->textureCarte);
+	spriteElement.setScale(0.75,0.75);
 
 }
 
@@ -30,7 +29,7 @@ Carte::~Carte() {
 
 void Carte::dessiner(sf::RenderWindow &pWindow){
 
-	pWindow.draw(spriteCarte);
+	pWindow.draw(spriteElement);
 }
 
 void Carte::nettoyerCarte(){

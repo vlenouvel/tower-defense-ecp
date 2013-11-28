@@ -17,10 +17,9 @@ CanonLourd::CanonLourd(Coordonnees tCoord) : TourAttaque(tCoord) {
 	rayonExplosion = configManager->mapTourCanon["rayonExplosion"];
 	timeBetweenAttacks = sf::milliseconds(configManager->mapTourCanon["temps"]);
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	textureCanonLourd = pResourcesLoader->textureCanonLourd;
-	spriteCanonLourd.setTexture(textureCanonLourd);
-	spriteCanonLourd.setScale(0.5,0.5);
-	spriteCanonLourd.setPosition(floor(float(tCoord.posX/40))*40,floor(float(tCoord.posY/40))*40);
+	spriteElement.setTexture(pResourcesLoader->textureCanonLourd);
+	spriteElement.setScale(0.5,0.5);
+	spriteElement.setPosition(floor(float(tCoord.posX/40))*40,floor(float(tCoord.posY/40))*40);
 	sonTirCanonLourd.setBuffer(pResourcesLoader->bufferTirCanonLourd);
 	sonTirCanonLourd.setVolume(40);
 	calculerValeursAmeliorees();
@@ -41,6 +40,6 @@ CanonLourd::~CanonLourd() {
 }
 
 void CanonLourd::dessiner(sf::RenderWindow & rWindow){
-	rWindow.draw(spriteCanonLourd);
+	rWindow.draw(spriteElement);
 }
 

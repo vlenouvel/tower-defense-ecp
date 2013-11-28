@@ -31,8 +31,6 @@ public:
 	void setVagues(int nbVagues);
 
 private:
-	sf::Texture textureRessources;
-	sf::Sprite spriteRessources;
 	sf::Text texteRessources;
 	sf::Font font;
 
