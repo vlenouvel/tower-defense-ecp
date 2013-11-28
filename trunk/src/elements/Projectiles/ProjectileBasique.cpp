@@ -12,7 +12,7 @@ ProjectileBasique::ProjectileBasique(Coordonnees tCoord, Personnage* tCible, int
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	spriteElement.setTexture(pResourcesLoader->textureProjectileBasique);
 	spriteElement.setScale(0.5,0.5);
-	spriteElement.setPosition(tCoord.posX,tCoord.posY);
+	spriteElement.setPosition(tCoord.getPosX(),tCoord.getPosY());
 }
 
 void ProjectileBasique::toucherEnnemi()

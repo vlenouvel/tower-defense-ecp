@@ -21,9 +21,9 @@ TourDeGlace::TourDeGlace(Coordonnees tCoord) : TourAttaque(tCoord), rayonExplosi
 	spriteElement.setTexture(pResourcesLoader->textureTourDeGlace);
 	spriteEnvironementTourDeGlace.setTexture(pResourcesLoader->textureEnvironnementGlace);
 	spriteElement.setScale(0.5,0.5);
-	spriteElement.setPosition(floor(float(tCoord.posX/40))*40,floor(float(tCoord.posY/40))*40);
+	spriteElement.setPosition(floor(float(tCoord.getPosX()/40))*40,floor(float(tCoord.getPosY()/40))*40);
 	spriteEnvironementTourDeGlace.setScale(0.68,0.76);
-	spriteEnvironementTourDeGlace.setPosition(floor(float(tCoord.posX/40))*40-25,floor(float(tCoord.posY/40))*40-30);
+	spriteEnvironementTourDeGlace.setPosition(floor(float(tCoord.getPosX()/40))*40-25,floor(float(tCoord.getPosY()/40))*40-30);
 	rotation = 0;
 	sonTirTourGlace.setBuffer(pResourcesLoader->bufferTirTourGlace);
 	calculerValeursAmeliorees();
