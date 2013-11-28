@@ -7,57 +7,39 @@
 
 #include "Vague.h"
 
-enum TypePerso {
-	NORMAL = 1,
-	RAPIDE = 2,
-	SOLIDE = 3,
-	VOLANT = 4,
-	GENERATEUR = 5,
-	ACCELERANT = 6,
-	DOUBLE = 7,
-	BOSS = 8
-};
-
 Vague::Vague(int niveau) {
 	ConfigManager *configManager = ConfigManager::getInstance();
 
 	tempsEntrePop = sf::seconds((float)1);
 
 	niveauType = (int)((niveau-1)/8) + 1;
-	niveau = niveau  % 8;
+	niveau = (niveau-1) % 8;
+	type = static_cast<TypePerso>(niveau);
 
-	switch(niveau){
-		case 1:
-			nombrePersoRestant = configManager->mapVague1["nombre"];
-			type = configManager->mapVague1["typePersos"];
+	switch(type){
+		case NORMAL:
+			nombrePersoRestant = configManager->mapVagueNormal["nombre"];
 			break;
-		case 2:
-			nombrePersoRestant = configManager->mapVague2["nombre"];
-			type = configManager->mapVague2["typePersos"];
+		case RAPIDE:
+			nombrePersoRestant = configManager->mapVagueRapide["nombre"];
 			break;
-		case 3:
-			nombrePersoRestant = configManager->mapVague3["nombre"];
-			type = configManager->mapVague3["typePersos"];
+		case SOLIDE:
+			nombrePersoRestant = configManager->mapVagueSolide["nombre"];
 			break;
-		case 4:
-			nombrePersoRestant = configManager->mapVague4["nombre"];
-			type = configManager->mapVague4["typePersos"];
+		case VOLANT:
+			nombrePersoRestant = configManager->mapVagueVolant["nombre"];
 			break;
-		case 5:
-			nombrePersoRestant = configManager->mapVague5["nombre"];
-			type = configManager->mapVague5["typePersos"];
+		case GENERATEUR:
+			nombrePersoRestant = configManager->mapVagueGenerateur["nombre"];
 			break;
-		case 6:
-			nombrePersoRestant = configManager->mapVague6["nombre"];
-			type = configManager->mapVague6["typePersos"];
+		case ACCELERANT:
+			nombrePersoRestant = configManager->mapVagueAccelerant["nombre"];
 			break;
-		case 7:
-			nombrePersoRestant = configManager->mapVague7["nombre"];
-			type = configManager->mapVague7["typePersos"];
+		case DOUBLE:
+			nombrePersoRestant = configManager->mapVagueDouble["nombre"];
 			break;
-		case 0:
-			nombrePersoRestant = configManager->mapVague8["nombre"];
-			type = configManager->mapVague8["typePersos"];
+		case BOSS:
+			nombrePersoRestant = configManager->mapVagueBoss["nombre"];
 			break;
 		default:
 			break;

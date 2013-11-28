@@ -37,6 +37,7 @@ private:
 	int type;
 	sf::Clock horlogePop;
 	sf::Time tempsEntrePop;
+	enum TypePerso {NORMAL, RAPIDE, VOLANT, GENERATEUR, ACCELERANT, SOLIDE, DOUBLE, BOSS};
 };
 
 #endif /* VAGUE_H_ */
