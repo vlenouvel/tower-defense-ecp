@@ -30,9 +30,9 @@ ResourceManager* ResourceManager::getInstance() {
 }
 
 ResourceManager::ResourceManager() {
-    vector<Batiment*> tourConteneur;
-    vector<Personnage*> personnageConteneur;
-    vector<Projectile*> projectileConteneur;
+    std::vector<Batiment*> tourConteneur;
+    std::vector<Personnage*> personnageConteneur;
+    std::vector<Projectile*> projectileConteneur;
     cartePointeur = 0;
     ressourcesPointeur = 0;
     vaguePointeur = 0;
@@ -63,7 +63,7 @@ void ResourceManager::addBatiment(Batiment* entite) {
 	batimentConteneur.push_back(entite);
 }
 
-vector<Batiment*> ResourceManager::getBatiment() {
+std::vector<Batiment*> ResourceManager::getBatiment() {
 	return batimentConteneur;
 }
 
@@ -71,7 +71,7 @@ void ResourceManager::addObjetAnnexe(ElementGraphique* objetAnnexe){
 	objetAnnexeConteneur.push_back(objetAnnexe);
 }
 
-vector<ElementGraphique*> ResourceManager::getObjetAnnexe(){
+std::vector<ElementGraphique*> ResourceManager::getObjetAnnexe(){
 	return objetAnnexeConteneur;
 }
 
@@ -89,7 +89,7 @@ void ResourceManager::addPersonnage(Personnage* entite) {
 	personnageConteneur.push_back(entite);
 }
 
-vector<Personnage*> ResourceManager::getPersonnage() {
+std::vector<Personnage*> ResourceManager::getPersonnage() {
 	return personnageConteneur;
 }
 
@@ -102,7 +102,7 @@ void ResourceManager::addProjectile(Projectile* entite) {
 	projectileConteneur.push_back(entite);
 }
 
-vector<Projectile*> ResourceManager::getProjectile() {
+std::vector<Projectile*> ResourceManager::getProjectile() {
 	return projectileConteneur;
 }
 

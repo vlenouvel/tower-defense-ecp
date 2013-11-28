@@ -74,6 +74,6 @@ void EtatChargement::agir()
 
 
 EtatChargement::~EtatChargement() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 

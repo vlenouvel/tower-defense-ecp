@@ -37,7 +37,9 @@ void Batiment::vendreBatiment()
 	//TODO Equilibrage : prix de vente
 	//TODO Coherence avec affichage
 	ResourceManager* pResourceManager = ResourceManager::getInstance();
-	pResourceManager->getRessources()->gagnerArgent((int)(prix*0.75));
+	ConfigManager *pConfigManager = ConfigManager::getInstance();
+	int tauxRevente = pConfigManager->tauxRevente;
+	pResourceManager->getRessources()->gagnerArgent((int)(prix*tauxRevente/100.));
 	pResourceManager->removeBatiment(this);
 	pResourceManager->setBatimentSelectionne(0);
 

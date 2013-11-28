@@ -41,6 +41,6 @@ void Etat::dessiner(sf::RenderWindow &pWindow)
 }
 
 Etat::~Etat() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 

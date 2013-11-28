@@ -10,7 +10,6 @@
 
 
 #include "Etat.h"
-#include <iostream>
 #include <string>
 #include <cmath>
 #include "SFML/Window/Event.hpp"

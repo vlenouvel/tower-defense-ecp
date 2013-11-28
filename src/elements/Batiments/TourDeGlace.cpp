@@ -6,7 +6,6 @@
  */
 
 #include "TourDeGlace.h"
-#include <iostream>
 #include <cmath>
 #define PI 3.14159265
 
@@ -41,12 +40,12 @@ void TourDeGlace::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*
 }
 
 TourDeGlace::~TourDeGlace() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 void TourDeGlace::actionSpeciale(){
 	ResourceManager *manager = ResourceManager::getInstance();
-	vector<Personnage *> persosProches;
+	std::vector<Personnage *> persosProches;
 	for (unsigned int i=0; i<manager->getPersonnage().size();i++){
 		if (pow((double)(manager->getPersonnage()[i]->getCoordonnees().getPosX() - this->coordonnees.getPosX()),2) + pow((double)(manager->getPersonnage()[i]->getCoordonnees().getPosY() - this->coordonnees.getPosY()),2) < 4000){
 			persosProches.push_back(manager->getPersonnage()[i]);

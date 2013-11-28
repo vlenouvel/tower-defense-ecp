@@ -77,58 +77,58 @@ void Vague::genererPersonnage()
 	Personnage* pPersonnage = 0;
 	switch (type) {
 		case NORMAL:
-			vie = configManager->mapPersonnageNormal["vie"]*niveauType;
+			vie = configManager->mapPersonnageNormal["vie"]*pow(niveauType,3);
 			vitesse = configManager->mapPersonnageNormal["vitesse"];
-			armure = configManager->mapPersonnageNormal["armure"]*niveauType;
+			armure = configManager->mapPersonnageNormal["armure"]*pow(niveauType,2);
 			gain = configManager->mapPersonnageNormal["gain"]*niveauType;
 			pPersonnage = new PersonnageBasique(vie, vitesse, armure, gain , coordonneesDepart);
 			break;
 		case RAPIDE:
-			vie = configManager->mapPersonnageRapide["vie"]*niveauType;
+			vie = configManager->mapPersonnageRapide["vie"]*pow(niveauType,3);
 			vitesse = configManager->mapPersonnageRapide["vitesse"];
-			armure = configManager->mapPersonnageRapide["armure"]*niveauType;
+			armure = configManager->mapPersonnageRapide["armure"]*pow(niveauType,2);
 			gain = configManager->mapPersonnageRapide["gain"]*niveauType;
 			pPersonnage = new PersonnageBasique(vie, vitesse, armure, gain , coordonneesDepart);
 			break;
 		case SOLIDE:
-			vie = configManager->mapPersonnageSolide["vie"]*niveauType;
+			vie = configManager->mapPersonnageSolide["vie"]*pow(niveauType,3);
 			vitesse = configManager->mapPersonnageSolide["vitesse"];
-			armure = configManager->mapPersonnageSolide["armure"]*niveauType;
+			armure = configManager->mapPersonnageSolide["armure"]*pow(niveauType,2);
 			gain = configManager->mapPersonnageSolide["gain"]*niveauType;
 			pPersonnage = new PersonnageBasique(vie, vitesse, armure, gain , coordonneesDepart);
 			break;
 		case VOLANT:
-			vie = configManager->mapPersonnageVolant["vie"]*niveauType;
+			vie = configManager->mapPersonnageVolant["vie"]*pow(niveauType,3);
 			vitesse = configManager->mapPersonnageVolant["vitesse"];
-			armure = configManager->mapPersonnageVolant["armure"]*niveauType;
+			armure = configManager->mapPersonnageVolant["armure"]*pow(niveauType,2);
 			gain = configManager->mapPersonnageVolant["gain"]*niveauType;
 			pPersonnage = new PersonnageVolant(vie, vitesse, armure, gain , coordonneesDepart);
 			break;
 		case GENERATEUR:
-			vie = configManager->mapPersonnageGenerateur["vie"]*niveauType;
+			vie = configManager->mapPersonnageGenerateur["vie"]*pow(niveauType,3);
 			vitesse = configManager->mapPersonnageGenerateur["vitesse"];
-			armure = configManager->mapPersonnageGenerateur["armure"]*niveauType;
+			armure = configManager->mapPersonnageGenerateur["armure"]*pow(niveauType,2);
 			gain = configManager->mapPersonnageGenerateur["gain"]*niveauType;
 			pPersonnage = new PersonnageGenerateur(vie, vitesse, armure, gain , coordonneesDepart);
 			break;
 		case ACCELERANT:
-			vie = configManager->mapPersonnageAccelerant["vie"]*niveauType;
+			vie = configManager->mapPersonnageAccelerant["vie"]*pow(niveauType,3);
 			vitesse = configManager->mapPersonnageAccelerant["vitesse"];
-			armure = configManager->mapPersonnageAccelerant["armure"]*niveauType;
+			armure = configManager->mapPersonnageAccelerant["armure"]*pow(niveauType,2);
 			gain = configManager->mapPersonnageAccelerant["gain"]*niveauType;
 			pPersonnage = new PersonnageAccelerant(vie, vitesse, armure, gain , coordonneesDepart);
 			break;
 		case DOUBLE:
-			vie = configManager->mapPersonnageDouble["vie"]*niveauType;
+			vie = configManager->mapPersonnageDouble["vie"]*pow(niveauType,3);
 			vitesse = configManager->mapPersonnageDouble["vitesse"];
-			armure = configManager->mapPersonnageDouble["armure"]*niveauType;
+			armure = configManager->mapPersonnageDouble["armure"]*pow(niveauType,2);
 			gain = configManager->mapPersonnageDouble["gain"]*niveauType;
 			pPersonnage = new PersonnageDouble(vie, vitesse, armure, gain , coordonneesDepart);
 			break;
 		case BOSS:
-			vie = configManager->mapPersonnageBoss["vie"]*niveauType;
+			vie = configManager->mapPersonnageBoss["vie"]*pow(niveauType,3);
 			vitesse = configManager->mapPersonnageBoss["vitesse"];
-			armure = configManager->mapPersonnageBoss["armure"]*niveauType;
+			armure = configManager->mapPersonnageBoss["armure"]*pow(niveauType,2);
 			gain = configManager->mapPersonnageBoss["gain"]*niveauType;
 			pPersonnage = new SuperPersonnage(vie, vitesse, armure, gain , coordonneesDepart);
 			break;
@@ -157,6 +157,6 @@ void Vague::agir()
 }
 
 Vague::~Vague() {
-	// TODO
+	// VIDE
 }
 

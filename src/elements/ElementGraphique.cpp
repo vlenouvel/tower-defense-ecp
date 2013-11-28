@@ -8,11 +8,11 @@
 #include "ElementGraphique.h"
 
 ElementGraphique::ElementGraphique() {
-	// TODO Auto-generated constructor stub
+	// VIDE
 
 }
 
 ElementGraphique::~ElementGraphique() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 

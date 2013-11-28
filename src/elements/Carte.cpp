@@ -5,7 +5,6 @@
  *       
  */
 
-#include "../ResourcesLoader.h"
 #include "Carte.h"
 
 Carte::Carte() {
@@ -26,7 +25,7 @@ Carte::Carte() {
 }
 
 Carte::~Carte() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 void Carte::dessiner(sf::RenderWindow &pWindow){

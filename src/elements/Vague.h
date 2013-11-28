@@ -22,7 +22,6 @@
 #include "Personnages/PersonnageAccelerant.h"
 #include "Personnages/SuperPersonnage.h"
 #include "Coordonnees.h"
-#include <iostream>
 #include "../ConfigManager.h"
 
 class Vague: public ElementJeu {

@@ -60,5 +60,5 @@ void ExplosionMissile::dessiner(sf::RenderWindow & rWindow){
 
 
 ExplosionMissile::~ExplosionMissile() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }

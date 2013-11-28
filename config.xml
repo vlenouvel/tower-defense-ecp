@@ -3,6 +3,7 @@
 	<fps>30</fps>
 	<argent>300</argent>
 	<vie>30</vie>
+	<tauxRevente>75</tauxRevente>
 	<batiments>
 		<tourAttaqueBasique>
 			<prix>10</prix>
@@ -39,14 +40,14 @@
 		</normal>
 		<rapide>
 			<vie>5</vie>
-			<vitesse>5</vitesse>
+			<vitesse>10</vitesse>
 			<armure>1</armure>
 			<gain>5</gain>
 		</rapide>
 		<solide>
 			<vie>30</vie>
 			<vitesse>2</vitesse>
-			<armure>2</armure>
+			<armure>6</armure>
 			<gain>5</gain>
 		</solide>
 		<volant>

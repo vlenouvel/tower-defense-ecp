@@ -7,7 +7,6 @@
 
 #include "EtatJeu.h"
 
-using namespace std;
 
 
 EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
@@ -51,7 +50,7 @@ EtatJeu::EtatJeu(App *tApp) : Etat(tApp), pApp(tApp) {
 	texteErreur.setPosition(100,250);
 }
 
-void EtatJeu::setErreur(string erreurMsg) {
+void EtatJeu::setErreur(std::string erreurMsg) {
 
 	erreur = erreurMsg;
 	tempsErreur = pApp->horloge.getElapsedTime();
@@ -159,7 +158,7 @@ void EtatJeu::handleEvent(sf::Event event)
 				bool caseEstOccupee = (manager->getCarte())->imageCarte[indiceX][indiceY]->caseOccupee;
 				if(caseEstOccupee) {
 					batimentChoisi = TableauDeBord::AUCUN;
-					vector<Batiment*> batimentConteneur = manager->getBatiment();
+					std::vector<Batiment*> batimentConteneur = manager->getBatiment();
 					for (unsigned int i=0; i<batimentConteneur.size(); i++)
 					{
 						int coordXTour = batimentConteneur[i]->getCoordonnees().getPosX();
@@ -216,21 +215,21 @@ void EtatJeu::agir() {
 	}
 
 
-	vector<Batiment*> batimentConteneur = manager->getBatiment();
+	std::vector<Batiment*> batimentConteneur = manager->getBatiment();
 	if (!batimentConteneur.empty()){
 		for(unsigned int i=0;i<batimentConteneur.size();i++){
 			batimentConteneur[i]->agir();
 		}
 	}
 
-	vector<Personnage*> personnageConteneur = manager->getPersonnage();
+	std::vector<Personnage*> personnageConteneur = manager->getPersonnage();
 	if (!personnageConteneur.empty()){
 		for(unsigned int i=0;i<personnageConteneur.size();++i){
 			personnageConteneur[i]->agir();
 		}
 	}
 
-	vector<Projectile*> projectileConteneur = manager->getProjectile();
+	std::vector<Projectile*> projectileConteneur = manager->getProjectile();
 	if (!projectileConteneur.empty()){
 		for(unsigned int i=0;i<projectileConteneur.size();++i){
 			projectileConteneur[i]->agir();
@@ -257,27 +256,27 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 
 	pWindow.draw(arriveCase);
 
-	vector<Batiment*> batimentConteneur = manager->getBatiment();
+	std::vector<Batiment*> batimentConteneur = manager->getBatiment();
 
 	if (!batimentConteneur.empty()){
 		for(unsigned int i=0;i<batimentConteneur.size();i++){
 			batimentConteneur[i]->dessiner(pWindow);
 		}
 	}
-	vector<Personnage*> personnageConteneur = manager->getPersonnage();
+	std::vector<Personnage*> personnageConteneur = manager->getPersonnage();
 	if (!personnageConteneur.empty()){
 		for(unsigned int i=0;i<personnageConteneur.size();++i){
 			personnageConteneur[i]->dessiner(pWindow);
 		}
 	}
 
-	vector<Projectile*> projectileConteneur = manager->getProjectile();
+	std::vector<Projectile*> projectileConteneur = manager->getProjectile();
 	if (!projectileConteneur.empty()){
 		for(unsigned int i=0;i<projectileConteneur.size();++i){
 			projectileConteneur[i]->dessiner(pWindow);
 		}
 	}
-	vector<ElementGraphique*> objetAnnexeConteneur = manager->getObjetAnnexe();
+	std::vector<ElementGraphique*> objetAnnexeConteneur = manager->getObjetAnnexe();
 	if (!objetAnnexeConteneur.empty()){
 		for(unsigned int i=0;i<objetAnnexeConteneur.size();++i){
 			objetAnnexeConteneur[i]->dessiner(pWindow);
@@ -296,7 +295,7 @@ void EtatJeu::dessiner(sf::RenderWindow &pWindow){
 }
 
 EtatJeu::~EtatJeu() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 

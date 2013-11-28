@@ -79,5 +79,5 @@ void TirDeGlace::dessiner(sf::RenderWindow & rWindow){
 
 
 TirDeGlace::~TirDeGlace() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }

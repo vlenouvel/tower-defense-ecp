@@ -10,14 +10,12 @@
 
 #include <vector>
 #include <algorithm>
-#include "elements/Batiments/Tour.h"
 #include "elements/Batiment.h"
+#include "elements/Batiments/Tour.h"
 #include "elements/Carte.h"
 #include "elements/Menu.h"
 #include "elements/Ressources.h"
 
-
-using namespace std;
 
 // Forward Declaration
 class Projectile;
@@ -54,10 +52,10 @@ public:
 	void removeObjetAnnexe(ElementGraphique* objetAnnexe);
 
     // Get
-    vector<Batiment*> getBatiment();
-    vector<Personnage*> getPersonnage();
-    vector<Projectile*> getProjectile();
-	vector<ElementGraphique*> getObjetAnnexe();
+    std::vector<Batiment*> getBatiment();
+    std::vector<Personnage*> getPersonnage();
+    std::vector<Projectile*> getProjectile();
+	std::vector<ElementGraphique*> getObjetAnnexe();
     Carte* getCarte();
     Vague* getVague();
     Ressources* getRessources();
@@ -72,10 +70,10 @@ public:
 private:
     ResourceManager();
 
-    vector<Batiment*> batimentConteneur;
-    vector<Projectile*> projectileConteneur;
-    vector<Personnage*> personnageConteneur;
-	vector<ElementGraphique*> objetAnnexeConteneur;
+    std::vector<Batiment*> batimentConteneur;
+    std::vector<Projectile*> projectileConteneur;
+    std::vector<Personnage*> personnageConteneur;
+	std::vector<ElementGraphique*> objetAnnexeConteneur;
     Carte* cartePointeur;
     Vague* vaguePointeur;
     Ressources* ressourcesPointeur;

@@ -40,6 +40,6 @@ void EtatPropos::agir()
 
 }
 EtatPropos::~EtatPropos() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 

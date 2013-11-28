@@ -13,8 +13,8 @@
 #include <cmath>
 #include <string>
 #include <sstream>
-#include <iostream>
 #include "Batiments/TourAttaque.h"
+#include "../ConfigManager.h"
 
 class TableauDeBord: public ElementGraphique {
 public:

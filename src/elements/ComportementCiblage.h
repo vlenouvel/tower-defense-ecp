@@ -12,8 +12,8 @@
 #include "../ResourceManager.h"
 #include <vector>
 #include "math.h"
-#include <iostream>
 #include <stdlib.h>
+#include "../ConfigManager.h"
 
 
 class ComportementCiblage {

@@ -33,7 +33,7 @@ Menu::Menu() {
 }
 
 Menu::~Menu() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 void Menu::dessiner(sf::RenderWindow &pWindow){

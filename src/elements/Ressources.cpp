@@ -10,7 +10,6 @@
 #include <sstream>
 #include "../ResourceManager.h"
 #include "../ConfigManager.h"
-#include <iostream>
 
 Ressources::Ressources() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
@@ -32,11 +31,11 @@ Ressources::Ressources() {
 }
 
 Ressources::~Ressources() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 void Ressources::dessiner(sf::RenderWindow &pWindow){
-	ostringstream ss;
+	std::ostringstream ss;
 	//std::string scoreTexte = "Score:" + to_string((long double)ressources->getScore()) + "\n" + "Argent:" + to_string((long double)ressources->getArgent())+ "\n" + "Vie:" + to_string((long double)ressources->getVie());
 	//ss <<  "Score:" << (long double)ressources->getScore() << "\n" + "Argent:" << (long double)ressources->getArgent() << "\n" << "Vie:" << (long double)ressources->getVie();
 	ss << "Score:";

@@ -8,7 +8,7 @@
 #include "ElementJeu.h"
 
 ElementJeu::ElementJeu() {
-	// TODO Auto-generated constructor stub
+	// VIDE
 }
 
 void ElementJeu::agir()
@@ -17,6 +17,6 @@ void ElementJeu::agir()
 }
 
 ElementJeu::~ElementJeu() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 

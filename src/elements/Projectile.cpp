@@ -14,7 +14,7 @@ Projectile::Projectile(Coordonnees tCoord, Personnage* tCible, int tDommages) : 
 }
 
 Projectile::~Projectile() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 Personnage* Projectile::getCible()

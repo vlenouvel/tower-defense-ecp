@@ -9,9 +9,9 @@
 #define BATIMENT_H_
 
 #include "Coordonnees.h"
-
 #include "ElementGraphique.h"
 #include "ElementJeu.h"
+#include "../ConfigManager.h"
 
 class Batiment: public ElementGraphique, public ElementJeu {
 public:

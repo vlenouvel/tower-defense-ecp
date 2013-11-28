@@ -26,7 +26,7 @@ void Mur::agir()
 }
 
 Mur::~Mur() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 

@@ -11,6 +11,7 @@
 
 #include "ElementGraphique.h"
 #include "Case.h"
+#include "../ResourcesLoader.h"
 
 class Carte: public ElementGraphique {
 public:
