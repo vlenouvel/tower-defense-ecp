@@ -13,10 +13,9 @@
 
 Ressources::Ressources() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	textureRessources = pResourcesLoader->textureRessources;
-	spriteRessources.setTexture(textureRessources);
-	spriteRessources.setScale(1,0.4);
-	spriteRessources.setPosition(715,0);
+	spriteElement.setTexture(pResourcesLoader->textureRessources);
+	spriteElement.setScale(1,0.4);
+	spriteElement.setPosition(715,0);
 	font = pResourcesLoader->policeTableauDeBord;
 	texteRessources.setFont(font);
 	texteRessources.setCharacterSize(14);
@@ -39,6 +38,7 @@ void Ressources::dessiner(sf::RenderWindow &pWindow){
 	//std::string scoreTexte = "Score:" + to_string((long double)ressources->getScore()) + "\n" + "Argent:" + to_string((long double)ressources->getArgent())+ "\n" + "Vie:" + to_string((long double)ressources->getVie());
 	//ss <<  "Score:" << (long double)ressources->getScore() << "\n" + "Argent:" << (long double)ressources->getArgent() << "\n" << "Vie:" << (long double)ressources->getVie();
 	ss << "Score:";
+	ss << "\n";
 	ss << score;
 	ss << "\n";
 	ss << argent;
@@ -50,8 +50,7 @@ void Ressources::dessiner(sf::RenderWindow &pWindow){
 	ss << ":";
 	ss << nombreVagues;
 	texteRessources.setString(ss.str());
-	pWindow.draw(spriteRessources);
-	//texteRessources.setString(to_string(ressources));
+	pWindow.draw(spriteElement);
 	pWindow.draw(texteRessources);
 }
 

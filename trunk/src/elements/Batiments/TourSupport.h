@@ -25,7 +25,6 @@ public:
 	void recalculerAmelioration();
 	void vendreBatiment();
 private:
-	sf::Sprite spriteTourSupport;
 	void enleverAmelioration();
 	void ajouterAmelioration(int valeur);
 

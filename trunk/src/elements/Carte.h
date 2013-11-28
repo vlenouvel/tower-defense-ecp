@@ -23,9 +23,6 @@ public:
 	Case* imageCarte [imageCarteX][imageCarteY];
 	Case * pCaseSortie;
 	void nettoyerCarte();
-private:
-	sf::Texture textureCarte;
-	sf::Sprite spriteCarte;
 };
 
 #endif /* CARTE_H_ */

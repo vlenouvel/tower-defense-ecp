@@ -23,7 +23,6 @@ private:
 	void attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*> ciblesPossibles));
 	int rayonExplosion;
 	sf::Sound sonTirTourGlace;
-	sf::Sprite spriteTourDeGlace;
 	sf::Sprite spriteEnvironementTourDeGlace;
 	double rotation;
 };

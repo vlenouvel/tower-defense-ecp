@@ -18,10 +18,10 @@ TourDeGlace::TourDeGlace(Coordonnees tCoord) : TourAttaque(tCoord), rayonExplosi
 	pCibler = ComportementCiblage::ciblerPremier;
 	comportementChoisi = ComportementCiblage::Premier;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	spriteTourDeGlace.setTexture(pResourcesLoader->textureTourDeGlace);
+	spriteElement.setTexture(pResourcesLoader->textureTourDeGlace);
 	spriteEnvironementTourDeGlace.setTexture(pResourcesLoader->textureEnvironnementGlace);
-	spriteTourDeGlace.setScale(0.5,0.5);
-	spriteTourDeGlace.setPosition(floor(float(tCoord.posX/40))*40,floor(float(tCoord.posY/40))*40);
+	spriteElement.setScale(0.5,0.5);
+	spriteElement.setPosition(floor(float(tCoord.posX/40))*40,floor(float(tCoord.posY/40))*40);
 	spriteEnvironementTourDeGlace.setScale(0.68,0.76);
 	spriteEnvironementTourDeGlace.setPosition(floor(float(tCoord.posX/40))*40-25,floor(float(tCoord.posY/40))*40-30);
 	rotation = 0;
@@ -64,5 +64,5 @@ void TourDeGlace::actionSpeciale(){
 
 void TourDeGlace::dessiner(sf::RenderWindow & rWindow){
 	rWindow.draw(spriteEnvironementTourDeGlace);
-	rWindow.draw(spriteTourDeGlace);
+	rWindow.draw(spriteElement);
 }

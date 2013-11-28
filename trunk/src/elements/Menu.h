@@ -20,7 +20,6 @@ private:
 	sf::Text text1;
 	sf::Text text2;
 	sf::Text text3;
-	sf::Sprite spriteMenu;
 };
 
 #endif /* MENU_H_ */

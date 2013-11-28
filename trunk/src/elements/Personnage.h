@@ -56,8 +56,6 @@ protected:
 	int vitesse;
 	int armure;
 	int gain;
-	sf::Texture texturePersonnage;
-	sf::Sprite spritePersonnage;
 	sf::RectangleShape barreDeVieVerte;
 	sf::RectangleShape barreDeVieRouge;
 

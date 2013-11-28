@@ -25,7 +25,6 @@ public:
 	void setSelectionBat(typeBatiment type);
 
 private:
-	sf::Sprite spriteTableauDeBord;
 	sf::Text texteTableauDeBord;
 	sf::Font font;
 	sf::Sprite spriteCanonLourd;

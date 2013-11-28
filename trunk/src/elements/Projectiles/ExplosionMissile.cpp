@@ -10,8 +10,8 @@
 
 ExplosionMissile::ExplosionMissile(Coordonnees tCoord){
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile1);
-	spriteExplosion.setPosition(tCoord.posX-40,tCoord.posY-40);
+	spriteElement.setTexture(pResourcesLoader->textureExplosionMissile1);
+	spriteElement.setPosition(tCoord.posX-40,tCoord.posY-40);
 	momentDuCycle = 0;
 }
 
@@ -21,37 +21,37 @@ void ExplosionMissile::dessiner(sf::RenderWindow & rWindow){
 	ResourceManager *manager = ResourceManager::getInstance();
 	switch(momentDuCycle){
 		case 2:
-			spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile2);
+			spriteElement.setTexture(pResourcesLoader->textureExplosionMissile2);
 			break;
 		case 4:
-			spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile3);
+			spriteElement.setTexture(pResourcesLoader->textureExplosionMissile3);
 			break;
 		case 6:
-			spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile4);
+			spriteElement.setTexture(pResourcesLoader->textureExplosionMissile4);
 			break;
 		case 8:
-			spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile5);
+			spriteElement.setTexture(pResourcesLoader->textureExplosionMissile5);
 			break;
 		case 10:
-			spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile6);
+			spriteElement.setTexture(pResourcesLoader->textureExplosionMissile6);
 			break;
 		case 12:
-			spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile7);
+			spriteElement.setTexture(pResourcesLoader->textureExplosionMissile7);
 			break;
 		case 14:
-			spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile8);
+			spriteElement.setTexture(pResourcesLoader->textureExplosionMissile8);
 			break;
 		case 16:
-			spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile9);
+			spriteElement.setTexture(pResourcesLoader->textureExplosionMissile9);
 			break;
 		case 18:
-			spriteExplosion.setTexture(pResourcesLoader->textureExplosionMissile10);
+			spriteElement.setTexture(pResourcesLoader->textureExplosionMissile10);
 			break;
 		default:
 			break;
 	}
 	momentDuCycle++;
-	rWindow.draw(spriteExplosion);
+	rWindow.draw(spriteElement);
 	if (momentDuCycle > 20){
 		manager->removeObjetAnnexe(this);
 		delete this;

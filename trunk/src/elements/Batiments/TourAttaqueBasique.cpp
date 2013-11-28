@@ -18,10 +18,9 @@ TourAttaqueBasique::TourAttaqueBasique(Coordonnees tCoord) : TourAttaque(tCoord)
 	pCibler = ComportementCiblage::ciblerPremier;
 	comportementChoisi = ComportementCiblage::Premier;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	textureTourAttaqueBasique = pResourcesLoader->textureTourAttaqueBasique;
-	spriteTourAttaqueBasique.setTexture(textureTourAttaqueBasique);
-	spriteTourAttaqueBasique.setScale(0.5,0.5);
-	spriteTourAttaqueBasique.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
+	spriteElement.setTexture(pResourcesLoader->textureTourAttaqueBasique);
+	spriteElement.setScale(0.5,0.5);
+	spriteElement.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
 	sonTirTourAttaqueBasique.setBuffer(pResourcesLoader->bufferTirTourAttaqueBasique);
 	sonTirTourAttaqueBasique.setVolume(40);
 	calculerValeursAmeliorees();
@@ -42,6 +41,6 @@ TourAttaqueBasique::~TourAttaqueBasique() {
 }
 
 void TourAttaqueBasique::dessiner(sf::RenderWindow & rWindow){
-	rWindow.draw(spriteTourAttaqueBasique);
+	rWindow.draw(spriteElement);
 }
 

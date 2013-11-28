@@ -10,9 +10,8 @@
 Mur::Mur(Coordonnees tCoord) : Batiment(tCoord) {
 	prix = 1;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	textureMur = pResourcesLoader->textureMur;
-	spriteMur.setTexture(textureMur);
-	spriteMur.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
+	spriteElement.setTexture(pResourcesLoader->textureMur);
+	spriteElement.setPosition((float)(tCoord.posX/40)*40,floor((float)(tCoord.posY/40))*40);
 }
 
 bool Mur::isTour()
@@ -31,5 +30,5 @@ Mur::~Mur() {
 
 
 void Mur::dessiner(sf::RenderWindow &pWindow){
-	pWindow.draw(spriteMur);
+	pWindow.draw(spriteElement);
 }

@@ -12,9 +12,9 @@ TirDeGlace::TirDeGlace(Coordonnees tCoord, Personnage* tCible, int tDommages, in
 	Projectile(tCoord, tCible, tDommages), rayonExplosion(tRayonExplosion) {
 	vitesse = 8;
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
-	spriteProjectile.setTexture(pResourcesLoader->textureTirDeGlace);
-	spriteProjectile.setScale(0.5,0.3);
-	spriteProjectile.setPosition(tCoord.posX,tCoord.posY);
+	spriteElement.setTexture(pResourcesLoader->textureTirDeGlace);
+	spriteElement.setScale(0.5,0.3);
+	spriteElement.setPosition(tCoord.posX,tCoord.posY);
 	rotation = 0;
 }
 
@@ -46,8 +46,8 @@ void TirDeGlace::avancer()
 		rotation = (float)atan((float)(newyproj - yperso)/(newxproj - xperso))*180/PI;
 		if ((newxproj - xperso)>0)
 			rotation +=180;
-		spriteProjectile.setRotation(rotation+180);
-		spriteProjectile.setPosition(newxproj, newyproj);
+		spriteElement.setRotation(rotation+180);
+		spriteElement.setPosition(newxproj, newyproj);
 	}
 }
 
@@ -74,7 +74,7 @@ void TirDeGlace::toucherEnnemi()
 }
 
 void TirDeGlace::dessiner(sf::RenderWindow & rWindow){
-	rWindow.draw(spriteProjectile);
+	rWindow.draw(spriteElement);
 }
 
 
