@@ -19,14 +19,14 @@ public:
 	virtual ~Batiment();
 	virtual bool verifierAchat();
 	void dessiner(sf::RenderWindow &pWindow)=0;
-	Coordonnees coordonnees;
 	virtual int getPrix();
 	Coordonnees getCoordonnees();
 	void virtual vendreBatiment();
-
 	virtual bool isTour() = 0;
+
 protected:
 	int prix;
+	Coordonnees coordonnees;
 	
 };
 
