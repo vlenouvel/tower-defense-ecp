@@ -36,8 +36,8 @@ void Personnage::avancer()
 			imageVitesse = 2;
 		int abscisseCible,ordonneeCible,abscissePerso,ordonneePerso,distanceCiblePerso;
 		while (imageVitesse > 0){
-			abscisseCible = chemin[0]->coordonneesCase.getPosX();
-			ordonneeCible = chemin[0]->coordonneesCase.getPosY();
+			abscisseCible = chemin[0]->getCoordonnees().getPosX();
+			ordonneeCible = chemin[0]->getCoordonnees().getPosY();
 			abscissePerso = coordonnees.getPosX();
 			ordonneePerso = coordonnees.getPosY();
 			distanceCiblePerso = (int)(sqrt((pow((float)abscisseCible - abscissePerso,2) + pow((float)ordonneeCible - ordonneePerso,2)))+0.5);
@@ -142,6 +142,15 @@ int Personnage::getVie()
 	return this->vie;
 }
 
+int Personnage::getTailleChemin()
+{
+	if(!chemin.empty())
+	{
+		return (int)chemin.size();
+	}
+	return 0;
+}
+
 Coordonnees Personnage::getCoordonnees()
 {
 	return this->coordonnees;
@@ -165,63 +174,63 @@ bool Personnage::trouverChemin(Carte * pCarte){
 	Case * pSortie = pCarte->pCaseSortie;
 	
 	//on traite d'abord la case d'entree
-	listeAParcourir.insert(std::pair<int,Case*>(pEntree->heuristique,pEntree));
-	pCarte->imageCarte[(int)floor((float)coordonnees.getPosX()/40)][(int)floor((float)coordonnees.getPosY()/40)]->distanceEntree = 0;
+	listeAParcourir.insert(std::pair<int,Case*>(pEntree->getHeuristique(),pEntree));
+	pCarte->imageCarte[(int)floor((float)coordonnees.getPosX()/40)][(int)floor((float)coordonnees.getPosY()/40)]->setDistanceEntree(0);
 
 	//boucle principale de l'algo. L'algo s'arrete dans deux cas : soit on atteint la sortie, soit on ne l'atteint pas et dans ce cas, 
 	//la liste a parcourir est vide
 	int X,Y;
 	while (!listeAParcourir.empty()){
 		myIterator = listeAParcourir.begin();
-		X = (int)floor((float)(myIterator->second)->coordonneesCase.getPosX()/40);
-		Y = (int)floor((float)(myIterator->second)->coordonneesCase.getPosY()/40);
-		pCarte->imageCarte[X][Y]->caseParcourue = true;
+		X = (int)floor((float)(myIterator->second)->getCoordonnees().getPosX()/40);
+		Y = (int)floor((float)(myIterator->second)->getCoordonnees().getPosY()/40);
+		pCarte->imageCarte[X][Y]->setParcourue(true);
 
 		//on etudie le nord, le sud, l'ouest et l'est par rapport a X,Y
 		//nord
 		if (Y>0){
-			if (((pCarte->imageCarte[X][Y-1])->caseParcourue == false) && (((pCarte->imageCarte[X][Y-1])->caseOccupee == false)||isVolant())){
-				(pCarte->imageCarte[X][Y-1])->distanceEntree = (pCarte->imageCarte[X][Y])->distanceEntree + 1;
-				(pCarte->imageCarte[X][Y-1])->caseParcourue = true;
-				if (((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
+			if ((!(pCarte->imageCarte[X][Y-1])->isParcourue()) && ((!(pCarte->imageCarte[X][Y-1])->isOccupee())||isVolant())){
+				(pCarte->imageCarte[X][Y-1])->setDistanceEntree((pCarte->imageCarte[X][Y])->getDistanceEntree() + 1);
+				(pCarte->imageCarte[X][Y-1])->setParcourue(true);
+				if (((pCarte->imageCarte[X][Y-1])->getCoordonnees().getPosX() == pSortie->getCoordonnees().getPosX())&&((pCarte->imageCarte[X][Y-1])->getCoordonnees().getPosY() == pSortie->getCoordonnees().getPosY())){
 					return true;
 				}
-				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X][Y-1])->distanceEntree + (pCarte->imageCarte[X][Y-1])->heuristique,pCarte->imageCarte[X][Y-1]));
+				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X][Y-1])->getDistanceEntree() + (pCarte->imageCarte[X][Y-1])->getHeuristique(),pCarte->imageCarte[X][Y-1]));
 			}
 		}
 		//sud
 		if(Y < pCarte->imageCarteY -1) {
-			if (((pCarte->imageCarte[X][Y+1])->caseParcourue == false) && (((pCarte->imageCarte[X][Y+1])->caseOccupee == false)|| isVolant())){
-				(pCarte->imageCarte[X][Y+1])->distanceEntree = (pCarte->imageCarte[X][Y])->distanceEntree + 1;
-				(pCarte->imageCarte[X][Y+1])->caseParcourue = true;
-				if (((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
+			if ((!(pCarte->imageCarte[X][Y+1])->isParcourue()) && ((!(pCarte->imageCarte[X][Y+1])->isOccupee())|| isVolant())){
+				(pCarte->imageCarte[X][Y+1])->setDistanceEntree((pCarte->imageCarte[X][Y])->getDistanceEntree() + 1);
+				(pCarte->imageCarte[X][Y+1])->setParcourue(true);
+				if (((pCarte->imageCarte[X][Y+1])->getCoordonnees().getPosX() == pSortie->getCoordonnees().getPosX())&&((pCarte->imageCarte[X][Y+1])->getCoordonnees().getPosY() == pSortie->getCoordonnees().getPosY())){
 					return true;
 				}
-				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X][Y+1])->distanceEntree + (pCarte->imageCarte[X][Y+1])->heuristique,(pCarte->imageCarte[X][Y+1])));
+				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X][Y+1])->getDistanceEntree() + (pCarte->imageCarte[X][Y+1])->getHeuristique(),(pCarte->imageCarte[X][Y+1])));
 			}
 		}
 		//ouest
 		if (X>0){
-			if (((pCarte->imageCarte[X-1][Y])->caseParcourue == false) && (((pCarte->imageCarte[X-1][Y])->caseOccupee == false)||isVolant())){
-				(pCarte->imageCarte[X-1][Y])->distanceEntree = (pCarte->imageCarte[X][Y])->distanceEntree + 1;
-				(pCarte->imageCarte[X-1][Y])->caseParcourue = true;
-				if (((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
+			if ((!(pCarte->imageCarte[X-1][Y])->isParcourue()) && ((!(pCarte->imageCarte[X-1][Y])->isOccupee())||isVolant())){
+				(pCarte->imageCarte[X-1][Y])->setDistanceEntree((pCarte->imageCarte[X][Y])->getDistanceEntree() + 1);
+				(pCarte->imageCarte[X-1][Y])->setParcourue(true);
+				if (((pCarte->imageCarte[X-1][Y])->getCoordonnees().getPosX() == pSortie->getCoordonnees().getPosX())&&((pCarte->imageCarte[X-1][Y])->getCoordonnees().getPosY() == pSortie->getCoordonnees().getPosY())){
 					return true;
 				}
-				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X-1][Y])->distanceEntree + (pCarte->imageCarte[X-1][Y])->heuristique,(pCarte->imageCarte[X-1][Y])));
+				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X-1][Y])->getDistanceEntree() + (pCarte->imageCarte[X-1][Y])->getHeuristique(),(pCarte->imageCarte[X-1][Y])));
 			}
 		}
 		//est
 		//if (X<sizeof(pCarte->imageCarte[0])){
 		if (X < pCarte->imageCarteX - 1) {
-			if (((pCarte->imageCarte[X+1][Y])->caseParcourue == false) && (((pCarte->imageCarte[X+1][Y])->caseOccupee == false)||isVolant())){
-				(pCarte->imageCarte[X+1][Y])->distanceEntree = (pCarte->imageCarte[X][Y])->distanceEntree + 1;
-				(pCarte->imageCarte[X+1][Y])->caseParcourue = true;
-				if (((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X+1][Y])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){		
+			if ((!(pCarte->imageCarte[X+1][Y])->isParcourue()) && ((!(pCarte->imageCarte[X+1][Y])->isOccupee())||isVolant())){
+				(pCarte->imageCarte[X+1][Y])->setDistanceEntree((pCarte->imageCarte[X][Y])->getDistanceEntree() + 1);
+				(pCarte->imageCarte[X+1][Y])->setParcourue(true);
+				if (((pCarte->imageCarte[X+1][Y])->getCoordonnees().getPosX() == pSortie->getCoordonnees().getPosX())&&((pCarte->imageCarte[X+1][Y])->getCoordonnees().getPosY() == pSortie->getCoordonnees().getPosY())){
 					return true;
 				}
 
-				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X+1][Y])->distanceEntree + (pCarte->imageCarte[X+1][Y])->heuristique,(pCarte->imageCarte[X+1][Y])));
+				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X+1][Y])->getDistanceEntree() + (pCarte->imageCarte[X+1][Y])->getHeuristique(),(pCarte->imageCarte[X+1][Y])));
 			}
 		}
 		listeAParcourir.erase(myIterator);
@@ -239,8 +248,8 @@ void Personnage::ecrireChemin(Carte * pCarte){
 	trace = pCarte->pCaseSortie;
 	int X;
 	int Y;
-	X = (int)floor((float)trace->coordonneesCase.getPosX()/40);
-	Y = (int)floor((float)trace->coordonneesCase.getPosY()/40);
+	X = (int)floor((float)trace->getCoordonnees().getPosX()/40);
+	Y = (int)floor((float)trace->getCoordonnees().getPosY()/40);
 	bool jeton;
 	cheminIterator = chemin.begin();
 	chemin.insert(cheminIterator, trace);
@@ -252,28 +261,28 @@ void Personnage::ecrireChemin(Carte * pCarte){
 		while (jeton){
 			//nord
 			if ((Y>0)&&(jeton == true)&&(ordre%4 == 0)){
-				if ((pCarte->imageCarte[X][Y - 1]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X][Y - 1]->caseParcourue == true)){
+				if ((pCarte->imageCarte[X][Y - 1]->getDistanceEntree() == (pCarte->imageCarte[X][Y]->getDistanceEntree() - 1))&&(pCarte->imageCarte[X][Y - 1]->isParcourue())){
 					trace = pCarte->imageCarte[X][Y - 1];
 					jeton = false;
 				}
 			}
 			//puis sud
 			if((Y < pCarte->imageCarteY - 1)&&(jeton == true)&&(ordre%4 == 1)) {
-				if ((pCarte->imageCarte[X][Y + 1]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X][Y + 1]->caseParcourue == true)){
+				if ((pCarte->imageCarte[X][Y + 1]->getDistanceEntree() == (pCarte->imageCarte[X][Y]->getDistanceEntree() - 1))&&(pCarte->imageCarte[X][Y + 1]->isParcourue())){
 					trace = pCarte->imageCarte[X][Y + 1];
 					jeton = false;
 				}
 			}
 			//puis ouest
 			if ((X>0)&&(jeton == true)&&(ordre%4 == 2)){
-				if ((pCarte->imageCarte[X - 1][Y]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X - 1][Y]->caseParcourue == true)){
+				if ((pCarte->imageCarte[X - 1][Y]->getDistanceEntree() == (pCarte->imageCarte[X][Y]->getDistanceEntree() - 1))&&(pCarte->imageCarte[X - 1][Y]->isParcourue())){
 					trace = pCarte->imageCarte[X - 1][Y];
 					jeton = false;
 				}
 			}
 			//et enfin est
 			if((X < pCarte->imageCarteX - 1)&&(jeton == true)&&(ordre%4 == 3)) {
-				if ((pCarte->imageCarte[X + 1][Y]->distanceEntree == (pCarte->imageCarte[X][Y]->distanceEntree - 1))&&(pCarte->imageCarte[X + 1][Y]->caseParcourue == true)){
+				if ((pCarte->imageCarte[X + 1][Y]->getDistanceEntree() == (pCarte->imageCarte[X][Y]->getDistanceEntree()- 1))&&(pCarte->imageCarte[X + 1][Y]->isParcourue())){
 					trace = pCarte->imageCarte[X + 1][Y];
 					jeton = false;
 				}
@@ -281,8 +290,8 @@ void Personnage::ecrireChemin(Carte * pCarte){
 			ordre++;
 		}
 		chemin.insert(cheminIterator, trace);
-		X = (int)floor((float)trace->coordonneesCase.getPosX()/40);
-		Y = (int)floor((float)trace->coordonneesCase.getPosY()/40);
+		X = (int)floor((float)trace->getCoordonnees().getPosX()/40);
+		Y = (int)floor((float)trace->getCoordonnees().getPosY()/40);
 	}
 	chemin.erase(chemin.begin());
 	pCarte->nettoyerCarte();

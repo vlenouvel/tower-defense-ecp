@@ -39,13 +39,12 @@ public:
 	int getPoucentageVitesseMalus();
 	void setPourcentageVitesseMalus(int malus);
 	bool virtual isVolant();
+	int virtual getTailleChemin();
 
 	//Pathfinding
 	bool trouverCheminPersonnage(Carte * pCarte);
 	void ecrireCheminPersonnage(Carte * pCarte);
-	//Pathfinding
-	std::vector<Case *> chemin;
-	std::vector<Case *>::iterator cheminIterator;
+
 protected:
 	// ce booleen sert a savoir si le personnage est volant, c'est-a-dire s'il n'a pas a recalculer son chemin si une
 	// nouvelle tour est cree
@@ -58,6 +57,9 @@ protected:
 	int gain;
 	sf::RectangleShape barreDeVieVerte;
 	sf::RectangleShape barreDeVieRouge;
+	//Pathfinding
+	std::vector<Case *> chemin;
+	std::vector<Case *>::iterator cheminIterator;
 
 
 	

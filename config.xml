@@ -14,13 +14,13 @@
 		<tourFrost>
 			<prix>80</prix>
 			<attaque>0</attaque>
-			<portee>500</portee>
+			<portee>200</portee>
 			<temps>2000</temps>
 		</tourFrost>
 		<tourCanon>
 			<prix>50</prix>
 			<attaque>10</attaque>
-			<portee>500</portee>
+			<portee>300</portee>
 			<temps>2000</temps>	
 			<rayonExplosion>75</rayonExplosion>
 		</tourCanon>

@@ -42,6 +42,7 @@ public:
 
 private:
 	void construireBatiment(TableauDeBord::typeBatiment type, Coordonnees coord);
+	void recalculerPathfinding();
 	TableauDeBord::typeBatiment batimentChoisi;
 	App* pApp;
 	sf::RectangleShape arriveCase;

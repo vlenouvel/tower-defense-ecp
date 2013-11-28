@@ -33,8 +33,8 @@ void TourAttaque::changerComportementCiblage(ComportementCiblage::Comportement n
 {
 	comportementChoisi = nouveauComportement;
 	switch(nouveauComportement){
-	case ComportementCiblage::Premier:
-		pCibler = ComportementCiblage::ciblerPremier;
+	case ComportementCiblage::PlusProche:
+		pCibler = ComportementCiblage::ciblerPlusProche;
 		break;
 	case ComportementCiblage::PlusFaible:
 		pCibler = ComportementCiblage::ciblerPlusFaible;

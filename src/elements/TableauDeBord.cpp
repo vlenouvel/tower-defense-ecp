@@ -77,22 +77,22 @@ TableauDeBord::TableauDeBord() {
 
 	spriteTourSelectionnee.setTexture(pResourcesLoader->textureSelection);
 
-	texteComportementPremier.setFont(font);
-	texteComportementPremier.setCharacterSize(7);
-	texteComportementPremier.setColor(sf::Color::White);
-	texteComportementPremier.setStyle(sf::Text::Bold);
-	texteComportementPremier.setPosition(710, 470);
-	texteComportementPremier.setString("Plus ancien");
+	texteComportementPlusProche.setFont(font);
+	texteComportementPlusProche.setCharacterSize(6);
+	texteComportementPlusProche.setColor(sf::Color::White);
+	texteComportementPlusProche.setStyle(sf::Text::Bold);
+	texteComportementPlusProche.setPosition(710, 470);
+	texteComportementPlusProche.setString("Plus Proche");
 
 	texteComportementMoinsVie.setFont(font);
-	texteComportementMoinsVie.setCharacterSize(7);
+	texteComportementMoinsVie.setCharacterSize(6);
 	texteComportementMoinsVie.setColor(sf::Color::White);
 	texteComportementMoinsVie.setStyle(sf::Text::Bold);
 	texteComportementMoinsVie.setPosition(710, 480);
 	texteComportementMoinsVie.setString("Moins de vie");
 
 	texteComportementZone.setFont(font);
-	texteComportementZone.setCharacterSize(7);
+	texteComportementZone.setCharacterSize(6);
 	texteComportementZone.setColor(sf::Color::White);
 	texteComportementZone.setStyle(sf::Text::Bold);
 	texteComportementZone.setPosition(710, 490);
@@ -100,7 +100,7 @@ TableauDeBord::TableauDeBord() {
 
 
 	texteComportementRandom.setFont(font);
-	texteComportementRandom.setCharacterSize(7);
+	texteComportementRandom.setCharacterSize(6);
 	texteComportementRandom.setColor(sf::Color::White);
 	texteComportementRandom.setStyle(sf::Text::Bold);
 	texteComportementRandom.setPosition(710, 500);
@@ -147,14 +147,14 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 			if(tourSelectionnee->isTourAttaque())
 			{
 				TourAttaque* tourAttaqueSelectionnee = (TourAttaque*)tourSelectionnee;
-				texteComportementPremier.setColor(sf::Color::White);
+				texteComportementPlusProche.setColor(sf::Color::White);
 				texteComportementMoinsVie.setColor(sf::Color::White);
 				texteComportementZone.setColor(sf::Color::White);
 				texteComportementRandom.setColor(sf::Color::White);
 				switch(tourAttaqueSelectionnee->getComportement())
 				{
-				case ComportementCiblage::Premier:
-					texteComportementPremier.setColor(sf::Color::Red);
+				case ComportementCiblage::PlusProche:
+					texteComportementPlusProche.setColor(sf::Color::Red);
 					break;
 				case ComportementCiblage::PlusFaible:
 					texteComportementMoinsVie.setColor(sf::Color::Red);
@@ -172,7 +172,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 				texteDommagesTour.setString("Dommages : " + stringDommagesTour.str());
 
 				pWindow.draw(texteDommagesTour);
-				pWindow.draw(texteComportementPremier);
+				pWindow.draw(texteComportementPlusProche);
 				pWindow.draw(texteComportementMoinsVie);
 				pWindow.draw(texteComportementZone);
 				pWindow.draw(texteComportementRandom);

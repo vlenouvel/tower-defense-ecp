@@ -14,6 +14,7 @@
 #include "math.h"
 #include <stdlib.h>
 #include "../ConfigManager.h"
+#include <cassert>
 
 
 class ComportementCiblage {
@@ -23,9 +24,8 @@ public:
 	static Personnage* ciblerPlusProche(std::vector<Personnage*> ciblesPossibles);
 	static Personnage* ciblerPlusFaible(std::vector<Personnage*> ciblesPossibles);
 	static Personnage* ciblerZone(std::vector<Personnage*> ciblesPossibles);
-	static Personnage* ciblerPremier(std::vector<Personnage*> ciblesPossibles);
 	static Personnage* ciblerRandom(std::vector<Personnage*> ciblesPossibles);
-	enum Comportement {PlusFaible, Premier, Zone, Random};
+	enum Comportement {PlusFaible, PlusProche, Zone, Random};
 };
 
 #endif /* COMPORTEMENTCIBLAGE_H_ */
