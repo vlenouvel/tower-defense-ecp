@@ -104,7 +104,7 @@ TableauDeBord::TableauDeBord() {
 	texteComportementRandom.setColor(sf::Color::White);
 	texteComportementRandom.setStyle(sf::Text::Bold);
 	texteComportementRandom.setPosition(710, 500);
-	texteComportementRandom.setString("Ciblage aléatoire");
+	texteComportementRandom.setString("Ciblage aleatoire");
 
 }
 
