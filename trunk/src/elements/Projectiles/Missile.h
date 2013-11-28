@@ -17,7 +17,6 @@ class Missile: public Projectile {
 public:
 	Missile(Coordonnees tCoord, Personnage* tCible, int tDommages, int tRayonExplosion);
 	void avancer();
-	void toucherEnnemi();
 	virtual ~Missile();
 	void dessiner(sf::RenderWindow & rWindow);
 
@@ -26,6 +25,7 @@ private:
 	int momentDuCycle;
 	float rotation;
 	sf::Sprite spriteTrainee;
+	void toucherEnnemi();
 };
 
 #endif /* MISSILE_H_ */
