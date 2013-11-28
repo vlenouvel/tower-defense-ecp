@@ -82,37 +82,29 @@
 		</boss>
 	</personnages>
 	<vagues>
-		<vague1>
-			<typePersos>1</typePersos>
+		<vagueNormal>
 			<nombre>10</nombre>
-		</vague1>
-		<vague2>
-			<typePersos>2</typePersos>
+		</vagueNormal>
+		<vagueRapide>
 			<nombre>10</nombre>
-		</vague2>
-		<vague3>
-			<typePersos>4</typePersos>
+		</vagueRapide>
+		<vagueSolide>
 			<nombre>10</nombre>
-		</vague3>
-		<vague4>
-			<typePersos>7</typePersos>
+		</vagueSolide>
+		<vagueVolant>
 			<nombre>6</nombre>
-		</vague4>
-		<vague5>
-			<typePersos>6</typePersos>
-			<nombre>10</nombre>
-		</vague5>
-		<vague6>
-			<typePersos>5</typePersos>
+		</vagueVolant>
+		<vagueGenerateur>
 			<nombre>4</nombre>
-		</vague6>
-		<vague7>
-			<typePersos>3</typePersos>
+		</vagueGenerateur>
+		<vagueAccelerant>
 			<nombre>10</nombre>
-		</vague7>
-		<vague8>
-			<typePersos>8</typePersos>
+		</vagueAccelerant>
+		<vagueDouble>
+			<nombre>10</nombre>
+		</vagueDouble>
+		<vagueBoss>
 			<nombre>1</nombre>
-		</vague8>
+		</vagueBoss>
 	</vagues>
 </config>

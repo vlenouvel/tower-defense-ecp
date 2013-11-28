@@ -126,37 +126,29 @@ void ConfigManager::loadConfig()
 
 	tinyxml2::XMLElement* vagues = config->FirstChildElement("vagues");
 
-	tinyxml2::XMLElement* vague1 = vagues->FirstChildElement("vague1");
-	mapVague1["typePersos"] = atoi(vague1->FirstChildElement("typePersos")->GetText());
-	mapVague1["nombre"] = atoi(vague1->FirstChildElement("nombre")->GetText());
+	tinyxml2::XMLElement* vagueNormal = vagues->FirstChildElement("vagueNormal");
+	mapVagueNormal["nombre"] = atoi(vagueNormal->FirstChildElement("nombre")->GetText());
 
-	tinyxml2::XMLElement* vague2 = vagues->FirstChildElement("vague2");
-	mapVague2["typePersos"] = atoi(vague2->FirstChildElement("typePersos")->GetText());
-	mapVague2["nombre"] = atoi(vague2->FirstChildElement("nombre")->GetText());
+	tinyxml2::XMLElement* vagueRapide = vagues->FirstChildElement("vagueRapide");
+	mapVagueRapide["nombre"] = atoi(vagueRapide->FirstChildElement("nombre")->GetText());
 
-	tinyxml2::XMLElement* vague3 = vagues->FirstChildElement("vague3");
-	mapVague3["typePersos"] = atoi(vague3->FirstChildElement("typePersos")->GetText());
-	mapVague3["nombre"] = atoi(vague3->FirstChildElement("nombre")->GetText());
+	tinyxml2::XMLElement* vagueSolide = vagues->FirstChildElement("vagueSolide");
+	mapVagueSolide["nombre"] = atoi(vagueSolide->FirstChildElement("nombre")->GetText());
 
-	tinyxml2::XMLElement* vague4 = vagues->FirstChildElement("vague4");
-	mapVague4["typePersos"] = atoi(vague4->FirstChildElement("typePersos")->GetText());
-	mapVague4["nombre"] = atoi(vague4->FirstChildElement("nombre")->GetText());
+	tinyxml2::XMLElement* vagueVolant = vagues->FirstChildElement("vagueVolant");
+	mapVagueVolant["nombre"] = atoi(vagueVolant->FirstChildElement("nombre")->GetText());
 
-	tinyxml2::XMLElement* vague5 = vagues->FirstChildElement("vague5");
-	mapVague5["typePersos"] = atoi(vague5->FirstChildElement("typePersos")->GetText());
-	mapVague5["nombre"] = atoi(vague5->FirstChildElement("nombre")->GetText());
+	tinyxml2::XMLElement* vagueGenerateur = vagues->FirstChildElement("vagueGenerateur");
+	mapVagueGenerateur["nombre"] = atoi(vagueGenerateur->FirstChildElement("nombre")->GetText());
 
-	tinyxml2::XMLElement* vague6 = vagues->FirstChildElement("vague6");
-	mapVague6["typePersos"] = atoi(vague6->FirstChildElement("typePersos")->GetText());
-	mapVague6["nombre"] = atoi(vague6->FirstChildElement("nombre")->GetText());
+	tinyxml2::XMLElement* vagueAccelerant = vagues->FirstChildElement("vagueAccelerant");
+	mapVagueAccelerant["nombre"] = atoi(vagueAccelerant->FirstChildElement("nombre")->GetText());
 
-	tinyxml2::XMLElement* vague7 = vagues->FirstChildElement("vague7");
-	mapVague7["typePersos"] = atoi(vague7->FirstChildElement("typePersos")->GetText());
-	mapVague7["nombre"] = atoi(vague7->FirstChildElement("nombre")->GetText());
+	tinyxml2::XMLElement* vagueDouble = vagues->FirstChildElement("vagueDouble");
+	mapVagueDouble["nombre"] = atoi(vagueDouble->FirstChildElement("nombre")->GetText());
 
-	tinyxml2::XMLElement* vague8 = vagues->FirstChildElement("vague8");
-	mapVague8["typePersos"] = atoi(vague8->FirstChildElement("typePersos")->GetText());
-	mapVague8["nombre"] = atoi(vague8->FirstChildElement("nombre")->GetText());
+	tinyxml2::XMLElement* vagueBoss = vagues->FirstChildElement("vagueBoss");
+	mapVagueBoss["nombre"] = atoi(vagueBoss->FirstChildElement("nombre")->GetText());
 }
 
 ConfigManager::ConfigManager() {
