@@ -30,7 +30,7 @@ void ProjectileBasique::dessiner(sf::RenderWindow & rWindow){
 
 
 ProjectileBasique::~ProjectileBasique() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 void ProjectileBasique::avancer()

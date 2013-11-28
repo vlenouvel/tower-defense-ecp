@@ -38,7 +38,7 @@ void TourAttaqueBasique::attaque(Personnage* (*fonctionCiblage)(std::vector<Pers
 }
 
 TourAttaqueBasique::~TourAttaqueBasique() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 void TourAttaqueBasique::dessiner(sf::RenderWindow & rWindow){

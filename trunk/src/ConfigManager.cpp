@@ -7,8 +7,6 @@
 
 #include "ConfigManager.h"
 
-using namespace std;
-
 // Pointeur vers l'unique instance du ResourceManager
 ConfigManager* configManagerPointeur = 0;
 // instance = true si une instance existe deja
@@ -33,6 +31,7 @@ void ConfigManager::loadConfig()
 	fps = atoi(config->FirstChildElement("fps")->GetText());
 	argent = atoi(config->FirstChildElement("argent")->GetText());
 	vie = atoi(config->FirstChildElement("vie")->GetText());
+	tauxRevente = atoi(config->FirstChildElement("tauxRevente")->GetText());
 
 	tinyxml2::XMLElement* batiments = config->FirstChildElement("batiments");
 
@@ -165,6 +164,6 @@ ConfigManager::ConfigManager() {
 }
 
 ConfigManager::~ConfigManager() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 

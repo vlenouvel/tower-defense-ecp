@@ -10,9 +10,7 @@
  */
 
 #include "App.h"
-#include "ConfigManager.h"
 
-using namespace std;
 
 
 App::App() {
@@ -104,7 +102,7 @@ void App::render() {
 	pEtatActuel->dessiner(rWindow);
 
 	// Affichage du nombre de FPS
-	ostringstream ss;
+	std::ostringstream ss;
 	ss << fpsReels;
 	texteFPS.setString(ss.str());
 	window.draw(texteFPS);

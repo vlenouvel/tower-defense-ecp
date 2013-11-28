@@ -43,9 +43,9 @@ void EtatMenu::dessiner(sf::RenderWindow &pWindow)
 	menu->dessiner(pWindow);
 }
 EtatMenu::~EtatMenu() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 void EtatMenu::update(){
-	// TODO ou rien
+	// VIDE
 }
 

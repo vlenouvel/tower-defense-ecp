@@ -10,9 +10,7 @@
 
 #include "../Projectile.h"
 #include "ExplosionMissile.h"
-#include "../../ResourceManager.h"
 #include "math.h"
-#include "../../ResourcesLoader.h"
 #include <SFML/Graphics.hpp>
 
 class Missile: public Projectile {

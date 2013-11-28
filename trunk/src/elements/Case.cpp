@@ -18,5 +18,5 @@ void Case::setHeuristique(Coordonnees * pSortie){
 }
 
 Case::~Case() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }

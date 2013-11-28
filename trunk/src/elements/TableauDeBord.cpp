@@ -109,11 +109,13 @@ TableauDeBord::TableauDeBord() {
 }
 
 TableauDeBord::~TableauDeBord() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
-	ResourceManager* manager = ResourceManager::getInstance();
+	ResourceManager* pResourceManager = ResourceManager::getInstance();
+	ConfigManager * pConfigManager = ConfigManager::getInstance();
+	int tauxRevente = pConfigManager->tauxRevente;
 
 	pWindow.draw(spriteTableauDeBord);
 	pWindow.draw(texteTableauDeBord);
@@ -123,22 +125,22 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 	pWindow.draw(spriteTourSupport);
 	pWindow.draw(spriteMur);
 
-	if (manager->getBatimentSelectionne()!=0)
+	if (pResourceManager->getBatimentSelectionne()!=0)
 	{
-		int coordTourX = manager->getBatimentSelectionne()->getCoordonnees().getPosX()-20;
-		int coordTourY = manager->getBatimentSelectionne()->getCoordonnees().getPosY()-20;
+		int coordTourX = pResourceManager->getBatimentSelectionne()->getCoordonnees().getPosX()-20;
+		int coordTourY = pResourceManager->getBatimentSelectionne()->getCoordonnees().getPosY()-20;
 		spriteTourSelectionnee.setPosition(coordTourX, coordTourY);
-		if(manager->getBatimentSelectionne()->isTour())
+		if(pResourceManager->getBatimentSelectionne()->isTour())
 		{
-			Tour* tourSelectionnee = (Tour*)manager->getBatimentSelectionne();
-			ostringstream stringNiveauTour;
+			Tour* tourSelectionnee = (Tour*)pResourceManager->getBatimentSelectionne();
+			std::ostringstream stringNiveauTour;
 			stringNiveauTour << tourSelectionnee->getNiveau();
 			texteNiveauTour.setString("Niveau tour : " + stringNiveauTour.str());
 			pWindow.draw(texteNiveauTour);
 			pWindow.draw(spriteLevelUpBouton);
 
-			ostringstream stringCoutAmelioration;
-			stringCoutAmelioration << (int)(tourSelectionnee->getPrix()*0.75); // TODO Verifier coherence avec "verifierAmelioration()"
+			std::ostringstream stringCoutAmelioration;
+			stringCoutAmelioration << (int)(tourSelectionnee->getPrix()*tauxRevente/100.); // TODO Verifier coherence avec "verifierAmelioration()"
 			texteCoutAmelioration.setString("Ameliorer : " + stringCoutAmelioration.str() + "$");
 			pWindow.draw(texteCoutAmelioration);
 
@@ -165,7 +167,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 					break;
 				}
 
-				ostringstream stringDommagesTour;
+				std::ostringstream stringDommagesTour;
 				stringDommagesTour << (tourAttaqueSelectionnee)->getDommages();
 				texteDommagesTour.setString("Dommages : " + stringDommagesTour.str());
 
@@ -176,8 +178,8 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 				pWindow.draw(texteComportementRandom);
 			}
 		}
-		ostringstream stringPrixDeVente;
-		stringPrixDeVente << (int)(manager->getBatimentSelectionne()->getPrix()*0.75); //TODO Coherence avec "vendreTour()"
+		std::ostringstream stringPrixDeVente;
+		stringPrixDeVente << (int)(pResourceManager->getBatimentSelectionne()->getPrix()*tauxRevente/100.); //TODO Coherence avec "vendreTour()"
 		textePrixDeVente.setString("Vendre : " + stringPrixDeVente.str() + "$");
 		pWindow.draw(spriteSellBouton);
 

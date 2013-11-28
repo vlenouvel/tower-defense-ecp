@@ -8,8 +8,7 @@
 #include "Coordonnees.h"
 
 Coordonnees::Coordonnees(int x,int y) : posX(x), posY(y) {
-	// TODO Auto-generated constructor stub
-
+	// VIDE
 }
 
 int Coordonnees::getPosX()
@@ -33,6 +32,6 @@ void Coordonnees::setPosY(int y)
 }
 
 Coordonnees::~Coordonnees() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 

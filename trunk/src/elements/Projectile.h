@@ -11,7 +11,6 @@
 #include "ElementGraphique.h"
 #include "ElementJeu.h"
 #include "Coordonnees.h"
-#include <iostream>
 #include "Personnage.h"
 
 class Projectile: public ElementGraphique, public ElementJeu {

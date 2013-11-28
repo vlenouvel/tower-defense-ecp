@@ -10,6 +10,8 @@
 
 #include "TourAttaque.h"
 #include "../Projectiles/Missile.h"
+#include <cmath>
+
 
 class CanonLourd: public TourAttaque {
 public:

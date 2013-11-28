@@ -36,7 +36,7 @@ ResourcesLoader::ResourcesLoader() {
 }
 
 ResourcesLoader::~ResourcesLoader() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 // Charge toutes les textures
 void ResourcesLoader::ChargerTextures() {

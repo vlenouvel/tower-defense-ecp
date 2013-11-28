@@ -8,7 +8,6 @@
 #ifndef CONFIGMANAGER_H_
 #define CONFIGMANAGER_H_
 
-#include <iostream>
 #include "tinyxml2.h"
 #include <map>
 #include <string>
@@ -21,6 +20,7 @@ public:
 	int fps;
 	int argent;
 	int vie;
+	int tauxRevente;
 	std::map<std::string, int> mapTourBasique;
 	std::map<std::string, int> mapTourCanon;
 	std::map<std::string, int> mapTourDeGlace;

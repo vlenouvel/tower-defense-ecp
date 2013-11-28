@@ -8,7 +8,6 @@
 #include "Tour.h"
 #include "../../ResourceManager.h"
 #include "../../ResourcesLoader.h"
-#include <iostream>
 Tour::Tour(Coordonnees tCoord) : Batiment(tCoord), niveau(1) {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
 	sonCreationTour.setBuffer(pResourcesLoader->bufferCreationTour);
@@ -18,17 +17,20 @@ Tour::Tour(Coordonnees tCoord) : Batiment(tCoord), niveau(1) {
 void Tour::monterNiveau()
 {
 	ResourceManager* pResourceManager = ResourceManager::getInstance();
-	pResourceManager->getRessources()->perdreArgent((int)(prix*0.75));
+	ConfigManager *pConfigManager = ConfigManager::getInstance();
+	int tauxRevente = pConfigManager->tauxRevente;
+	pResourceManager->getRessources()->perdreArgent((int)(prix*tauxRevente/100.));
 	niveau++;
-	prix += (int)(prix*0.75);
+	prix += (int)(prix*tauxRevente/100.);
 }
 
 Tour::~Tour() {
 }
 
 void Tour::dessiner(sf::RenderWindow &pWindow){
-	// TO DO
+	// VIDE
 }
+
 
 // Verifie le jouer a assez d'argent pour ameliorer sa tour d'un niveau
 bool Tour::verifierAmelioration() {
@@ -36,10 +38,9 @@ bool Tour::verifierAmelioration() {
 	ResourceManager* manager = ResourceManager::getInstance();
 
 	int argent = manager->getRessources()->getArgent();
-
-	// TODO Revoir prix d'amelioration de tour
-	// TODO Verifier coherence avec affichage
-	return(argent >= (int)(prix*0.75));
+	ConfigManager *pConfigManager = ConfigManager::getInstance();
+		int tauxRevente = pConfigManager->tauxRevente;
+	return(argent >= (int)(prix*tauxRevente/100.));
 }
 
 int Tour::getNiveau()

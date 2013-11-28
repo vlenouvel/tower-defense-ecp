@@ -6,9 +6,6 @@
  */
 
 #include "CanonLourd.h"
-#include <iostream>
-#include <cmath>
-
 
 CanonLourd::CanonLourd(Coordonnees tCoord) : TourAttaque(tCoord) {
 	pCibler = ComportementCiblage::ciblerPremier;
@@ -40,7 +37,7 @@ void CanonLourd::attaque(Personnage* (*fonctionCiblage)(std::vector<Personnage*>
 }
 
 CanonLourd::~CanonLourd() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 void CanonLourd::dessiner(sf::RenderWindow & rWindow){

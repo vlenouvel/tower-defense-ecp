@@ -74,6 +74,6 @@ void EtatScores::lireMeilleursScores()
 }
 
 EtatScores::~EtatScores() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 

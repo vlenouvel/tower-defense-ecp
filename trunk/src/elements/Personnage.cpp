@@ -82,7 +82,7 @@ void Personnage::mourir()
 
 	// Also remove all projectiles going for that personnage
 	std::vector<Projectile*> projectileConteneur = manager->getProjectile();
-	vector<Projectile*>::iterator projectileIterator;
+	std::vector<Projectile*>::iterator projectileIterator;
 	for(projectileIterator = projectileConteneur.begin() ; projectileIterator!= projectileConteneur.end() ; projectileIterator++)
 	{
 		Projectile* pProjo = *projectileIterator;
@@ -112,7 +112,7 @@ void Personnage::arriver() {
 
 	// Also remove all projectiles going for that personnage
 	std::vector<Projectile*> projectileConteneur = manager->getProjectile();
-	vector<Projectile*>::iterator projectileIterator;
+	std::vector<Projectile*>::iterator projectileIterator;
 	for(projectileIterator = projectileConteneur.begin() ; projectileIterator!= projectileConteneur.end() ; projectileIterator++)
 	{
 		Projectile* pProjo = *projectileIterator;
@@ -126,7 +126,7 @@ void Personnage::arriver() {
 }
 
 Personnage::~Personnage() {
-	// TODO Auto-generated destructor stub.
+	// VIDE
 }
 
 void Personnage::dessiner(sf::RenderWindow &pWindow)
@@ -157,15 +157,15 @@ Coordonnees Personnage::getCoordonnees()
 bool Personnage::trouverChemin(Carte * pCarte){
 
 	//on initialise la liste triee qui va contenir la suite de case a analyser avec la case d'entree
-	multimap<int,Case*> listeAParcourir;
-	multimap<int,Case*>::iterator myIterator;
+	std::multimap<int,Case*> listeAParcourir;
+	std::multimap<int,Case*>::iterator myIterator;
 	
 	//attention, le terme "entree" designe ici la position du personnage a l'endroit ou l'algorithme est invoque
 	Case * pEntree = pCarte->imageCarte[(int)floor((float)coordonnees.getPosX()/40)][(int)floor((float)coordonnees.getPosY()/40)];
 	Case * pSortie = pCarte->pCaseSortie;
 	
 	//on traite d'abord la case d'entree
-	listeAParcourir.insert(pair<int,Case*>(pEntree->heuristique,pEntree));
+	listeAParcourir.insert(std::pair<int,Case*>(pEntree->heuristique,pEntree));
 	pCarte->imageCarte[(int)floor((float)coordonnees.getPosX()/40)][(int)floor((float)coordonnees.getPosY()/40)]->distanceEntree = 0;
 
 	//boucle principale de l'algo. L'algo s'arrete dans deux cas : soit on atteint la sortie, soit on ne l'atteint pas et dans ce cas, 
@@ -186,7 +186,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 				if (((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y-1])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
 					return true;
 				}
-				listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X][Y-1])->distanceEntree + (pCarte->imageCarte[X][Y-1])->heuristique,pCarte->imageCarte[X][Y-1]));
+				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X][Y-1])->distanceEntree + (pCarte->imageCarte[X][Y-1])->heuristique,pCarte->imageCarte[X][Y-1]));
 			}
 		}
 		//sud
@@ -197,7 +197,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 				if (((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X][Y+1])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
 					return true;
 				}
-				listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X][Y+1])->distanceEntree + (pCarte->imageCarte[X][Y+1])->heuristique,(pCarte->imageCarte[X][Y+1])));
+				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X][Y+1])->distanceEntree + (pCarte->imageCarte[X][Y+1])->heuristique,(pCarte->imageCarte[X][Y+1])));
 			}
 		}
 		//ouest
@@ -208,7 +208,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 				if (((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosX() == pSortie->coordonneesCase.getPosX())&&((pCarte->imageCarte[X-1][Y])->coordonneesCase.getPosY() == pSortie->coordonneesCase.getPosY())){
 					return true;
 				}
-				listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X-1][Y])->distanceEntree + (pCarte->imageCarte[X-1][Y])->heuristique,(pCarte->imageCarte[X-1][Y])));
+				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X-1][Y])->distanceEntree + (pCarte->imageCarte[X-1][Y])->heuristique,(pCarte->imageCarte[X-1][Y])));
 			}
 		}
 		//est
@@ -221,7 +221,7 @@ bool Personnage::trouverChemin(Carte * pCarte){
 					return true;
 				}
 
-				listeAParcourir.insert(pair<int,Case*>((pCarte->imageCarte[X+1][Y])->distanceEntree + (pCarte->imageCarte[X+1][Y])->heuristique,(pCarte->imageCarte[X+1][Y])));
+				listeAParcourir.insert(std::pair<int,Case*>((pCarte->imageCarte[X+1][Y])->distanceEntree + (pCarte->imageCarte[X+1][Y])->heuristique,(pCarte->imageCarte[X+1][Y])));
 			}
 		}
 		listeAParcourir.erase(myIterator);

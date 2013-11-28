@@ -14,7 +14,6 @@
 #include "../ResourceManager.h"
 #include "Projectile.h"
 #include "Case.h"
-#include <iostream>
 #include <exception>
 #include <map>
 #include <vector>
@@ -22,7 +21,6 @@
 #include <stdlib.h>
 #include <utility>
 
-using namespace std;
 class Personnage: public ElementGraphique, public ElementJeu {
 public:
 	Personnage(int tVie, int tVitesse, int tArmure, int tGain, Coordonnees tCoord);
@@ -46,8 +44,8 @@ public:
 	bool trouverCheminPersonnage(Carte * pCarte);
 	void ecrireCheminPersonnage(Carte * pCarte);
 	//Pathfinding
-	vector<Case *> chemin;
-	vector<Case *>::iterator cheminIterator;
+	std::vector<Case *> chemin;
+	std::vector<Case *>::iterator cheminIterator;
 protected:
 	// ce booleen sert a savoir si le personnage est volant, c'est-a-dire s'il n'a pas a recalculer son chemin si une
 	// nouvelle tour est cree

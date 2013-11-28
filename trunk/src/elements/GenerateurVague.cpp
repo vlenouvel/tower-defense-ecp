@@ -6,7 +6,6 @@
  */
 
 #include "GenerateurVague.h"
-#include <iostream>
 #include <sstream>
 
 GenerateurVague::GenerateurVague() {
@@ -49,6 +48,6 @@ void GenerateurVague::genererVague()
 }
 
 GenerateurVague::~GenerateurVague() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 

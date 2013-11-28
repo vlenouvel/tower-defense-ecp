@@ -21,7 +21,7 @@ EtatMort::EtatMort(App* tApp) : Etat(tApp)  {
 
 	int score = manager->getRessources()->getScore();
 	text2.setFont(font);
-	ostringstream ss;
+	std::ostringstream ss;
 	ss << score;
 	text2.setString("Votre score est de : " + ss.str());
 	text2.setCharacterSize(24);
@@ -37,12 +37,12 @@ EtatMort::EtatMort(App* tApp) : Etat(tApp)  {
 	text4.setStyle(sf::Text::Bold);
 	text4.setPosition(150,400);
 
-	ofstream fichierScoreOut;
-	fichierScoreOut.open("scores.txt",ios_base::app);
+	std::ofstream fichierScoreOut;
+	fichierScoreOut.open("scores.txt",std::ios_base::app);
 	fichierScoreOut << score << "\n";
 	fichierScoreOut.close();
 
-	ifstream fichierScoreIn("scores.txt");
+	std::ifstream fichierScoreIn("scores.txt");
 	int max = 0;
 	int temp;
 	while(fichierScoreIn >> temp)
@@ -60,7 +60,7 @@ EtatMort::EtatMort(App* tApp) : Etat(tApp)  {
 	{
 		text3.setString("Vous avez battu votre meilleur score !");
 	} else {
-		ostringstream ss2;
+		std::ostringstream ss2;
 		ss2 << max;
 		text3.setString("Votre meilleur score est de: " + ss2.str());
 	}
@@ -86,7 +86,7 @@ void EtatMort::dessiner(sf::RenderWindow &pWindow)
 	pWindow.draw(text4);
 }
 EtatMort::~EtatMort() {
-	// TODO Auto-generated destructor stub
+	// VIDE
 }
 
 void EtatMort::clearAllElements()
@@ -97,19 +97,19 @@ void EtatMort::clearAllElements()
     delete pResourcesManager->getVague();
     delete pResourcesManager->getGenerateurVague();
 
-    vector<Batiment*> batimentConteneur = pResourcesManager->getBatiment();
+    std::vector<Batiment*> batimentConteneur = pResourcesManager->getBatiment();
     for(unsigned int i = 0; i < batimentConteneur.size() ; i++)
     {
     	delete batimentConteneur[i];
     }
 
-    vector<Personnage*> personnageConteneur = pResourcesManager->getPersonnage();
+    std::vector<Personnage*> personnageConteneur = pResourcesManager->getPersonnage();
     for(unsigned int i = 0; i < personnageConteneur.size() ; i++)
     {
     	delete personnageConteneur[i];
     }
 
-    vector<Projectile*> projectileConteneur = pResourcesManager->getProjectile();
+    std::vector<Projectile*> projectileConteneur = pResourcesManager->getProjectile();
     for(unsigned int i = 0; i < projectileConteneur.size() ; i++)
     {
     	delete projectileConteneur[i];

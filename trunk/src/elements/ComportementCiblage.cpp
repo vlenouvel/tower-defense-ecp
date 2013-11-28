@@ -35,9 +35,8 @@ Personnage* ComportementCiblage::ciblerZone(std::vector<Personnage*> ciblesPossi
 	{
 	/* Ici on va rechercher, parmi les cibles possibles, le personnage qui a le plus de personnages voisins dans un rayon de valeur"range".
 	 */
-	//TODO : On ne peut pas envoyer la range en param�tre car on ne peut pas changer le prototype de la fonction
-	// Il faut donc trouver un moyen de l'obtenir autrement
-	int range = 75;
+	ConfigManager *pConfigManager = ConfigManager::getInstance();
+	int range = pConfigManager->mapTourCanon["rayonExplosion"];
 	ResourceManager *manager = ResourceManager::getInstance();
 	std::vector<Personnage*> tousLesPersonnages = manager->getPersonnage();
 	Personnage *cible(0);

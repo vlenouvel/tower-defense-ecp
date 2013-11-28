@@ -20,11 +20,11 @@
 #include "etats/EtatChargement.h"
 #include "ResourceManager.h"
 #include "elements/Coordonnees.h"
-#include <iostream>
 #include <string>
 #include <sstream>
 #include "ResourceManager.h"
 #include "ResourcesLoader.h"
+#include "ConfigManager.h"
 
 class App {
 public:

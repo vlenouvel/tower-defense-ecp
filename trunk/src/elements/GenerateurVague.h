@@ -13,7 +13,6 @@
 
 #include <SFML/Window.hpp>
 #include "Vague.h"
-#include <iostream>
 
 
 class GenerateurVague : public ElementJeu{
