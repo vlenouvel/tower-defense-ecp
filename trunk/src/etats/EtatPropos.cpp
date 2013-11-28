@@ -17,7 +17,7 @@ EtatPropos::EtatPropos(App *tApp) : Etat(tApp){
 	text.setStyle(sf::Text::Bold);
 	text.setPosition(180, 150);
 	std::ostringstream ss;
-	ss << "Developpeurs:\n\nVincent Carrier\nFrancois De Leo\nVincent Delevacque\nVincent Lenouvel";
+	ss << "Developpeurs:\n\nVincent Carrier\nFrancois De Leo\nArnaud Delevacque\nVincent Lenouvel";
 	text.setString(ss.str());
 }
 
