@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <config>
-	<fps>30</fps>
-	<argent>300</argent>
+	<fps>20</fps>
+	<argent>200</argent>
 	<vie>30</vie>
 	<tauxRevente>75</tauxRevente>
 	<batiments>
