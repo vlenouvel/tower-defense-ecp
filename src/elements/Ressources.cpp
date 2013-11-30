@@ -10,6 +10,7 @@
 #include <sstream>
 #include "../ResourceManager.h"
 #include "../ConfigManager.h"
+#include <iostream>
 
 Ressources::Ressources() {
 	ResourcesLoader* pResourcesLoader = ResourcesLoader::getInstance();
@@ -21,7 +22,6 @@ Ressources::Ressources() {
 	texteRessources.setCharacterSize(14);
 	texteRessources.setColor(sf::Color::White);
 	texteRessources.setPosition(715,0);
-
 	ConfigManager *pConfigManager = ConfigManager::getInstance();
 	vie = pConfigManager->vie;
 	argent = pConfigManager->argent;

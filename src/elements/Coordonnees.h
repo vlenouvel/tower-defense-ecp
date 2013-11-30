@@ -8,6 +8,7 @@
 #ifndef COORDONNEES_H_
 #define COORDONNEES_H_
 
+
 class Coordonnees {
 public:
 	Coordonnees(int x,int y);

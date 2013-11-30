@@ -8,9 +8,7 @@
  *  Elle gere egalement le changement d'etat du jeu.
  *       
  */
-
 #include "App.h"
-
 
 
 App::App() {

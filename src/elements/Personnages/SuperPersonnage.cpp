@@ -25,7 +25,6 @@ void SuperPersonnage::avancer(){
 	Personnage::avancer();
 	double taille = (double)vie/(17*vieDebut);
 	spriteElement.setScale(taille,taille);
-	
 }
 
 void SuperPersonnage::dessiner(sf::RenderWindow &pWindow)

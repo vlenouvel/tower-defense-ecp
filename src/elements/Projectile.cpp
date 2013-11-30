@@ -38,5 +38,9 @@ void Projectile::agir()
 		delete this;
 	}
 }
+Coordonnees Projectile::getCoordonnees()
+{
+	return coordonnees;
+}
 
 
