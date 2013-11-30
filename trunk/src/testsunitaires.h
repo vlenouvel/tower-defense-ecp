@@ -3,13 +3,18 @@
 #include <gtest/gtest.h>
 #include "elements/Carte.h"
 #include "elements/Ressources.h"
-#include "elements/Projectiles/Missile.h"
 #include "elements/Personnages/SuperPersonnage.h"
+#include "elements/Personnages/PersonnageVolant.h"
+#include "elements/Personnages/PersonnageBasique.h"
+#include "elements/Personnages/PersonnageAccelerant.h"
+#include "elements/Batiments/TourAttaqueBasique.h"
+#include "elements/Batiments/TourDeGlace.h"
+#include "elements/Batiments/CanonLourd.h"
 #include "App.h"
 #include "elements/Vague.h"
 
 // test Coordonnees
-TEST(CoordonneesTest, InputNumber) {
+TEST(CoordonneesTest, CoordonneesTest) {
 	Coordonnees *coord = new Coordonnees(5,3);
 	EXPECT_EQ(5, coord->getPosX()); 
 	EXPECT_EQ(3, coord->getPosY());
@@ -21,7 +26,7 @@ TEST(CoordonneesTest, InputNumber) {
 }
 
 // test Carte et Case
-TEST(NettoyerCarteTest, InputNumber2) {
+TEST(CarteTest, NettoyerTest) {
 	Carte *carte = new Carte();
 	EXPECT_FALSE(carte->imageCarte[3][4]->isParcourue());
 	EXPECT_FALSE(carte->imageCarte[3][4]->isParcourue());
@@ -35,7 +40,7 @@ TEST(NettoyerCarteTest, InputNumber2) {
 }
 
 //test Ressources
-TEST(RessourcesTest, InputNumber3){
+TEST(RessourcesTest, RessourcesTest){
 	Ressources* ressources = new Ressources();
 	EXPECT_EQ(200,ressources->getArgent());
 	ressources->gagnerArgent(100);
@@ -51,7 +56,7 @@ TEST(RessourcesTest, InputNumber3){
 }
 
 // test Missile
-TEST(MissileToucherTest,InputNumber){
+TEST(ProjectileTest,MissileTest){
 	Coordonnees coordonneesBoss(40,40);
 	Coordonnees coordonneesMissile(50,40);
 	SuperPersonnage * boss = new SuperPersonnage(300,2,8,300,coordonneesBoss);
@@ -71,6 +76,70 @@ TEST(MissileToucherTest,InputNumber){
 	EXPECT_EQ(40,boss->getCoordonnees().getPosY());
 	resourceManager->removePersonnage(boss);
 	delete boss,resourceManager;
+}
+
+// test TirDeGlace
+TEST(ProjectileTest,TirDeGlaceTest){
+	Coordonnees coordonneesPerso(40,40);
+	Coordonnees coordonneesTirDeGlace(50,40);
+	PersonnageVolant * perso = new PersonnageVolant(300,2,8,300,coordonneesPerso);
+	TirDeGlace * tirDeGlace = new TirDeGlace(coordonneesTirDeGlace,perso,10,40);
+	ResourceManager* resourceManager = ResourceManager::getInstance();
+	resourceManager->addPersonnage(perso);
+	EXPECT_EQ(40,perso->getCoordonnees().getPosX());
+	EXPECT_EQ(40,perso->getCoordonnees().getPosY());
+	EXPECT_EQ(50,tirDeGlace->getCoordonnees().getPosX());
+	EXPECT_EQ(40,tirDeGlace->getCoordonnees().getPosY());
+	tirDeGlace->agir();
+	EXPECT_EQ(300,perso->getVie());
+	EXPECT_EQ(40,perso->getCoordonnees().getPosX());
+	EXPECT_EQ(40,perso->getCoordonnees().getPosY());
+	resourceManager->removePersonnage(perso);
+	delete perso,resourceManager;
+}
+
+// test ProjectileBasique
+TEST(ProjectileTest,ProjectileBasique){
+	Coordonnees coordonneesPerso(40,40);
+	Coordonnees coordonneesProjectile(50,40);
+	PersonnageBasique * perso = new PersonnageBasique(300,2,8,300,coordonneesPerso);
+	ProjectileBasique * projectile = new ProjectileBasique(coordonneesProjectile,perso,10);
+	ResourceManager* resourceManager = ResourceManager::getInstance();
+	resourceManager->addPersonnage(perso);
+	EXPECT_EQ(40,perso->getCoordonnees().getPosX());
+	EXPECT_EQ(40,perso->getCoordonnees().getPosY());
+	EXPECT_EQ(50,projectile->getCoordonnees().getPosX());
+	EXPECT_EQ(40,projectile->getCoordonnees().getPosY());
+	projectile->agir();
+	EXPECT_EQ(300,perso->getVie());
+	EXPECT_EQ(40,perso->getCoordonnees().getPosX());
+	EXPECT_EQ(40,perso->getCoordonnees().getPosY());
+	resourceManager->removePersonnage(perso);
+	delete perso,resourceManager;
+}
+
+TEST(TourAttaqueBasiqueTest,TestAttaque){
+	Coordonnees coordonneesPerso(40,40);
+	Coordonnees coordonneesTourDeGlace(120,40);
+	PersonnageAccelerant * perso = new PersonnageAccelerant(50,20,8,50,coordonneesPerso);
+	TourDeGlace* tourDeGlace = new TourDeGlace(coordonneesTourDeGlace);
+	Carte * carte = new Carte();
+	carte->imageCarte[0][2]->setOccupee(true);
+	carte->imageCarte[1][2]->setOccupee(true);
+	carte->imageCarte[2][2]->setOccupee(true);
+	perso->trouverChemin(carte);
+	perso->ecrireChemin(carte);
+	perso->avancer();
+	ResourceManager *manager = ResourceManager::getInstance();
+	manager->addPersonnage(perso);
+	tourDeGlace->actionSpeciale();
+	perso->avancer();
+	EXPECT_EQ(70,perso->getCoordonnees().getPosX());
+	EXPECT_EQ(40,perso->getCoordonnees().getPosY());
+	Ressources * ressources = new Ressources();
+	manager->addRessources(ressources);
+	perso->mourir();
+	delete carte, tourDeGlace, manager;
 }
 
 // test de l'algo mis en con

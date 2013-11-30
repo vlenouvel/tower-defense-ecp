@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);
-	//int i = RUN_ALL_TESTS();
+	int i = RUN_ALL_TESTS();
 	// on n'aura qu'une application => creation statique et non dynamique
 	App app;
 	app.jouer();

@@ -35,7 +35,7 @@ void EtatChargement::dessiner(sf::RenderWindow &pWindow)
 {
 	if(!keepLoading)
 	{
-		pWindow.close();
+		//pWindow.close();
 	} else {
 		pWindow.draw(textLoading);
 	}
