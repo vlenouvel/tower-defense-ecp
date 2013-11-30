@@ -37,13 +37,15 @@ public:
 	virtual ~App();
 	void changerEtat(Etat *pNouvelEtat);
 	sf::Clock horloge;
+	sf::RenderWindow window;
+
+	
 
 private:
 	int fpsReels;
 	Etat *pEtatActuel;
 	sf::Font font;
 	sf::Text texteFPS;
-	sf::RenderWindow window;
 };
 
 #endif /* APP_H_ */

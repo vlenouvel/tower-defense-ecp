@@ -120,7 +120,6 @@ void Vague::genererPersonnage()
 	pPersonnage->trouverChemin(ResourceManager->getCarte());
 	pPersonnage->ecrireChemin(ResourceManager->getCarte());
 	ResourceManager->addPersonnage(pPersonnage);
-
 	nombrePersoRestant--;
 	if(nombrePersoRestant == 0)
 	{

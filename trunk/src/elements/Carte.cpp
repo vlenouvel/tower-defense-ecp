@@ -13,7 +13,7 @@ Carte::Carte() {
 	for (int i=0; i<imageCarteX; i++){
 		for (int j=0; j<imageCarteY; j++){
 			Case* pCaseImageCarte = new Case(40*i,40*j);
-			pCaseImageCarte->setHeuristique(pCaseImageCarte);
+			pCaseImageCarte->setHeuristique(pCaseSortie);
 			imageCarte[i][j] = pCaseImageCarte;
 		}
 	}

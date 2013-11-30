@@ -22,6 +22,7 @@ public:
 	Personnage* getCible();
 	void setCible(Personnage* nouvelleCible);
 	virtual void avancer() = 0;
+	virtual Coordonnees getCoordonnees();
 
 protected:
 	virtual void toucherEnnemi() = 0;

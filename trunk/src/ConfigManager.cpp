@@ -6,6 +6,8 @@
  */
 
 #include "ConfigManager.h"
+#include <iostream>
+#include <string>
 
 // Pointeur vers l'unique instance du ResourceManager
 ConfigManager* configManagerPointeur = 0;
@@ -27,12 +29,11 @@ void ConfigManager::loadConfig()
 	tinyxml2::XMLDocument doc;
 	doc.LoadFile("config.xml");
 	tinyxml2::XMLElement* config = doc.FirstChildElement("config");
-
-	fps = atoi(config->FirstChildElement("fps")->GetText());
+	const char* test = (config->FirstChildElement("fps"))->GetText();
+	fps = atoi(test);
 	argent = atoi(config->FirstChildElement("argent")->GetText());
 	vie = atoi(config->FirstChildElement("vie")->GetText());
 	tauxRevente = atoi(config->FirstChildElement("tauxRevente")->GetText());
-
 	tinyxml2::XMLElement* batiments = config->FirstChildElement("batiments");
 
 	tinyxml2::XMLElement* tourAttaqueBasique = batiments->FirstChildElement("tourAttaqueBasique");
