@@ -118,6 +118,7 @@ TEST(ProjectileTest,ProjectileBasique){
 	delete perso,resourceManager;
 }
 
+// test de la zone de controle de la tour Frost
 TEST(TourAttaqueBasiqueTest,TestAttaque){
 	Coordonnees coordonneesPerso(40,40);
 	Coordonnees coordonneesTourDeGlace(120,40);
@@ -142,7 +143,7 @@ TEST(TourAttaqueBasiqueTest,TestAttaque){
 	delete carte, tourDeGlace, manager;
 }
 
-// test de l'algo mis en con
+// test de l'algo mis en contexte
 TEST(AlgoTest,algo1){
 	ResourceManager* ResourceManager = ResourceManager::getInstance();
 	App * app =new App();
