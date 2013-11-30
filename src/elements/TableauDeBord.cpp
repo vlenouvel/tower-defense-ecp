@@ -140,7 +140,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 			pWindow.draw(spriteLevelUpBouton);
 
 			std::ostringstream stringCoutAmelioration;
-			stringCoutAmelioration << (int)(tourSelectionnee->getPrix()*tauxRevente/100.); // TODO Verifier coherence avec "verifierAmelioration()"
+			stringCoutAmelioration << (int)(tourSelectionnee->getPrix()*tauxRevente/100.);
 			texteCoutAmelioration.setString("Ameliorer : " + stringCoutAmelioration.str() + "$");
 			pWindow.draw(texteCoutAmelioration);
 
@@ -179,7 +179,7 @@ void TableauDeBord::dessiner(sf::RenderWindow &pWindow){
 			}
 		}
 		std::ostringstream stringPrixDeVente;
-		stringPrixDeVente << (int)(pResourceManager->getBatimentSelectionne()->getPrix()*tauxRevente/100.); //TODO Coherence avec "vendreTour()"
+		stringPrixDeVente << (int)(pResourceManager->getBatimentSelectionne()->getPrix()*tauxRevente/100.);
 		textePrixDeVente.setString("Vendre : " + stringPrixDeVente.str() + "$");
 		pWindow.draw(spriteSellBouton);
 

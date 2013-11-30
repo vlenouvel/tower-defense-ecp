@@ -49,7 +49,6 @@ void Personnage::avancer()
 
 			else {
 				imageVitesse -= distanceCiblePerso;
-				// TODO Checker bugfix ici !!
 				if (!chemin.empty())
 					chemin.erase(chemin.begin());
 					break;

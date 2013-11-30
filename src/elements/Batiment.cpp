@@ -34,8 +34,7 @@ Coordonnees Batiment::getCoordonnees()
 }
 void Batiment::vendreBatiment()
 {
-	//TODO Equilibrage : prix de vente
-	//TODO Coherence avec affichage
+
 	ResourceManager* pResourceManager = ResourceManager::getInstance();
 	ConfigManager *pConfigManager = ConfigManager::getInstance();
 	int tauxRevente = pConfigManager->tauxRevente;
