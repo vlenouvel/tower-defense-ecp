@@ -1,0 +1,1 @@
+The aim of this student project is to develop an open source Tower Defense game.
